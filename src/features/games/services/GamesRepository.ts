@@ -12,7 +12,7 @@ const games: Game[] = [
     title: "LIPI EPICS",
     description:
       "An interactive learning experience that brings Indian epics to life through story-based games and structured play.",
-    imageUrl: "/games/lipi-epics.png",
+    imageUrl: "/Assets/Images/games/lipi-epics.png",
     imageAlt: "LIPI EPICS app preview",
     ctaType: "play",
     route: "/games/lipi-epics",
@@ -22,7 +22,7 @@ const games: Game[] = [
     title: "LIPI - KIDS",
     description:
       "A safe, playful learning app where kids explore languages, stories, and games in multiple languages.",
-    imageUrl: "/games/lipi-kids.png",
+    imageUrl: "/Assets/Images/games/lipi-kids.png",
     imageAlt: "LIPI KIDS app preview",
     ctaType: "play",
     route: "/games/lipi-kids",
@@ -32,7 +32,7 @@ const games: Game[] = [
     title: "LIPI - BRAIN BOOSTER",
     description:
       "A sharp-paced word puzzle game designed to boost memory, focus, and problem-solving skills through daily challenges.",
-    imageUrl: "/games/lipi-brain-booster.png",
+    imageUrl: "/Assets/Images/games/lipi-brain-booster.png",
     imageAlt: "LIPI BRAIN BOOSTER app preview",
     ctaType: "coming-soon",
   },
@@ -41,7 +41,7 @@ const games: Game[] = [
     title: "LIPI - WORD CRUISE",
     description:
       "A fun word-building game that helps improve vocabulary and pattern recognition through engaging levels.",
-    imageUrl: "/games/lipi-word-cruise.png",
+    imageUrl: "/Assets/Images/games/lipi-wordcruise.png",
     imageAlt: "LIPI WORD CRUISE app preview",
     ctaType: "coming-soon",
   },

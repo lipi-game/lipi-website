@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRotatingPhrases } from "@/shared/hooks/useRotatingPhrases";
-import VIDEO_SRC from "@/assets/hero.mp4";
+import VIDEO_SRC from "/Assets/hero.mp4";
 
 const HERO_PHRASES = [
   "We make learning playable.",
