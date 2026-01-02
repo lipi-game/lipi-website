@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import welcomeBrush from "@/assets/welcome-brush.png";
-import team1 from "@/assets/team-1.jpeg";
+import welcomeBrush from "/Assets/welcome-brush.png";
+import team1 from "/Assets/team-1.jpeg";
 
 const aboutImages = [
   { src: team1, alt: "Lipi learning session" },

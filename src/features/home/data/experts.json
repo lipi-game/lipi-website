@@ -1,44 +1,58 @@
 [
   {
-    "id": "albert-flores",
-    "name": "Albert Flores",
-    "role": "Founder of DevPlay",
-    "poster": "/experts/expert-1.jpg",
-    "video": "/experts/expert-1.mp4"
+    "id": "Sri Sri Sri Tridandi Chinna Jeeyar Swamiji",
+    "name": "Sri Sri Sri Tridandi Chinna Jeeyar Swamiji",
+    "role": "Spirtual Leader",
+    "poster": "/Assets/Images/users/Sri-Sri-Sri-Tridandi-Chinna-Jeeyar-Swamiji.jpg",
+    "video": "/Assets/lipi-videos/chinna-jeeyar-swamy-final-2.mp4"
   },
   {
-    "id": "leslie-alexander",
-    "name": "Leslie Alexander",
-    "role": "Co-Founder at Illumina",
-    "poster": "/experts/expert-2.jpg",
-    "video": "/experts/expert-2.mp4"
+    "id": "Yandamoori Veerendranath",
+    "name": "Yandamoori Veerendranath",
+    "role": "Novelist & Screenwritera",
+    "poster": "/Assets/Images/users/Yandamuri-Veerendranath.jpg",
+    "video": "/Assets/lipi-videos/Yandamuri-Veerendranath.mp4"
   },
   {
-    "id": "courtney-henry",
-    "name": "Courtney Henry",
-    "role": "Founder of CM Reviser",
-    "poster": "/experts/expert-3.jpg",
-    "video": "/experts/expert-3.mp4"
+    "id": "Dr. K Brahmanandam",
+    "name": "Dr. K Brahmanandam",
+    "role": "Indian Film Actor",
+    "poster": "/Assets/Images/users/Dr-Brahmanandam.png",
+    "video": "/Assets/lipi-videos/Dr-Brahmanandam-Final.mp4"
   },
   {
-    "id": "brooklyn-simmons",
-    "name": "Brooklyn Simmons",
-    "role": "CEO at EduGames",
-    "poster": "/experts/expert-4.jpg",
-    "video": "/experts/expert-4.mp4"
+    "id": "K Chandrabose",
+    "name": "K Chandrabose",
+    "role": "Indian Film Lyricist",
+    "poster": "/Assets/Images/users/K-Chandrabose.jpg",
+    "video": "/Assets/lipi-videos/Lyricist-Chandrabose.mp4"
   },
   {
-    "id": "cameron-williamson",
-    "name": "Cameron Williamson",
-    "role": "Director at PlayLearn",
-    "poster": "/experts/expert-5.jpg",
-    "video": "/experts/expert-5.mp4"
+    "id": "Dr. Anand Kuchibhotla",
+    "name": "Dr. Anand Kuchibhotla",
+    "role": "University of Silicon Andhra",
+    "poster": "/Assets/Images/users/Dr-Anand-Kuchibhotla.jpg",
+    "video": "/Assets/lipi-videos/Kuchibhotla-Anand.mp4"
   },
   {
-    "id": "jenny-wilson",
-    "name": "Jenny Wilson",
-    "role": "Head of Innovation at KidTech",
-    "poster": "/experts/expert-6.jpg",
-    "video": "/experts/expert-6.mp4"
+    "id": "Dr. Suresh Katta",
+    "name": "Dr. Suresh Katta",
+    "role": "Entrepreneur",
+    "poster": "/Assets/Images/users/Dr-Suresh-Katta.jpg",
+    "video": "/Assets/lipi-videos/Suresh-Katta-English.mp4"
+  },
+  {
+    "id": "Professor C. Mrunalini",
+    "name": "Professor C. Mrunalini",
+    "role": "",
+    "poster": "/Assets/Images/users/prof-c-mrunalini.png",
+    "video": "/Assets/lipi-videos/prof-c-mrunalini.mp4"
+  },
+  {
+    "id": "Sri Samavedam Shanmukha Sarma",
+    "name": "Sri Samavedam Shanmukha Sarma",
+    "role": "",
+    "poster": "/Assets/Images/users/Sri-Samavedam-Shanmukha-Sarma.jpg",
+    "video": "/Assets/lipi-videos/Sri-Samavedam-Shanmukha-Sarma-vid.mp4"
   }
 ]

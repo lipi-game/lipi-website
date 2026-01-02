@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import lipiLogo from "@/assets/lipi-logo.png";
+import lipiLogo from "/Assets/lipi-logo.png";
 
 const navLinks = [
   { to: "/#about", label: "About Us" },
