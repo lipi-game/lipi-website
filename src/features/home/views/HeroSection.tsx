@@ -43,14 +43,14 @@ export function HeroSection() {
           <span className="inline-flex items-baseline gap-1 sm:gap-2 flex-wrap sm:flex-nowrap">
             {/* "At" with orange A */}
             <span className="whitespace-nowrap">
-              <span className="text-[#ff7c2b]">A</span>
+              <span className="text-[#118fdd]">A</span>
               <span>t</span>
             </span>
             
             {/* "Lipi," with orange comma */}
             <span className="whitespace-nowrap">
               Lipi
-              <span className="text-[#ff7c2b]">,</span>
+              <span className="text-[#118fdd]">,</span>
             </span>
             
             {/* Rotating phrase */}

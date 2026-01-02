@@ -4,11 +4,6 @@ import { useRef } from "react";
 import welcomeBrush from "@/assets/welcome-brush.png";
 import team1 from "@/assets/team-1.jpeg";
 
-
-// TODO: Place these images in /public folder:
-// - /about-1.jpg (large image - bottom center)
-// - /about-2.jpg (medium image - top right)
-
 const aboutImages = [
   { src: team1, alt: "Lipi learning session" },
   { src: team1, alt: "Lipi presentation" },
@@ -34,45 +29,43 @@ function ImageCard({ src, alt, className }: { src: string; alt: string; classNam
 
 function ImageCollage({ isMobile = false }: { isMobile?: boolean }) {
   if (isMobile) {
-    // Mobile: 2 images - large bottom-left, small top-right overlapping
     return (
-      <div className="relative h-[280px] w-full">
-        {/* Large image - bottom left */}
+      <div className="relative h-[380px] w-full">
         <ImageCard
-          src={aboutImages[0].src}
-          alt={aboutImages[0].alt}
-          className="absolute bottom-0 left-0 w-[75%] h-[85%] z-10 bg-muted rotate-[-3deg]"
+          src={aboutImages[2].src}
+          alt={aboutImages[2].alt}
+          className="absolute top-0 right-0 w-[50%] h-[45%] z-30 bg-muted"
         />
-        {/* Small image - top right, overlapping */}
         <ImageCard
           src={aboutImages[1].src}
           alt={aboutImages[1].alt}
-          className="absolute top-0 right-0 w-[55%] h-[65%] z-20 bg-muted rotate-[3deg]"
+          className="absolute top-[20%] left-[15%] w-[65%] h-[45%] z-20 bg-muted"
+        />
+        <ImageCard
+          src={aboutImages[0].src}
+          alt={aboutImages[0].alt}
+          className="absolute bottom-0 left-0 w-[50%] h-[45%] z-10 bg-muted"
         />
       </div>
     );
   }
 
-  // Desktop: 3 images layout
   return (
-    <div className="relative h-[380px] sm:h-[440px] md:h-[480px] lg:h-[520px] w-full">
-      {/* Small image - top right */}
+    <div className="relative h-[560px] sm:h-[600px] md:h-[640px] lg:h-[700px] w-full">
       <ImageCard
         src={aboutImages[2].src}
         alt={aboutImages[2].alt}
-        className="absolute top-0 right-0 w-[45%] sm:w-[42%] md:w-[45%] h-[32%] sm:h-[35%] z-30 bg-muted"
+        className="absolute top-0 right-0 w-[45%] sm:w-[42%] md:w-[45%] h-[50%] sm:h-[52%] z-30 bg-muted rounded-3xl"
       />
-      {/* Medium image - middle right */}
       <ImageCard
         src={aboutImages[1].src}
         alt={aboutImages[1].alt}
-        className="absolute top-[25%] right-[5%] w-[55%] sm:w-[52%] md:w-[55%] h-[38%] sm:h-[40%] z-20 bg-muted"
+        className="absolute top-[30%] left-[20%] w-[65%] sm:w-[62%] md:w-[65%] h-[50%] sm:h-[52%] z-20 bg-muted rounded-3xl"
       />
-      {/* Large image - bottom left */}
       <ImageCard
         src={aboutImages[0].src}
         alt={aboutImages[0].alt}
-        className="absolute bottom-0 left-0 w-[75%] sm:w-[72%] md:w-[75%] h-[48%] sm:h-[50%] z-10 bg-muted"
+        className="absolute bottom-0 left-0 w-[45%] sm:w-[42%] md:w-[45%] h-[50%] sm:h-[52%] z-10 bg-muted rounded-3xl"
       />
     </div>
   );
@@ -83,8 +76,7 @@ function WelcomeHeading() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <h2 ref={ref} className="relative inline-block text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
-      {/* Orange brush background image with zoom animation */}
+    <h2 ref={ref} className="relative inline-block text-3xl sm:text-4xl md:text-5xl font-bold text-white text-foreground mb-4 md:mb-6">
       <motion.div
         className="absolute inset-0 -z-10 flex items-center justify-center"
         initial={{ scale: 1.5, opacity: 0 }}
@@ -96,66 +88,61 @@ function WelcomeHeading() {
           alt=""
           aria-hidden="true"
           className="w-[115%] h-auto object-contain pointer-events-none"
-          style={{ 
+          style={{
             minWidth: "110%",
             transform: "translateY(-2px)"
           }}
         />
       </motion.div>
-      <span className="relative px-2 py-1">Welcome to LIP!</span>
+      <span className="relative px-2 py-1">Welcome to LIPI.</span>
     </h2>
   );
 }
 
 export function IntroAboutSection() {
   return (
-    <section className="relative z-10 -mt-8 md:-mt-12 bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
-      {/* Welcome Block */}
-      <div className="pt-16 md:pt-24 lg:pt-32 pb-12 md:pb-16 text-center px-6">
+    <section className="relative z-10 -mt-8 md:-mt-12 bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] gap-8 md:gap-12 lg:gap-16">
+      <div className="pt-16 md:pt-24 lg:pt-32 pb-12 md:pb-16 text-center px-7">
         <WelcomeHeading />
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto mt-4 md:mt-6 leading-relaxed">
           We put learners first with our story-driven games.
         </p>
       </div>
 
-      {/* About Us Block */}
       <div className="px-6 md:px-12 lg:px-20 pb-16 md:pb-24 lg:pb-32">
         <div className="max-w-7xl mx-auto">
-          {/* Mobile: Image first, then text */}
           <div className="block lg:hidden mb-8">
             <ImageCollage isMobile={true} />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* Left column - Text */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-start">
             <div className="order-2 lg:order-1">
-              <h3 className="text-3xl sm:text-4xl md:text-[2.5rem] font-semibold text-foreground mb-6">
+              <h3 className="text-3xl sm:text-4xl md:text-[2.75rem] lg:text-5xl font-bold text-foreground mb-6 lg:mb-8 tracking-tight">
                 About Us
               </h3>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8">
-                <span className="font-semibold text-foreground">Lipi Epics and Word Games</span> is a learning and
+                <span className="font-bold ">Lipi Epics and Word Games</span> is a learning and
                 gamification platform rooted in{" "}
-                <span className="font-semibold text-foreground">Indian epics, languages, and cultural values</span>. It transforms the{" "}
-                <span className="font-semibold text-foreground">Mahabharat</span> and{" "}
-                <span className="font-semibold text-foreground">Ramayana</span> into interactive play
+                <span className="">Indian epics, languages, and cultural values</span>. It transforms the{" "}
+                <span className="">Mahabharat</span> and{" "}
+                <span className="">Ramayana</span> into interactive play
                 experiences, while blending{" "}
-                <span className="font-semibold text-foreground">epic-based learning</span> with{" "}
-                <span className="font-semibold text-foreground">word games</span> in Indian languages and English.
+                <span className="">epic-based learning</span> with{" "}
+                <span className="">word games</span> in Indian languages and English.
                 By addressing the gap where{" "}
-                <span className="font-semibold text-foreground">ancient wisdom</span> is often missing from modern education, Lipi helps
+                <span className="">ancient wisdom</span> is often missing from modern education, Lipi helps
                 today's learners explore{" "}
-                <span className="font-semibold text-foreground">culture</span>,{" "}
-                <span className="font-semibold text-foreground">values</span>, and{" "}
-                <span className="font-semibold text-foreground">thinking skills</span> through play.
+                <span className="">culture</span>,{" "}
+                <span className="">values</span>, and{" "}
+                <span className="">thinking skills</span> through play.
               </p>
               <Button
-                className="bg-[#ff7c2b] hover:bg-[#ff7c2b]/90 text-white font-semibold px-8 py-3 rounded-full text-base"
+                className="bg-[#118fdd] hover:bg-[#118fdd]/90 text-white font-semibold px-8 py-3 rounded-full text-base"
               >
                 Read more
               </Button>
             </div>
 
-            {/* Right column - Image Collage (Desktop only) */}
             <div className="hidden lg:block order-1 lg:order-2">
               <ImageCollage />
             </div>
