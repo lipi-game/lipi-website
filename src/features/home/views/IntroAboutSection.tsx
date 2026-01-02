@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import welcomeBrush from "@/assets/welcome-brush.png";
 import team1 from "@/assets/team-1.jpeg";
+import { SectionWrapper } from "@/shared/components/SectionWrapper";
 
 const aboutImages = [
   { src: team1, alt: "Lipi learning session" },
@@ -61,7 +62,7 @@ function WelcomeHeading() {
 
 function MobileAboutSection() {
   return (
-    <div className="px-6 pb-16">
+    <SectionWrapper className="pb-16">
       <div className="relative mb-8 h-[320px] w-full">
         <ImageCard
           src={aboutImages[0].src}
@@ -93,13 +94,13 @@ function MobileAboutSection() {
       >
         Read more
       </Button>
-    </div>
+    </SectionWrapper>
   );
 }
 
 function DesktopAboutSection() {
   return (
-    <div className="px-6 md:px-12 lg:px-20 pb-16 md:pb-24 lg:pb-32">
+    <SectionWrapper className="pb-16 md:pb-24 lg:pb-32">
       <div className="max-w-7xl mx-auto relative min-h-[550px] lg:min-h-[600px]">
         {/* Text content - positioned left */}
         <div className="relative z-10 max-w-sm lg:max-w-md pt-4">
@@ -135,35 +136,35 @@ function DesktopAboutSection() {
           <ImageCard
             src={aboutImages[2].src}
             alt={aboutImages[2].alt}
-            className="absolute top-[20px] right-[40px] w-[200px] md:w-[240px] lg:w-[280px] h-[150px] md:h-[170px] lg:h-[200px] z-30 bg-muted pointer-events-auto"
+            className="absolute top-[20px] right-0 w-[200px] md:w-[240px] lg:w-[280px] h-[150px] md:h-[170px] lg:h-[200px] z-30 bg-muted pointer-events-auto"
           />
           {/* Middle image - medium, positioned below and left of first */}
           <ImageCard
             src={aboutImages[1].src}
             alt={aboutImages[1].alt}
-            className="absolute top-[160px] md:top-[180px] lg:top-[200px] right-[200px] md:right-[260px] lg:right-[300px] w-[280px] md:w-[320px] lg:w-[360px] h-[200px] md:h-[230px] lg:h-[260px] z-20 bg-muted pointer-events-auto"
+            className="absolute top-[160px] md:top-[180px] lg:top-[200px] right-[160px] md:right-[220px] lg:right-[260px] w-[280px] md:w-[320px] lg:w-[360px] h-[200px] md:h-[230px] lg:h-[260px] z-20 bg-muted pointer-events-auto"
           />
           {/* Bottom image - large, positioned below text area */}
           <ImageCard
             src={aboutImages[0].src}
             alt={aboutImages[0].alt}
-            className="absolute top-[340px] md:top-[380px] lg:top-[420px] left-[60px] md:left-[80px] lg:left-[100px] w-[360px] md:w-[420px] lg:w-[480px] h-[180px] md:h-[200px] lg:h-[220px] z-10 bg-muted pointer-events-auto"
+            className="absolute top-[340px] md:top-[380px] lg:top-[420px] left-0 w-[360px] md:w-[420px] lg:w-[480px] h-[180px] md:h-[200px] lg:h-[220px] z-10 bg-muted pointer-events-auto"
           />
         </div>
       </div>
-    </div>
+    </SectionWrapper>
   );
 }
 
 export function IntroAboutSection() {
   return (
     <section className="relative z-10 -mt-8 md:-mt-12 bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)]" style={{ backgroundColor: "#ffffff" }}>
-      <div className="pt-16 md:pt-24 lg:pt-32 pb-12 md:pb-16 text-center px-7">
+      <SectionWrapper className="pt-16 md:pt-24 lg:pt-32 pb-12 md:pb-16 text-center">
         <WelcomeHeading />
         <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto mt-4 md:mt-6 leading-relaxed">
           We put learners first with our story-driven games.
         </p>
-      </div>
+      </SectionWrapper>
 
       {/* Mobile layout */}
       <div className="block lg:hidden">

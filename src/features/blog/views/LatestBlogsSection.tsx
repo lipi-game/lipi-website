@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Clock, Gamepad2 } from "lucide-react";
 import { getFeaturedBlog, getSecondaryBlogs } from "../services/BlogManager";
 import type { Blog } from "../types/blog";
+import { SectionWrapper } from "@/shared/components/SectionWrapper";
 
 function CategoryChip({ category }: { category: string }) {
   return (
@@ -117,7 +118,7 @@ export function LatestBlogsSection() {
       className="py-16 md:py-20 lg:py-24 bg-white"
       style={{ backgroundColor: "#ffffff" }}
     >
-      <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionWrapper>
         {/* Header */}
         <div className="flex items-center justify-between mb-8 md:mb-10">
           <h2
@@ -147,7 +148,7 @@ export function LatestBlogsSection() {
             <SecondaryCard key={blog.id} blog={blog} />
           ))}
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   );
 }

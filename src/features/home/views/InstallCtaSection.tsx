@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Apple } from "lucide-react";
 import { InstallGamesManager } from "../services/InstallGamesManager";
 import type { InstallGame } from "../types/installGame";
+import { SectionWrapper } from "@/shared/components/SectionWrapper";
 
 /**
  * Place images in /public/cta/:
@@ -28,14 +29,14 @@ export function InstallCtaSection() {
   return (
     <section
       aria-labelledby="install-cta-heading"
-      className="py-16 md:py-24 px-4 bg-white"
+      className="py-16 md:py-24 bg-white"
       style={{ backgroundColor: "#ffffff" }}
     >
       <h2 id="install-cta-heading" className="sr-only">
         Install Lipi Games
       </h2>
 
-      <div className="mx-auto w-full max-w-[1280px]">
+      <SectionWrapper>
         {/* Main CTA Card */}
         <div
           className="relative w-full h-auto md:h-[744px] rounded-[32px] md:rounded-[52px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.12)]"
@@ -115,7 +116,7 @@ export function InstallCtaSection() {
             </div>
           </div>
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   );
 }
