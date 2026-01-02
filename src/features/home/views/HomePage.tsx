@@ -1,5 +1,6 @@
 import { HeroSection } from "./HeroSection";
 import { IntroAboutSection } from "./IntroAboutSection";
+import { WordsFromExpertsSection } from "./WordsFromExpertsSection";
 import { OurGamesSection } from "@/features/games";
 
 export function HomePage() {
@@ -22,6 +23,11 @@ export function HomePage() {
         {/* Games Section */}
         <section id="games">
           <OurGamesSection />
+        </section>
+
+        {/* Words from Experts Section */}
+        <section id="experts">
+          <WordsFromExpertsSection />
         </section>
       </div>
     </main>
