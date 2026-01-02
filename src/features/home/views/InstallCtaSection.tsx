@@ -29,7 +29,7 @@ export function InstallCtaSection() {
     <section
       aria-labelledby="install-cta-heading"
       className="py-16 md:py-24 px-4 bg-white"
-      style={{ backgroundColor: "#ffffff" }}
+      style={{ backgroundColor: "#ffffff"}}
     >
       <h2 id="install-cta-heading" className="sr-only">
         Install Lipi Games
