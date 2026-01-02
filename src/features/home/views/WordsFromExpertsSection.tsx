@@ -121,7 +121,8 @@ export function WordsFromExpertsSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-white py-16 md:py-24 overflow-hidden"
+      className="py-16 md:py-24 overflow-hidden bg-white"
+      style={{ backgroundColor: "#ffffff" }}
       onKeyDown={handleKeyDown}
       tabIndex={0}
       aria-label="Words from Experts carousel"

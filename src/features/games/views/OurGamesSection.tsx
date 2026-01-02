@@ -71,7 +71,7 @@ export function OurGamesSection() {
     <section
       id="our-games"
       aria-labelledby="our-games-heading"
-      className="py-16 sm:py-20 lg:py-24 bg-background"
+      className="py-16 sm:py-20 lg:py-24 bg-white"
     >
       <Container size="xl">
         {/* Section Heading */}
