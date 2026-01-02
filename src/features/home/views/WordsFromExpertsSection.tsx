@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { ExpertsRepository } from "../services/ExpertsRepository";
 import { ExpertsManager } from "../services/ExpertsManager";
 import type { Expert } from "../types/expert";
+import { SectionWrapper } from "@/shared/components/SectionWrapper";
 
 /**
  * NOTE: Place your poster images and video files in /public/experts/
@@ -128,17 +129,17 @@ export function WordsFromExpertsSection() {
       aria-label="Words from Experts carousel"
     >
       {/* Header */}
-      <div className="text-center mb-12 md:mb-16 px-4">
+      <SectionWrapper className="text-center mb-12 md:mb-16">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
           Words from Experts
         </h2>
         <p className="text-gray-600 text-base md:text-lg max-w-xl mx-auto">
           Trusted voices on Lipi's approach to learning through play.
         </p>
-      </div>
+      </SectionWrapper>
 
       {/* Carousel Container */}
-      <div className="relative max-w-[1100px] mx-auto px-4">
+      <div className="relative max-w-[1100px] mx-auto px-10 lg:px-20">
         {/* Left Fade Overlay */}
         <div 
           className="absolute left-0 top-0 h-full w-14 md:w-20 lg:w-32 z-10 pointer-events-none"

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Container } from "@/shared/components/Container";
+import { SectionWrapper } from "@/shared/components/SectionWrapper";
 import { getGameCardsData, type GameCardData } from "../services/GamesManager";
 
 function GameCard({ game, index }: { game: GameCardData; index: number }) {
@@ -73,7 +73,7 @@ export function OurGamesSection() {
       aria-labelledby="our-games-heading"
       className="py-16 sm:py-20 lg:py-24 bg-white"
     >
-      <Container size="xl">
+      <SectionWrapper>
         {/* Section Heading */}
         <h2
           id="our-games-heading"
@@ -110,7 +110,7 @@ export function OurGamesSection() {
             ))}
           </div>
         </div>
-      </Container>
+      </SectionWrapper>
     </section>
   );
 }
