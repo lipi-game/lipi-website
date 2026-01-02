@@ -137,26 +137,42 @@ export function WordsFromExpertsSection() {
       </div>
 
       {/* Carousel Container */}
-      <div className="relative">
+      <div className="relative max-w-[1100px] mx-auto px-4">
+        {/* Left Fade Overlay */}
+        <div 
+          className="absolute left-0 top-0 h-full w-14 md:w-20 lg:w-32 z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0) 100%)",
+          }}
+        />
+        
+        {/* Right Fade Overlay */}
+        <div 
+          className="absolute right-0 top-0 h-full w-14 md:w-20 lg:w-32 z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0) 100%)",
+          }}
+        />
+
         {/* Navigation Arrows */}
         <button
           onClick={handlePrev}
-          className="absolute left-2 md:left-8 lg:left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+          className="absolute left-2 md:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-11 md:h-11 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all"
           aria-label="Previous"
         >
-          <ChevronLeft className="w-6 h-6 text-gray-700" />
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
         </button>
 
         <button
           onClick={handleNext}
-          className="absolute right-2 md:right-8 lg:right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+          className="absolute right-2 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-11 md:h-11 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all"
           aria-label="Next"
         >
-          <ChevronRight className="w-6 h-6 text-gray-700" />
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
         </button>
 
         {/* Cards Track */}
-        <div className="flex justify-center">
+        <div className="flex justify-center overflow-hidden">
           <div 
             className="overflow-visible"
             style={{ width: visibleCards * totalWidth - gap }}
