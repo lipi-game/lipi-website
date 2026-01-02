@@ -5,7 +5,7 @@ import type { Blog } from "../types/blog";
 
 function CategoryChip({ category }: { category: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e8f4fc] text-[#4a90b8] text-xs font-medium">
+    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#e8f0fe] text-[#4285f4] text-xs font-medium">
       <Gamepad2 className="w-3.5 h-3.5" />
       {category}
     </span>
@@ -14,7 +14,7 @@ function CategoryChip({ category }: { category: string }) {
 
 function ReadTimeChip({ readTime }: { readTime: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f5f5f5] text-gray-600 text-xs font-medium">
+    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#f1f3f4] text-gray-600 text-xs font-medium">
       <Clock className="w-3.5 h-3.5" />
       {readTime}
     </span>
@@ -23,11 +23,11 @@ function ReadTimeChip({ readTime }: { readTime: string }) {
 
 function FeaturedCard({ blog }: { blog: Blog }) {
   return (
-    <article className="bg-white rounded-[20px] shadow-sm overflow-hidden">
+    <article className="bg-[#f0e6fa] rounded-[24px] overflow-hidden">
       <div className="flex flex-col md:flex-row">
         {/* Image */}
-        <div className="md:w-[340px] lg:w-[400px] flex-shrink-0">
-          <div className="aspect-[4/3] md:aspect-auto md:h-full">
+        <div className="md:w-[320px] lg:w-[360px] flex-shrink-0 p-4 md:p-5">
+          <div className="aspect-square md:aspect-[4/5] rounded-[20px] overflow-hidden">
             {blog.imageUrl ? (
               <img
                 src={blog.imageUrl}
@@ -35,7 +35,7 @@ function FeaturedCard({ blog }: { blog: Blog }) {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="w-full h-full bg-muted flex items-center justify-center">
+              <div className="w-full h-full bg-muted flex items-center justify-center rounded-[20px]">
                 <span className="text-muted-foreground">No image</span>
               </div>
             )}
@@ -43,7 +43,7 @@ function FeaturedCard({ blog }: { blog: Blog }) {
         </div>
 
         {/* Content */}
-        <div className="flex-1 p-5 md:p-6 lg:p-8 flex flex-col justify-center">
+        <div className="flex-1 p-5 md:p-6 md:pl-2 flex flex-col justify-center">
           <div className="flex flex-wrap gap-2 mb-4">
             <CategoryChip category={blog.category} />
             <ReadTimeChip readTime={blog.readTime} />
@@ -53,7 +53,7 @@ function FeaturedCard({ blog }: { blog: Blog }) {
             {blog.title}
           </h3>
 
-          <p className="text-sm text-gray-500 mb-3">{blog.author}</p>
+          <p className="text-sm text-gray-600 mb-3">{blog.author}</p>
 
           <p className="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-3">
             {blog.excerpt}
@@ -66,24 +66,26 @@ function FeaturedCard({ blog }: { blog: Blog }) {
 
 function SecondaryCard({ blog }: { blog: Blog }) {
   return (
-    <article className="bg-white rounded-[20px] shadow-sm overflow-hidden flex flex-col">
+    <article className="bg-white rounded-[24px] shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full">
       {/* Image */}
-      <div className="aspect-[4/3] overflow-hidden">
-        {blog.imageUrl ? (
-          <img
-            src={blog.imageUrl}
-            alt={blog.title}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="w-full h-full bg-muted flex items-center justify-center">
-            <span className="text-muted-foreground">No image</span>
-          </div>
-        )}
+      <div className="p-4 pb-0">
+        <div className="aspect-[4/3] rounded-[16px] overflow-hidden">
+          {blog.imageUrl ? (
+            <img
+              src={blog.imageUrl}
+              alt={blog.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full bg-muted flex items-center justify-center rounded-[16px]">
+              <span className="text-muted-foreground">No image</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Content */}
-      <div className="p-5 flex-1 flex flex-col">
+      <div className="p-4 pt-4 flex-1 flex flex-col">
         <div className="flex flex-wrap gap-2 mb-3">
           <CategoryChip category={blog.category} />
           <ReadTimeChip readTime={blog.readTime} />
@@ -93,7 +95,7 @@ function SecondaryCard({ blog }: { blog: Blog }) {
           {blog.title}
         </h3>
 
-        <p className="text-sm text-gray-500 mb-2">{blog.author}</p>
+        <p className="text-sm text-gray-600 mb-2">{blog.author}</p>
 
         <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
           {blog.excerpt}
@@ -114,7 +116,7 @@ export function LatestBlogsSection() {
       aria-labelledby="latest-blogs-heading"
       className="bg-white py-16 md:py-20 lg:py-24"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 md:mb-10">
           <h2
