@@ -1,6 +1,7 @@
 import { HeroSection } from "./HeroSection";
 import { IntroAboutSection } from "./IntroAboutSection";
 import { WordsFromExpertsSection } from "./WordsFromExpertsSection";
+import { InstallCtaSection } from "./InstallCtaSection";
 import { OurGamesSection } from "@/features/games";
 import { LatestBlogsSection } from "@/features/blog";
 import { useSEO } from "@/shared/hooks/useSEO";
@@ -42,6 +43,11 @@ export function HomePage() {
         {/* Latest Blogs Section */}
         <section id="blogs">
           <LatestBlogsSection />
+        </section>
+
+        {/* Install CTA Section */}
+        <section id="install">
+          <InstallCtaSection />
         </section>
       </div>
     </main>
