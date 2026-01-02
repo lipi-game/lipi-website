@@ -1,0 +1,16 @@
+[
+  {
+    "id": "lipi-epics",
+    "name": "Lipi Epics",
+    "bannerImage": "/cta/install-banner.png",
+    "appStoreUrl": "https://apps.apple.com/app/lipi-epics",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.lipi.epics"
+  },
+  {
+    "id": "word-cruise",
+    "name": "Word Cruise",
+    "bannerImage": "/cta/install-banner.png",
+    "appStoreUrl": "https://apps.apple.com/app/word-cruise",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.lipi.wordcruise"
+  }
+]
