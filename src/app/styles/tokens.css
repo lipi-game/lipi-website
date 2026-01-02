@@ -1,0 +1,6 @@
+/* Theme Tokens - Centralized design variables */
+/* Font can be swapped here for the entire app */
+
+:root {
+  --font-sans: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}

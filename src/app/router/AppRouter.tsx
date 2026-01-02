@@ -1,0 +1,17 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navbar } from "@/shared/layout/Navbar";
+import { HomePage } from "@/features/home";
+import NotFound from "@/pages/NotFound";
+
+export function AppRouter() {
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
