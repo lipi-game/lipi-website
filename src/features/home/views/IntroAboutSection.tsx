@@ -157,7 +157,7 @@ function DesktopAboutSection() {
 
 export function IntroAboutSection() {
   return (
-    <section className="relative z-10 -mt-8 md:-mt-12 bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+    <section className="relative z-10 -mt-8 md:-mt-12 bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)]" style={{ backgroundColor: "#ffffff" }}>
       <div className="pt-16 md:pt-24 lg:pt-32 pb-12 md:pb-16 text-center px-7">
         <WelcomeHeading />
         <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto mt-4 md:mt-6 leading-relaxed">
