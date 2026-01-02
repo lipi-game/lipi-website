@@ -4,8 +4,8 @@ import { InstallGamesManager } from "../services/InstallGamesManager";
 import type { InstallGame } from "../types/installGame";
 
 /**
- * Place banner + badges in /public/cta/:
- * - /public/cta/install-banner.png
+ * Place images in /public/cta/:
+ * - /public/cta/install-bg.png (background image)
  * - /public/cta/app-store-badge.svg
  * - /public/cta/google-play-badge.svg
  */
@@ -33,81 +33,84 @@ export function InstallCtaSection() {
         Install Lipi Games
       </h2>
 
-      <div className="mx-auto max-w-[1120px]">
-        {/* Outer premium container */}
-        <div className="rounded-[24px] border border-[#e0e7ef] bg-white shadow-[0_8px_40px_rgba(0,0,0,0.08)] p-6 md:p-10">
-          {/* Banner Image */}
-          <div className="w-full overflow-hidden rounded-[20px] bg-muted">
-            {selectedGame?.bannerImage ? (
-              <img
-                src={selectedGame.bannerImage}
-                alt={`${selectedGame.name} game preview`}
-                className="w-full h-auto object-contain rounded-[20px]"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-            ) : (
-              <div className="w-full aspect-[16/9] bg-muted rounded-[20px]" />
-            )}
-          </div>
+      <div className="mx-auto w-full max-w-[1280px]">
+        {/* Main CTA Card */}
+        <div
+          className="relative w-full h-auto md:h-[744px] rounded-[32px] md:rounded-[52px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.12)]"
+        >
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: selectedGame?.bannerImage
+                ? `url(${selectedGame.bannerImage})`
+                : undefined,
+              backgroundColor: selectedGame?.bannerImage ? undefined : "#e5e7eb",
+            }}
+          />
 
-          {/* Game Selector */}
-          {games.length > 1 && (
-            <div className="mt-6 flex justify-center">
-              <div className="flex gap-3 overflow-x-auto scrollbar-hidden px-1 py-1">
-                {games.map((game) => {
-                  const isSelected = selectedGame?.id === game.id;
-                  return (
-                    <motion.button
-                      key={game.id}
-                      onClick={() => handleSelectGame(game)}
-                      aria-pressed={isSelected}
-                      className={`
-                        relative px-5 py-2.5 rounded-full font-medium text-sm
-                        transition-all duration-200 ease-out
-                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7c2b] focus-visible:ring-offset-2
-                        ${
-                          isSelected
-                            ? "bg-[#ff7c2b] text-white shadow-[0_4px_16px_rgba(255,124,43,0.35)] border-2 border-[#ff7c2b]"
-                            : "bg-white text-gray-700 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
-                        }
-                      `}
-                      whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
-                      animate={
-                        prefersReducedMotion
-                          ? {}
-                          : {
-                              scale: isSelected ? 1.02 : 1,
+          {/* Content Overlay */}
+          <div className="relative z-10 flex flex-col justify-end h-full min-h-[480px] md:min-h-full">
+            {/* Bottom Content Area */}
+            <div className="bg-gradient-to-t from-white/95 via-white/85 to-transparent pt-20 pb-8 md:pb-12 px-6 md:px-12">
+              {/* Game Selector */}
+              {games.length > 1 && (
+                <div className="flex justify-center mb-6">
+                  <div className="flex gap-3 overflow-x-auto scrollbar-hidden px-1 py-1">
+                    {games.map((game) => {
+                      const isSelected = selectedGame?.id === game.id;
+                      return (
+                        <motion.button
+                          key={game.id}
+                          onClick={() => handleSelectGame(game)}
+                          aria-pressed={isSelected}
+                          className={`
+                            relative px-6 py-3 rounded-full font-semibold text-sm md:text-base
+                            transition-all duration-200 ease-out whitespace-nowrap
+                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7c2b] focus-visible:ring-offset-2
+                            ${
+                              isSelected
+                                ? "bg-[#ff7c2b] text-white shadow-[0_4px_20px_rgba(255,124,43,0.4)]"
+                                : "bg-white text-gray-800 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
                             }
-                      }
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                    >
-                      {game.name}
-                    </motion.button>
-                  );
-                })}
+                          `}
+                          whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
+                          animate={
+                            prefersReducedMotion
+                              ? {}
+                              : {
+                                  scale: isSelected ? 1.02 : 1,
+                                }
+                          }
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                        >
+                          {game.name}
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Caption */}
+              <p className="text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-6">
+                Pick a game. Install in seconds.
+              </p>
+
+              {/* Store Badges */}
+              <div className="flex justify-center items-center gap-4">
+                <StoreBadge
+                  href={selectedGame?.appStoreUrl}
+                  imageSrc="/cta/app-store-badge.svg"
+                  label={`Download ${selectedGame?.name || "game"} on App Store`}
+                />
+                <StoreBadge
+                  href={selectedGame?.playStoreUrl}
+                  imageSrc="/cta/google-play-badge.svg"
+                  label={`Get ${selectedGame?.name || "game"} on Google Play`}
+                />
               </div>
             </div>
-          )}
-
-          {/* Caption */}
-          <p className="mt-8 text-center text-xl md:text-2xl font-semibold text-gray-900">
-            Pick a game. Install in seconds.
-          </p>
-
-          {/* Store Badges */}
-          <div className="mt-6 flex justify-center items-center gap-4">
-            <StoreBadge
-              href={selectedGame?.appStoreUrl}
-              imageSrc="/cta/app-store-badge.svg"
-              label={`Download ${selectedGame?.name || "game"} on App Store`}
-            />
-            <StoreBadge
-              href={selectedGame?.playStoreUrl}
-              imageSrc="/cta/google-play-badge.svg"
-              label={`Get ${selectedGame?.name || "game"} on Google Play`}
-            />
           </div>
         </div>
       </div>
@@ -143,7 +146,7 @@ function StoreBadge({ href, imageSrc, label }: StoreBadgeProps) {
       <img
         src={imageSrc}
         alt=""
-        className="h-9 md:h-10 w-auto"
+        className="h-10 md:h-12 w-auto"
         onError={(e) => {
           e.currentTarget.style.display = "none";
         }}
