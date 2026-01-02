@@ -11,3 +11,4 @@ export * from "./state/atoms";
 // Hooks
 export * from "./hooks/useRecoilState";
 export * from "./hooks/useRotatingPhrases";
+export * from "./hooks/useSEO";

@@ -2,8 +2,17 @@ import { HeroSection } from "./HeroSection";
 import { IntroAboutSection } from "./IntroAboutSection";
 import { WordsFromExpertsSection } from "./WordsFromExpertsSection";
 import { OurGamesSection } from "@/features/games";
+import { LatestBlogsSection } from "@/features/blog";
+import { useSEO } from "@/shared/hooks/useSEO";
 
 export function HomePage() {
+  useSEO({
+    title: "Lipi Games | Learn Through Play",
+    description:
+      "Discover Lipi Games - bringing Mahabharata, languages, and culture to life through interactive word games and learning experiences.",
+    canonical: window.location.origin,
+  });
+
   return (
     <main>
       {/* Sticky Hero Region - hero stays pinned while this region scrolls */}
@@ -28,6 +37,11 @@ export function HomePage() {
         {/* Words from Experts Section */}
         <section id="experts">
           <WordsFromExpertsSection />
+        </section>
+
+        {/* Latest Blogs Section */}
+        <section id="blogs">
+          <LatestBlogsSection />
         </section>
       </div>
     </main>

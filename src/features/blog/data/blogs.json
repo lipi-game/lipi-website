@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "slug": "lipi-epics-word-games-bringing-mahabharata-worldwide",
+    "date": "2025-09-15",
+    "title": "Lipi Epics & Word Games: Bringing Mahabharata & Word Games to Learners Worldwide",
+    "excerpt": "Lipi Epics & Word Games, shares how the platform brings Mahabharata, languages, and culture to life through interactive learning.",
+    "content": "<div class='blog-content'><p>Full article content here...</p></div>",
+    "author": "Sagar Anisingaraju, CEO & Founder of Lipi",
+    "category": "Journey",
+    "readTime": "5 min read",
+    "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=400&fit=crop",
+    "tags": ["Mahabharata", "Word Games", "Education", "Learning"]
+  },
+  {
+    "id": "2",
+    "slug": "lipi-epics-word-games-enhance-vocabulary-mental-sharpness",
+    "date": "2025-09-10",
+    "title": "Lipi Epics Word Games: Fun Way to Enhance Vocabulary and Mental Sharpness",
+    "excerpt": "Lipi Game's Word Cruise blends fun and learning, helping players boost vocabulary, improve mental agility, and enjoy daily word games in a unique way.",
+    "content": "<div class='blog-content'><p>Full article content here...</p></div>",
+    "author": "Sagar Anisingaraju, CEO & Founder of Lipi",
+    "category": "Word Games",
+    "readTime": "7 min read",
+    "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
+    "tags": ["Vocabulary", "Mental Sharpness", "Word Games"]
+  },
+  {
+    "id": "3",
+    "slug": "sagar-anisingaraju-building-lipi-epics-qa-ceo",
+    "date": "2025-09-05",
+    "title": "Sagar Anisingaraju on Building Lipi Epics & Word Games | Q&A with the CEO",
+    "excerpt": "Discover how Sagar Anisingaraju built Lipi Epics & Word Games, an EdTech startup making Mahabharata and language learning fun through innovative gaming.",
+    "content": "<div class='blog-content'><p>Full article content here...</p></div>",
+    "author": "Sagar Anisingaraju, CEO & Founder of Lipi",
+    "category": "Interview",
+    "readTime": "7 min read",
+    "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop",
+    "tags": ["Interview", "CEO", "EdTech", "Startup"]
+  }
+]
