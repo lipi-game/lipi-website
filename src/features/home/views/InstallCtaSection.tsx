@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
+import { Apple } from "lucide-react";
 import { InstallGamesManager } from "../services/InstallGamesManager";
 import type { InstallGame } from "../types/installGame";
 
@@ -98,17 +99,17 @@ export function InstallCtaSection() {
                 Pick a game. Install in seconds.
               </p>
 
-              {/* Store Badges */}
+              {/* Store Buttons */}
               <div className="flex justify-center items-center gap-4">
-                <StoreBadge
+                <StoreButton
                   href={selectedGame?.appStoreUrl}
-                  imageSrc="/cta/app-store-badge.svg"
                   label={`Download ${selectedGame?.name || "game"} on App Store`}
+                  icon="apple"
                 />
-                <StoreBadge
+                <StoreButton
                   href={selectedGame?.playStoreUrl}
-                  imageSrc="/cta/google-play-badge.svg"
                   label={`Get ${selectedGame?.name || "game"} on Google Play`}
+                  icon="playstore"
                 />
               </div>
             </div>
@@ -119,13 +120,13 @@ export function InstallCtaSection() {
   );
 }
 
-interface StoreBadgeProps {
+interface StoreButtonProps {
   href?: string;
-  imageSrc: string;
   label: string;
+  icon: "apple" | "playstore";
 }
 
-function StoreBadge({ href, imageSrc, label }: StoreBadgeProps) {
+function StoreButton({ href, label, icon }: StoreButtonProps) {
   const isDisabled = !href;
 
   return (
@@ -136,22 +137,37 @@ function StoreBadge({ href, imageSrc, label }: StoreBadgeProps) {
       aria-label={label}
       aria-disabled={isDisabled}
       className={`
-        inline-block transition-transform duration-200
+        inline-flex items-center justify-center gap-1.5
+        px-4 py-1.5 min-w-[95px] h-[26px]
+        rounded-full
+        bg-black text-white
+        text-xs font-medium
+        transition-all duration-200
         ${
           isDisabled
-            ? "pointer-events-none opacity-50 grayscale"
-            : "hover:scale-105"
+            ? "pointer-events-none opacity-50"
+            : "hover:bg-gray-800 hover:scale-105"
         }
       `}
     >
-      <img
-        src={imageSrc}
-        alt=""
-        className="h-10 md:h-12 w-auto"
-        onError={(e) => {
-          e.currentTarget.style.display = "none";
-        }}
-      />
+      {icon === "apple" ? (
+        <Apple className="w-3.5 h-3.5" />
+      ) : (
+        <PlayStoreIcon className="w-3.5 h-3.5" />
+      )}
     </a>
+  );
+}
+
+function PlayStoreIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+    </svg>
   );
 }
