@@ -5,20 +5,25 @@ import { OurGamesSection } from "@/features/games";
 export function HomePage() {
   return (
     <main>
-      {/* Hero Section - Home */}
-      <section id="home">
-        <HeroSection />
+      {/* Sticky Hero Region - hero stays pinned while this region scrolls */}
+      <section id="home" className="relative h-[200vh]">
+        <div className="sticky top-0 h-screen z-0">
+          <HeroSection />
+        </div>
       </section>
       
-      {/* About Section */}
-      <section id="about">
-        <IntroAboutSection />
-      </section>
-      
-      {/* Games Section */}
-      <section id="games">
-        <OurGamesSection />
-      </section>
+      {/* Content sections - overlap hero then scroll normally */}
+      <div className="relative z-10 -mt-[100vh]">
+        {/* About Section */}
+        <section id="about">
+          <IntroAboutSection />
+        </section>
+        
+        {/* Games Section */}
+        <section id="games">
+          <OurGamesSection />
+        </section>
+      </div>
     </main>
   );
 }

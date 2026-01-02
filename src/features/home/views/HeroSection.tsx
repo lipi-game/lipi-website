@@ -18,7 +18,7 @@ export function HeroSection() {
     });
 
   return (
-    <section className="sticky top-0 z-0 h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
       <video
         autoPlay
