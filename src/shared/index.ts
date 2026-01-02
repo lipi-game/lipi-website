@@ -5,7 +5,6 @@ export { PageHeader } from "./components/PageHeader";
 // Layout
 export { Navbar } from "./layout/Navbar";
 export { Footer } from "./layout/Footer";
-export { SectionWrapper } from "./components/SectionWrapper";
 
 // State
 export * from "./state/atoms";
