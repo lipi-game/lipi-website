@@ -26,3 +26,29 @@ export const founderBio = [
 export const founderName = "Sagar Anisingaraju";
 export const founderRole = "Founder & CEO";
 export const founderImageUrl = "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=face";
+
+export const meetTeamIntro = "Meet the people behind Lipi.Game. Led by founder Sagar Anisingaraju, our team blends marketing, engineering, and content expertise with a passionate Lipi Army community. Together we craft epic-inspired learning and word games, build reliable technology, and create high-quality stories, visuals, and experiences for players worldwide who love language and play.";
+
+export const meetTeamMembers = [
+  { id: 1, name: "Prasad Chaganti", role: "Director", imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=400&fit=crop&crop=face", bgColor: "#4ECDC4" },
+  { id: 2, name: "Aparna Nalluri", role: "VP & Marketing", imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=400&fit=crop&crop=face", bgColor: "#7C83FD" },
+  { id: 3, name: "Narendra", role: "Manager", imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=face", bgColor: "#F06292" },
+  { id: 4, name: "Bhavani", role: "Content & Testing Lead", imageUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=400&fit=crop&crop=face", bgColor: "#FFAB91" },
+  { id: 5, name: "Shiva Chittimalla", role: "Social media Lead", imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=400&fit=crop&crop=face", bgColor: "#81C784" },
+  { id: 6, name: "Prashant Alakuntla", role: "AI Video Lead", imageUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=400&fit=crop&crop=face", bgColor: "#FFF176" },
+  { id: 7, name: "Kalyani", role: "Community Ambassador", imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=400&fit=crop&crop=face", bgColor: "#64B5F6" },
+];
+
+export const disciplinePortraits = [
+  { id: 1, imageUrl: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=200&h=200&fit=crop&crop=face" },
+  { id: 2, imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" },
+  { id: 3, imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face" },
+  { id: 4, imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" },
+  { id: 5, imageUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face" },
+  { id: 6, imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face" },
+  { id: 7, imageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=face" },
+  { id: 8, imageUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop&crop=face" },
+  { id: 9, imageUrl: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop&crop=face" },
+  { id: 10, imageUrl: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&h=200&fit=crop&crop=face" },
+  { id: 11, imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face" },
+];
