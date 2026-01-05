@@ -57,3 +57,117 @@ export const disciplinePortraits = [
   { id: 10, name: "Sunita B.", role: "Support", imageUrl: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&h=200&fit=crop&crop=face", bgColor: "#FFFDE7" },
   { id: 11, name: "Deepa N.", role: "Research", imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face", bgColor: "#E8F5E9" },
 ];
+
+export const advisors = [
+  {
+    id: "1",
+    name: "Prof K V Subramanian",
+    role: "Exec Director World Bank",
+    imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face",
+    avatarBg: "#E8D5E7",
+    linkedinUrl: "https://linkedin.com",
+    bio: [
+      "Prof K V Subramanian serves as Executive Director at the World Bank, bringing decades of experience in global economic policy and development.",
+      "His expertise spans macroeconomic policy, financial sector development, and international economics. He has been instrumental in shaping economic reforms across emerging markets."
+    ]
+  },
+  {
+    id: "2",
+    name: "Venkat Mattela",
+    role: "Founder and Chief Executive Officer",
+    imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+    avatarBg: "#C5E1A5",
+    linkedinUrl: "https://linkedin.com",
+    bio: [
+      "Venkat Mattela is a visionary entrepreneur and technologist with a track record of building successful technology companies.",
+      "His leadership philosophy combines innovation with sustainable business practices, creating value for stakeholders while driving technological advancement."
+    ]
+  },
+  {
+    id: "3",
+    name: "Suresh Katta",
+    role: "Chairman Emeritus",
+    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+    avatarBg: "#F8BBD9",
+    linkedinUrl: "https://linkedin.com",
+    bio: [
+      "Suresh Katta brings extensive experience in corporate governance and strategic leadership as Chairman Emeritus.",
+      "His decades of experience in building and scaling organizations provides invaluable guidance to the Lipi Games team."
+    ]
+  },
+  {
+    id: "4",
+    name: "Maa Sharma",
+    role: "Sr. Journalist Media",
+    imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
+    avatarBg: "#B3E5FC",
+    linkedinUrl: "https://linkedin.com",
+    bio: [
+      "Maa Sharma is a senior journalist with extensive experience in media and communications.",
+      "Her expertise in storytelling and media strategy helps Lipi Games connect with audiences through compelling narratives."
+    ]
+  },
+  {
+    id: "5",
+    name: "Tarakam Peddada",
+    role: "Entrepreneur",
+    imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+    avatarBg: "#DCEDC8",
+    linkedinUrl: "https://linkedin.com",
+    bio: [
+      "Tarakam Peddada is a seasoned entrepreneur with multiple successful ventures across technology and education sectors.",
+      "His entrepreneurial insights and business acumen provide strategic direction for Lipi Games' growth initiatives."
+    ]
+  },
+  {
+    id: "6",
+    name: "Prakash Dubey",
+    role: "Transformation Leader Technology",
+    imageUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=face",
+    avatarBg: "#E1BEE7",
+    linkedinUrl: "https://linkedin.com",
+    bio: [
+      "Prakash Dubey is a technology transformation leader with deep expertise in digital innovation.",
+      "He guides organizations through complex technology transitions, ensuring sustainable and impactful digital transformation."
+    ]
+  },
+  {
+    id: "7",
+    name: "Dr. Venu Kondle",
+    role: "Entrepreneur",
+    imageUrl: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=300&h=300&fit=crop&crop=face",
+    avatarBg: "#C8E6C9",
+    linkedinUrl: "https://linkedin.com",
+    bio: [
+      "Dr. Venu Kondle combines academic rigor with entrepreneurial spirit, having founded multiple successful ventures.",
+      "His research background and practical business experience offer unique perspectives on innovation and growth."
+    ]
+  },
+  {
+    id: "8",
+    name: "Prakash Aditham",
+    role: "Product Management",
+    imageUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&h=300&fit=crop&crop=face",
+    avatarBg: "#FFE0B2",
+    linkedinUrl: "https://linkedin.com",
+    bio: [
+      "Prakash Aditham is a product management expert with extensive experience in building user-centric digital products.",
+      "His product strategy expertise helps shape Lipi Games' roadmap and user experience initiatives."
+    ]
+  }
+];
+
+export const references = {
+  advisoryTitle: "Mahabharat Content Advisory",
+  advisoryLines: [
+    "Overall In-Charge: Mr. Chaganti Prasad",
+    "Special Advisors: St. Mallapragada Simmannarayana"
+  ],
+  referencesTitle: "Content References for Mahabharat",
+  referenceItems: [
+    "Kavitraya Virachita Simandhra Mahabharatam, TTD Publications.",
+    "Sri Mahabharatam, Gorakhpur Press",
+    "Mahabharata, Vyasa Sarvaswam, Dr. Guni Venkatratnam"
+  ],
+  noteText: "We strive to include the most authentic Mahabharat content. However, occasional errors may occur. If you notice any discrepancies, please report them so we can verify and correct them."
+};
