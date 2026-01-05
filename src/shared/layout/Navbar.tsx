@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import lipiLogo from "/Assets/lipi-logo.png";
 
 const navLinks = [
-  { to: "/#about", label: "About Us" },
+  { to: "/about", label: "About Us" },
   { to: "/#games", label: "Games" },
   { to: "/contact", label: "Contact Us" },
 ];
