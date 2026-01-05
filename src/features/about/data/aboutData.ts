@@ -67,8 +67,10 @@ export const advisors = [
     avatarBg: "#E8D5E7",
     linkedinUrl: "https://linkedin.com",
     bio: [
-      "Prof K V Subramanian serves as Executive Director at the World Bank, bringing decades of experience in global economic policy and development.",
-      "His expertise spans macroeconomic policy, financial sector development, and international economics. He has been instrumental in shaping economic reforms across emerging markets."
+      "Dr. K V Subramanian is a Professor at the Indian School of Business. As the youngest Chief Economic Advisor to the Government of India from 2018 to 2021, Dr. Subramanian instituted policy that led to India emerging from the once-in-a-century Covid crisis with strong macroeconomic fundamentals, unlike the previous crisis when India joined the \"Fragile Five\" economies.",
+      "Acknowledging Dr. Subramanian's contributions, the Hon'ble Prime Minister Shri. Narendra Modi noted his \"academic brilliance, unique perspectives on economic and policy matters, and reformatory zeal.\"",
+      "Dr. Subramanian authored path-breaking Economic Surveys on Ethical Wealth Creation for a prosperous India (2019-20), the Strategic Blueprint for India to become a $5 trillion economy (2018-19), and the post-Covid economy using public capital expenditures in infrastructure and healthcare to further counter-cyclical fiscal policy (2020-21). India's economic policy toward a self-reliant India and the concomitant reforms draw on the ideas he advocated in these Surveys.",
+      "Dr Subramanian has been conferred the Distinguished Alumnus award by his alma maters IIT-Kanpur and IIM-Calcutta. A Ph.D. from the University of Chicago, Prof. Subramanian's research in banking, law and finance, innovation and economic growth, and corporate governance has been published in the world's leading journals."
     ]
   },
   {

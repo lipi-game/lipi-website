@@ -312,36 +312,38 @@ function AdvisorsSection() {
       </Container>
 
       <Dialog open={!!selectedAdvisor} onOpenChange={() => setSelectedAdvisor(null)}>
-        <DialogContent className="max-w-3xl rounded-[28px] p-0 overflow-hidden">
+        <DialogContent className="max-w-4xl rounded-[20px] p-0 overflow-hidden border-0">
           <DialogTitle className="sr-only">
             {selectedAdvisor?.name} - {selectedAdvisor?.role}
           </DialogTitle>
           
           {selectedAdvisor && (
-            <div className="relative p-6 md:p-8">
-              <div className="absolute top-4 right-4 flex items-center gap-2">
+            <div className="relative p-8 md:p-10">
+              {/* Top right controls */}
+              <div className="absolute top-6 right-6 flex items-center gap-3">
                 {selectedAdvisor.linkedinUrl && (
                   <a
                     href={selectedAdvisor.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-lg bg-[#0077B5] flex items-center justify-center text-white hover:bg-[#005885] transition-colors"
+                    className="w-10 h-10 rounded-lg bg-[#0077B5] flex items-center justify-center text-white hover:bg-[#005885] transition-colors"
                   >
                     <Linkedin className="w-5 h-5" />
                   </a>
                 )}
                 <button
                   onClick={() => setSelectedAdvisor(null)}
-                  className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center text-foreground hover:bg-muted/80 transition-colors"
+                  className="w-10 h-10 rounded-lg bg-transparent flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6" />
                 </button>
               </div>
               
-              <div className="flex flex-col md:flex-row gap-6 md:gap-8 mt-8 md:mt-4">
-                <div className="flex flex-col items-center shrink-0">
+              <div className="flex flex-col md:flex-row gap-8 mt-6 md:mt-0">
+                {/* Left column - Avatar and info */}
+                <div className="shrink-0 md:w-52">
                   <div
-                    className="w-32 h-32 md:w-40 md:h-40 rounded-full p-2 mb-4"
+                    className="w-36 h-36 md:w-44 md:h-44 rounded-full p-1.5 mx-auto md:mx-0"
                     style={{ backgroundColor: selectedAdvisor.avatarBg }}
                   >
                     <img
@@ -350,17 +352,18 @@ function AdvisorsSection() {
                       className="w-full h-full rounded-full object-cover"
                     />
                   </div>
-                  <h3 className="font-bold text-lg text-foreground text-center">
+                  <h3 className="font-bold text-lg md:text-xl text-foreground mt-4 text-center md:text-left">
                     {selectedAdvisor.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground text-center">
+                  <p className="text-sm text-muted-foreground text-center md:text-left">
                     {selectedAdvisor.role}
                   </p>
                 </div>
                 
-                <div className="flex-1 max-h-[300px] overflow-y-auto pr-2">
+                {/* Right column - Bio */}
+                <div className="flex-1 max-h-[400px] overflow-y-auto pr-2">
                   {selectedAdvisor.bio.map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground leading-relaxed mb-4 last:mb-0">
+                    <p key={index} className="text-muted-foreground leading-relaxed text-[15px] mb-4 last:mb-0">
                       {paragraph}
                     </p>
                   ))}
@@ -376,75 +379,71 @@ function AdvisorsSection() {
 
 function ReferencesSection() {
   return (
-    <section className="py-8 md:py-12 bg-white">
+    <section className="py-8 md:py-12 bg-[#f5f0e8]">
       <Container size="lg">
-        <div className="max-w-[1280px] mx-auto">
-          <div
-            className="rounded-[28px] p-8 md:p-10 lg:p-12"
-            style={{ backgroundColor: "#f5f0e8" }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-3">
-              References
-            </h2>
-            <p className="text-muted-foreground text-center text-sm md:text-base max-w-3xl mx-auto mb-10">
-              Lipi Games content is curated from authentic publications and reviewed by an expert panel to ensure accuracy and credibility.
+        <div className="max-w-[1280px] mx-auto py-8 md:py-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-3">
+            References
+          </h2>
+          <p className="text-muted-foreground text-center text-sm md:text-base max-w-3xl mx-auto mb-10">
+            Lipi Games content is curated from authentic publications and reviewed by an expert panel to ensure accuracy and credibility.
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* Left Card - Advisory */}
+            <div className="relative">
+              <div 
+                className="absolute inset-0 translate-x-3 translate-y-3 rounded-[16px]"
+                style={{ backgroundColor: "#8B6914" }}
+              />
+              <div 
+                className="relative rounded-[16px] p-6 md:p-8 h-full"
+                style={{ backgroundColor: "#A67C00" }}
+              >
+                <h3 className="text-base md:text-lg font-bold text-white mb-4">
+                  {references.advisoryTitle}
+                </h3>
+                <div className="space-y-2">
+                  {references.advisoryLines.map((line, index) => (
+                    <p key={index} className="text-white/90 text-sm">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Card - References */}
+            <div className="relative">
+              <div 
+                className="absolute inset-0 translate-x-3 translate-y-3 rounded-[16px]"
+                style={{ backgroundColor: "#1A3A5C" }}
+              />
+              <div 
+                className="relative rounded-[16px] p-6 md:p-8 h-full"
+                style={{ backgroundColor: "#2D5A87" }}
+              >
+                <h3 className="text-base md:text-lg font-bold text-white mb-4">
+                  {references.referencesTitle}
+                </h3>
+                <ul className="space-y-2">
+                  {references.referenceItems.map((item, index) => (
+                    <li key={index} className="text-white/90 text-sm flex items-start gap-2">
+                      <span className="text-white mt-1">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          {/* Note */}
+          <div className="bg-white rounded-lg px-4 py-3 md:px-5 md:py-4">
+            <p className="text-sm">
+              <span className="font-medium underline" style={{ color: "#ff7c2b" }}>Note :</span>
+              <span className="text-muted-foreground ml-1">{references.noteText}</span>
             </p>
-            
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              {/* Left Card - Advisory */}
-              <div className="relative">
-                <div 
-                  className="absolute inset-0 translate-x-2 translate-y-2 rounded-[20px]"
-                  style={{ backgroundColor: "#8B6914" }}
-                />
-                <div 
-                  className="relative rounded-[20px] p-6 md:p-8"
-                  style={{ backgroundColor: "#C49A1A" }}
-                >
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-4">
-                    {references.advisoryTitle}
-                  </h3>
-                  <ul className="space-y-2">
-                    {references.advisoryLines.map((line, index) => (
-                      <li key={index} className="text-white/90 text-sm md:text-base">
-                        {line}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              
-              {/* Right Card - References */}
-              <div className="relative">
-                <div 
-                  className="absolute inset-0 translate-x-2 translate-y-2 rounded-[20px]"
-                  style={{ backgroundColor: "#1A3A5C" }}
-                />
-                <div 
-                  className="relative rounded-[20px] p-6 md:p-8"
-                  style={{ backgroundColor: "#2D5A87" }}
-                >
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-4">
-                    {references.referencesTitle}
-                  </h3>
-                  <ul className="space-y-2 list-disc list-inside">
-                    {references.referenceItems.map((item, index) => (
-                      <li key={index} className="text-white/90 text-sm md:text-base">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-            
-            {/* Note */}
-            <div className="bg-white/80 rounded-xl p-4 md:p-5">
-              <p className="text-sm md:text-base">
-                <span className="font-semibold italic" style={{ color: "#ff7c2b" }}>Note : </span>
-                <span className="text-muted-foreground">{references.noteText}</span>
-              </p>
-            </div>
           </div>
         </div>
       </Container>
