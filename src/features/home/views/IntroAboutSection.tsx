@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import welcomeBrush from "/Assets/welcome-brush.png";
 import team1 from "/Assets/team-1.jpeg";
 
@@ -89,9 +90,10 @@ function MobileAboutSection() {
         <span>word games</span> in Indian languages and English.
       </p>
       <Button
+        asChild
         className="bg-[#118fdd] hover:bg-[#118fdd]/90 text-white font-semibold px-8 py-3 rounded-full text-base"
       >
-        Read more
+        <Link to="/about">Read more</Link>
       </Button>
     </div>
   );
@@ -123,9 +125,10 @@ function DesktopAboutSection() {
             <span className="">thinking skills</span> through play.
           </p>
           <Button
+            asChild
             className="bg-[#118fdd] hover:bg-[#118fdd]/90 text-white font-semibold px-6 py-2.5 rounded-full text-sm"
           >
-            Read more
+            <Link to="/about">Read more</Link>
           </Button>
         </div>
 
