@@ -1,5 +1,5 @@
 import type { Blog } from "../types/blog";
-import { getAllBlogs } from "./BlogRepository";
+import { getAllBlogs, getBlogBySlug } from "./BlogRepository";
 
 function sortByDateDescending(blogs: Blog[]): Blog[] {
   return [...blogs].sort(
@@ -25,3 +25,10 @@ export function getSecondaryBlogs(): Blog[] {
 export function getAllBlogsSorted(): Blog[] {
   return sortByDateDescending(getAllBlogs());
 }
+
+export function getMoreBlogs(currentSlug: string, limit: number = 4): Blog[] {
+  const sorted = sortByDateDescending(getAllBlogs());
+  return sorted.filter((blog) => blog.slug !== currentSlug).slice(0, limit);
+}
+
+export { getBlogBySlug };
