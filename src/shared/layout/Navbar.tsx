@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import lipiLogo from "/Assets/lipi-logo.png";
 
 const navLinks = [
@@ -8,10 +8,20 @@ const navLinks = [
 ];
 
 export function Navbar() {
+  const location = useLocation();
+  const isAboutPage = location.pathname === "/about";
+  
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
     if (to.startsWith("/#")) {
       e.preventDefault();
       const targetId = to.replace("/#", "");
+      
+      // If not on home page, navigate to home first
+      if (location.pathname !== "/") {
+        window.location.href = to;
+        return;
+      }
+      
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
@@ -19,22 +29,31 @@ export function Navbar() {
     }
   };
 
+  // Use light navbar style on about page (grey bg with dark text like screenshot)
+  const navBgClass = isAboutPage 
+    ? "bg-[#f5f5f5] border-b border-gray-200" 
+    : "bg-black/20 backdrop-blur-sm";
+  
+  const textClass = isAboutPage 
+    ? "text-gray-700 hover:text-gray-900" 
+    : "text-white/80 hover:text-white";
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-sm">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${navBgClass}`}>
+      <div className="max-w-[1180px] mx-auto px-5 md:px-8 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 text-white">
-          <img src={lipiLogo} alt="Lipi Logo" className="h-8 w-8" />
+        <Link to="/" className="flex items-center gap-2">
+          <img src={lipiLogo} alt="Lipi Logo" className="h-7 md:h-8 w-7 md:w-8" />
         </Link>
 
         {/* Navigation Links */}
-        <ul className="flex items-center gap-8">
+        <ul className="flex items-center gap-4 md:gap-8">
           {navLinks.map((link) => (
             <li key={link.to}>
               <Link
                 to={link.to}
                 onClick={(e) => handleNavClick(e, link.to)}
-                className="text-white/80 text-sm font-medium transition-all duration-200 hover:text-white"
+                className={`text-xs md:text-sm font-medium transition-all duration-200 ${textClass}`}
               >
                 {link.label}
               </Link>
