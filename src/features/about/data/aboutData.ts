@@ -1,8 +1,8 @@
 export const aboutIntroText = [
-  "Lipi Epics and Word Games is a learning and gamification platform that brings Indian epics, languages, and cultural values to life through interactive play. Our mission is to bridge the gap where ancient wisdom is often missing from modern education.",
-  "We help today's learners explore culture, values, and thinking skills through engaging gameplay that celebrates traditions while building modern cognitive abilities.",
-  "Modern education rarely covers ancient epics and knowledge systems like the Ramayana, Gita, Vedas, Ayurveda, and Chanakya Neeti. At the same time, most language word games available teach only English, missing Indian languages.",
-  "We aim to provide digital experiences through apps, games, and interactive content to awaken minds for families and communities across generations."
+  "Lipi Epics and Word Games is a learning and gamification platform that brings Indian epics, languages, and cultural values to life through interactive play. Our current focus is the Mahabharat, along with engaging word games in Indian languages and English.",
+  "Modern education rarely covers ancient epics and knowledge systems like the Ramayana, Gita, Vedas, Ayurveda, and Chanakya Neeti. At the same time, native-language word games are still far fewer than English ones.",
+  "We bridge this gap with AI-powered, high-quality visual and gamified content that makes learning fun, structured, and mobile-first. We also connect digital and physical experiences through apps, games, and a deeper knowledge network for families and communities.",
+  "Founded by Sagar Anisingaraju, Lipi is built with a passionate team and supported by seed investors, and we collaborate with partners worldwide to create lasting social impact."
 ];
 
 export const avatarCollageImages = [
@@ -31,31 +31,31 @@ export const founderBio = [
 
 export const founderName = "Sagar Anisingaraju";
 export const founderRole = "Founder & CEO";
-export const founderImageUrl = "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop&crop=face";
+export const founderImageUrl = "/Assets/Images/team/founder.png";
 
 export const meetTeamIntro = "Meet the people behind Lipi.Game. Led by founder Sagar Anisingaraju, our team blends marketing, engineering, and content expertise with a passionate Lipi Army community. Together we craft epic-inspired learning and word games, build reliable technology, and create high-quality stories, visuals, and experiences for players worldwide.";
 
 export const meetTeamMembers = [
-  { id: 1, name: "Prasad Chaganti", role: "Director", imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=400&fit=crop&crop=face", bgColor: "#4ECDC4" },
-  { id: 2, name: "Aparna Nalluri", role: "VP & Marketing", imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=400&fit=crop&crop=face", bgColor: "#7C83FD" },
-  { id: 3, name: "Narendra", role: "Manager", imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=face", bgColor: "#F06292" },
-  { id: 4, name: "Bhavani", role: "Content & Testing Lead", imageUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=400&fit=crop&crop=face", bgColor: "#FFAB91" },
-  { id: 5, name: "Shiva Chittimalla", role: "Social media Lead", imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=400&fit=crop&crop=face", bgColor: "#81C784" },
-  { id: 6, name: "Prashant Alakuntla", role: "AI Video Lead", imageUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=400&fit=crop&crop=face", bgColor: "#FFF176" },
+  { id: 1, name: "Prasad Chaganti", role: "Director", imageUrl: "/Assets/Images/team/Prasad.png", bgColor: "#4ECDC4" },
+  { id: 2, name: "Aparna Nalluri", role: "VP & Marketing", imageUrl: "/Assets/Images/team/Aparna.png", bgColor: "#7C83FD" },
+  { id: 3, name: "Narendra", role: "Manager", imageUrl: "/Assets/Images/team/Narendra.png", bgColor: "#F06292" },
+  { id: 4, name: "Bhavani", role: "Content & Testing Lead", imageUrl: "/Assets/Images/team/Bhavani.png", bgColor: "#FFAB91" },
+  { id: 5, name: "Shiva Chittimalla", role: "Social media Lead", imageUrl: "/Assets/Images/team/Shiva.png", bgColor: "#81C784" },
+  { id: 6, name: "Prashant Alakuntla", role: "AI Video Lead", imageUrl: "/Assets/Images/team/Prashant.png", bgColor: "#FFF176" },
+  { id: 7, name: "Kalyani Nalluri", role: "Content Lead", imageUrl: "/Assets/Images/team/Kalyani.png", bgColor: "#4ECDC4" },
 ];
 
 export const disciplinePortraits = [
-  { id: 1, name: "Rahul K.", role: "Designer", imageUrl: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=200&h=200&fit=crop&crop=face", bgColor: "#E8F5E9" },
-  { id: 2, name: "Vikram S.", role: "Developer", imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face", bgColor: "#E3F2FD" },
-  { id: 3, name: "Arjun M.", role: "Content", imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face", bgColor: "#FFF3E0" },
-  { id: 4, name: "Kiran P.", role: "Engineer", imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face", bgColor: "#FCE4EC" },
-  { id: 5, name: "Arun R.", role: "Product", imageUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face", bgColor: "#E8EAF6" },
-  { id: 6, name: "Priya D.", role: "UX", imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face", bgColor: "#ECEFF1" },
-  { id: 7, name: "Meera L.", role: "Artist", imageUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=face", bgColor: "#FBE9E7" },
-  { id: 8, name: "Raj T.", role: "QA", imageUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop&crop=face", bgColor: "#E0F7FA" },
-  { id: 9, name: "Anita K.", role: "Marketing", imageUrl: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop&crop=face", bgColor: "#F3E5F5" },
-  { id: 10, name: "Sunita B.", role: "Support", imageUrl: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&h=200&fit=crop&crop=face", bgColor: "#FFFDE7" },
-  { id: 11, name: "Deepa N.", role: "Research", imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face", bgColor: "#E8F5E9" },
+  { id: 1, name: "Jaideep", role: "Video Editor", imageUrl: "/Assets/Images/team/Jaideep.png", bgColor: "#E8F5E9" },
+  { id: 2, name: "Mahesh", role: "Video Editor", imageUrl: "/Assets/Images/team/Mahesh.png", bgColor: "#E3F2FD" },
+  { id: 3, name: "Teja", role: "Video Editor", imageUrl: "/Assets/Images/team/Teja.png", bgColor: "#FFF3E0" },
+  { id: 4, name: "Rithwik", role: "UX Designer", imageUrl: "/Assets/Images/team/Rithwik.png", bgColor: "#FCE4EC" },
+  { id: 5, name: "Akanksha", role: "Product", imageUrl: "/Assets/Images/team/Akanksha.png", bgColor: "#E8EAF6" },
+  { id: 6, name: "Kaustabh", role: "UX", imageUrl: "/Assets/Images/team/Kaustabh.png", bgColor: "#ECEFF1" },
+  { id: 7, name: "Sharath", role: "Artist", imageUrl: "/Assets/Images/team/Sharath.png", bgColor: "#FBE9E7" },
+  { id: 8, name: "Rajender", role: "QA", imageUrl: "/Assets/Images/team/Rajender.png", bgColor: "#E0F7FA" },
+  { id: 9, name: "Amul", role: "Marketing", imageUrl: "/Assets/Images/team/Jaideep.png", bgColor: "#F3E5F5" },
+  { id: 10, name: "Sriram", role: "Support", imageUrl: "/Assets/Images/team/Jaideep.png", bgColor: "#FFFDE7" },
 ];
 
 export const advisors = [
