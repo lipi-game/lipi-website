@@ -23,19 +23,64 @@ function ReadTimeChip({ readTime }: { readTime: string }) {
 
 function FeaturedCard({ blog }: { blog: Blog }) {
   return (
-    <article className="bg-[#f0e6fa] rounded-[24px] overflow-hidden">
-      <div className="flex flex-col md:flex-row">
+    <Link to={`/blogs/${blog.slug}`} className="block group">
+      <article className="bg-[#f0e6fa] rounded-[24px] overflow-hidden">
+        <div className="flex flex-col md:flex-row">
+          {/* Image */}
+          <div className="md:w-[320px] lg:w-[360px] flex-shrink-0 p-4 md:p-5">
+            <div className="aspect-square md:aspect-[4/5] rounded-[20px] overflow-hidden">
+              {blog.imageUrl ? (
+                <img
+                  src={blog.imageUrl}
+                  alt={blog.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              ) : (
+                <div className="w-full h-full bg-muted flex items-center justify-center rounded-[20px]">
+                  <span className="text-muted-foreground">No image</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 p-5 md:p-6 md:pl-2 flex flex-col justify-center">
+            <div className="flex flex-wrap gap-2 mb-4">
+              <CategoryChip category={blog.category} />
+              <ReadTimeChip readTime={blog.readTime} />
+            </div>
+
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-[#ff7c2b] transition-colors">
+              {blog.title}
+            </h3>
+
+            <p className="text-sm text-gray-600 mb-3">{blog.author}</p>
+
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-3">
+              {blog.excerpt}
+            </p>
+          </div>
+        </div>
+      </article>
+    </Link>
+  );
+}
+
+function SecondaryCard({ blog }: { blog: Blog }) {
+  return (
+    <Link to={`/blogs/${blog.slug}`} className="block group h-full">
+      <article className="bg-white rounded-[24px] shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full">
         {/* Image */}
-        <div className="md:w-[320px] lg:w-[360px] flex-shrink-0 p-4 md:p-5">
-          <div className="aspect-square md:aspect-[4/5] rounded-[20px] overflow-hidden">
+        <div className="p-4 pb-0">
+          <div className="aspect-[4/3] rounded-[16px] overflow-hidden">
             {blog.imageUrl ? (
               <img
                 src={blog.imageUrl}
                 alt={blog.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             ) : (
-              <div className="w-full h-full bg-muted flex items-center justify-center rounded-[20px]">
+              <div className="w-full h-full bg-muted flex items-center justify-center rounded-[16px]">
                 <span className="text-muted-foreground">No image</span>
               </div>
             )}
@@ -43,65 +88,24 @@ function FeaturedCard({ blog }: { blog: Blog }) {
         </div>
 
         {/* Content */}
-        <div className="flex-1 p-5 md:p-6 md:pl-2 flex flex-col justify-center">
-          <div className="flex flex-wrap gap-2 mb-4">
+        <div className="p-4 pt-4 flex-1 flex flex-col">
+          <div className="flex flex-wrap gap-2 mb-3">
             <CategoryChip category={blog.category} />
             <ReadTimeChip readTime={blog.readTime} />
           </div>
 
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 leading-tight">
+          <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight line-clamp-2 group-hover:text-[#ff7c2b] transition-colors">
             {blog.title}
           </h3>
 
-          <p className="text-sm text-gray-600 mb-3">{blog.author}</p>
+          <p className="text-sm text-gray-600 mb-2">{blog.author}</p>
 
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-3">
+          <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
             {blog.excerpt}
           </p>
         </div>
-      </div>
-    </article>
-  );
-}
-
-function SecondaryCard({ blog }: { blog: Blog }) {
-  return (
-    <article className="bg-white rounded-[24px] shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full">
-      {/* Image */}
-      <div className="p-4 pb-0">
-        <div className="aspect-[4/3] rounded-[16px] overflow-hidden">
-          {blog.imageUrl ? (
-            <img
-              src={blog.imageUrl}
-              alt={blog.title}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className="w-full h-full bg-muted flex items-center justify-center rounded-[16px]">
-              <span className="text-muted-foreground">No image</span>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="p-4 pt-4 flex-1 flex flex-col">
-        <div className="flex flex-wrap gap-2 mb-3">
-          <CategoryChip category={blog.category} />
-          <ReadTimeChip readTime={blog.readTime} />
-        </div>
-
-        <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight line-clamp-2">
-          {blog.title}
-        </h3>
-
-        <p className="text-sm text-gray-600 mb-2">{blog.author}</p>
-
-        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-          {blog.excerpt}
-        </p>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 }
 
