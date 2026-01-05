@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Container } from "@/shared/components/Container";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { X, Linkedin } from "lucide-react";
 import {
@@ -16,56 +15,139 @@ import {
   references,
 } from "../data/aboutData";
 
+// Avatar Collage for Desktop - matches screenshot bubble layout
 function AvatarCollage() {
   const positions = [
-    { top: 0, left: 160, size: 56 },
-    { top: 10, left: 240, size: 72 },
-    { top: 5, left: 340, size: 64 },
-    { top: 20, left: 420, size: 52 },
-    { top: 65, left: 120, size: 48 },
-    { top: 75, left: 185, size: 60 },
-    { top: 85, left: 270, size: 52 },
-    { top: 70, left: 340, size: 56 },
-    { top: 80, left: 415, size: 48 },
-    { top: 130, left: 150, size: 64 },
-    { top: 140, left: 240, size: 56 },
-    { top: 145, left: 320, size: 60 },
-    { top: 135, left: 400, size: 52 },
-    { top: 200, left: 180, size: 56 },
-    { top: 210, left: 260, size: 64 },
-    { top: 205, left: 355, size: 52 },
+    { top: 0, left: 100, size: 48 },
+    { top: 15, left: 165, size: 64 },
+    { top: 0, left: 250, size: 56 },
+    { top: 25, left: 320, size: 48 },
+    { top: 60, left: 80, size: 44 },
+    { top: 70, left: 140, size: 56 },
+    { top: 80, left: 210, size: 48 },
+    { top: 65, left: 275, size: 52 },
+    { top: 75, left: 340, size: 44 },
+    { top: 115, left: 110, size: 52 },
+    { top: 130, left: 180, size: 48 },
+    { top: 125, left: 250, size: 56 },
+    { top: 120, left: 320, size: 48 },
+    { top: 175, left: 140, size: 48 },
+    { top: 180, left: 210, size: 52 },
+    { top: 175, left: 285, size: 48 },
   ];
 
   return (
-    <div className="relative w-[520px] h-[320px] hidden lg:block">
+    <div className="relative w-[400px] h-[260px] hidden lg:block">
       {avatarCollageImages.slice(0, positions.length).map((src, index) => (
-        <img
+        <div
           key={index}
-          src={src}
-          alt=""
-          className="absolute rounded-full object-cover border-2 border-white shadow-md"
+          className="absolute rounded-full border-2 border-white shadow-md overflow-hidden bg-muted"
           style={{
             top: `${positions[index].top}px`,
             left: `${positions[index].left}px`,
             width: `${positions[index].size}px`,
             height: `${positions[index].size}px`,
           }}
-        />
+        >
+          <img
+            src={src}
+            alt=""
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        </div>
       ))}
     </div>
   );
 }
 
-function MobileAvatarCollage() {
+// Tablet Avatar Collage
+function TabletAvatarCollage() {
+  const positions = [
+    { top: 0, left: 60, size: 40 },
+    { top: 10, left: 115, size: 52 },
+    { top: 0, left: 185, size: 46 },
+    { top: 15, left: 250, size: 40 },
+    { top: 50, left: 45, size: 36 },
+    { top: 55, left: 100, size: 46 },
+    { top: 60, left: 165, size: 40 },
+    { top: 50, left: 220, size: 44 },
+    { top: 55, left: 275, size: 36 },
+    { top: 95, left: 70, size: 44 },
+    { top: 105, left: 135, size: 40 },
+    { top: 100, left: 195, size: 46 },
+    { top: 95, left: 260, size: 40 },
+  ];
+
   return (
-    <div className="flex flex-wrap justify-center gap-3 lg:hidden py-6">
-      {avatarCollageImages.slice(0, 8).map((src, index) => (
-        <img
+    <div className="relative w-[320px] h-[180px] hidden md:block lg:hidden mx-auto">
+      {avatarCollageImages.slice(0, positions.length).map((src, index) => (
+        <div
           key={index}
-          src={src}
-          alt=""
-          className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-md"
-        />
+          className="absolute rounded-full border-2 border-white shadow-md overflow-hidden bg-muted"
+          style={{
+            top: `${positions[index].top}px`,
+            left: `${positions[index].left}px`,
+            width: `${positions[index].size}px`,
+            height: `${positions[index].size}px`,
+          }}
+        >
+          <img
+            src={src}
+            alt=""
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Mobile Avatar Collage
+function MobileAvatarCollage() {
+  const positions = [
+    { top: 0, left: 30, size: 36 },
+    { top: 8, left: 80, size: 44 },
+    { top: 0, left: 140, size: 40 },
+    { top: 10, left: 195, size: 36 },
+    { top: 45, left: 15, size: 32 },
+    { top: 50, left: 60, size: 40 },
+    { top: 52, left: 115, size: 36 },
+    { top: 48, left: 165, size: 38 },
+    { top: 50, left: 215, size: 32 },
+    { top: 90, left: 40, size: 38 },
+    { top: 95, left: 95, size: 36 },
+    { top: 92, left: 150, size: 40 },
+    { top: 90, left: 205, size: 36 },
+  ];
+
+  return (
+    <div className="relative w-[260px] h-[160px] md:hidden mx-auto">
+      {avatarCollageImages.slice(0, positions.length).map((src, index) => (
+        <div
+          key={index}
+          className="absolute rounded-full border-2 border-white shadow-md overflow-hidden bg-muted"
+          style={{
+            top: `${positions[index].top}px`,
+            left: `${positions[index].left}px`,
+            width: `${positions[index].size}px`,
+            height: `${positions[index].size}px`,
+          }}
+        >
+          <img
+            src={src}
+            alt=""
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        </div>
       ))}
     </div>
   );
@@ -73,148 +155,180 @@ function MobileAvatarCollage() {
 
 function HeaderSection() {
   return (
-    <section className="bg-white py-16 md:py-20">
-      <Container size="lg">
-        <div className="max-w-[1280px] mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-foreground mb-12 md:mb-16">
-            About Us
-          </h1>
+    <section className="bg-white pt-20 pb-12 md:pt-24 md:pb-16">
+      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
+        <h1 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-center text-foreground mb-10 md:mb-12">
+          About Us
+        </h1>
+        
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+          <div className="lg:flex-1 space-y-4">
+            {aboutIntroText.map((paragraph, index) => (
+              <p key={index} className="text-muted-foreground leading-[1.7] text-[14px] md:text-[15px]">
+                {paragraph}
+              </p>
+            ))}
+          </div>
           
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
-            <div className="lg:w-[50%] space-y-5">
-              {aboutIntroText.map((paragraph, index) => (
-                <p key={index} className="text-muted-foreground leading-relaxed text-[15px]">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-            
+          <div className="flex justify-center lg:justify-end w-full lg:w-auto">
+            <AvatarCollage />
+            <TabletAvatarCollage />
             <MobileAvatarCollage />
-            
-            <div className="lg:flex-1 flex justify-center lg:justify-end">
-              <AvatarCollage />
-            </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
 
 function FounderSection() {
   return (
-    <section className="py-8 md:py-12 bg-white">
-      <Container size="lg">
-        <div className="max-w-[1280px] mx-auto">
-          <div 
-            className="relative rounded-[28px] overflow-hidden"
-            style={{ backgroundColor: "#f5f0e8" }}
-          >
-            <div className="flex flex-col lg:flex-row">
-              <div className="flex-1 p-8 md:p-10 lg:p-12 lg:pr-0">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-                  Our Founder & CEO
-                </h2>
-                <div className="space-y-4 lg:max-w-[90%]">
-                  {founderBio.map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground leading-relaxed text-[15px]">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-                
-                <div className="mt-8 lg:mt-10">
-                  <h3 className="text-lg md:text-xl font-semibold text-foreground italic">
-                    {founderName}
-                  </h3>
-                  <p className="text-muted-foreground text-sm italic">
-                    {founderRole}
+    <section className="py-6 md:py-8 bg-white">
+      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
+        <div 
+          className="relative rounded-[24px] md:rounded-[28px] overflow-hidden shadow-sm"
+          style={{ backgroundColor: "#f5f0e8" }}
+        >
+          <div className="flex flex-col lg:flex-row">
+            <div className="flex-1 p-6 md:p-8 lg:p-10 lg:pr-4">
+              <h2 className="text-xl md:text-2xl font-bold text-foreground mb-5">
+                Our Founder & CEO
+              </h2>
+              <div className="space-y-3 lg:max-w-[95%]">
+                {founderBio.map((paragraph, index) => (
+                  <p key={index} className="text-muted-foreground leading-[1.7] text-[13px] md:text-[14px]">
+                    {paragraph}
                   </p>
-                </div>
+                ))}
               </div>
               
-              <div className="relative lg:w-[320px] xl:w-[380px] shrink-0">
-                <div 
-                  className="absolute inset-y-0 left-0 w-32 z-10 hidden lg:block"
-                  style={{ 
-                    background: "linear-gradient(to right, #f5f0e8 0%, transparent 100%)" 
-                  }}
-                />
+              <div className="mt-6 lg:mt-8 text-center lg:text-left">
+                <h3 className="text-base md:text-lg font-semibold text-foreground italic">
+                  {founderName}
+                </h3>
+                <p className="text-muted-foreground text-sm italic">
+                  {founderRole}
+                </p>
+              </div>
+            </div>
+            
+            {/* Founder image - embedded into card */}
+            <div className="relative lg:w-[280px] xl:w-[320px] shrink-0">
+              <div 
+                className="absolute inset-y-0 left-0 w-20 z-10 hidden lg:block"
+                style={{ 
+                  background: "linear-gradient(to right, #f5f0e8 0%, transparent 100%)" 
+                }}
+              />
+              {/* Place founder image at /public/about/founder.png */}
+              <div className="w-full h-56 lg:h-full bg-muted">
                 <img
                   src={founderImageUrl}
                   alt={founderName}
-                  className="w-full h-64 lg:h-full object-cover object-top grayscale"
+                  className="w-full h-full object-cover object-top grayscale"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
                 />
               </div>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
 
 function MeetTeamSection() {
   return (
-    <section className="py-8 md:py-12 bg-white">
-      <Container size="lg">
-        <div className="max-w-[1280px] mx-auto">
-          <div 
-            className="rounded-[28px] overflow-hidden p-8 md:p-10 lg:p-12"
-            style={{ backgroundColor: "#EAF6FA" }}
-          >
-            {/* Meet Team Area */}
-            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mb-12 lg:mb-16">
-              <div className="lg:w-[260px] shrink-0">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                  Meet Team
-                </h2>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {meetTeamIntro}
-                </p>
-              </div>
-              
-              <div className="flex-1">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {meetTeamMembers.map((member) => (
-                    <div
-                      key={member.id}
-                      className="relative rounded-[20px] overflow-hidden aspect-[3/4]"
-                      style={{ backgroundColor: member.bgColor }}
-                    >
-                      <img
-                        src={member.imageUrl}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-top"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                        }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
-                        <p className="text-white font-semibold text-sm">{member.name}</p>
-                        <p className="text-white/80 text-xs">{member.role}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+    <section className="py-6 md:py-8 bg-white">
+      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
+        <div 
+          className="rounded-[24px] md:rounded-[28px] overflow-hidden p-6 md:p-8 lg:p-10 shadow-sm"
+          style={{ backgroundColor: "#EAF6FA" }}
+        >
+          {/* Meet Team Area */}
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mb-10 lg:mb-12">
+            <div className="lg:w-[220px] xl:w-[240px] shrink-0">
+              <h2 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                Meet Team
+              </h2>
+              <p className="text-muted-foreground text-[13px] md:text-sm leading-relaxed">
+                {meetTeamIntro}
+              </p>
             </div>
             
-            {/* Design. Content. Technology. Area */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                Design. Content. Technology.
-              </h2>
-              <p className="text-muted-foreground text-sm mb-8">
-                Teams across disciplines working together to shape Lipi's learning experiences.
-              </p>
+            <div className="flex-1">
+              {/* Team cards: 3 columns on desktop, 2 on tablet, 2 on mobile */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                {meetTeamMembers.map((member) => (
+                  <div
+                    key={member.id}
+                    className="relative rounded-[16px] md:rounded-[20px] overflow-hidden aspect-[3/4]"
+                    style={{ backgroundColor: member.bgColor }}
+                  >
+                    {/* Place team images at /public/about/team/*.jpg */}
+                    <img
+                      src={member.imageUrl}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 bg-gradient-to-t from-black/70 via-black/40 to-transparent">
+                      <p className="text-white font-semibold text-xs md:text-sm">{member.name}</p>
+                      <p className="text-white/80 text-[10px] md:text-xs">{member.role}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          {/* Design. Content. Technology. Area */}
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold text-foreground mb-1">
+              Design. Content. Technology.
+            </h2>
+            <p className="text-muted-foreground text-[13px] md:text-sm mb-6">
+              Teams across disciplines working together to shape Lipi's learning experiences.
+            </p>
+            
+            {/* Discipline portraits grid - matches screenshot layout */}
+            <div className="space-y-3">
+              {/* First row: 6 on desktop, 3 on tablet, 2 on mobile */}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                {disciplinePortraits.slice(0, 6).map((portrait) => (
+                  <div
+                    key={portrait.id}
+                    className="relative aspect-square rounded-[12px] md:rounded-[16px] overflow-hidden group cursor-pointer"
+                    style={{ backgroundColor: portrait.bgColor }}
+                  >
+                    {/* Place discipline portraits at /public/about/dct/*.jpg */}
+                    <img
+                      src={portrait.imageUrl}
+                      alt={portrait.name}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity duration-300">
+                      <p className="text-white font-medium text-[10px] md:text-xs">{portrait.name}</p>
+                      <p className="text-white/80 text-[8px] md:text-[10px]">{portrait.role}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
               
-              <div className="space-y-3">
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
-                  {disciplinePortraits.slice(0, 6).map((portrait) => (
+              {/* Second row: 5 on desktop centered, 3 on tablet, 2 on mobile */}
+              <div className="flex justify-center">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 w-full lg:w-5/6">
+                  {disciplinePortraits.slice(6, 11).map((portrait) => (
                     <div
                       key={portrait.id}
-                      className="relative aspect-square rounded-[16px] overflow-hidden group cursor-pointer"
+                      className="relative aspect-square rounded-[12px] md:rounded-[16px] overflow-hidden group cursor-pointer"
                       style={{ backgroundColor: portrait.bgColor }}
                     >
                       <img
@@ -225,43 +339,18 @@ function MeetTeamSection() {
                           e.currentTarget.style.display = 'none';
                         }}
                       />
-                      <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p className="text-white font-medium text-xs">{portrait.name}</p>
-                        <p className="text-white/80 text-[10px]">{portrait.role}</p>
+                      <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity duration-300">
+                        <p className="text-white font-medium text-[10px] md:text-xs">{portrait.name}</p>
+                        <p className="text-white/80 text-[8px] md:text-[10px]">{portrait.role}</p>
                       </div>
                     </div>
                   ))}
-                </div>
-                
-                <div className="flex justify-center">
-                  <div className="grid grid-cols-3 md:grid-cols-5 gap-3 w-full md:w-5/6">
-                    {disciplinePortraits.slice(6, 11).map((portrait) => (
-                      <div
-                        key={portrait.id}
-                        className="relative aspect-square rounded-[16px] overflow-hidden group cursor-pointer"
-                        style={{ backgroundColor: portrait.bgColor }}
-                      >
-                        <img
-                          src={portrait.imageUrl}
-                          alt={portrait.name}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <p className="text-white font-medium text-xs">{portrait.name}</p>
-                          <p className="text-white/80 text-[10px]">{portrait.role}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
@@ -273,77 +362,86 @@ function AdvisorsSection() {
 
   return (
     <section className="py-8 md:py-12 bg-white">
-      <Container size="lg">
-        <div className="max-w-[1280px] mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-10 md:mb-14">
-            Advisors
-          </h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-            {advisors.map((advisor) => (
+      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8 md:mb-10">
+          Advisors
+        </h2>
+        
+        {/* 4 columns on desktop, 3 on tablet, 2 on mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
+          {advisors.map((advisor) => (
+            <button
+              key={advisor.id}
+              className="flex flex-col items-center cursor-pointer group text-center focus:outline-none focus:ring-2 focus:ring-[#ff7c2b] focus:ring-offset-2 rounded-lg p-2"
+              onClick={() => setSelectedAdvisor(advisor)}
+              aria-label={`View ${advisor.name}'s profile`}
+            >
               <div
-                key={advisor.id}
-                className="flex flex-col items-center cursor-pointer group"
-                onClick={() => setSelectedAdvisor(advisor)}
+                className="w-24 h-24 md:w-28 md:h-28 rounded-full p-1 mb-2"
+                style={{ backgroundColor: advisor.avatarBg }}
               >
-                <div
-                  className="w-28 h-28 md:w-32 md:h-32 rounded-full p-1.5 mb-3"
-                  style={{ backgroundColor: advisor.avatarBg }}
-                >
+                {/* Place advisor images at /public/about/advisors/*.jpg */}
+                <div className="w-full h-full rounded-full overflow-hidden bg-muted">
                   <img
                     src={advisor.imageUrl}
                     alt={advisor.name}
-                    className="w-full h-full rounded-full object-cover"
+                    className="w-full h-full object-cover"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
                   />
                 </div>
-                <h3 className="font-semibold text-sm md:text-base text-foreground text-center">
-                  {advisor.name}
-                </h3>
-                <p className="text-xs md:text-sm text-muted-foreground text-center">
-                  {advisor.role}
-                </p>
               </div>
-            ))}
-          </div>
+              <h3 className="font-semibold text-xs md:text-sm text-foreground">
+                {advisor.name}
+              </h3>
+              <p className="text-[10px] md:text-xs text-muted-foreground mt-0.5">
+                {advisor.role}
+              </p>
+            </button>
+          ))}
         </div>
-      </Container>
+      </div>
 
+      {/* Advisor Modal */}
       <Dialog open={!!selectedAdvisor} onOpenChange={() => setSelectedAdvisor(null)}>
-        <DialogContent className="max-w-4xl rounded-[20px] p-0 overflow-hidden border-0">
+        <DialogContent 
+          className="max-w-3xl rounded-[24px] p-0 overflow-hidden border-0"
+          aria-describedby="advisor-bio"
+        >
           <DialogTitle className="sr-only">
             {selectedAdvisor?.name} - {selectedAdvisor?.role}
           </DialogTitle>
           
           {selectedAdvisor && (
-            <div className="relative p-8 md:p-10">
+            <div className="relative p-6 md:p-8">
               {/* Top right controls */}
-              <div className="absolute top-6 right-6 flex items-center gap-3">
+              <div className="absolute top-4 right-4 flex items-center gap-2">
                 {selectedAdvisor.linkedinUrl && (
                   <a
                     href={selectedAdvisor.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-[#0077B5] flex items-center justify-center text-white hover:bg-[#005885] transition-colors"
+                    className="w-9 h-9 rounded-lg bg-[#0077B5] flex items-center justify-center text-white hover:bg-[#005885] transition-colors"
+                    aria-label="LinkedIn profile"
                   >
-                    <Linkedin className="w-5 h-5" />
+                    <Linkedin className="w-4 h-4" />
                   </a>
                 )}
                 <button
                   onClick={() => setSelectedAdvisor(null)}
-                  className="w-10 h-10 rounded-lg bg-transparent flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                  aria-label="Close modal"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
               
-              <div className="flex flex-col md:flex-row gap-8 mt-6 md:mt-0">
+              <div className="flex flex-col md:flex-row gap-6 mt-4 md:mt-0">
                 {/* Left column - Avatar and info */}
-                <div className="shrink-0 md:w-52">
+                <div className="shrink-0 md:w-44">
                   <div
-                    className="w-36 h-36 md:w-44 md:h-44 rounded-full p-1.5 mx-auto md:mx-0"
+                    className="w-32 h-32 md:w-36 md:h-36 rounded-full p-1 mx-auto md:mx-0"
                     style={{ backgroundColor: selectedAdvisor.avatarBg }}
                   >
                     <img
@@ -352,18 +450,18 @@ function AdvisorsSection() {
                       className="w-full h-full rounded-full object-cover"
                     />
                   </div>
-                  <h3 className="font-bold text-lg md:text-xl text-foreground mt-4 text-center md:text-left">
+                  <h3 className="font-bold text-base md:text-lg text-foreground mt-3 text-center md:text-left">
                     {selectedAdvisor.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground text-center md:text-left">
+                  <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
                     {selectedAdvisor.role}
                   </p>
                 </div>
                 
                 {/* Right column - Bio */}
-                <div className="flex-1 max-h-[400px] overflow-y-auto pr-2">
+                <div id="advisor-bio" className="flex-1 max-h-[350px] overflow-y-auto pr-2">
                   {selectedAdvisor.bio.map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground leading-relaxed text-[15px] mb-4 last:mb-0">
+                    <p key={index} className="text-muted-foreground leading-relaxed text-[13px] md:text-[14px] mb-3 last:mb-0">
                       {paragraph}
                     </p>
                   ))}
@@ -379,33 +477,37 @@ function AdvisorsSection() {
 
 function ReferencesSection() {
   return (
-    <section className="py-8 md:py-12 bg-[#f5f0e8]">
-      <Container size="lg">
-        <div className="max-w-[1280px] mx-auto py-8 md:py-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-3">
+    <section className="py-8 md:py-12 bg-white">
+      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
+        <div 
+          className="rounded-[24px] md:rounded-[28px] py-8 md:py-10 px-5 md:px-8"
+          style={{ backgroundColor: "#f5f0e8" }}
+        >
+          <h2 className="text-xl md:text-2xl font-bold text-center text-foreground mb-2">
             References
           </h2>
-          <p className="text-muted-foreground text-center text-sm md:text-base max-w-3xl mx-auto mb-10">
+          <p className="text-muted-foreground text-center text-[13px] md:text-sm max-w-2xl mx-auto mb-8">
             Lipi Games content is curated from authentic publications and reviewed by an expert panel to ensure accuracy and credibility.
           </p>
           
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {/* Reference Cards - 2 columns on desktop, stack on mobile */}
+          <div className="grid md:grid-cols-2 gap-5 md:gap-6 mb-6">
             {/* Left Card - Advisory */}
             <div className="relative">
               <div 
-                className="absolute inset-0 translate-x-3 translate-y-3 rounded-[16px]"
+                className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px]"
                 style={{ backgroundColor: "#8B6914" }}
               />
               <div 
-                className="relative rounded-[16px] p-6 md:p-8 h-full"
+                className="relative rounded-[14px] p-5 md:p-6 h-full min-h-[120px]"
                 style={{ backgroundColor: "#A67C00" }}
               >
-                <h3 className="text-base md:text-lg font-bold text-white mb-4">
+                <h3 className="text-sm md:text-base font-bold text-white mb-3">
                   {references.advisoryTitle}
                 </h3>
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   {references.advisoryLines.map((line, index) => (
-                    <p key={index} className="text-white/90 text-sm">
+                    <p key={index} className="text-white/90 text-[12px] md:text-[13px]">
                       {line}
                     </p>
                   ))}
@@ -416,20 +518,20 @@ function ReferencesSection() {
             {/* Right Card - References */}
             <div className="relative">
               <div 
-                className="absolute inset-0 translate-x-3 translate-y-3 rounded-[16px]"
+                className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px]"
                 style={{ backgroundColor: "#1A3A5C" }}
               />
               <div 
-                className="relative rounded-[16px] p-6 md:p-8 h-full"
+                className="relative rounded-[14px] p-5 md:p-6 h-full min-h-[120px]"
                 style={{ backgroundColor: "#2D5A87" }}
               >
-                <h3 className="text-base md:text-lg font-bold text-white mb-4">
+                <h3 className="text-sm md:text-base font-bold text-white mb-3">
                   {references.referencesTitle}
                 </h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {references.referenceItems.map((item, index) => (
-                    <li key={index} className="text-white/90 text-sm flex items-start gap-2">
-                      <span className="text-white mt-1">•</span>
+                    <li key={index} className="text-white/90 text-[12px] md:text-[13px] flex items-start gap-2">
+                      <span className="text-white mt-0.5">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -439,21 +541,21 @@ function ReferencesSection() {
           </div>
           
           {/* Note */}
-          <div className="bg-white rounded-lg px-4 py-3 md:px-5 md:py-4">
-            <p className="text-sm">
+          <div className="bg-white rounded-lg px-4 py-3">
+            <p className="text-[12px] md:text-[13px]">
               <span className="font-medium underline" style={{ color: "#ff7c2b" }}>Note :</span>
               <span className="text-muted-foreground ml-1">{references.noteText}</span>
             </p>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
 
-export function AboutPage() {
+export default function AboutPage() {
   return (
-    <main className="pt-16">
+    <main className="min-h-screen bg-white">
       <HeaderSection />
       <FounderSection />
       <MeetTeamSection />
