@@ -153,18 +153,45 @@ function MobileAvatarCollage() {
   );
 }
 
+function TeamTile({ member }) {
+  return (
+    <div
+      className="relative overflow-hidden w-full h-[260px] md:h-[300px] lg:h-[340px]"
+      style={{ backgroundColor: member.bgColor }}
+    >
+      <img
+        src={member.imageUrl}
+        alt={member.name}
+        className="block w-full h-full object-cover object-[50%_35%]"
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+        }}
+      />
+
+      <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 via-black/40 to-transparent">
+        <p className="text-white font-semibold text-sm md:text-base leading-tight">
+          {member.name}
+        </p>
+        <p className="text-white/80 text-xs md:text-sm">
+          {member.role}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function HeaderSection() {
   return (
     <section className="bg-white pt-20 pb-12 md:pt-24 md:pb-16">
-      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
         <h1 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-center text-foreground mb-10 md:mb-12">
           About Us
         </h1>
         
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           <div className="lg:flex-1 space-y-4">
             {aboutIntroText.map((paragraph, index) => (
-              <p key={index} className="text-muted-foreground leading-[1.7] text-[14px] md:text-[15px]">
+              <p key={index} className="text-muted-foreground leading-[1.7] text-[14px] md:text-[16px]">
                 {paragraph}
               </p>
             ))}
@@ -184,7 +211,7 @@ function HeaderSection() {
 function FounderSection() {
   return (
     <section className="py-6 md:py-8 bg-white">
-      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
         <div 
           className="relative rounded-[24px] md:rounded-[28px] overflow-hidden shadow-sm"
           style={{ backgroundColor: "#f5f0e8" }}
@@ -221,7 +248,7 @@ function FounderSection() {
                 }}
               />
               {/* Place founder image at /public/about/founder.png */}
-              <div className="w-full h-56 lg:h-full bg-muted">
+              <div className="w-full h-56 lg:h-full">
                 <img
                   src={founderImageUrl}
                   alt={founderName}
@@ -242,14 +269,13 @@ function FounderSection() {
 function MeetTeamSection() {
   return (
     <section className="py-6 md:py-8 bg-white">
-      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
-        <div 
-          className="rounded-[24px] md:rounded-[28px] overflow-hidden p-6 md:p-8 lg:p-10 shadow-sm"
-          style={{ backgroundColor: "#EAF6FA" }}
-        >
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
+        <div className="rounded-[24px] md:rounded-[28px] overflow-hidden shadow-sm" style={{ backgroundColor: "#F2FAFF" }}>
           {/* Meet Team Area */}
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mb-10 lg:mb-12">
-            <div className="lg:w-[220px] xl:w-[240px] shrink-0">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-0 mb-10 lg:mb-12 bg-[#F0F5F8] rounded-[24px] md:rounded-[32px] overflow-hidden">
+
+            {/* Row 1 – Text spans 2 columns */}
+            <div className="md:col-span-2 p-6 md:px-8 lg:px-10 flex flex-col justify-center">
               <h2 className="text-xl md:text-2xl font-bold text-foreground mb-3">
                 Meet Team
               </h2>
@@ -257,37 +283,25 @@ function MeetTeamSection() {
                 {meetTeamIntro}
               </p>
             </div>
-            
-            <div className="flex-1">
-              {/* Team cards: 3 columns on desktop, 2 on tablet, 2 on mobile */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                {meetTeamMembers.map((member) => (
-                  <div
-                    key={member.id}
-                    className="relative rounded-[16px] md:rounded-[20px] overflow-hidden aspect-[3/4]"
-                    style={{ backgroundColor: member.bgColor }}
-                  >
-                    {/* Place team images at /public/about/team/*.jpg */}
-                    <img
-                      src={member.imageUrl}
-                      alt={member.name}
-                      className="w-full h-full object-cover object-top"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 bg-gradient-to-t from-black/70 via-black/40 to-transparent">
-                      <p className="text-white font-semibold text-xs md:text-sm">{member.name}</p>
-                      <p className="text-white/80 text-[10px] md:text-xs">{member.role}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+
+            {/* Row 1 – Images 1,2,3 */}
+            {meetTeamMembers[0] && <TeamTile member={meetTeamMembers[0]} />}
+            {meetTeamMembers[1] && <TeamTile member={meetTeamMembers[1]} />}
+            {meetTeamMembers[2] && <TeamTile member={meetTeamMembers[2]} />}
+
+            {/* Row 2 – Empty spacer (col 1) */}
+            <div className="hidden md:block" />
+
+            {/* Row 2 – Images 4,5,6,7 */}
+            {meetTeamMembers[3] && <TeamTile member={meetTeamMembers[3]} />}
+            {meetTeamMembers[4] && <TeamTile member={meetTeamMembers[4]} />}
+            {meetTeamMembers[5] && <TeamTile member={meetTeamMembers[5]} />}
+            {meetTeamMembers[6] && <TeamTile member={meetTeamMembers[6]} />}
+
           </div>
-          
+   
           {/* Design. Content. Technology. Area */}
-          <div>
+          <div className="px-4 mb-12">
             <h2 className="text-xl md:text-2xl font-bold text-foreground mb-1">
               Design. Content. Technology.
             </h2>
@@ -302,6 +316,7 @@ function MeetTeamSection() {
                 {disciplinePortraits.slice(0, 6).map((portrait) => (
                   <div
                     key={portrait.id}
+                    tabIndex={0}
                     className="relative aspect-square rounded-[12px] md:rounded-[16px] overflow-hidden group cursor-pointer"
                     style={{ backgroundColor: portrait.bgColor }}
                   >
@@ -314,7 +329,26 @@ function MeetTeamSection() {
                         e.currentTarget.style.display = 'none';
                       }}
                     />
-                    <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity duration-300">
+                    <div
+                        className="
+                          absolute bottom-0 left-0 right-0 p-2
+                          bg-gradient-to-t from-black/70 to-transparent
+
+                          translate-y-4 opacity-0
+
+                          /* Desktop hover */
+                          group-hover:translate-y-0
+                          group-hover:opacity-100
+
+                          /* Mobile tap */
+                          group-active:translate-y-0
+                          group-active:opacity-100
+                          group-focus-within:translate-y-0
+                          group-focus-within:opacity-100
+
+                          transition-all duration-300 ease-out
+                        "
+                      >
                       <p className="text-white font-medium text-[10px] md:text-xs">{portrait.name}</p>
                       <p className="text-white/80 text-[8px] md:text-[10px]">{portrait.role}</p>
                     </div>
@@ -328,6 +362,7 @@ function MeetTeamSection() {
                   {disciplinePortraits.slice(6, 11).map((portrait) => (
                     <div
                       key={portrait.id}
+                      tabIndex={0}
                       className="relative aspect-square rounded-[12px] md:rounded-[16px] overflow-hidden group cursor-pointer"
                       style={{ backgroundColor: portrait.bgColor }}
                     >
@@ -339,7 +374,26 @@ function MeetTeamSection() {
                           e.currentTarget.style.display = 'none';
                         }}
                       />
-                      <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity duration-300">
+                      <div
+                        className="
+                          absolute bottom-0 left-0 right-0 p-2
+                          bg-gradient-to-t from-black/70 to-transparent
+
+                          translate-y-4 opacity-0
+
+                          /* Desktop hover */
+                          group-hover:translate-y-0
+                          group-hover:opacity-100
+
+                          /* Mobile tap */
+                          group-active:translate-y-0
+                          group-active:opacity-100
+                          group-focus-within:translate-y-0
+                          group-focus-within:opacity-100
+
+                          transition-all duration-300 ease-out
+                        "
+                      >
                         <p className="text-white font-medium text-[10px] md:text-xs">{portrait.name}</p>
                         <p className="text-white/80 text-[8px] md:text-[10px]">{portrait.role}</p>
                       </div>
@@ -362,7 +416,7 @@ function AdvisorsSection() {
 
   return (
     <section className="py-8 md:py-12 bg-white">
-      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8 md:mb-10">
           Advisors
         </h2>
@@ -406,7 +460,7 @@ function AdvisorsSection() {
       {/* Advisor Modal */}
       <Dialog open={!!selectedAdvisor} onOpenChange={() => setSelectedAdvisor(null)}>
         <DialogContent 
-          className="max-w-3xl rounded-[24px] p-0 overflow-hidden border-0"
+          className="max-w-3xl rounded-[24px] p-0 overflow-hidden border-0 [&>button]:hidden"
           aria-describedby="advisor-bio"
         >
           <DialogTitle className="sr-only">
@@ -439,7 +493,7 @@ function AdvisorsSection() {
               
               <div className="flex flex-col md:flex-row gap-6 mt-4 md:mt-0">
                 {/* Left column - Avatar and info */}
-                <div className="shrink-0 md:w-44">
+                <div className="flex flex-col items-center shrink-0 md:w-44">
                   <div
                     className="w-32 h-32 md:w-36 md:h-36 rounded-full p-1 mx-auto md:mx-0"
                     style={{ backgroundColor: selectedAdvisor.avatarBg }}
@@ -453,7 +507,7 @@ function AdvisorsSection() {
                   <h3 className="font-bold text-base md:text-lg text-foreground mt-3 text-center md:text-left">
                     {selectedAdvisor.name}
                   </h3>
-                  <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
+                  <p className="text-xs md:text-sm text-muted-foreground text-center w-full">
                     {selectedAdvisor.role}
                   </p>
                 </div>
@@ -478,7 +532,7 @@ function AdvisorsSection() {
 function ReferencesSection() {
   return (
     <section className="py-8 md:py-12 bg-white">
-      <div className="max-w-[1180px] mx-auto px-5 md:px-8">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
         <div 
           className="rounded-[24px] md:rounded-[28px] py-8 md:py-10 px-5 md:px-8"
           style={{ backgroundColor: "#f5f0e8" }}

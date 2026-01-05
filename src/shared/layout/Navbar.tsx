@@ -9,7 +9,6 @@ const navLinks = [
 
 export function Navbar() {
   const location = useLocation();
-  const isAboutPage = location.pathname === "/about";
   
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
     if (to.startsWith("/#")) {
@@ -30,17 +29,13 @@ export function Navbar() {
   };
 
   // Use light navbar style on about page (grey bg with dark text like screenshot)
-  const navBgClass = isAboutPage 
-    ? "bg-[#f5f5f5] border-b border-gray-200" 
-    : "bg-black/20 backdrop-blur-sm";
+  const navBgClass = "bg-black/20 backdrop-blur-sm";
   
-  const textClass = isAboutPage 
-    ? "text-gray-700 hover:text-gray-900" 
-    : "text-white/80 hover:text-white";
+  const textClass = "text-white/80 hover:text-white";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 ${navBgClass}`}>
-      <div className="max-w-[1180px] mx-auto px-5 md:px-8 py-3 md:py-4 flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img src={lipiLogo} alt="Lipi Logo" className="h-7 md:h-8 w-7 md:w-8" />
