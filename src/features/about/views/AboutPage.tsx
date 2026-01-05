@@ -9,33 +9,54 @@ import {
 } from "../data/aboutData";
 
 function AvatarCollage() {
+  // Positions matching the screenshot cluster layout
   const positions = [
-    { top: "0%", left: "60%", size: "w-14 h-14" },
-    { top: "5%", left: "85%", size: "w-16 h-16" },
-    { top: "25%", left: "70%", size: "w-12 h-12" },
-    { top: "20%", left: "90%", size: "w-14 h-14" },
-    { top: "45%", left: "55%", size: "w-16 h-16" },
-    { top: "40%", left: "78%", size: "w-12 h-12" },
-    { top: "50%", left: "95%", size: "w-14 h-14" },
-    { top: "65%", left: "62%", size: "w-12 h-12" },
-    { top: "70%", left: "85%", size: "w-16 h-16" },
-    { top: "85%", left: "70%", size: "w-14 h-14" },
-    { top: "80%", left: "55%", size: "w-10 h-10" },
-    { top: "90%", left: "92%", size: "w-12 h-12" },
+    { top: "0px", left: "180px", size: "w-16 h-16" },
+    { top: "10px", left: "260px", size: "w-20 h-20" },
+    { top: "0px", left: "360px", size: "w-24 h-24" },
+    { top: "60px", left: "150px", size: "w-12 h-12" },
+    { top: "70px", left: "220px", size: "w-14 h-14" },
+    { top: "80px", left: "300px", size: "w-12 h-12" },
+    { top: "100px", left: "360px", size: "w-16 h-16" },
+    { top: "120px", left: "420px", size: "w-14 h-14" },
+    { top: "140px", left: "180px", size: "w-20 h-20" },
+    { top: "150px", left: "270px", size: "w-16 h-16" },
+    { top: "160px", left: "350px", size: "w-14 h-14" },
+    { top: "170px", left: "420px", size: "w-12 h-12" },
+    { top: "220px", left: "100px", size: "w-20 h-20" },
+    { top: "230px", left: "200px", size: "w-14 h-14" },
+    { top: "240px", left: "280px", size: "w-20 h-20" },
+    { top: "250px", left: "380px", size: "w-14 h-14" },
+    { top: "260px", left: "450px", size: "w-12 h-12" },
   ];
 
   return (
-    <div className="relative w-full h-[300px] md:h-[350px]">
-      {avatarCollageImages.map((src, index) => (
+    <div className="relative w-[520px] h-[360px] hidden lg:block">
+      {avatarCollageImages.slice(0, positions.length).map((src, index) => (
         <img
           key={index}
           src={src}
           alt=""
-          className={`absolute rounded-full object-cover border-2 border-white shadow-md ${positions[index]?.size || "w-12 h-12"}`}
+          className={`absolute rounded-full object-cover border-[3px] border-white shadow-md ${positions[index]?.size || "w-14 h-14"}`}
           style={{
-            top: positions[index]?.top || "0%",
-            left: positions[index]?.left || "50%",
+            top: positions[index]?.top || "0px",
+            left: positions[index]?.left || "0px",
           }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function MobileAvatarCollage() {
+  return (
+    <div className="flex flex-wrap justify-center gap-3 lg:hidden py-8">
+      {avatarCollageImages.slice(0, 8).map((src, index) => (
+        <img
+          key={index}
+          src={src}
+          alt=""
+          className="w-14 h-14 rounded-full object-cover border-[3px] border-white shadow-md"
         />
       ))}
     </div>
@@ -44,24 +65,27 @@ function AvatarCollage() {
 
 function HeaderSection() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-12 md:py-16">
       <Container size="lg">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-foreground mb-12 md:mb-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-10 md:mb-12">
           About Us
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-4 items-start">
           {/* Left - Text content */}
-          <div className="space-y-6">
+          <div className="lg:max-w-[55%] space-y-4">
             {aboutIntroText.map((paragraph, index) => (
-              <p key={index} className="text-muted-foreground leading-relaxed text-base md:text-lg">
+              <p key={index} className="text-muted-foreground leading-relaxed text-[15px]">
                 {paragraph}
               </p>
             ))}
           </div>
           
-          {/* Right - Avatar collage */}
-          <div className="order-first lg:order-last">
+          {/* Mobile Avatar Collage */}
+          <MobileAvatarCollage />
+          
+          {/* Right - Avatar collage (desktop) */}
+          <div className="lg:flex-1 flex justify-end">
             <AvatarCollage />
           </div>
         </div>
@@ -72,18 +96,21 @@ function HeaderSection() {
 
 function FounderSection() {
   return (
-    <section className="py-16 md:py-24" style={{ backgroundColor: "#faf8f5" }}>
+    <section className="py-8 md:py-12 bg-white">
       <Container size="lg">
-        <div className="bg-white rounded-3xl shadow-lg overflow-hidden p-8 md:p-12 lg:p-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div 
+          className="rounded-2xl overflow-hidden p-8 md:p-10 lg:p-12"
+          style={{ backgroundColor: "#f5f0e8" }}
+        >
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
             {/* Left - Bio content */}
-            <div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-6 md:mb-8">
+            <div className="lg:flex-1">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
                 Our Founder & CEO
               </h2>
               <div className="space-y-4">
                 {founderBio.map((paragraph, index) => (
-                  <p key={index} className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  <p key={index} className="text-muted-foreground leading-relaxed text-[15px]">
                     {paragraph}
                   </p>
                 ))}
@@ -91,21 +118,21 @@ function FounderSection() {
             </div>
             
             {/* Right - Founder image */}
-            <div className="order-first lg:order-last flex justify-center lg:justify-end">
+            <div className="order-first lg:order-last flex justify-center lg:justify-end shrink-0">
               <img
                 src={founderImageUrl}
                 alt={founderName}
-                className="w-64 h-80 md:w-72 md:h-96 object-cover rounded-2xl grayscale"
+                className="w-56 h-72 md:w-64 md:h-80 lg:w-72 lg:h-96 object-cover object-top rounded-xl grayscale"
               />
             </div>
           </div>
           
           {/* Bottom - Name and role */}
-          <div className="text-center mt-8 md:mt-12 pt-6 border-t border-gray-100">
-            <h3 className="text-xl md:text-2xl font-bold text-foreground">
+          <div className="text-center mt-6 lg:mt-4 lg:mr-32">
+            <h3 className="text-lg md:text-xl font-semibold text-foreground italic">
               {founderName}
             </h3>
-            <p className="text-muted-foreground mt-1">
+            <p className="text-muted-foreground text-sm italic">
               {founderRole}
             </p>
           </div>
