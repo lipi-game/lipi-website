@@ -55,44 +55,6 @@ export function InstallCtaSection() {
           <div className="relative z-10 flex flex-col justify-end h-full min-h-[480px] md:min-h-full">
             {/* Bottom Content Area */}
             <div className="bg-gradient-to-t from-white/95 via-white/85 to-transparent pt-20 pb-8 md:pb-12 px-6 md:px-12">
-              {/* Game Selector */}
-              {games.length > 1 && (
-                <div className="flex justify-center mb-6">
-                  <div className="flex gap-3 overflow-x-auto scrollbar-hidden px-1 py-1">
-                    {games.map((game) => {
-                      const isSelected = selectedGame?.id === game.id;
-                      return (
-                        <motion.button
-                          key={game.id}
-                          onClick={() => handleSelectGame(game)}
-                          aria-pressed={isSelected}
-                          className={`
-                            relative px-6 py-3 rounded-full font-semibold text-sm md:text-base
-                            transition-all duration-200 ease-out whitespace-nowrap
-                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7c2b] focus-visible:ring-offset-2
-                            ${
-                              isSelected
-                                ? "bg-[#ff7c2b] text-white shadow-[0_4px_20px_rgba(255,124,43,0.4)]"
-                                : "bg-white text-gray-800 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
-                            }
-                          `}
-                          whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
-                          animate={
-                            prefersReducedMotion
-                              ? {}
-                              : {
-                                  scale: isSelected ? 1.02 : 1,
-                                }
-                          }
-                          transition={{ duration: 0.2, ease: "easeOut" }}
-                        >
-                          {game.name}
-                        </motion.button>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
 
               {/* Caption */}
               <p className="text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-6">

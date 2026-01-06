@@ -86,7 +86,7 @@ function GamePlayModal({
       <DialogContent className="p-0 border-0 bg-transparent max-w-[92vw] sm:max-w-[1000px] overflow-hidden rounded-2xl">
         <DialogTitle className="sr-only">{game.title}</DialogTitle>
         <div
-          className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] bg-cover bg-center"
+          className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] bg-contain bg-no-repeat bg-center bg-"
           style={{ backgroundImage: `url(${game.imageUrl})` }}
         >
           {/* Dark gradient overlay */}
