@@ -16,6 +16,8 @@ const games: Game[] = [
     imageAlt: "LIPI EPICS app preview",
     ctaType: "play",
     route: "/games/lipi-epics",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.epics",
+    appStoreUrl: "https://apps.apple.com/app/lipi-epics/id123456789",
   },
   {
     id: "lipi-kids",
@@ -26,6 +28,8 @@ const games: Game[] = [
     imageAlt: "LIPI KIDS app preview",
     ctaType: "play",
     route: "/games/lipi-kids",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.kids",
+    appStoreUrl: "https://apps.apple.com/app/lipi-kids/id123456790",
   },
   {
     id: "lipi-brain-booster",

@@ -6,4 +6,6 @@ export interface Game {
   imageAlt: string;
   ctaType: "play" | "coming-soon";
   route?: string;
+  playStoreUrl?: string;
+  appStoreUrl?: string;
 }
