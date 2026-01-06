@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { ExpertsRepository } from "../services/ExpertsRepository";
-import { ExpertsManager } from "../services/ExpertsManager";
 import type { Expert } from "../types/expert";
 
 /**
@@ -28,7 +27,10 @@ export function WordsFromExpertsSection() {
   // Update visible cards on resize
   useEffect(() => {
     const updateVisibleCards = () => {
-      setVisibleCards(ExpertsManager.getVisibleCards(window.innerWidth));
+      const width = window.innerWidth;
+      if (width >= 1024) setVisibleCards(3);
+      else if (width >= 768) setVisibleCards(2);
+      else setVisibleCards(1);
     };
     updateVisibleCards();
     window.addEventListener("resize", updateVisibleCards);
@@ -49,21 +51,21 @@ export function WordsFromExpertsSection() {
   useEffect(() => {
     if (isInView && !playingId) {
       autoPlayRef.current = setInterval(() => {
-        setCurrentIndex((prev) => ExpertsManager.getNextIndex(prev, experts.length));
+        setCurrentIndex((prev) => prev + 1);
       }, 4500);
     }
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
-  }, [isInView, playingId, experts.length]);
+  }, [isInView, playingId]);
 
   const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => ExpertsManager.getPrevIndex(prev, experts.length));
-  }, [experts.length]);
+    setCurrentIndex((prev) => prev - 1);
+  }, []);
 
   const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => ExpertsManager.getNextIndex(prev, experts.length));
-  }, [experts.length]);
+    setCurrentIndex((prev) => prev + 1);
+  }, []);
 
   const handleDotClick = useCallback((index: number) => {
     setCurrentIndex(index);
@@ -73,22 +75,18 @@ export function WordsFromExpertsSection() {
     const video = videoRefs.current.get(expert.id);
     
     if (playingId === expert.id) {
-      // Pause current video
       video?.pause();
       setPlayingId(null);
     } else {
-      // Pause any playing video first
       if (playingId) {
         const currentVideo = videoRefs.current.get(playingId);
         currentVideo?.pause();
       }
-      // Play new video
       video?.play();
       setPlayingId(expert.id);
     }
   }, [playingId]);
 
-  // Handle video end
   const handleVideoEnd = useCallback((expertId: string) => {
     if (playingId === expertId) {
       setPlayingId(null);
@@ -101,97 +99,102 @@ export function WordsFromExpertsSection() {
     if (e.key === "ArrowRight") handleNext();
   }, [handlePrev, handleNext]);
 
-  // Calculate card dimensions based on screen size
+  // Card dimensions (responsive)
   const getCardDimensions = () => {
-    if (visibleCards === 1) return { width: 260, height: 470 };
-    if (visibleCards === 2) return { width: 280, height: 510 };
-    return { width: 312, height: 568 };
+    if (visibleCards === 1) return { width: 280, height: 480 };
+    if (visibleCards === 2) return { width: 300, height: 520 };
+    return { width: 320, height: 552 };
   };
 
   const { width: cardWidth, height: cardHeight } = getCardDimensions();
-  const gap = 20;
-  const totalWidth = cardWidth + gap;
+  const gap = 24;
 
-  // Calculate offset to center current card(s)
-  const getTranslateX = () => {
-    const centerOffset = (visibleCards - 1) / 2;
-    return -(currentIndex - centerOffset) * totalWidth;
-  };
+  // Create infinite loop by tripling the items
+  const extendedExperts = [...experts, ...experts, ...experts];
+  const totalOriginal = experts.length;
+  
+  // Normalize index to actual position (middle set)
+  const normalizedIndex = ((currentIndex % totalOriginal) + totalOriginal) % totalOriginal;
+  
+  // Calculate offset - center the current card
+  const centerOffset = Math.floor(visibleCards / 2);
+  const baseIndex = totalOriginal + normalizedIndex; // Start from middle set
+  const translateX = -(baseIndex - centerOffset) * (cardWidth + gap);
 
   return (
     <section
       ref={sectionRef}
-      className="py-16 md:py-24 overflow-hidden bg-white"
-      style={{ backgroundColor: "#ffffff" }}
+      className="py-16 md:py-20 overflow-hidden bg-white"
       onKeyDown={handleKeyDown}
       tabIndex={0}
       aria-label="Words from Experts carousel"
     >
       {/* Header */}
-      <div className="text-center mb-12 md:mb-16 px-4">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+      <div className="text-center mb-10 md:mb-14 px-4">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
           Words from Experts
         </h2>
-        <p className="text-gray-600 text-base md:text-lg max-w-xl mx-auto">
+        <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
           Trusted voices on Lipi's approach to learning through play.
         </p>
       </div>
 
-      {/* Carousel Container */}
-      <div className="relative max-w-[1100px] mx-auto px-4">
+      {/* Carousel Viewport - matches Figma: 1440x624 on desktop */}
+      <div className="relative w-full max-w-[1440px] h-[480px] md:h-[560px] lg:h-[624px] mx-auto">
         {/* Left Fade Overlay */}
         <div 
-          className="absolute left-0 top-0 h-full w-14 md:w-20 lg:w-32 z-10 pointer-events-none"
+          className="absolute left-0 top-0 h-full w-16 md:w-24 lg:w-32 z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0) 100%)",
+            background: "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%)",
           }}
         />
         
         {/* Right Fade Overlay */}
         <div 
-          className="absolute right-0 top-0 h-full w-14 md:w-20 lg:w-32 z-10 pointer-events-none"
+          className="absolute right-0 top-0 h-full w-16 md:w-24 lg:w-32 z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0) 100%)",
+            background: "linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%)",
           }}
         />
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows - circular, white, outside cards area */}
         <button
           onClick={handlePrev}
-          className="absolute left-2 md:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-11 md:h-11 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all"
+          className="absolute left-4 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border border-black/10 shadow-sm hover:shadow-md flex items-center justify-center hover:bg-white transition-all"
           aria-label="Previous"
         >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
+          <ChevronLeft className="w-6 h-6 text-foreground" />
         </button>
 
         <button
           onClick={handleNext}
-          className="absolute right-2 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-11 md:h-11 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all"
+          className="absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border border-black/10 shadow-sm hover:shadow-md flex items-center justify-center hover:bg-white transition-all"
           aria-label="Next"
         >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
+          <ChevronRight className="w-6 h-6 text-foreground" />
         </button>
 
-        {/* Cards Track */}
-        <div className="flex justify-center overflow-hidden">
-          <div 
-            className="overflow-visible"
-            style={{ width: visibleCards * totalWidth - gap }}
+        {/* Cards Track Container */}
+        <div className="h-full flex items-center justify-center overflow-hidden">
+          <motion.div
+            className="flex"
+            style={{ gap }}
+            animate={{ x: translateX }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 30,
+              duration: prefersReducedMotion ? 0 : 0.5,
+            }}
           >
-            <motion.div
-              className="flex"
-              style={{ gap }}
-              animate={{ x: getTranslateX() }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 30,
-                duration: prefersReducedMotion ? 0 : 0.5,
-              }}
-            >
-              {experts.map((expert, index) => (
+            {extendedExperts.map((expert, index) => {
+              // Determine if this card is the "active" center card
+              const relativeIndex = index - totalOriginal;
+              const isActive = relativeIndex === normalizedIndex;
+              
+              return (
                 <ExpertCard
-                  key={expert.id}
+                  key={`${expert.id}-${index}`}
                   expert={expert}
                   isPlaying={playingId === expert.id}
                   onPlayToggle={() => handlePlayToggle(expert)}
@@ -201,23 +204,23 @@ export function WordsFromExpertsSection() {
                   }}
                   cardWidth={cardWidth}
                   cardHeight={cardHeight}
-                  isActive={index === currentIndex}
+                  isActive={isActive}
                 />
-              ))}
-            </motion.div>
-          </div>
+              );
+            })}
+          </motion.div>
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
           {experts.map((_, index) => (
             <button
               key={index}
               onClick={() => handleDotClick(index)}
               className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                index === currentIndex 
-                  ? "bg-gray-900" 
-                  : "bg-gray-300 hover:bg-gray-400"
+                index === normalizedIndex 
+                  ? "bg-foreground" 
+                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -254,7 +257,7 @@ function ExpertCard({
 
   return (
     <div
-      className="relative flex-shrink-0 rounded-[20px] overflow-hidden shadow-lg bg-gray-200 transition-transform duration-300"
+      className="relative flex-shrink-0 rounded-[20px] overflow-hidden shadow-lg bg-muted transition-all duration-300"
       style={{ 
         width: cardWidth, 
         height: cardHeight,
@@ -275,9 +278,9 @@ function ExpertCard({
           controls={isPlaying}
         />
       ) : (
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-gray-300 to-gray-400 flex items-center justify-center">
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-muted to-muted-foreground/20 flex items-center justify-center">
           {posterError ? (
-            <span className="text-gray-500 text-sm">Expert Video</span>
+            <span className="text-muted-foreground text-sm">Expert Video</span>
           ) : (
             <img 
               src={expert.poster} 
@@ -312,7 +315,7 @@ function ExpertCard({
               className="flex-shrink-0 w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg hover:bg-white transition-colors"
               aria-label="Play video"
             >
-              <Play className="w-5 h-5 text-gray-900 ml-0.5" fill="currentColor" />
+              <Play className="w-5 h-5 text-foreground ml-0.5" fill="currentColor" />
             </motion.button>
           ) : (
             <motion.button
