@@ -109,17 +109,24 @@ export function WordsFromExpertsSection() {
   const { width: cardWidth, height: cardHeight } = getCardDimensions();
   const gap = 24;
 
-  // Create infinite loop by tripling the items
-  const extendedExperts = [...experts, ...experts, ...experts];
+  // Create infinite loop by repeating items 5x for seamless scrolling
+  const extendedExperts = [...experts, ...experts, ...experts, ...experts, ...experts];
   const totalOriginal = experts.length;
   
-  // Normalize index to actual position (middle set)
+  // Normalize index to actual position
   const normalizedIndex = ((currentIndex % totalOriginal) + totalOriginal) % totalOriginal;
   
-  // Calculate offset - center the current card
-  const centerOffset = Math.floor(visibleCards / 2);
-  const baseIndex = totalOriginal + normalizedIndex; // Start from middle set
-  const translateX = -(baseIndex - centerOffset) * (cardWidth + gap);
+  // Calculate container width to center properly
+  const containerWidth = typeof window !== "undefined" ? Math.min(1440, window.innerWidth) : 1440;
+  
+  // Position in the middle set (index 2 of 5 sets = 2 * totalOriginal)
+  const middleSetStart = 2 * totalOriginal;
+  const activeCardIndex = middleSetStart + normalizedIndex;
+  
+  // Center the active card in the viewport
+  const trackOffset = activeCardIndex * (cardWidth + gap);
+  const centerPosition = (containerWidth - cardWidth) / 2;
+  const translateX = centerPosition - trackOffset;
 
   return (
     <section
@@ -189,8 +196,9 @@ export function WordsFromExpertsSection() {
           >
             {extendedExperts.map((expert, index) => {
               // Determine if this card is the "active" center card
-              const relativeIndex = index - totalOriginal;
-              const isActive = relativeIndex === normalizedIndex;
+              const setIndex = Math.floor(index / totalOriginal);
+              const posInSet = index % totalOriginal;
+              const isActive = setIndex === 2 && posInSet === normalizedIndex;
               
               return (
                 <ExpertCard
