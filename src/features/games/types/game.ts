@@ -8,4 +8,5 @@ export interface Game {
   route?: string;
   playStoreUrl?: string;
   appStoreUrl?: string;
+  modalImageUrl?: string;
 }

@@ -18,18 +18,22 @@ const games: Game[] = [
     route: "/games/lipi-epics",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.epics",
     appStoreUrl: "https://apps.apple.com/app/lipi-epics/id123456789",
+    // TODO: Place modal image at /Assets/Images/games/lipi-epics-modal.png (wider hero image for modal)
+    modalImageUrl: "/Assets/Images/games/lipi-epics-modal.png",
   },
   {
     id: "lipi-kids",
     title: "LIPI - KIDS",
     description:
-      "A safe, playful learning app where kids explore languages, stories, and games in multiple languages.",
+      "An interactive learning experience that brings Indian epics to life through story-based games and structured play.",
     imageUrl: "/Assets/Images/games/lipi-kids.png",
     imageAlt: "LIPI KIDS app preview",
     ctaType: "play",
     route: "/games/lipi-kids",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.kids",
     appStoreUrl: "https://apps.apple.com/app/lipi-kids/id123456790",
+    // TODO: Place modal image at /Assets/Images/games/lipi-kids-modal.png (wider hero image for modal)
+    modalImageUrl: "/Assets/Images/games/lipi-kids-modal.png",
   },
   {
     id: "lipi-brain-booster",
