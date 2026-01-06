@@ -80,71 +80,82 @@ function GamePlayModal({
 
   const hasAppStore = !!game.appStoreUrl;
   const hasPlayStore = !!game.playStoreUrl;
+  const imageUrl = game.modalImageUrl || game.imageUrl;
 
   return (
     <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
-      <DialogContent className="p-0 border-0 bg-transparent max-w-[92vw] sm:max-w-[1000px] overflow-hidden rounded-2xl">
+      <DialogContent className="p-0 border-0 bg-transparent w-[min(800px,calc(100vw-32px))] h-[min(500px,calc(100vh-32px))] max-w-none overflow-hidden rounded-[24px]">
         <DialogTitle className="sr-only">{game.title}</DialogTitle>
-        <div
-          className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] bg-contain bg-no-repeat bg-center bg-"
-          style={{ backgroundImage: `url(${game.imageUrl})` }}
-        >
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+        <div className="relative w-full h-full">
+          {/* Full-bleed background image */}
+          {imageUrl ? (
+            <img
+              src={imageUrl}
+              alt={game.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-muted" />
+          )}
 
-          {/* Close button */}
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-black/45" />
+
+          {/* Close button - top right */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center transition-colors"
+            className="absolute top-4 right-4 z-10 h-10 w-10 rounded-full bg-black/35 hover:bg-black/50 flex items-center justify-center transition-colors border border-white/30"
             aria-label="Close modal"
           >
             <X className="w-5 h-5 text-white" />
           </button>
 
-          {/* Top content */}
-          <div className="absolute top-8 left-0 right-0 text-center px-6">
+          {/* Top content - title & subtitle */}
+          <div className="absolute top-6 sm:top-8 left-0 right-0 text-center px-6 z-10">
             <h3 className="text-white font-bold text-2xl sm:text-3xl md:text-4xl mb-2">
               {game.title}
             </h3>
-            <p className="text-white/90 text-sm sm:text-base max-w-lg mx-auto line-clamp-2">
+            <p className="text-white/85 text-sm sm:text-base max-w-xl mx-auto line-clamp-2">
               {game.description || "Experience this amazing game!"}
             </p>
           </div>
 
-          {/* Bottom store buttons */}
-          <div className="absolute bottom-8 left-0 right-0 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-6">
-            {hasAppStore && (
-              <a
-                href={game.appStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 h-12 px-5 bg-black hover:bg-gray-900 text-white rounded-lg transition-colors min-w-[200px]"
-              >
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                <div className="text-left">
-                  <div className="text-[10px] leading-tight opacity-80">Download on the</div>
-                  <div className="text-sm font-semibold leading-tight">App Store</div>
-                </div>
-              </a>
-            )}
-            {hasPlayStore && (
-              <a
-                href={game.playStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 h-12 px-5 bg-black hover:bg-gray-900 text-white rounded-lg transition-colors min-w-[200px]"
-              >
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/>
-                </svg>
-                <div className="text-left">
-                  <div className="text-[10px] leading-tight opacity-80">Get it on</div>
-                  <div className="text-sm font-semibold leading-tight">Google Play</div>
-                </div>
-              </a>
-            )}
+          {/* Bottom store buttons - rounded pill style */}
+          <div className="absolute bottom-6 sm:bottom-8 left-0 right-0 flex flex-col sm:flex-row items-center justify-center gap-3 px-6 z-10">
+            <a
+              href={game.appStoreUrl || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center gap-2.5 h-11 sm:h-12 px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors min-w-[180px] ${
+                !hasAppStore ? "opacity-50 pointer-events-none" : "hover:bg-gray-900"
+              }`}
+              aria-disabled={!hasAppStore}
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              <div className="text-left">
+                <div className="text-[10px] leading-tight opacity-80">Download on the</div>
+                <div className="text-sm font-semibold leading-tight">App Store</div>
+              </div>
+            </a>
+            <a
+              href={game.playStoreUrl || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center gap-2.5 h-11 sm:h-12 px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors min-w-[180px] ${
+                !hasPlayStore ? "opacity-50 pointer-events-none" : "hover:bg-gray-900"
+              }`}
+              aria-disabled={!hasPlayStore}
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/>
+              </svg>
+              <div className="text-left">
+                <div className="text-[10px] leading-tight opacity-80">GET IT ON</div>
+                <div className="text-sm font-semibold leading-tight">Google Play</div>
+              </div>
+            </a>
           </div>
         </div>
       </DialogContent>
