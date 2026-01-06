@@ -19,7 +19,7 @@ const games: Game[] = [
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.epics",
     appStoreUrl: "https://apps.apple.com/app/lipi-epics/id123456789",
     // TODO: Place modal image at /Assets/Images/games/lipi-epics-modal.png (wider hero image for modal)
-    modalImageUrl: "/Assets/Images/games/lipi-epics-modal.png",
+    modalImageUrl: "/Assets/Images/games/lipi-epics.png",
   },
   {
     id: "lipi-kids",
@@ -33,7 +33,7 @@ const games: Game[] = [
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.kids",
     appStoreUrl: "https://apps.apple.com/app/lipi-kids/id123456790",
     // TODO: Place modal image at /Assets/Images/games/lipi-kids-modal.png (wider hero image for modal)
-    modalImageUrl: "/Assets/Images/games/lipi-kids-modal.png",
+    modalImageUrl: "/Assets/Images/games/lipi-kids.png",
   },
   {
     id: "lipi-brain-booster",
