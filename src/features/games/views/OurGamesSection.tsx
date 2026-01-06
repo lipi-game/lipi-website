@@ -3,12 +3,10 @@ import { Container } from "@/shared/components/Container";
 import { getGameCardsData, type GameCardData } from "../services/GamesManager";
 
 function GameCard({ game, index }: { game: GameCardData; index: number }) {
-  const isEven = index % 2 === 0;
 
   return (
     <article
-      className={`flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-5 rounded-[20px] bg-card ${
-        isEven ? "" : "sm:flex-row-reverse"
+      className={`flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-5 rounded-[20px] bg-card
       }`}
     >
       {/* Game Image */}
@@ -17,7 +15,7 @@ function GameCard({ game, index }: { game: GameCardData; index: number }) {
           <img
             src={game.imageUrl}
             alt={game.imageAlt}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 ease-out hover:scale-[1.08]"
             loading="lazy"
             onError={(e) => {
               // Fallback placeholder on error
@@ -29,8 +27,7 @@ function GameCard({ game, index }: { game: GameCardData; index: number }) {
 
       {/* Game Content */}
       <div
-        className={`flex flex-col justify-center gap-3 sm:gap-4 flex-1 ${
-          isEven ? "sm:text-left" : "sm:text-right"
+        className={`flex flex-col justify-center gap-3 sm:gap-4 flex-1
         }`}
       >
         <h3 className="font-semibold text-lg sm:text-xl lg:text-[22px] text-foreground leading-tight">
@@ -39,11 +36,11 @@ function GameCard({ game, index }: { game: GameCardData; index: number }) {
         <p className="text-sm sm:text-[15px] lg:text-base text-muted-foreground leading-relaxed">
           {game.description}
         </p>
-        <div className={`mt-1 ${isEven ? "" : "sm:self-end"}`}>
+        <div className="mt-1">
           {game.isPlayable ? (
             <Link
               to={game.route || "/games"}
-              className="inline-flex items-center justify-center px-6 py-2 text-sm font-medium rounded-full border-2 border-[#ff7c2b] text-[#ff7c2b] bg-transparent hover:bg-[#ff7c2b]/10 transition-colors"
+              className="inline-flex items-center justify-center w-36 h-11 px-2 text-sm font-medium rounded-full border-2 border-[#118FDD] text-[#118FDD] bg-transparent hover:border-[#FF7C2B] hover:bg-[#FF7C2B] hover:text-white transition-colors"
             >
               {game.ctaLabel}
             </Link>
@@ -91,25 +88,48 @@ export function OurGamesSection() {
 
         {/* Games Grid */}
         <div className="space-y-0">
-          {/* Top Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-            {topRowGames.map((game, index) => (
-              <GameCard key={game.id} game={game} index={index} />
+          {/* ✅ ADD: Mobile/Tablet single column + HR after each except last */}
+          <div className="lg:hidden">
+            {games.map((game, index) => (
+              <div key={game.id}>
+                <GameCard game={game} index={index} />
+
+                {index !== games.length - 1 && (
+                  <div className="my-6 sm:my-8">
+                    <hr className="border-t-2 border-[#118FDD]" />
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
-          {/* Orange Divider */}
-          <div className="my-6 sm:my-8 lg:my-10">
-            <hr className="border-t-2 border-[#ff7c2b]" />
-          </div>
+          {/* ✅ ADD: Wrap your EXISTING desktop layout (NO internal changes) */}
+          <div className="hidden lg:block">
+            {/* Top Row */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+              {topRowGames.map((game, index) => (
+                <GameCard key={game.id} game={game} index={index} />
+              ))}
+            </div>
 
-          {/* Bottom Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-            {bottomRowGames.map((game, index) => (
-              <GameCard key={game.id} game={game} index={index + 2} />
-            ))}
+            {/* Orange Divider */}
+            <div className="my-1 sm:my-1 lg:my-1 ml-6">
+              <div className="grid grid-cols-2 gap-8">
+                <hr className="border-t-2 border-[#118FDD] w-full" />
+                <hr className="ml-2 border-t-2 border-[#118FDD] w-full" />
+              </div>
+            </div>
+
+            {/* Bottom Row */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+              {bottomRowGames.map((game, index) => (
+                <GameCard key={game.id} game={game} index={index + 2} />
+              ))}
+            </div>
           </div>
         </div>
+
+        
       </Container>
     </section>
   );

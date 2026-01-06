@@ -21,33 +21,98 @@ interface TocItem {
   level: number;
 }
 
-function extractToc(html: string): TocItem[] {
-  const regex = /<h([23])[^>]*>(.*?)<\/h[23]>/gi;
-  const items: TocItem[] = [];
-  let match;
-  while ((match = regex.exec(html)) !== null) {
-    const level = parseInt(match[1]);
-    const text = match[2].replace(/<[^>]+>/g, "").trim();
-    if (text) {
-      items.push({ id: slugify(text), text, level });
-    }
-  }
-  return items;
+// function extractToc(html: string): TocItem[] {
+//   const regex = /<h([23])[^>]*>(.*?)<\/h[23]>/gi;
+//   const items: TocItem[] = [];
+//   let match;
+//   while ((match = regex.exec(html)) !== null) {
+//     const level = parseInt(match[1]);
+//     const text = match[2].replace(/<[^>]+>/g, "").trim();
+//     if (text) {
+//       items.push({ id: slugify(text), text, level });
+//     }
+//   }
+//   return items;
+// }
+
+// function addIdsToHeadings(html: string): string {
+//   return html.replace(/<h([23])([^>]*)>(.*?)<\/h([23])>/gi, (match, level, attrs, content) => {
+//     const text = content.replace(/<[^>]+>/g, "").trim();
+//     const id = slugify(text);
+//     return `<h${level}${attrs} id="${id}">${content}</h${level}>`;
+//   });
+// }
+
+function getHeadingText(html: string) {
+  return html.replace(/<[^>]+>/g, "").trim();
+}
+
+function ensureUniqueId(base: string, used: Set<string>) {
+  let id = base || "section";
+  let i = 2;
+  while (used.has(id)) id = `${base}-${i++}`;
+  used.add(id);
+  return id;
 }
 
 function addIdsToHeadings(html: string): string {
-  return html.replace(/<h([23])([^>]*)>(.*?)<\/h([23])>/gi, (match, level, attrs, content) => {
-    const text = content.replace(/<[^>]+>/g, "").trim();
-    const id = slugify(text);
+  const used = new Set<string>();
+
+  return html.replace(/<h([23])([^>]*)>([\s\S]*?)<\/h\1>/gi, (match, level, attrs, content) => {
+    // ✅ If heading already has id, keep it (do NOT add a new one)
+    const idMatch = attrs.match(/\sid=["']([^"']+)["']/i);
+    if (idMatch?.[1]) {
+      used.add(idMatch[1]);
+      return match;
+    }
+
+    const text = getHeadingText(content);
+    const base = slugify(text);
+    const id = ensureUniqueId(base, used);
+
     return `<h${level}${attrs} id="${id}">${content}</h${level}>`;
   });
 }
+
+function extractToc(htmlWithIds: string): TocItem[] {
+  // ✅ Read ids that actually exist in the HTML
+  const regex = /<h([23])[^>]*\sid=["']([^"']+)["'][^>]*>([\s\S]*?)<\/h\1>/gi;
+  const items: TocItem[] = [];
+  let match;
+
+  while ((match = regex.exec(htmlWithIds)) !== null) {
+    const level = Number(match[1]);
+    const id = match[2];
+    const text = getHeadingText(match[3]);
+    if (text) items.push({ id, text, level });
+  }
+
+  return items;
+}
+
+function nlToHtml(raw: string) {
+  const text = raw.replace(/\r\n/g, "\n").trim();
+
+  const paras = text
+    .split("\n\n")               // paragraph delimiter
+    .map((p) => p.trim())
+    .filter(Boolean);
+
+  return `
+    <div class="blog-content">
+      ${paras
+        .map((p) => `<p>${p.split("\n").join("<br />")}</p>`)
+        .join("")}
+    </div>
+  `;
+}
+
 
 // ============= SUB-COMPONENTS =============
 
 function TagChip({ tag }: { tag: string }) {
   return (
-    <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/80 text-gray-700 text-sm font-medium border border-gray-200">
+    <span className="inline-flex items-center px-4 py-1.5 rounded-full text-gray-700 text-sm font-medium border border-[#747474]">
       {tag}
     </span>
   );
@@ -159,7 +224,7 @@ function ShareBox({ title, url }: { title: string; url: string }) {
 function ReadMoreCard({ blog }: { blog: Blog }) {
   return (
     <Link to={`/blogs/${blog.slug}`} className="block group">
-      <article className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
+      <article className="bg-[#FFEDED] rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
         <div className="aspect-[16/10] overflow-hidden">
           {blog.imageUrl ? (
             <img
@@ -198,7 +263,7 @@ function ReadMoreSection({ currentSlug }: { currentSlug: string }) {
 
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900" style={{ fontFamily: "Satoshi, sans-serif" }}>
             Read More Blogs
@@ -223,7 +288,7 @@ function ReadMoreSection({ currentSlug }: { currentSlug: string }) {
 function CtaSection() {
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#e8f4fc] rounded-3xl py-12 px-6 md:px-12 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "Satoshi, sans-serif" }}>
             Ready To Begin Your Mahabharata Learning Journey?
@@ -297,8 +362,18 @@ export function BlogDetailPage() {
     canonical: blog ? `${window.location.origin}/blogs/${blog.slug}` : undefined,
   });
 
-  const tocItems = useMemo(() => (blog ? extractToc(blog.content) : []), [blog]);
-  const processedContent = useMemo(() => (blog ? addIdsToHeadings(blog.content) : ""), [blog]);
+const processedContent = useMemo(() => {
+  if (!blog) return "";
+  const htmlWithParas = nlToHtml(blog.content);
+  return addIdsToHeadings(htmlWithParas);
+}, [blog]);
+
+
+const tocItems = useMemo(
+  () => (processedContent ? extractToc(processedContent) : []),
+  [processedContent]
+);
+
 
   // Track scroll position for TOC highlighting
   useEffect(() => {
@@ -350,7 +425,7 @@ export function BlogDetailPage() {
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Back Button */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-4">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-4">
         <button
           onClick={() => navigate(-1)}
           className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
@@ -361,7 +436,7 @@ export function BlogDetailPage() {
       </div>
 
       {/* Hero Header Card */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="bg-[#f0e6fa] rounded-2xl p-8 md:p-12 text-center">
           {/* Tags */}
           <div className="flex flex-wrap justify-center gap-2 mb-6">
@@ -401,7 +476,7 @@ export function BlogDetailPage() {
       </div>
 
       {/* Two Column Layout */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Sidebar */}
           <aside className="lg:w-64 flex-shrink-0 space-y-6">
@@ -417,13 +492,14 @@ export function BlogDetailPage() {
             <div
               className="bg-white rounded-2xl p-6 md:p-10 prose prose-gray max-w-none
                 prose-headings:font-bold prose-headings:text-gray-900
-                prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4
-                prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
-                prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4
+                prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4
+                prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-3
+                prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-5
                 prose-a:text-[#ff7c2b] prose-a:no-underline hover:prose-a:underline
                 prose-strong:text-gray-900
                 prose-ul:my-4 prose-ul:pl-5 prose-li:text-gray-600 prose-li:mb-2
                 prose-ol:my-4 prose-ol:pl-5"
+                
               style={{ fontFamily: "Satoshi, sans-serif" }}
               dangerouslySetInnerHTML={{ __html: processedContent }}
             />

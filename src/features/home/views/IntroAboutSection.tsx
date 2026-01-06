@@ -23,7 +23,7 @@ function ImageCard({ src, alt, className }: { src: string; alt: string; classNam
       <img
         src={src}
         alt={alt}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover transition-transform duration-300 ease-out hover:scale-[1.01]"
         onError={(e) => {
           e.currentTarget.style.display = "none";
         }}
@@ -102,7 +102,7 @@ function MobileAboutSection() {
 function DesktopAboutSection() {
   return (
     <div className="px-6 md:px-12 lg:px-20 pb-16 md:pb-24 lg:pb-32">
-      <div className="max-w-7xl mx-auto relative min-h-[550px] lg:min-h-[600px]">
+      <div className="max-w-7xl mx-auto relative min-h-[550px] lg:min-h-[720px]">
         {/* Text content - positioned left */}
         <div className="relative z-10 max-w-sm lg:max-w-md pt-4">
           <h3 className="text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.25rem] font-bold text-foreground mb-4 lg:mb-6 tracking-tight">
@@ -150,7 +150,7 @@ function DesktopAboutSection() {
           <ImageCard
             src={aboutImages[0].src}
             alt={aboutImages[0].alt}
-            className="absolute top-[340px] md:top-[380px] lg:top-[420px] left-[60px] md:left-[80px] lg:left-[100px] w-[360px] md:w-[420px] lg:w-[480px] h-[180px] md:h-[200px] lg:h-[220px] z-10 bg-muted pointer-events-auto"
+            className="absolute top-[340px] md:top-[380px] lg:top-[440px] left-[60px] md:left-[80px] lg:left-[160px] w-[360px] md:w-[420px] lg:w-[480px] h-[180px] md:h-[200px] lg:h-[330px] z-10 bg-muted pointer-events-auto"
           />
         </div>
       </div>

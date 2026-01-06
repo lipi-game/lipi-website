@@ -425,33 +425,32 @@ function AdvisorsSection() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
           {advisors.map((advisor) => (
             <button
-              key={advisor.id}
-              className="flex flex-col items-center cursor-pointer group text-center focus:outline-none focus:ring-2 focus:ring-[#ff7c2b] focus:ring-offset-2 rounded-lg p-2"
-              onClick={() => setSelectedAdvisor(advisor)}
-              aria-label={`View ${advisor.name}'s profile`}
-            >
-              <div
-                className="w-24 h-24 md:w-28 md:h-28 rounded-full p-1 mb-2"
-                style={{ backgroundColor: advisor.avatarBg }}
+                key={advisor.id}
+                className="flex flex-col items-center text-center rounded-lg p-2"
+                onClick={() => setSelectedAdvisor(advisor)}
+                aria-label={`View ${advisor.name}'s profile`}
               >
-                {/* Place advisor images at /public/about/advisors/*.jpg */}
-                <div className="w-full h-full rounded-full overflow-hidden bg-muted">
+                {/* Avatar */}
+                <div className="w-[169.5px] h-[169.5px] rounded-full overflow-hidden bg-muted">
                   <img
                     src={advisor.imageUrl}
                     alt={advisor.name}
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.style.display = "none";
                     }}
                   />
                 </div>
-              </div>
-              <h3 className="font-semibold text-xs md:text-sm text-foreground">
-                {advisor.name}
-              </h3>
-              <p className="text-[10px] md:text-xs text-muted-foreground mt-0.5">
-                {advisor.role}
-              </p>
+
+                {/* Name + Role (always below image, centered) */}
+                <div className="mt-3 w-full">
+                  <h3 className="font-semibold text-xs md:text-sm text-foreground text-center">
+                    {advisor.name}
+                  </h3>
+                  <p className="text-[10px] md:text-xs text-muted-foreground mt-1 text-center">
+                    {advisor.role}
+                  </p>
+                </div>
             </button>
           ))}
         </div>
@@ -460,7 +459,8 @@ function AdvisorsSection() {
       {/* Advisor Modal */}
       <Dialog open={!!selectedAdvisor} onOpenChange={() => setSelectedAdvisor(null)}>
         <DialogContent 
-          className="max-w-3xl rounded-[24px] p-0 overflow-hidden border-0 [&>button]:hidden"
+          // className="max-w-3xl rounded-[24px] p-0 overflow-hidden border-0 [&>button]:hidden"
+          className="max-w-[1100px] w-[calc(100vw-40px)] rounded-[32px] p-0 border-0 overflow-hidden [&>button]:hidden"
           aria-describedby="advisor-bio"
         >
           <DialogTitle className="sr-only">
@@ -470,13 +470,13 @@ function AdvisorsSection() {
           {selectedAdvisor && (
             <div className="relative p-6 md:p-8">
               {/* Top right controls */}
-              <div className="absolute top-4 right-4 flex items-center gap-2">
+              <div className="absolute top-6 right-6 flex items-center gap-2">
                 {selectedAdvisor.linkedinUrl && (
                   <a
                     href={selectedAdvisor.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-lg bg-[#0077B5] flex items-center justify-center text-white hover:bg-[#005885] transition-colors"
+                    className="w-9 h-9 rounded-sm bg-[#0077B5] flex items-center justify-center text-white hover:bg-[#005885] transition-colors"
                     aria-label="LinkedIn profile"
                   >
                     <Linkedin className="w-4 h-4" />
@@ -491,12 +491,11 @@ function AdvisorsSection() {
                 </button>
               </div>
               
-              <div className="flex flex-col md:flex-row gap-6 mt-4 md:mt-0">
+              <div className="flex flex-col md:flex-row gap-6">
                 {/* Left column - Avatar and info */}
                 <div className="flex flex-col items-center shrink-0 md:w-44">
                   <div
                     className="w-32 h-32 md:w-36 md:h-36 rounded-full p-1 mx-auto md:mx-0"
-                    style={{ backgroundColor: selectedAdvisor.avatarBg }}
                   >
                     <img
                       src={selectedAdvisor.imageUrl}
@@ -513,7 +512,7 @@ function AdvisorsSection() {
                 </div>
                 
                 {/* Right column - Bio */}
-                <div id="advisor-bio" className="flex-1 max-h-[350px] overflow-y-auto pr-2">
+                <div id="advisor-bio" className="flex-1 mt-9">
                   {selectedAdvisor.bio.map((paragraph, index) => (
                     <p key={index} className="text-muted-foreground leading-relaxed text-[13px] md:text-[14px] mb-3 last:mb-0">
                       {paragraph}
@@ -549,12 +548,12 @@ function ReferencesSection() {
             {/* Left Card - Advisory */}
             <div className="relative">
               <div 
-                className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px]"
-                style={{ backgroundColor: "#8B6914" }}
+                className="absolute inset-0 translate-x-2 translate-y-2"
+                style={{ backgroundColor: "#715B38" }}
               />
               <div 
-                className="relative rounded-[14px] p-5 md:p-6 h-full min-h-[120px]"
-                style={{ backgroundColor: "#A67C00" }}
+                className="relative p-5 md:p-6 h-full min-h-[120px]"
+                style={{ backgroundColor: "#B9965D" }}
               >
                 <h3 className="text-sm md:text-base font-bold text-white mb-3">
                   {references.advisoryTitle}
@@ -572,12 +571,12 @@ function ReferencesSection() {
             {/* Right Card - References */}
             <div className="relative">
               <div 
-                className="absolute inset-0 translate-x-2 translate-y-2 rounded-[14px]"
-                style={{ backgroundColor: "#1A3A5C" }}
+                className="absolute inset-0 translate-x-2 translate-y-2"
+                style={{ backgroundColor: "#0E238B" }}
               />
               <div 
-                className="relative rounded-[14px] p-5 md:p-6 h-full min-h-[120px]"
-                style={{ backgroundColor: "#2D5A87" }}
+                className="relative p-5 md:p-6 h-full min-h-[120px]"
+                style={{ backgroundColor: "#4758AC" }}
               >
                 <h3 className="text-sm md:text-base font-bold text-white mb-3">
                   {references.referencesTitle}
