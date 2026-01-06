@@ -292,37 +292,42 @@ function ExpertCard({
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-      {/* Play Button */}
-      <AnimatePresence>
-        {!isPlaying && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            onClick={onPlayToggle}
-            className="absolute bottom-24 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg hover:bg-white transition-colors"
-            aria-label="Play video"
-          >
-            <Play className="w-6 h-6 text-gray-900 ml-1" fill="currentColor" />
-          </motion.button>
-        )}
-      </AnimatePresence>
+      {/* Footer: Name/Role (left) + Play Button (right) */}
+      <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-2">
+        {/* Name and Role */}
+        <div className="min-w-0">
+          <h3 className="text-white font-semibold text-lg leading-tight">{expert.name}</h3>
+          <p className="text-white/80 text-sm">{expert.role}</p>
+        </div>
 
-      {/* Pause button overlay when playing */}
-      {isPlaying && (
-        <button
-          onClick={onPlayToggle}
-          className="absolute bottom-24 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-white/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
-          aria-label="Pause video"
-        >
-          <Pause className="w-6 h-6 text-white" fill="currentColor" />
-        </button>
-      )}
-
-      {/* Name and Role Overlay */}
-      <div className="absolute bottom-4 left-4 right-4">
-        <h3 className="text-white font-semibold text-lg">{expert.name}</h3>
-        <p className="text-white/80 text-sm">{expert.role}</p>
+        {/* Play/Pause Button */}
+        <AnimatePresence mode="wait">
+          {!isPlaying ? (
+            <motion.button
+              key="play"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              onClick={onPlayToggle}
+              className="flex-shrink-0 w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg hover:bg-white transition-colors"
+              aria-label="Play video"
+            >
+              <Play className="w-5 h-5 text-gray-900 ml-0.5" fill="currentColor" />
+            </motion.button>
+          ) : (
+            <motion.button
+              key="pause"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              onClick={onPlayToggle}
+              className="flex-shrink-0 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 flex items-center justify-center transition-colors"
+              aria-label="Pause video"
+            >
+              <Pause className="w-5 h-5 text-white" fill="currentColor" />
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
