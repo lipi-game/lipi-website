@@ -29,7 +29,7 @@ export function InstallCtaSection() {
     <section
       aria-labelledby="install-cta-heading"
       className="py-16 md:py-24 px-4 bg-white"
-      style={{ backgroundColor: "#ffffff"}}
+      style={{ backgroundColor: "#ffffff" }}
     >
       <h2 id="install-cta-heading" className="sr-only">
         Install Lipi Games
@@ -37,9 +37,7 @@ export function InstallCtaSection() {
 
       <div className="mx-auto w-full max-w-[1280px]">
         {/* Main CTA Card */}
-        <div
-          className="relative w-full h-auto md:h-[744px] rounded-[32px] md:rounded-[52px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.12)]"
-        >
+        <div className="relative w-full h-auto md:h-[744px] rounded-[32px] md:rounded-[52px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.12)]">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -47,15 +45,34 @@ export function InstallCtaSection() {
               backgroundImage: selectedGame?.bannerImage
                 ? `url(${selectedGame.bannerImage})`
                 : undefined,
-              backgroundColor: selectedGame?.bannerImage ? undefined : "#e5e7eb",
+              backgroundColor: selectedGame?.bannerImage
+                ? undefined
+                : "#e5e7eb",
             }}
           />
+          <div className="absolute inset-0 z-[5] pointer-events-none flex justify-center">
+            <img
+              src={"/Assets/Images/phone.png"}
+              alt=""
+              aria-hidden="true"
+              className="absolute left-[10%] md:left-[20%] bottom-[140px] md:bottom-[180px]
+               w-[140px] sm:w-[170px] md:w-[210px] lg:w-[240px]
+               h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
+            />
 
+            <img
+              src={"/Assets/Images/tab.png"}
+              alt=""
+              aria-hidden="true"
+              className="absolute left-[30%] md:left-[42%] bottom-[95px] md:bottom-[220px]
+               w-[280px] sm:w-[360px] md:w-[460px] lg:w-[560px]
+               h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
+            />
+          </div>
           {/* Content Overlay */}
           <div className="relative z-10 flex flex-col justify-end h-full min-h-[480px] md:min-h-full">
             {/* Bottom Content Area */}
-            <div className="bg-gradient-to-t from-white/95 via-white/85 to-transparent pt-20 pb-8 md:pb-12 px-6 md:px-12">
-
+            <div className="pt-20 pb-8 md:pb-12 px-6 md:px-12">
               {/* Caption */}
               <p className="text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-6">
                 Pick a game. Install in seconds.
@@ -65,7 +82,9 @@ export function InstallCtaSection() {
               <div className="flex justify-center items-center gap-4">
                 <StoreButton
                   href={selectedGame?.appStoreUrl}
-                  label={`Download ${selectedGame?.name || "game"} on App Store`}
+                  label={`Download ${
+                    selectedGame?.name || "game"
+                  } on App Store`}
                   icon="apple"
                 />
                 <StoreButton
