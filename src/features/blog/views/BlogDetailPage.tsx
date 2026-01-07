@@ -313,15 +313,18 @@ function CtaSection() {
             Learning Tools Available In English And Indian Languages.
           </p>
 
-          {/* Device images placeholder */}
-          {/* NOTE: Place device images at /public/cta/phone.png and /public/cta/tablet.png */}
-          <div className="flex justify-center items-end gap-4 mb-8">
-            <div className="w-32 md:w-40 h-56 md:h-72 bg-gray-200 rounded-2xl shadow-lg flex items-center justify-center text-gray-400 text-xs">
-              Phone
-            </div>
-            <div className="w-48 md:w-64 h-40 md:h-52 bg-gray-200 rounded-2xl shadow-lg flex items-center justify-center text-gray-400 text-xs">
-              Tablet
-            </div>
+          {/* Device mockup images */}
+          <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-6 mb-8 px-2">
+            <img
+              src="/Assets/Images/phone.png"
+              alt="Lipi app on phone"
+              className="w-24 sm:w-32 md:w-40 lg:w-48 h-auto object-contain"
+            />
+            <img
+              src="/Assets/Images/tab.png"
+              alt="Lipi app on tablet"
+              className="w-40 sm:w-52 md:w-72 lg:w-96 h-auto object-contain"
+            />
           </div>
 
           <p className="text-gray-600 text-sm mb-6">
