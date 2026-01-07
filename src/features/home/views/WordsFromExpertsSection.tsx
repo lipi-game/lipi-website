@@ -6,8 +6,7 @@ import type { Expert } from "../types/expert";
 
 export function WordsFromExpertsSection() {
   const experts = ExpertsRepository.getAll();
-  const totalSlides = experts.length;
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [playingId, setPlayingId] = useState<string | null>(null);
   const [isInView, setIsInView] = useState(false);
   const [visibleCards, setVisibleCards] = useState(3);
@@ -31,6 +30,16 @@ export function WordsFromExpertsSection() {
     return () => window.removeEventListener("resize", updateVisibleCards);
   }, []);
 
+  // Calculate total pages based on visible cards
+  const totalPages = Math.ceil(experts.length / visibleCards);
+
+  // Clamp currentPage if visibleCards changes and page is out of bounds
+  useEffect(() => {
+    if (currentPage >= totalPages) {
+      setCurrentPage(Math.max(0, totalPages - 1));
+    }
+  }, [totalPages, currentPage]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsInView(entry.isIntersecting),
@@ -43,24 +52,24 @@ export function WordsFromExpertsSection() {
   useEffect(() => {
     if (isInView && !playingId) {
       autoPlayRef.current = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % totalSlides);
+        setCurrentPage((prev) => (prev + 1) % totalPages);
       }, 4000);
     }
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
-  }, [isInView, playingId, totalSlides]);
+  }, [isInView, playingId, totalPages]);
 
   const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-  }, [totalSlides]);
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  }, [totalPages]);
 
   const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % totalSlides);
-  }, [totalSlides]);
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  }, [totalPages]);
 
   const handleDotClick = useCallback((index: number) => {
-    setCurrentIndex(index);
+    setCurrentPage(index);
   }, []);
 
   const handlePlayToggle = useCallback(
@@ -109,8 +118,10 @@ export function WordsFromExpertsSection() {
   const { width: cardWidth, height: cardHeight } = getCardDimensions();
   const gap = 24;
 
-  // Calculate translateX to center the current card
-  const translateX = -(currentIndex * (cardWidth + gap));
+  // Calculate the first card index for the current page
+  const firstCardIndex = currentPage * visibleCards;
+  // Calculate translateX based on page position
+  const translateX = -(firstCardIndex * (cardWidth + gap));
 
   return (
     <section
@@ -150,21 +161,21 @@ export function WordsFromExpertsSection() {
           }}
         />
 
-        {/* Navigation Arrows - hidden on mobile */}
+        {/* Navigation Arrows - visible on all screens */}
         <button
           onClick={handlePrev}
-          className="absolute left-4 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border border-black/10 shadow-sm hover:shadow-md items-center justify-center hover:bg-white transition-all hidden md:flex"
+          className="absolute left-2 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 rounded-full bg-white border border-black/10 shadow-sm hover:shadow-md flex items-center justify-center hover:bg-white transition-all"
           aria-label="Previous"
         >
-          <ChevronLeft className="w-6 h-6 text-foreground" />
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
         </button>
 
         <button
           onClick={handleNext}
-          className="absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border border-black/10 shadow-sm hover:shadow-md items-center justify-center hover:bg-white transition-all hidden md:flex"
+          className="absolute right-2 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 rounded-full bg-white border border-black/10 shadow-sm hover:shadow-md flex items-center justify-center hover:bg-white transition-all"
           aria-label="Next"
         >
-          <ChevronRight className="w-6 h-6 text-foreground" />
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
         </button>
 
         {/* Cards Track Container */}
@@ -184,7 +195,9 @@ export function WordsFromExpertsSection() {
             }}
           >
             {experts.map((expert, index) => {
-              const isActive = index === currentIndex;
+              // Active card is the center of current page view
+              const pageStartIndex = currentPage * visibleCards;
+              const isActive = index >= pageStartIndex && index < pageStartIndex + visibleCards;
 
               return (
                 <ExpertCard
@@ -204,22 +217,22 @@ export function WordsFromExpertsSection() {
             })}
           </motion.div>
         </div>
+      </div>
 
-        {/* Pagination Dots */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {experts.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleDotClick(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                index === currentIndex
-                  ? "bg-foreground"
-                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
+      {/* Pagination Dots - below the carousel */}
+      <div className="flex justify-center gap-2 mt-6">
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleDotClick(index)}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${
+              index === currentPage
+                ? "bg-foreground"
+                : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+            }`}
+            aria-label={`Go to page ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
