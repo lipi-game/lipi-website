@@ -6,10 +6,17 @@ import { AboutPage } from "@/features/about";
 import { BlogsPage, BlogDetailPage } from "@/features/blog";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/NotFound";
+import { useScrollToTop } from "@/shared/hooks/useScrollToTop";
+
+function ScrollToTop() {
+  useScrollToTop();
+  return null;
+}
 
 export function AppRouter() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-1">
