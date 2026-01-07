@@ -97,7 +97,7 @@ export function Navbar() {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetContent
             side="right"
-            className="w-screen max-w-none h-screen bg-black/95 backdrop-blur-md border-none p-0"
+            className="w-screen max-w-none h-screen bg-[#118fdd]/95 backdrop-blur-md border-none p-0"
           >
             <VisuallyHidden.Root>
               <SheetTitle>Navigation Menu</SheetTitle>
