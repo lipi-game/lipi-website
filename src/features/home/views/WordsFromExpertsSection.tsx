@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { ExpertsRepository } from "../services/ExpertsRepository";
@@ -6,11 +6,13 @@ import type { Expert } from "../types/expert";
 
 export function WordsFromExpertsSection() {
   const experts = ExpertsRepository.getAll();
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [playingId, setPlayingId] = useState<string | null>(null);
   const [isInView, setIsInView] = useState(false);
   const [visibleCards, setVisibleCards] = useState(3);
+  const [viewportWidth, setViewportWidth] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Map<string, HTMLVideoElement>>(new Map());
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -30,28 +32,31 @@ export function WordsFromExpertsSection() {
     return () => window.removeEventListener("resize", updateVisibleCards);
   }, []);
 
-  const pageStarts = (() => {
-  const starts: number[] = [];
-  const maxStart = Math.max(0, experts.length - visibleCards);
-
-  for (let s = 0; s < maxStart; s += visibleCards) starts.push(s);
-  if (starts.length === 0 || starts[starts.length - 1] !== maxStart) starts.push(maxStart);
-
-  return starts;
-})();
-
-  // Calculate total pages based on visible cards
-  const totalPages = Math.ceil(experts.length / visibleCards);
-
-
-  
-
-  // Clamp currentPage if visibleCards changes and page is out of bounds
+  // ResizeObserver for viewport width
   useEffect(() => {
-    if (currentPage >= totalPages) {
-      setCurrentPage(Math.max(0, totalPages - 1));
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setViewportWidth(entry.contentRect.width);
+      }
+    });
+
+    observer.observe(viewport);
+    return () => observer.disconnect();
+  }, []);
+
+  // maxStart: last valid start index where all visible cards are real
+  const maxStart = useMemo(() => Math.max(0, experts.length - visibleCards), [experts.length, visibleCards]);
+  const totalDots = maxStart + 1;
+
+  // Clamp currentIndex if visibleCards changes and index is out of bounds
+  useEffect(() => {
+    if (currentIndex > maxStart) {
+      setCurrentIndex(maxStart);
     }
-  }, [totalPages, currentPage]);
+  }, [maxStart, currentIndex]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,27 +67,28 @@ export function WordsFromExpertsSection() {
     return () => observer.disconnect();
   }, []);
 
+  // Autoplay advances 1 card at a time
   useEffect(() => {
     if (isInView && !playingId) {
       autoPlayRef.current = setInterval(() => {
-        setCurrentPage((prev) => (prev + 1) % totalPages);
-      }, 4000);
+        setCurrentIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
+      }, 2000);
     }
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
-  }, [isInView, playingId, totalPages]);
+  }, [isInView, playingId, maxStart]);
 
   const handlePrev = useCallback(() => {
-    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
-  }, [totalPages]);
+    setCurrentIndex((prev) => (prev <= 0 ? maxStart : prev - 1));
+  }, [maxStart]);
 
   const handleNext = useCallback(() => {
-    setCurrentPage((prev) => (prev + 1) % totalPages);
-  }, [totalPages]);
+    setCurrentIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
+  }, [maxStart]);
 
   const handleDotClick = useCallback((index: number) => {
-    setCurrentPage(index);
+    setCurrentIndex(index);
   }, []);
 
   const handlePlayToggle = useCallback(
@@ -131,24 +137,22 @@ export function WordsFromExpertsSection() {
   const { width: cardWidth, height: cardHeight } = getCardDimensions();
   const gap = 24;
 
-  // // Calculate the first card index for the current page
-  // const firstCardIndex = currentPage * visibleCards;
-  // // Calculate translateX based on page position
-  // const translateX = -(firstCardIndex * (cardWidth + gap));
+  // Compute translateX with centering + clamping (no blank space)
+  const translateX = useMemo(() => {
+    if (experts.length === 0 || viewportWidth === 0) return 0;
 
-  // const totalPages = Math.ceil(experts.length / visibleCards);
+    const step = cardWidth + gap;
+    const trackWidth = experts.length * cardWidth + (experts.length - 1) * gap;
+    const groupWidth = visibleCards * cardWidth + (visibleCards - 1) * gap;
+    const centerOffset = Math.max(0, (viewportWidth - groupWidth) / 2);
+    const rawX = centerOffset - currentIndex * step;
 
-  const maxStartIndex = Math.max(0, experts.length - visibleCards);
-  const startIndex = Math.min(currentPage * visibleCards, maxStartIndex);
+    // Clamp bounds
+    const minX = Math.min(0, viewportWidth - trackWidth);
+    const maxX = 0;
 
-  const translateX = -(startIndex * (cardWidth + gap));
-
-  const groupWidth = cardWidth * visibleCards + gap * (visibleCards - 1);
-  const sidePadding = `calc(50% - ${groupWidth / 2}px)`;
-
-
-
-  console.log('Rendering WordsFromExpertsSection: ', { currentPage, visibleCards, translateX });
+    return Math.max(minX, Math.min(maxX, rawX));
+  }, [experts.length, viewportWidth, visibleCards, currentIndex, cardWidth, gap]);
 
   return (
     <section
@@ -206,29 +210,20 @@ export function WordsFromExpertsSection() {
         </button>
 
         {/* Cards Track Container */}
-        <div className="h-full flex items-center overflow-hidden">
+        <div ref={viewportRef} className="h-full flex items-center overflow-hidden">
           <motion.div
             className="flex"
-            style={{
-              gap,
-              paddingLeft: sidePadding,
-              paddingRight: sidePadding,
-              // paddingLeft: visibleCards === 1 ? `calc(50% - ${cardWidth / 2}px)` : `calc(50% - ${(cardWidth * visibleCards + gap * (visibleCards - 1)) / 2}px)`,
-            }}
+            style={{ gap }}
             animate={{ x: translateX }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 30,
-              duration: prefersReducedMotion ? 0 : 0.5,
-            }}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0 }
+                : { type: "tween", duration: 0.5, ease: "easeInOut" }
+            }
           >
             {experts.map((expert, index) => {
-              // Active card is the center of current page view
-              const pageStartIndex = currentPage * visibleCards;
-              // const isActive = index >= pageStartIndex && index < pageStartIndex + visibleCards;
-              const isActive = index >= startIndex && index < startIndex + visibleCards;
-
+              // Active card is within current visible window
+              const isActive = index >= currentIndex && index < currentIndex + visibleCards;
 
               return (
                 <ExpertCard
@@ -252,15 +247,16 @@ export function WordsFromExpertsSection() {
 
       {/* Pagination Dots - below the carousel */}
       <div className="flex justify-center gap-2 mt-6">
-        {Array.from({ length: totalPages }).map((_, index) => (
+        {Array.from({ length: totalDots }).map((_, index) => (
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            className={`w-2.5 h-2.5 rounded-full transition-colors ${index === currentPage
-              ? "bg-foreground"
-              : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-              }`}
-            aria-label={`Go to page ${index + 1}`}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${
+              index === currentIndex
+                ? "bg-foreground"
+                : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
