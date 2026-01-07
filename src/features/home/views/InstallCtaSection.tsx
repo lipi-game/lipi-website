@@ -85,12 +85,12 @@ export function InstallCtaSection() {
               </div>
 
               {/* Store Buttons */}
-              <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 z-10">
+              <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 z-10">
                 <a
                   href={game.appStoreUrl || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center justify-center gap-2 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-4 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-full sm:w-auto min-w-[160px] sm:min-w-[180px] ${
+                  className={`inline-flex items-center justify-center gap-1.5 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-3 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-[140px] sm:w-[170px] md:w-[190px] shrink-0 ${
                     !game.appStoreUrl
                       ? "opacity-50 pointer-events-none"
                       : "hover:bg-gray-900"
@@ -117,7 +117,7 @@ export function InstallCtaSection() {
                   href={game.playStoreUrl || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center justify-center gap-2 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-4 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-full sm:w-auto min-w-[160px] sm:min-w-[180px] ${
+                  className={`inline-flex items-center justify-center gap-1.5 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-3 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-[140px] sm:w-[170px] md:w-[190px] shrink-0 ${
                     !game.playStoreUrl
                       ? "opacity-50 pointer-events-none"
                       : "hover:bg-gray-900"
