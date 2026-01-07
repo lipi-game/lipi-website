@@ -45,7 +45,7 @@ export function InstallCtaSection() {
                 : "#e5e7eb",
             }}
           />
-          
+
           {/* Device Mockups - Responsive */}
           <div className="absolute inset-0 z-[5] pointer-events-none">
             {/* Phone */}
@@ -53,10 +53,12 @@ export function InstallCtaSection() {
               src={"/Assets/Images/phone.png"}
               alt=""
               aria-hidden="true"
-              className="absolute left-[5%] sm:left-[10%] md:left-[20%] bottom-[120px] sm:bottom-[140px] md:bottom-[180px]
-               w-[100px] sm:w-[140px] md:w-[210px] lg:w-[240px]
-               max-w-[25vw] md:max-w-none
-               h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
+              className="absolute left-[6%] bottom-[140px]
+  md:left-[4%] md:bottom-[160px]
+  lg:left-[18%] lg:bottom-[180px]
+  w-[100px] sm:w-[140px] md:w-[210px] lg:w-[240px]
+  max-w-[25vw] md:max-w-none
+  h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
             />
 
             {/* Tablet */}
@@ -64,13 +66,15 @@ export function InstallCtaSection() {
               src={"/Assets/Images/tab.png"}
               alt=""
               aria-hidden="true"
-              className="absolute left-[25%] sm:left-[30%] md:left-[42%] bottom-[80px] sm:bottom-[95px] md:bottom-[220px]
-               w-[200px] sm:w-[280px] md:w-[460px] lg:w-[560px]
-               max-w-[55vw] md:max-w-none
-               h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
+              className="absolute left-[36%] bottom-[180px]
+  md:left-[34%] md:bottom-[220px]
+  lg:left-[42%] lg:bottom-[220px]
+  w-[200px] sm:w-[280px] md:w-[460px] lg:w-[560px]
+  max-w-[55vw] md:max-w-none
+  h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
             />
           </div>
-          
+
           {/* Content Overlay */}
           <div className="relative z-10 flex flex-col justify-end h-full min-h-[400px] sm:min-h-[500px] md:min-h-full">
             {/* Bottom Content Area */}
@@ -87,16 +91,26 @@ export function InstallCtaSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center gap-2 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-4 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-full sm:w-auto min-w-[160px] sm:min-w-[180px] ${
-                    !game.appStoreUrl ? "opacity-50 pointer-events-none" : "hover:bg-gray-900"
+                    !game.appStoreUrl
+                      ? "opacity-50 pointer-events-none"
+                      : "hover:bg-gray-900"
                   }`}
                   aria-disabled={!game.appStoreUrl}
                 >
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  <svg
+                    className="w-4 h-4 sm:w-5 sm:h-5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                   </svg>
                   <div className="text-left">
-                    <div className="text-[9px] sm:text-[10px] leading-tight opacity-80">Download on the</div>
-                    <div className="text-xs sm:text-sm font-semibold leading-tight">App Store</div>
+                    <div className="text-[9px] sm:text-[10px] leading-tight opacity-80">
+                      Download on the
+                    </div>
+                    <div className="text-xs sm:text-sm font-semibold leading-tight">
+                      App Store
+                    </div>
                   </div>
                 </a>
                 <a
@@ -104,16 +118,26 @@ export function InstallCtaSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center gap-2 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-4 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-full sm:w-auto min-w-[160px] sm:min-w-[180px] ${
-                    !game.playStoreUrl ? "opacity-50 pointer-events-none" : "hover:bg-gray-900"
+                    !game.playStoreUrl
+                      ? "opacity-50 pointer-events-none"
+                      : "hover:bg-gray-900"
                   }`}
                   aria-disabled={!game.playStoreUrl}
                 >
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/>
+                  <svg
+                    className="w-4 h-4 sm:w-5 sm:h-5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z" />
                   </svg>
                   <div className="text-left">
-                    <div className="text-[9px] sm:text-[10px] leading-tight opacity-80">GET IT ON</div>
-                    <div className="text-xs sm:text-sm font-semibold leading-tight">Google Play</div>
+                    <div className="text-[9px] sm:text-[10px] leading-tight opacity-80">
+                      GET IT ON
+                    </div>
+                    <div className="text-xs sm:text-sm font-semibold leading-tight">
+                      Google Play
+                    </div>
                   </div>
                 </a>
               </div>
