@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Clock, Gamepad2 } from "lucide-react";
-import { getFeaturedBlog, getSecondaryBlogs } from "../services/BlogManager";
+import { getFeaturedBlog, getSecondaryBlogs, getAllBlogsSorted } from "../services/BlogManager";
 import type { Blog } from "../types/blog";
+import { useRef, useState, useEffect } from "react";
 
 function CategoryChip({ category }: { category: string }) {
   return (
@@ -110,8 +111,36 @@ function SecondaryCard({ blog }: { blog: Blog }) {
 }
 
 export function LatestBlogsSection() {
+  const allBlogs = getAllBlogsSorted();
   const featured = getFeaturedBlog();
   const secondary = getSecondaryBlogs();
+  
+  // Mobile carousel state
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Track active dot on scroll
+  useEffect(() => {
+    const container = carouselRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = container.offsetWidth;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(newIndex);
+    };
+
+    container.addEventListener("scroll", handleScroll, { passive: true });
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Scroll to specific slide when dot is clicked
+  const scrollToSlide = (index: number) => {
+    const container = carouselRef.current;
+    if (!container) return;
+    container.scrollTo({ left: index * container.offsetWidth, behavior: "smooth" });
+  };
 
   if (!featured) return null;
 
@@ -140,30 +169,95 @@ export function LatestBlogsSection() {
           </Link>
         </div>
 
-        {/* Featured Card */}
-        <div className="mb-6">
-          <FeaturedCard blog={featured} />
-        </div>
-
-        {/* Secondary Cards - Mobile: horizontal swipe, Desktop: grid */}
-        {/* Mobile swipe carousel */}
-        <div className="md:hidden -mx-4 px-4">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-            {secondary.map((blog) => (
-              <div key={blog.id} className="snap-center shrink-0 w-[85vw] max-w-[320px]">
-                <SecondaryCard blog={blog} />
+        {/* Mobile: Single blog card swipe carousel with ALL blogs */}
+        <div className="md:hidden">
+          <div
+            ref={carouselRef}
+            className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {allBlogs.map((blog) => (
+              <div key={blog.id} className="w-full shrink-0 snap-center px-2">
+                <MobileCard blog={blog} />
               </div>
             ))}
           </div>
+          
+          {/* Pagination dots */}
+          <div className="flex justify-center gap-2 mt-4">
+            {allBlogs.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === activeIndex ? "bg-gray-800" : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
+
         </div>
 
-        {/* Desktop/Tablet grid */}
-        <div className="hidden md:grid md:grid-cols-2 gap-6">
-          {secondary.map((blog) => (
-            <SecondaryCard key={blog.id} blog={blog} />
-          ))}
+        {/* Desktop/Tablet: Featured + Secondary grid */}
+        <div className="hidden md:block">
+          {/* Featured Card */}
+          <div className="mb-6">
+            <FeaturedCard blog={featured} />
+          </div>
+
+          {/* Secondary Cards grid */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {secondary.map((blog) => (
+              <SecondaryCard key={blog.id} blog={blog} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+// Mobile-specific card (matches screenshot style)
+function MobileCard({ blog }: { blog: Blog }) {
+  return (
+    <Link to={`/blogs/${blog.slug}`} className="block group">
+      <article className="bg-[#f0e6fa] rounded-[24px] overflow-hidden">
+        {/* Image */}
+        <div className="p-4 pb-0">
+          <div className="aspect-square rounded-[20px] overflow-hidden">
+            {blog.imageUrl ? (
+              <img
+                src={blog.imageUrl}
+                alt={blog.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <div className="w-full h-full bg-muted flex items-center justify-center rounded-[20px]">
+                <span className="text-muted-foreground">No image</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-4 pt-3">
+          <div className="flex flex-wrap gap-2 mb-3">
+            <CategoryChip category={blog.category} />
+            <ReadTimeChip readTime={blog.readTime} />
+          </div>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight group-hover:text-[#ff7c2b] transition-colors">
+            {blog.title}
+          </h3>
+
+          <p className="text-sm text-gray-600 mb-2">{blog.author}</p>
+
+          <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+            {blog.excerpt}
+          </p>
+        </div>
+      </article>
+    </Link>
   );
 }
