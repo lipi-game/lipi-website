@@ -145,8 +145,20 @@ export function LatestBlogsSection() {
           <FeaturedCard blog={featured} />
         </div>
 
-        {/* Secondary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Secondary Cards - Mobile: horizontal swipe, Desktop: grid */}
+        {/* Mobile swipe carousel */}
+        <div className="md:hidden -mx-4 px-4">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            {secondary.map((blog) => (
+              <div key={blog.id} className="snap-center shrink-0 w-[85vw] max-w-[320px]">
+                <SecondaryCard blog={blog} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop/Tablet grid */}
+        <div className="hidden md:grid md:grid-cols-2 gap-6">
           {secondary.map((blog) => (
             <SecondaryCard key={blog.id} blog={blog} />
           ))}
