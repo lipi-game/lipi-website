@@ -118,10 +118,10 @@ export function LatestBlogsSection() {
   return (
     <section
       aria-labelledby="latest-blogs-heading"
-      className="py-16 md:py-20 lg:py-24 bg-white"
+      className="py-4 md:py-6 lg:py-8 bg-white"
       style={{ backgroundColor: "#ffffff" }}
     >
-      <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 md:mb-10">
           <h2
@@ -145,8 +145,20 @@ export function LatestBlogsSection() {
           <FeaturedCard blog={featured} />
         </div>
 
-        {/* Secondary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Secondary Cards - Mobile: horizontal swipe, Desktop: grid */}
+        {/* Mobile swipe carousel */}
+        <div className="md:hidden -mx-4 px-4">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            {secondary.map((blog) => (
+              <div key={blog.id} className="snap-center shrink-0 w-[85vw] max-w-[320px]">
+                <SecondaryCard blog={blog} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop/Tablet grid */}
+        <div className="hidden md:grid md:grid-cols-2 gap-6">
           {secondary.map((blog) => (
             <SecondaryCard key={blog.id} blog={blog} />
           ))}

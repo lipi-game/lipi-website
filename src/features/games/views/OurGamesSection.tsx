@@ -48,7 +48,7 @@ function GameCard({
           {game.isPlayable ? (
             <button
               onClick={() => onPlay(game)}
-              className="inline-flex items-center justify-center w-36 h-11 px-2 text-sm font-medium rounded-full border-2 border-[#118FDD] text-[#118FDD] bg-transparent hover:border-[#FF7C2B] hover:bg-[#FF7C2B] hover:text-white transition-colors"
+              className="inline-flex items-center justify-center w-36 h-11 px-2 text-sm font-medium rounded-full border-2 border-[#118FDD] text-[#118FDD] bg-transparent hover:border-[#118FDD] hover:bg-[#118FDD] hover:text-white transition-colors"
             >
               {game.ctaLabel}
             </button>
@@ -102,13 +102,7 @@ function GamePlayModal({
           <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-black/45" />
 
           {/* Close button - top right */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 z-10 h-10 w-10 rounded-full bg-black/35 hover:bg-black/50 flex items-center justify-center transition-colors border border-white/30"
-            aria-label="Close modal"
-          >
-            <X className="w-5 h-5 text-white" />
-          </button>
+          
 
           {/* Top content - title & subtitle */}
           <div className="absolute top-6 sm:top-8 left-0 right-0 text-center px-6 z-10">
