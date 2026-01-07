@@ -163,7 +163,7 @@ export function LatestBlogsSection() {
 
           <Link
             to="/blogs"
-            className="hidden md:inline-flex items-center px-5 py-2 rounded-full border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+            className="inline-flex items-center px-5 py-2 rounded-full border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
           >
             View all
           </Link>
@@ -197,15 +197,6 @@ export function LatestBlogsSection() {
             ))}
           </div>
 
-          {/* View all button for mobile */}
-          <div className="flex justify-center mt-6">
-            <Link
-              to="/blogs"
-              className="inline-flex items-center px-5 py-2 rounded-full border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-            >
-              View all
-            </Link>
-          </div>
         </div>
 
         {/* Desktop/Tablet: Featured + Secondary grid */}
