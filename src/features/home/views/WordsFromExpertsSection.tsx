@@ -72,7 +72,7 @@ export function WordsFromExpertsSection() {
     if (isInView && !playingId) {
       autoPlayRef.current = setInterval(() => {
         setCurrentIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
-      }, 4000);
+      }, 2000);
     }
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
