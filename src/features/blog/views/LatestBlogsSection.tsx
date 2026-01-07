@@ -118,10 +118,10 @@ export function LatestBlogsSection() {
   return (
     <section
       aria-labelledby="latest-blogs-heading"
-      className="py-16 md:py-20 lg:py-24 bg-white"
+      className="py-4 md:py-6 lg:py-8 bg-white"
       style={{ backgroundColor: "#ffffff" }}
     >
-      <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 md:mb-10">
           <h2

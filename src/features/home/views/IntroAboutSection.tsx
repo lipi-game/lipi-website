@@ -101,8 +101,8 @@ function MobileAboutSection() {
 
 function DesktopAboutSection() {
   return (
-    <div className="px-6 md:px-12 lg:px-20 pb-16 md:pb-24 lg:pb-32">
-      <div className="max-w-7xl mx-auto relative min-h-[550px] lg:min-h-[720px]">
+    <div className="w-full pb-16 md:pb-24 lg:pb-32">
+      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 relative min-h-[550px] lg:min-h-[720px]">
         {/* Text content - positioned left */}
         <div className="relative z-10 max-w-sm lg:max-w-md pt-4">
           <h3 className="text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.25rem] font-bold text-foreground mb-4 lg:mb-6 tracking-tight">

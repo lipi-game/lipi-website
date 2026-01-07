@@ -52,7 +52,7 @@ export function WordsFromExpertsSection() {
     if (isInView && !playingId) {
       autoPlayRef.current = setInterval(() => {
         setCurrentIndex((prev) => prev + 1);
-      }, 4500);
+      }, 1500);
     }
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
@@ -130,11 +130,11 @@ export function WordsFromExpertsSection() {
       aria-label="Words from Experts carousel"
     >
       {/* Header */}
-      <div className="text-center mb-10 md:mb-14 px-4">
+      <div className="mb-10 px-4 pl-4 md:mb-14 md:pl-6 lg:pl-0 lg:text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
           Words from Experts
         </h2>
-        <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+        <p className="text-muted-foreground text-base md:text-lg max-w-xl lg:mx-auto">
           Trusted voices on Lipi's approach to learning through play.
         </p>
       </div>
