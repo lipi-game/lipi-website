@@ -1,8 +1,6 @@
 export const aboutIntroText = [
-  "Lipi Epics and Word Games is a learning and gamification platform that brings Indian epics, languages, and cultural values to life through interactive play. Our current focus is the Mahabharat, along with engaging word games in Indian languages and English.",
-  "Modern education rarely covers ancient epics and knowledge systems like the Ramayana, Gita, Vedas, Ayurveda, and Chanakya Neeti. At the same time, native-language word games are still far fewer than English ones.",
-  "We bridge this gap with AI-powered, high-quality visual and gamified content that makes learning fun, structured, and mobile-first. We also connect digital and physical experiences through apps, games, and a deeper knowledge network for families and communities.",
-  "Founded by Sagar Anisingaraju, Lipi is built with a passionate team and supported by seed investors, and we collaborate with partners worldwide to create lasting social impact."
+  "Lipi Epics and Word Games is a learning and gamification platform that brings Indian epics, languages, and cultural values to life through interactive play. Our current focus is the Mahabharat, along with engaging word games in Indian languages and English.Modern education rarely covers ancient epics and knowledge systems like the Ramayana, Gita, Vedas, Ayurveda, and Chanakya Neeti. At the same time, native-language word games are still far fewer than English ones.",
+  "We bridge this gap with AI-powered, high-quality visual and gamified content that makes learning fun, structured, and mobile-first. We also connect digital and physical experiences through apps, games, and a deeper knowledge network for families and communities. Founded by Sagar Anisingaraju, Lipi is built with a passionate team and supported by seed investors, and we collaborate with partners worldwide to create lasting social impact."
 ];
 
 export const avatarCollageImages = [
@@ -36,20 +34,103 @@ export const founderImageUrl = "/Assets/Images/team/founder.png";
 export const meetTeamIntro = "Meet the people behind Lipi.Game. Led by founder Sagar Anisingaraju, our team blends marketing, engineering, and content expertise with a passionate Lipi Army community. Together we craft epic-inspired learning and word games, build reliable technology, and create high-quality stories, visuals, and experiences for players worldwide.";
 
 export const meetTeamMembers = [
-  { id: 1, name: "Prasad Chaganti", role: "Director", imageUrl: "/Assets/Images/team/Prasad.png", bgColor: "#4ECDC4" },
-  { id: 2, name: "Aparna Nalluri", role: "VP & Marketing", imageUrl: "/Assets/Images/team/Aparna.png", bgColor: "#7C83FD" },
-  { id: 3, name: "Narendra", role: "Manager", imageUrl: "/Assets/Images/team/Narendra.png", bgColor: "#F06292" },
-  { id: 4, name: "Bhavani", role: "Content & Testing Lead", imageUrl: "/Assets/Images/team/Bhavani.png", bgColor: "#FFAB91" },
-  { id: 5, name: "Shiva Chittimalla", role: "Social media Lead", imageUrl: "/Assets/Images/team/Shiva.png", bgColor: "#81C784" },
-  { id: 6, name: "Prashant Alakuntla", role: "AI Video Lead", imageUrl: "/Assets/Images/team/Prashant.png", bgColor: "#FFF176" },
-  { id: 7, name: "Kalyani Nalluri", role: "Content Lead", imageUrl: "/Assets/Images/team/Kalyani.png", bgColor: "#4ECDC4" },
+  {
+    id: 1,
+    name: "Prasad Chaganti",
+    role: "Director",
+    imageUrl: "/Assets/Images/team/Prasad.png",
+    bgColor: "#4ECDC4",
+    linkedinUrl: "https://www.linkedin.com/",
+    bio: [
+      "Prasad oversees strategy and execution across teams, ensuring Lipi’s vision is delivered with clarity and consistency.",
+      "He focuses on aligning product goals, operational planning, and team collaboration to support long-term growth.",
+    ],
+    objectPosition: "60% 25%"
+
+  },
+  {
+    id: 2,
+    name: "Aparna Nalluri",
+    role: "VP & Marketing",
+    imageUrl: "/Assets/Images/team/Aparna.png",
+    bgColor: "#7C83FD",
+    linkedinUrl: "https://www.linkedin.com/",
+    bio: [
+      "Aparna leads marketing and growth initiatives, shaping how Lipi communicates its mission to learners and families.",
+      "She drives positioning, partnerships, and campaigns across social and digital channels with a focus on impact and clarity.",
+    ],
+    objectPosition: "60% -5%",
+  },
+  {
+    id: 3,
+    name: "Narendra",
+    role: "Manager",
+    imageUrl: "/Assets/Images/team/Narendra.png",
+    bgColor: "#F06292",
+    linkedinUrl: "https://www.linkedin.com/",
+    bio: [
+      "Narendra manages execution workflows and coordinates across teams to keep deliverables on track.",
+      "He supports planning, quality checks, and smooth coordination between content, design, and engineering.",
+    ],
+    objectPosition: "30% -30%"
+  },
+  {
+    id: 4,
+    name: "Bhavani",
+    role: "Content & Testing Lead",
+    imageUrl: "/Assets/Images/team/Bhavani.png",
+    bgColor: "#FFAB91",
+    linkedinUrl: "https://www.linkedin.com/",
+    bio: [
+      "Bhavani leads content review and testing, ensuring learning experiences are accurate, engaging, and consistent across screens.",
+      "She focuses on editorial quality, flow, and verifying that content works well for kids and adult learners alike.",
+    ],
+  },
+  {
+    id: 5,
+    name: "Shiva Chittimalla",
+    role: "Social media Lead",
+    imageUrl: "/Assets/Images/team/Shiva.png",
+    bgColor: "#81C784",
+    linkedinUrl: "https://www.linkedin.com/",
+    bio: [
+      "Shiva leads social media strategy and creative execution, focusing on storytelling that connects with audiences.",
+      "He works on content planning, community engagement, and building a consistent visual voice for Lipi.",
+    ],
+  },
+  {
+    id: 6,
+    name: "Prashant Alakuntla",
+    role: "AI Video Lead",
+    imageUrl: "/Assets/Images/team/Prashant.png",
+    bgColor: "#FFF176",
+    linkedinUrl: "https://www.linkedin.com/",
+    bio: [
+      "Prashant leads AI-powered video creation workflows, translating epic stories into engaging visual narratives.",
+      "He focuses on prompt pipelines, visual consistency, and producing high-quality video assets efficiently.",
+    ],
+    objectPosition: "50% 35%"
+  },
+  {
+    id: 7,
+    name: "Kalyani Nalluri",
+    role: "Content Lead",
+    imageUrl: "/Assets/Images/team/Kalyani.png",
+    bgColor: "#4ECDC4",
+    linkedinUrl: "https://www.linkedin.com/",
+    bio: [
+      "Kalyani leads content development across learning tracks, ensuring storytelling quality and learning clarity.",
+      "She works closely with review, testing, and product teams to maintain consistent tone and structure across modules.",
+    ],
+    objectPosition: "60% 0%",
+  },
 ];
 
 export const disciplinePortraits = [
   { id: 1, name: "Jaideep", role: "Video Editor", imageUrl: "/Assets/Images/team/Jaideep.png", bgColor: "#E8F5E9" },
-  { id: 2, name: "Mahesh", role: "Video Editor", imageUrl: "/Assets/Images/team/Mahesh.png", bgColor: "#E3F2FD" },
-  { id: 3, name: "Teja", role: "Video Editor", imageUrl: "/Assets/Images/team/Teja.png", bgColor: "#FFF3E0" },
-  { id: 4, name: "Rithwik", role: "UX Designer", imageUrl: "/Assets/Images/team/Rithwik.png", bgColor: "#FCE4EC" },
+  { id: 2, name: "Mahesh", role: "Video Editor", imageUrl: "/Assets/Images/team/Mahesh.png", bgColor: "#E3F2FD", objectPosition: "50% 20%"},
+  { id: 3, name: "Teja", role: "Video Editor", imageUrl: "/Assets/Images/team/Teja.png", bgColor: "#FFF3E0",  objectPosition: "50% 10%"},
+  { id: 4, name: "Rithwik", role: "UX Designer", imageUrl: "/Assets/Images/team/Rithwik.png", bgColor: "#FCE4EC", objectPosition: "50% 0%" },
   { id: 5, name: "Akanksha", role: "Product", imageUrl: "/Assets/Images/team/Akanksha.png", bgColor: "#E8EAF6" },
   { id: 6, name: "Kaustabh", role: "UX", imageUrl: "/Assets/Images/team/Kaustabh.png", bgColor: "#ECEFF1" },
   { id: 7, name: "Sharath", role: "Artist", imageUrl: "/Assets/Images/team/Sharath.png", bgColor: "#FBE9E7" },
@@ -71,7 +152,8 @@ export const advisors = [
       "Acknowledging Dr. Subramanian’s contributions, the Hon’ble Prime Minister Shri. Narendra Modi noted his “academic brilliance, unique perspectives on economic and policy matters, and reformatory zeal.”",
       "Dr. Subramanian authored path-breaking Economic Surveys on Ethical Wealth Creation for a prosperous India (2019-20), the Strategic Blueprint for India to become a $5 trillion economy (2018-19), and the post-Covid economy using public capital expenditures in infrastructure and healthcare to further counter-cyclical fiscal policy (2020-21). India’s economic policy toward a self-reliant India and the concomitant reforms draw on the ideas he advocated in these Surveys.",
       "Dr Subramanian has been conferred the Distinguished Alumnus award by his alma maters IIT-Kanpur and IIM-Calcutta. A Ph.D. from the University of Chicago, Prof. Subramanian’s research in banking, law and finance, innovation and economic growth, and corporate governance has been published in the world's leading journals."
-    ]
+    ],
+    objectPosition: "60% -20%"
   },
   {
     id: "2",
@@ -85,7 +167,8 @@ export const advisors = [
       "Prior to founding Ceremorphic, he founded Redpine Signals, Inc., a wireless technology company that he sold to Silicon Labs, Inc. for $308M.",
       "Previously, Venkat held roles as Director of Engineering, Network Media Processors for Analog devices, and Director of Engineering, TriCore – MCU DSP for Infineon Technologies.",
       "He started his career at Tata Institute of Fundamental Research, India in January 1983. Venkat holds a PhD in Electrical Engineering from Indian Institute of Technology and is a graduate of Harvard Business School. Venkat has over 100 US and international patents."
-    ]
+    ],
+    objectPosition: "60% -20%"
   },
   {
     id: "3",
@@ -99,7 +182,8 @@ export const advisors = [
       "Prior to being elevated to Chairman Emeritus of Saama’s Board in June 2022, Suresh stewarded Saama’s partnership with Pfizer to develop the world’s first COVID-19 vaccine in less than one year. In 2021, he architected a bold new strategic growth investment for Saama with global investment firm Carlyle and a unique and unprecedented consortium of the corporate venture arms of major pharmaceutical companies.",
       "As one of the world’s most inspiring data & analytics innovators, Suresh sits on the Board of Directors of the Association of Clinical Research Organizations (ACRO), which advocates for safe, ethical clinical trials that protect patients and ensure high-quality results. Suresh was named PM360’s 2018 ELITE Entrepreneur and one of PharmaVOICE’s 100 Most Inspirational Leaders. He is a frequent contributor to industry publications and a sought-after speaker at industry conferences and panels.",
       "Suresh has been associated with various programs that provide education assistance for the less fortunate. Prior to founding Saama, he successfully launched two startups. He earned his M.S. in Computer Engineering from the University of Southwest Louisiana and his B.S. in Electronics Engineering from the University of Bangalore."
-    ]
+    ],
+    objectPosition: "60% 0%"
   },
   {
     id: "4",
@@ -111,7 +195,8 @@ export const advisors = [
     bio: [
       "Maa Sarma is a senior journalist & columnist with more than 3 decades of journalistic experience in Print, Electronic and Digital Media in Telugu and English languages.",
       "He is the founder of Sri Kopparapu Kavula Kala peetham. He is currently the Managing Editor, for Andhrapatrika,the oldest Telugu daily established in 1908. He is also a media consultant for Hmtv group and Suman TV group."
-    ]
+    ],
+    objectPosition: "100% 0%"
   },
   {
     id: "5",
@@ -134,7 +219,8 @@ export const advisors = [
     linkedinUrl: "https://linkedin.com",
     bio: [
       "Prakash is a transformation leader with extensive experience and proven track record in enabling customers realize business value through IT modernization and Digital transformation. Experienced in leading strategic collaboration engagements with customers to accelerate their digital transformation journeys through Cloud adoption.",
-    ]
+    ],
+    objectPosition: "50% 0%"
   },
   {
     id: "7",
@@ -164,21 +250,80 @@ export const advisors = [
       "In 2022, he managed a team of five Product Managers and led an AI product portfolio generating over $120M in annual recurring revenue (ARR).",
       "In 2023, he was honored as a Top 20 Product Manager from over 1,000 global nominations.",
       "He has shipped six AI/ML-based products to Fortune 500 customers, generating more than $45M in total ARR."
-    ]
+    ],
+    objectPosition: "60% 20%"
   }
 ];
 
-export const references = {
-  advisoryTitle: "Mahabharat Content Advisory",
-  advisoryLines: [
-    "Overall In-Charge: Mr. Chaganti Prasad",
-    "Special Advisors: St. Mallapragada Simmannarayana"
-  ],
-  referencesTitle: "Content References for Mahabharat",
-  referenceItems: [
-    "Kavitraya Virachita Simandhra Mahabharatam, TTD Publications.",
-    "Sri Mahabharatam, Gorakhpur Press",
-    "Mahabharata, Vyasa Sarvaswam, Dr. Guni Venkatratnam"
-  ],
-  noteText: "We strive to include the most authentic Mahabharat content. However, occasional errors may occur. If you notice any discrepancies, please report them so we can verify and correct them."
+// references.data.ts
+// ✅ Copy-paste exactly. Content below matches your text letter-for-letter.
+
+export type ReferenceBlock = {
+  id: string;
+  variant: "brown" | "blue";
+  title: string;
+  lines: string[];
 };
+
+export const referenceBlocks: ReferenceBlock[] = [
+  {
+    id: "References & Content Authenticity",
+    variant: "brown",
+    title: "References & Content Authenticity",
+    lines: [
+      "The Mahabharata, Ramayana, Bhagavad Gita, Bhagavatam, and other Puranas are ancient texts that belong to India’s timeless heritage. For modern storytelling in an app-based format—using visuals, stories, videos, quizzes, and interactive learning—the content has been carefully curated from multiple authoritative sources and reviewed by subject-matter experts to ensure authenticity and accuracy.",
+      "The key individuals and reference materials consulted during content development are listed below.",
+    ],
+  },
+  {
+    id: "Content Finalization",
+    variant: "blue",
+    title: "Content Finalization",
+    lines: ["Overall Content Lead for the App", "Mr. Chaganti Prasad, Writer"],
+  },
+  {
+    id: "Expert Review & Consultation",
+    variant: "brown",
+    title: "Expert Review & Consultation",
+    lines: [
+      "The Lipi Team consulted the following scholars and speakers for guidance on content authenticity and interpretation.",
+      "While their insights were invaluable, Lipi Inc. assumes full responsibility for all content published in the Lipi Epics App.",
+      "Consultation with these individuals does not imply direct or indirect endorsement of the app or its content.",
+      "Sri Mallapragada Srimannarayana garu",
+      "Sri Garikapati Narasimha Rao garu",
+      "Sri Krishna Chaitanya (KC Talks) garu",
+      "Sri Chaganti Koteswara Rao garu",
+      "Sri Sama Vedaṁ Shanmukha Sharma garu",
+    ],
+  },
+  {
+    id: "Mahabharata Reference Publications",
+    variant: "blue",
+    title: "Mahabharata Reference Publications",
+    lines: [
+      "Kavitraya Virachita Srimandhra Mahabharatam — T.T.D. Publications, Tirupati",
+      "Sri Mahabharatam — Gita Press, Gorakhpur",
+      "Mahabharata Vijnana Sarvasvam — Dr. Gunji Venkata Ratnam",
+    ],
+  },
+  {
+    id: "Ramayana References",
+    variant: "brown",
+    title: "Ramayana References",
+    lines: [
+      "To honor and continue the legacy of accessible storytelling, the simple and engaging narrative style of Chandamama publications has been consciously adopted where appropriate.",
+      "Chandamama Publications",
+      "BORI (Bhandarkar Oriental Research Institute) Online Editions",
+      "Gita Press Ramayana Editions",
+      "Books by Pullela Ramachandra Rao",
+    ],
+  },
+];
+
+export const accuracyDisclaimerTitle = "Accuracy Disclaimer";
+export const accuracyDisclaimerText =
+  "Every effort has been made to incorporate the most authentic and reliable versions of the Mahabharata and Ramayana into the Lipi Epics games. However, occasional errors or interpretational differences may occur. We encourage users to bring any discrepancies to our attention so they can be reviewed, verified, and corrected where necessary.";
+
+export const originalContentCreationTitle = "Original Content Creation";
+export const originalContentCreationText =
+  "All images, videos, quizzes, tests, and visual guides depicting characters, places, and events are originally created by the Lipi Team.";

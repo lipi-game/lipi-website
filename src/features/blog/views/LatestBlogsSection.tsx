@@ -51,7 +51,7 @@ function FeaturedCard({ blog }: { blog: Blog }) {
               <ReadTimeChip readTime={blog.readTime} />
             </div>
 
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-[#ff7c2b] transition-colors">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-[#118fdd] transition-colors">
               {blog.title}
             </h3>
 
@@ -95,7 +95,7 @@ function SecondaryCard({ blog }: { blog: Blog }) {
             <ReadTimeChip readTime={blog.readTime} />
           </div>
 
-          <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight line-clamp-2 group-hover:text-[#ff7c2b] transition-colors">
+          <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight line-clamp-2 group-hover:text-[#118fdd] transition-colors">
             {blog.title}
           </h3>
 

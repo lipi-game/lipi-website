@@ -56,7 +56,7 @@ function BlogCard({ blog }: { blog: Blog }) {
         <h2 className="text-lg font-bold text-gray-900 mb-2 leading-tight line-clamp-2">
           <Link
             to={`/blogs/${blog.slug}`}
-            className="hover:text-[#ff7c2b] transition-colors"
+            className="hover:text-[#118fdd] transition-colors"
           >
             {blog.title}
           </Link>

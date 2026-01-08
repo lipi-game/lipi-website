@@ -12,7 +12,11 @@ import {
   meetTeamMembers,
   disciplinePortraits,
   advisors,
-  references,
+  referenceBlocks,
+  accuracyDisclaimerTitle,
+  accuracyDisclaimerText,
+  originalContentCreationTitle,
+  originalContentCreationText,
 } from "../data/aboutData";
 
 // Avatar Collage for Desktop - matches screenshot bubble layout
@@ -153,16 +157,26 @@ function MobileAvatarCollage() {
   );
 }
 
-function TeamTile({ member }) {
+function TeamTile({
+  member,
+  onSelect,
+}: {
+  member: any;
+  onSelect: (m: any) => void;
+}) {
   return (
-    <div
-      className="relative overflow-hidden w-full h-[260px] md:h-[300px] lg:h-[340px]"
+    <button
+      type="button"
+      onClick={() => onSelect(member)}
+      className="group relative overflow-hidden w-full h-[260px] md:h-[300px] lg:h-[340px] text-left"
       style={{ backgroundColor: member.bgColor }}
+      aria-label={`View ${member.name}'s profile`}
     >
       <img
         src={member.imageUrl}
         alt={member.name}
-        className="block w-full h-full object-cover object-[50%_35%]"
+        className="block w-full h-full object-cover transition-transform duration-300 ease-out [@media(hover:hover)]:group-hover:scale-105"
+        style={{ objectPosition: member.objectPosition ?? "50% 35%" }}
         onError={(e) => {
           e.currentTarget.style.display = "none";
         }}
@@ -174,7 +188,7 @@ function TeamTile({ member }) {
         </p>
         <p className="text-white/80 text-xs md:text-sm">{member.role}</p>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -186,7 +200,7 @@ function HeaderSection() {
           About Us
         </h1>
 
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:px-1 items-center">
           <div className="lg:flex-1 space-y-4">
             {aboutIntroText.map((paragraph, index) => (
               <p
@@ -196,12 +210,6 @@ function HeaderSection() {
                 {paragraph}
               </p>
             ))}
-          </div>
-
-          <div className="flex justify-center lg:justify-end w-full lg:w-auto">
-            <AvatarCollage />
-            <TabletAvatarCollage />
-            <MobileAvatarCollage />
           </div>
         </div>
       </div>
@@ -299,6 +307,8 @@ function FounderSection() {
 }
 
 function MeetTeamSection() {
+  const [selectedMember, setSelectedMember] = useState<any | null>(null);
+
   return (
     <section className="py-6 md:py-8 bg-white">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
@@ -306,7 +316,6 @@ function MeetTeamSection() {
           className="rounded-[24px] md:rounded-[28px] overflow-hidden shadow-sm"
           style={{ backgroundColor: "#F2FAFF" }}
         >
-          {/* Meet Team Area */}
           {/* Meet Team Area */}
           <div className="mb-10 lg:mb-12 bg-[#F0F5F8]  lg:rounded-[32px] overflow-hidden">
             {/* ✅ DESKTOP (lg+) — keep EXACTLY your current layout */}
@@ -322,18 +331,53 @@ function MeetTeamSection() {
               </div>
 
               {/* Row 1 – Images 1,2,3 */}
-              {meetTeamMembers[0] && <TeamTile member={meetTeamMembers[0]} />}
-              {meetTeamMembers[1] && <TeamTile member={meetTeamMembers[1]} />}
-              {meetTeamMembers[2] && <TeamTile member={meetTeamMembers[2]} />}
+              {meetTeamMembers[0] && (
+                <TeamTile
+                  member={meetTeamMembers[0]}
+                  onSelect={setSelectedMember}
+                />
+              )}
+              {meetTeamMembers[1] && (
+                <TeamTile
+                  member={meetTeamMembers[1]}
+                  onSelect={setSelectedMember}
+                />
+              )}
+              {meetTeamMembers[2] && (
+                <TeamTile
+                  member={meetTeamMembers[2]}
+                  onSelect={setSelectedMember}
+                />
+              )}
 
               {/* Row 2 – Empty spacer (col 1) */}
               <div className="hidden md:block" />
 
               {/* Row 2 – Images 4,5,6,7 */}
-              {meetTeamMembers[3] && <TeamTile member={meetTeamMembers[3]} />}
-              {meetTeamMembers[4] && <TeamTile member={meetTeamMembers[4]} />}
-              {meetTeamMembers[5] && <TeamTile member={meetTeamMembers[5]} />}
-              {meetTeamMembers[6] && <TeamTile member={meetTeamMembers[6]} />}
+              {meetTeamMembers[3] && (
+                <TeamTile
+                  member={meetTeamMembers[3]}
+                  onSelect={setSelectedMember}
+                />
+              )}
+              {meetTeamMembers[4] && (
+                <TeamTile
+                  member={meetTeamMembers[4]}
+                  onSelect={setSelectedMember}
+                />
+              )}
+              {meetTeamMembers[5] && (
+                <TeamTile
+                  member={meetTeamMembers[5]}
+                  onSelect={setSelectedMember}
+                />
+              )}
+              {meetTeamMembers[6] && (
+                <TeamTile
+                  member={meetTeamMembers[6]}
+                  onSelect={setSelectedMember}
+                />
+              )}
             </div>
 
             {/* ✅ TABLET (md to <lg) — 2 columns */}
@@ -349,11 +393,16 @@ function MeetTeamSection() {
               </div>
 
               {/* Row 1: First image */}
-              {meetTeamMembers[0] && <TeamTile member={meetTeamMembers[0]} />}
+              {meetTeamMembers[0] && (
+                <TeamTile
+                  member={meetTeamMembers[0]}
+                  onSelect={setSelectedMember}
+                />
+              )}
 
               {/* Remaining: image-only (fills grid 2 cols) */}
               {meetTeamMembers.slice(1).map((m) => (
-                <TeamTile key={m.id} member={m} />
+                <TeamTile key={m.id} member={m} onSelect={setSelectedMember} />
               ))}
             </div>
 
@@ -370,14 +419,11 @@ function MeetTeamSection() {
               </div>
 
               {/* Swipe / horizontal scroll images */}
-              <div className="overflow-x-auto">
-                <div className="flex gap-0 snap-x snap-mandatory">
+              <div className="overflow-x-auto snap-x snap-mandatory">
+                <div className="flex gap-0">
                   {meetTeamMembers.map((m) => (
-                    <div
-                      key={m.id}
-                      className="shrink-0 w-[78vw] max-w-[360px] snap-start"
-                    >
-                      <TeamTile member={m} />
+                    <div key={m.id} className="shrink-0 w-full snap-start">
+                      <TeamTile member={m} onSelect={setSelectedMember} />
                     </div>
                   ))}
                 </div>
@@ -385,7 +431,98 @@ function MeetTeamSection() {
             </div>
           </div>
 
-          {/* Design. Content. Technology. Area */}
+          <Dialog
+            open={!!selectedMember}
+            onOpenChange={() => setSelectedMember(null)}
+          >
+            <DialogContent
+              className="
+                my-4 sm:my-6
+                w-[92vw]
+                max-w-[520px] sm:max-w-[720px] md:max-w-[900px] lg:max-w-[1100px]
+                max-h-[85vh]
+                overflow-y-auto overflow-x-hidden
+                rounded-[32px] p-0 border-0
+                [&>button]:hidden
+              "
+              aria-describedby="team-member-bio"
+            >
+              <DialogTitle className="sr-only">
+                {selectedMember?.name} - {selectedMember?.role}
+              </DialogTitle>
+
+              {selectedMember && (
+                <div className="relative p-6 md:p-8">
+                  {/* Top right close */}
+                  <div className="absolute top-4 right-4 md:top-6 md:right-6 flex items-center gap-2">
+                    {selectedMember.linkedinUrl && (
+                      <a
+                        href={selectedMember.linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-9 h-9 rounded-sm bg-[#0077B5] flex items-center justify-center text-white hover:bg-[#005885] transition-colors"
+                        aria-label="LinkedIn profile"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                      </a>
+                    )}
+
+                    <button
+                      onClick={() => setSelectedMember(null)}
+                      className="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                      aria-label="Close modal"
+                      type="button"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  <div className="flex flex-col md:flex-row gap-6">
+                    {/* Left column */}
+                    <div className="flex flex-col items-center shrink-0 md:w-44">
+                      <div
+                        className="w-32 h-32 md:w-36 md:h-36 rounded-full p-1 mx-auto md:mx-0"
+                        style={{ backgroundColor: "#f7efd2" }}
+                      >
+                        <img
+                          src={selectedMember.imageUrl}
+                          alt={selectedMember.name}
+                          className="w-full h-full rounded-full object-cover"
+                          style={{
+                            objectPosition:
+                              selectedMember.objectPosition ?? "50% 35%",
+                          }}
+                        />
+                      </div>
+
+                      <h3 className="font-bold text-base md:text-lg text-foreground mt-3 text-center md:text-left">
+                        {selectedMember.name}
+                      </h3>
+                      <p className="text-xs md:text-sm text-muted-foreground text-center w-full">
+                        {selectedMember.role}
+                      </p>
+                    </div>
+
+                    {/* Right column */}
+                    <div id="team-member-bio" className="flex-1 mt-4 md:mt-9">
+                      {(selectedMember.bio?.length
+                        ? selectedMember.bio
+                        : ["Bio coming soon."]
+                      ).map((paragraph: string, index: number) => (
+                        <p
+                          key={index}
+                          className="text-muted-foreground leading-relaxed text-[13px] md:text-[14px] mb-3 last:mb-0"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </DialogContent>
+          </Dialog>
+
           {/* Design. Content. Technology. Area */}
           <div className="px-4 mb-12">
             <h2 className="text-xl md:text-2xl font-bold text-foreground mb-1">
@@ -411,6 +548,9 @@ function MeetTeamSection() {
                         src={portrait.imageUrl}
                         alt={portrait.name}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        style={{
+                          objectPosition: portrait.objectPosition ?? "50% 35%",
+                        }}
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
                         }}
@@ -418,23 +558,23 @@ function MeetTeamSection() {
 
                       <div
                         className="
-                absolute bottom-0 left-0 right-0 p-2
-                bg-gradient-to-t from-black/70 to-transparent
+                          absolute bottom-0 left-0 right-0 p-2
+                          bg-gradient-to-t from-black/70 to-transparent
 
-                translate-y-4 opacity-0
+                          translate-y-4 opacity-0
 
-                /* Desktop hover */
-                group-hover:translate-y-0
-                group-hover:opacity-100
+                          /* Desktop hover */
+                          group-hover:translate-y-0
+                          group-hover:opacity-100
 
-                /* Mobile tap */
-                group-active:translate-y-0
-                group-active:opacity-100
-                group-focus-within:translate-y-0
-                group-focus-within:opacity-100
+                          /* Mobile tap */
+                          group-active:translate-y-0
+                          group-active:opacity-100
+                          group-focus-within:translate-y-0
+                          group-focus-within:opacity-100
 
-                transition-all duration-300 ease-out
-              "
+                          transition-all duration-300 ease-out
+                        "
                       >
                         <p className="text-white font-medium text-[10px] md:text-xs">
                           {portrait.name}
@@ -463,29 +603,32 @@ function MeetTeamSection() {
                         src={portrait.imageUrl}
                         alt={portrait.name}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        style={{
+                          objectPosition: portrait.objectPosition ?? "50% 35%",
+                        }}
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
                         }}
                       />
                       <div
                         className="
-                absolute bottom-0 left-0 right-0 p-2
-                bg-gradient-to-t from-black/70 to-transparent
+                          absolute bottom-0 left-0 right-0 p-2
+                          bg-gradient-to-t from-black/70 to-transparent
 
-                translate-y-4 opacity-0
+                          translate-y-4 opacity-0
 
-                /* Desktop hover */
-                group-hover:translate-y-0
-                group-hover:opacity-100
+                          /* Desktop hover */
+                          group-hover:translate-y-0
+                          group-hover:opacity-100
 
-                /* Mobile tap */
-                group-active:translate-y-0
-                group-active:opacity-100
-                group-focus-within:translate-y-0
-                group-focus-within:opacity-100
+                          /* Mobile tap */
+                          group-active:translate-y-0
+                          group-active:opacity-100
+                          group-focus-within:translate-y-0
+                          group-focus-within:opacity-100
 
-                transition-all duration-300 ease-out
-              "
+                          transition-all duration-300 ease-out
+                        "
                       >
                         <p className="text-white font-medium text-[10px] md:text-xs">
                           {portrait.name}
@@ -512,29 +655,33 @@ function MeetTeamSection() {
                           src={portrait.imageUrl}
                           alt={portrait.name}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          style={{
+                            objectPosition:
+                              portrait.objectPosition ?? "50% 35%",
+                          }}
                           onError={(e) => {
                             e.currentTarget.style.display = "none";
                           }}
                         />
                         <div
                           className="
-                  absolute bottom-0 left-0 right-0 p-2
-                  bg-gradient-to-t from-black/70 to-transparent
+                            absolute bottom-0 left-0 right-0 p-2
+                            bg-gradient-to-t from-black/70 to-transparent
 
-                  translate-y-4 opacity-0
+                            translate-y-4 opacity-0
 
-                  /* Desktop hover */
-                  group-hover:translate-y-0
-                  group-hover:opacity-100
+                            /* Desktop hover */
+                            group-hover:translate-y-0
+                            group-hover:opacity-100
 
-                  /* Mobile tap */
-                  group-active:translate-y-0
-                  group-active:opacity-100
-                  group-focus-within:translate-y-0
-                  group-focus-within:opacity-100
+                            /* Mobile tap */
+                            group-active:translate-y-0
+                            group-active:opacity-100
+                            group-focus-within:translate-y-0
+                            group-focus-within:opacity-100
 
-                  transition-all duration-300 ease-out
-                "
+                            transition-all duration-300 ease-out
+                          "
                         >
                           <p className="text-white font-medium text-[10px] md:text-xs">
                             {portrait.name}
@@ -585,6 +732,9 @@ function AdvisorsSection() {
                     src={advisor.imageUrl}
                     alt={advisor.name}
                     className="w-full h-full object-cover"
+                    style={{
+                      objectPosition: advisor.objectPosition ?? "50% 35%",
+                    }}
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                     }}
@@ -619,6 +769,9 @@ function AdvisorsSection() {
                   src={advisor.imageUrl}
                   alt={advisor.name}
                   className="w-full h-full object-cover"
+                  style={{
+                    objectPosition: advisor.objectPosition ?? "50% 35%",
+                  }}
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
                   }}
@@ -687,11 +840,18 @@ function AdvisorsSection() {
               <div className="flex flex-col md:flex-row gap-6">
                 {/* Left column - Avatar and info */}
                 <div className="flex flex-col items-center shrink-0 md:w-44">
-                  <div className="w-32 h-32 md:w-36 md:h-36 rounded-full p-1 mx-auto md:mx-0">
+                  <div
+                    className="w-32 h-32 md:w-36 md:h-36 rounded-full p-1 mx-auto md:mx-0"
+                    style={{ backgroundColor: "#f7efd2" }}
+                  >
                     <img
                       src={selectedAdvisor.imageUrl}
                       alt={selectedAdvisor.name}
                       className="w-full h-full rounded-full object-cover"
+                      style={{
+                        objectPosition:
+                          selectedAdvisor.objectPosition ?? "50% 35%",
+                      }}
                     />
                   </div>
                   <h3 className="font-bold text-base md:text-lg text-foreground mt-3 text-center md:text-left">
@@ -722,7 +882,12 @@ function AdvisorsSection() {
   );
 }
 
-function ReferencesSection() {
+export function ReferencesSection() {
+  const cardVariants = {
+    brown: { shadow: "#715B38", bg: "#B9965D" },
+    blue: { shadow: "#0E238B", bg: "#4758AC" },
+  } as const;
+
   return (
     <section className="py-8 md:py-12 bg-white">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
@@ -738,75 +903,70 @@ function ReferencesSection() {
             reviewed by an expert panel to ensure accuracy and credibility.
           </p>
 
-          {/* Reference Cards - 2 columns on desktop, stack on mobile */}
-          <div className="grid md:grid-cols-2 gap-5 md:gap-6 mb-6">
-            {/* Left Card - Advisory */}
-            <div className="relative">
-              <div
-                className="absolute inset-0 translate-x-2 translate-y-2"
-                style={{ backgroundColor: "#715B38" }}
-              />
-              <div
-                className="relative p-5 md:p-6 h-full min-h-[120px]"
-                style={{ backgroundColor: "#B9965D" }}
-              >
-                <h3 className="text-sm md:text-base font-bold text-white mb-3">
-                  {references.advisoryTitle}
-                </h3>
-                <div className="space-y-1.5">
-                  {references.advisoryLines.map((line, index) => (
-                    <p
-                      key={index}
-                      className="text-white/90 text-[12px] md:text-[13px]"
-                    >
-                      {line}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
+          {/* Section Cards (same colors, same card style) */}
+          <div className="grid grid-cols-1 gap-5 md:gap-6 mb-6">
+            {referenceBlocks.map((b) => {
+              const colors = cardVariants[b.variant];
+              return (
+                <div key={b.id} className="relative">
+                  <div
+                    className="absolute inset-0 translate-x-2 translate-y-2"
+                    style={{ backgroundColor: colors.shadow }}
+                  />
+                  <div
+                    className="relative p-5 md:p-6 h-full min-h-[120px]"
+                    style={{ backgroundColor: colors.bg }}
+                  >
+                    <h3 className="text-sm md:text-base font-bold text-white mb-3">
+                      {b.title}
+                    </h3>
 
-            {/* Right Card - References */}
-            <div className="relative">
-              <div
-                className="absolute inset-0 translate-x-2 translate-y-2"
-                style={{ backgroundColor: "#0E238B" }}
-              />
-              <div
-                className="relative p-5 md:p-6 h-full min-h-[120px]"
-                style={{ backgroundColor: "#4758AC" }}
-              >
-                <h3 className="text-sm md:text-base font-bold text-white mb-3">
-                  {references.referencesTitle}
-                </h3>
-                <ul className="space-y-1.5">
-                  {references.referenceItems.map((item, index) => (
-                    <li
-                      key={index}
-                      className="text-white/90 text-[12px] md:text-[13px] flex items-start gap-2"
-                    >
-                      <span className="text-white mt-0.5">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+                    <ul className="space-y-1.5">
+                      {b.lines.map((line, index) => (
+                        <li
+                          key={index}
+                          className="text-white/90 text-[12px] md:text-[13px] flex items-start gap-2"
+                        >
+                          <span className="text-white mt-0.5">•</span>
+                          <span>{line}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Note */}
-          <div className="bg-white rounded-lg px-4 py-3">
-            <p className="text-[12px] md:text-[13px]">
-              <span
-                className="font-medium underline"
-                style={{ color: "#ff7c2b" }}
-              >
-                Note :
-              </span>
-              <span className="text-muted-foreground ml-1">
-                {references.noteText}
-              </span>
-            </p>
+          {/* Bottom: Accuracy Disclaimer + Original Content Creation (separate) */}
+          <div className="space-y-3">
+            <div className="bg-white rounded-lg px-4 py-3">
+              <p className="text-[12px] md:text-[13px]">
+                <span
+                  className="font-medium underline"
+                  style={{ color: "#ff7c2b" }}
+                >
+                  {accuracyDisclaimerTitle}:
+                </span>
+                <span className="text-muted-foreground ml-1">
+                  {accuracyDisclaimerText}
+                </span>
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg px-4 py-3">
+              <p className="text-[12px] md:text-[13px]">
+                <span
+                  className="font-medium underline"
+                  style={{ color: "#ff7c2b" }}
+                >
+                  {originalContentCreationTitle}:
+                </span>
+                <span className="text-muted-foreground ml-1">
+                  {originalContentCreationText}
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>

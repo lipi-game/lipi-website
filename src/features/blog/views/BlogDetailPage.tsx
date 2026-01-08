@@ -133,7 +133,7 @@ function TableOfContents({
             href={`#${item.id}`}
             className={`block text-sm transition-colors pl-3 border-l-2 ${
               activeId === item.id
-                ? "text-[#ff7c2b] border-[#ff7c2b] font-medium"
+                ? "text-[#118fdd] border-[#118fdd] font-medium"
                 : "text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300"
             } ${item.level === 3 ? "ml-3" : ""}`}
           >
@@ -250,7 +250,7 @@ function ReadMoreCard({ blog }: { blog: Blog }) {
             <CategoryChip category={blog.category} />
             <ReadTimeChip readTime={blog.readTime} />
           </div>
-          <h3 className="text-base font-bold text-gray-900 mb-2 leading-tight line-clamp-2 group-hover:text-[#ff7c2b] transition-colors">
+          <h3 className="text-base font-bold text-gray-900 mb-2 leading-tight line-clamp-2 group-hover:text-[#118fdd] transition-colors">
             {blog.title}
           </h3>
           <p className="text-sm text-gray-500 mb-2">{blog.author}</p>
@@ -337,7 +337,7 @@ function CtaSection() {
           {/* NOTE: Place badges at /public/cta/app-store-badge.svg and /public/cta/google-play-badge.svg */}
           <div className="flex justify-center gap-4">
             <a
-              href="https://apps.apple.com"
+              href="https://apps.apple.com/us/developer/lipi-inc/id1772086567"
               target="_blank"
               rel="noopener noreferrer"
               className="h-12 px-6 bg-black rounded-lg flex items-center justify-center text-white text-sm font-medium hover:opacity-90 transition-opacity"
@@ -352,7 +352,7 @@ function CtaSection() {
               App Store
             </a>
             <a
-              href="https://play.google.com"
+              href="https://play.google.com/store/apps/dev?id=6433036785319466025&hl=en_IN"
               target="_blank"
               rel="noopener noreferrer"
               className="h-12 px-6 bg-black rounded-lg flex items-center justify-center text-white text-sm font-medium hover:opacity-90 transition-opacity"

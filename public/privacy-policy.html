@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Lipi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .toc {
+            width: 380px;
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            order: -1;
+        }
+
+        .content {
+            flex: 1;
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .toc h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #2563eb;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin-bottom: 0;
+        }
+
+        .toc a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            display: block;
+            padding: 0.6rem 0;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+        }
+
+        .toc a:hover {
+            color: #2563eb;
+        }
+
+        .toc a.active {
+            color: #2563eb;
+            border-left-color: #2563eb;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta {
+            color: #666;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #1e293b;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            scroll-margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: #334155;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        a {
+            color: #2563eb;
+            word-break: break-all;
+        }
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+            z-index: 1000;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .toc {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                max-width: 320px;
+                height: 100vh;
+                overflow-y: auto;
+                z-index: 999;
+                border-radius: 0;
+            }
+
+            .toc.active {
+                display: block;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .content {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .toc {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main class="content">
+            <h1>Privacy Policy</h1>
+            <div class="meta">
+                <p><strong>Effective Date:</strong> 01 January 2024<br>
+                <strong>Last Updated:</strong> 01 January 2026</p>
+                <p>Lipi ("Lipi", "we", "our", or "us") respects your privacy and is committed to protecting your personal data. This Privacy Policy explains how we collect, use, store, share, and protect your information when you use our mobile applications, website, and related services (collectively, the "Services").</p>
+                <p>By using our Services, you agree to the practices described in this Privacy Policy.</p>
+            </div>
+
+            <h2 id="section-1">1. Information We Collect</h2>
+            <h3>1.1 Personal Information</h3>
+            <p>We may collect personal information that you voluntarily provide, including:</p>
+            <ul>
+                <li>Name</li>
+                <li>Email address</li>
+                <li>Phone number</li>
+                <li>Account credentials</li>
+                <li>Payment-related identifiers (processed via app stores; we do not store card details)</li>
+            </ul>
+
+            <h3>1.2 Usage Data</h3>
+            <p>We collect information about how you use our Services, such as:</p>
+            <ul>
+                <li>Games played and features used</li>
+                <li>Progress, scores, streaks, and preferences</li>
+                <li>Interaction logs and session duration</li>
+            </ul>
+
+            <h3>1.3 Device Information</h3>
+            <p>We may collect device-related information including:</p>
+            <ul>
+                <li>Device type and model</li>
+                <li>Operating system and app version</li>
+                <li>Unique device identifiers</li>
+                <li>IP address and network information</li>
+            </ul>
+
+            <h3>1.4 Cookies & Tracking Technologies</h3>
+            <p>We use cookies and similar technologies to:</p>
+            <ul>
+                <li>Improve app and website performance</li>
+                <li>Remember user preferences</li>
+                <li>Analyze usage trends</li>
+            </ul>
+            <p>Cookies may be session-based or persistent and may include third-party cookies.</p>
+
+            <h2 id="section-2">2. How We Use Your Information</h2>
+            <h3>2.1 Service Provision</h3>
+            <p>We use your information to:</p>
+            <ul>
+                <li>Create and manage user accounts</li>
+                <li>Provide gameplay, features, and content</li>
+                <li>Enable offline gameplay and data synchronization</li>
+                <li>Communicate service-related updates</li>
+            </ul>
+
+            <h3>2.2 Advertising & Monetization</h3>
+            <p><strong>Google AdMob</strong></p>
+            <p>Our app uses Google AdMob to display advertisements. AdMob may collect:</p>
+            <ul>
+                <li>Device IP address</li>
+                <li>Device type</li>
+                <li>Approximate location</li>
+                <li>Advertising identifiers</li>
+            </ul>
+            <p>This data is used to display relevant or non-personalized ads.</p>
+            <p>Google Privacy Policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a><br>
+            Ad Preferences: <a href="https://adssettings.google.com/">https://adssettings.google.com/</a></p>
+
+            <h3>2.3 Analytics & Research</h3>
+            <p>We use analytics tools (such as Google Analytics or Firebase Analytics) to:</p>
+            <ul>
+                <li>Understand user behavior</li>
+                <li>Improve features and performance</li>
+            </ul>
+            <p>Collected data may include usage patterns and device information.</p>
+
+            <h2 id="section-3">3. Legal Basis for Processing (GDPR-Ready)</h2>
+            <p>We process personal data based on:</p>
+            <ul>
+                <li>User consent</li>
+                <li>Contractual necessity (to provide Services)</li>
+                <li>Legal obligations</li>
+                <li>Legitimate business interests, such as improving user experience</li>
+            </ul>
+
+            <h2 id="section-4">4. Data Sharing & Disclosure</h2>
+            <p>We do not sell your personal data.</p>
+            <p>We may share data only with:</p>
+            <ul>
+                <li>Service providers (analytics, hosting, notifications)</li>
+                <li>Advertising partners (Google AdMob)</li>
+                <li>Legal authorities, if required by law</li>
+            </ul>
+            <p>All third parties are required to process data securely and only for specified purposes.</p>
+
+            <h2 id="section-5">5. Data Storage & International Transfers</h2>
+            <p>Your data may be stored and processed in India or other countries where our service providers operate (including cloud infrastructure providers).</p>
+            <p>We ensure appropriate safeguards are in place for cross-border data transfers.</p>
+
+            <h2 id="section-6">6. Data Retention</h2>
+            <p>We retain personal data only as long as necessary to:</p>
+            <ul>
+                <li>Provide Services</li>
+                <li>Comply with legal obligations</li>
+                <li>Resolve disputes</li>
+            </ul>
+            <p>Data is deleted or anonymized when no longer required.</p>
+
+            <h2 id="section-7">7. User Rights</h2>
+            <p>You have the right to:</p>
+            <h3>7.1 Access & Correction</h3>
+            <p>View and update your personal information through account settings.</p>
+            <h3>7.2 Data Deletion</h3>
+            <p>Request deletion of your account and associated data by contacting us.</p>
+            <h3>7.3 Data Portability</h3>
+            <p>Request a copy of your data in a machine-readable format.</p>
+            <h3>7.4 Withdraw Consent</h3>
+            <p>Withdraw consent for data processing where applicable.</p>
+            <p>Requests will be processed in accordance with applicable laws.</p>
+
+            <h2 id="section-8">8. Cookies Management</h2>
+            <p>You can manage or disable cookies via:</p>
+            <ul>
+                <li>Browser settings (for website)</li>
+                <li>Device settings (for mobile apps)</li>
+            </ul>
+            <p>Disabling cookies may affect functionality.</p>
+
+            <h2 id="section-9">9. Children's Privacy</h2>
+            <p>Our Services are not intended for children under 13 years of age.</p>
+            <p>We do not knowingly collect personal data from children under 13 without verifiable parental consent. If such data is discovered, it will be deleted promptly.</p>
+            <p>Parents may contact us to:</p>
+            <ul>
+                <li>Review their child's data</li>
+                <li>Request deletion</li>
+                <li>Withdraw consent</li>
+            </ul>
+
+            <h2 id="section-10">10. Security Measures</h2>
+            <p>We use reasonable and industry-standard safeguards, including:</p>
+            <ul>
+                <li>Encryption of data in transit and at rest</li>
+                <li>Restricted access controls</li>
+                <li>Regular security reviews</li>
+            </ul>
+            <p>However, no system is completely secure, and we cannot guarantee absolute security.</p>
+
+            <h2 id="section-11">11. Third-Party Links & Services</h2>
+            <p>Our Services may contain links to third-party websites or services. We are not responsible for their privacy practices. Please review their policies separately.</p>
+
+            <h2 id="section-12">12. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Significant changes will be notified via:</p>
+            <ul>
+                <li>App notifications</li>
+                <li>Email</li>
+                <li>Website notice</li>
+            </ul>
+            <p>Continued use of the Services after updates constitutes acceptance.</p>
+
+            <h2 id="section-13">13. Contact Information</h2>
+            <p>For questions, concerns, or requests regarding this Privacy Policy:</p>
+            <p>Email: <a href="mailto:support@lipi.game">support@lipi.game</a><br>
+            Support: <a href="mailto:support@lipi.game">support@lipi.game</a></p>
+
+            <h2 id="section-14">14. Regional Addendums</h2>
+            <h3>India</h3>
+            <p>This Privacy Policy complies with:</p>
+            <ul>
+                <li>Information Technology Act, 2000</li>
+                <li>IT Rules, 2011</li>
+            </ul>
+            <p>Users may request grievance redressal via <a href="mailto:support@lipi.game">support@lipi.game</a>.</p>
+
+            <h3>United States</h3>
+            <p><strong>COPPA</strong></p>
+            <p>We comply with COPPA requirements for children's data.</p>
+            <p><strong>CCPA (California)</strong></p>
+            <p>California residents have the right to:</p>
+            <ul>
+                <li>Know what data is collected</li>
+                <li>Request deletion</li>
+                <li>Opt-out of data sale (we do not sell data)</li>
+                <li>Non-discrimination</li>
+            </ul>
+            <p>Requests can be sent to <a href="mailto:support@lipi.game">support@lipi.game</a>.</p>
+
+            <h2 id="section-15">15. Platform Compliance</h2>
+            <h3>Android</h3>
+            <ul>
+                <li>In-app purchases comply with Google Play Billing</li>
+                <li>Data handling follows Google Play User Data policies</li>
+            </ul>
+            <h3>iOS</h3>
+            <ul>
+                <li>In-app purchases comply with Apple App Store policies</li>
+                <li>Data handling follows Apple App Store guidelines</li>
+            </ul>
+        </main>
+
+        <aside class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#section-1">1. Information We Collect</a></li>
+                <li><a href="#section-2">2. How We Use Your Information</a></li>
+                <li><a href="#section-3">3. Legal Basis for Processing</a></li>
+                <li><a href="#section-4">4. Data Sharing & Disclosure</a></li>
+                <li><a href="#section-5">5. Data Storage & International Transfers</a></li>
+                <li><a href="#section-6">6. Data Retention</a></li>
+                <li><a href="#section-7">7. User Rights</a></li>
+                <li><a href="#section-8">8. Cookies Management</a></li>
+                <li><a href="#section-9">9. Children's Privacy</a></li>
+                <li><a href="#section-10">10. Security Measures</a></li>
+                <li><a href="#section-11">11. Third-Party Links & Services</a></li>
+                <li><a href="#section-12">12. Changes to This Privacy Policy</a></li>
+                <li><a href="#section-13">13. Contact Information</a></li>
+                <li><a href="#section-14">14. Regional Addendums</a></li>
+                <li><a href="#section-15">15. Platform Compliance</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <button class="menu-toggle" onclick="toggleToc()">☰</button>
+
+    <script>
+        function toggleToc() {
+            const toc = document.querySelector('.toc');
+            toc.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.toc a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    document.querySelector('.toc').classList.remove('active');
+                }
+            });
+        });
+
+        // Highlight active section based on scroll position
+        const sections = document.querySelectorAll('h2[id]');
+        const navLinks = document.querySelectorAll('.toc a');
+
+        function highlightActiveSection() {
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop - 100) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightActiveSection);
+        window.addEventListener('load', highlightActiveSection);
+    </script>
+</body>
+</html>

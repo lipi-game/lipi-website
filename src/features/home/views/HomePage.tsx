@@ -18,7 +18,7 @@ export function HomePage() {
     <main>
       {/* Sticky Hero Region - hero stays pinned while this region scrolls */}
       <section id="home" className="relative h-[200vh]">
-        <div className="sticky top-0 h-screen z-0">
+        <div className="sticky top-0 h-[95dvh] z-0">
           <HeroSection />
         </div>
       </section>

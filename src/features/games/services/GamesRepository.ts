@@ -16,8 +16,8 @@ const games: Game[] = [
     imageAlt: "LIPI EPICS app preview",
     ctaType: "play",
     route: "/games/lipi-epics",
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.epics",
-    appStoreUrl: "https://apps.apple.com/app/lipi-epics/id123456789",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi&pcampaignid=web_share",
+    appStoreUrl: "https://apps.apple.com/us/app/lipi-epics-wordgames/id6736470264",
     // TODO: Place modal image at /Assets/Images/games/lipi-epics-modal.png (wider hero image for modal)
     modalImageUrl: "/Assets/Images/games/lipi-epics.png",
   },
@@ -30,8 +30,8 @@ const games: Game[] = [
     imageAlt: "LIPI KIDS app preview",
     ctaType: "play",
     route: "/games/lipi-kids",
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.kids",
-    appStoreUrl: "https://apps.apple.com/app/lipi-kids/id123456790",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.kids&pcampaignid=web_share",
+    appStoreUrl: "https://apps.apple.com/us/app/lipi-kids/id6749450279",
     // TODO: Place modal image at /Assets/Images/games/lipi-kids-modal.png (wider hero image for modal)
     modalImageUrl: "/Assets/Images/games/lipi-kids.png",
   },
