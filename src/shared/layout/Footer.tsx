@@ -13,7 +13,7 @@ const lipiEpicsLinks = [
 ];
 
 const supportLinks = [
-  { label: "FAQ", href: "/faq" },
+  { label: "FAQ", href: "https://lipi.game/faq" },
   {
     label: "support@lipi.game",
     href: "mailto:support@lipi.game",
