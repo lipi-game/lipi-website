@@ -54,11 +54,11 @@ export function InstallCtaSection() {
               alt=""
               aria-hidden="true"
               className="absolute left-[6%] bottom-[140px]
-  md:left-[4%] md:bottom-[160px]
-  lg:left-[18%] lg:bottom-[180px]
-  w-[100px] sm:w-[140px] md:w-[210px] lg:w-[240px]
-  max-w-[25vw] md:max-w-none
-  h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
+                md:left-[4%] md:bottom-[160px]
+                lg:left-[18%] lg:bottom-[180px]
+                w-[100px] sm:w-[140px] md:w-[210px] lg:w-[240px]
+                max-w-[25vw] md:max-w-none
+                h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
             />
 
             {/* Tablet */}
@@ -67,11 +67,11 @@ export function InstallCtaSection() {
               alt=""
               aria-hidden="true"
               className="absolute left-[36%] bottom-[180px]
-  md:left-[34%] md:bottom-[220px]
-  lg:left-[42%] lg:bottom-[220px]
-  w-[200px] sm:w-[280px] md:w-[460px] lg:w-[560px]
-  max-w-[55vw] md:max-w-none
-  h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
+                md:left-[34%] md:bottom-[220px]
+                lg:left-[42%] lg:bottom-[220px]
+                w-[200px] sm:w-[280px] md:w-[460px] lg:w-[560px]
+                max-w-[55vw] md:max-w-none
+                h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
             />
           </div>
 
@@ -87,7 +87,7 @@ export function InstallCtaSection() {
               {/* Store Buttons */}
               <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 z-10">
                 <a
-                  href={game.appStoreUrl || "#"}
+                  href={"https://apps.apple.com/us/developer/lipi-inc/id1772086567"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center gap-1.5 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-3 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-[140px] sm:w-[170px] md:w-[190px] shrink-0 ${
@@ -114,7 +114,7 @@ export function InstallCtaSection() {
                   </div>
                 </a>
                 <a
-                  href={game.playStoreUrl || "#"}
+                  href={"https://play.google.com/store/apps/dev?id=6433036785319466025&hl=en_IN"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center gap-1.5 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-3 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-[140px] sm:w-[170px] md:w-[190px] shrink-0 ${

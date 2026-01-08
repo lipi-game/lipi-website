@@ -215,7 +215,7 @@ export default function ContactPage() {
             </div>
 
             {/* Privacy Policy Checkbox */}
-            <div className="flex items-center justify-center gap-2 py-2">
+            {/* <div className="flex items-center justify-center gap-2 py-2">
               <Checkbox
                 id="agreeToPolicy"
                 checked={formData.agreeToPolicy}
@@ -240,7 +240,7 @@ export default function ContactPage() {
                 </Link>
                 .
               </label>
-            </div>
+            </div> */}
 
             {/* Submit Button */}
             <Button

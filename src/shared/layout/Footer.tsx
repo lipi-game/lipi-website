@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { Facebook, Instagram, Youtube } from "lucide-react";
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: Facebook, href: "https://www.facebook.com/LipiEpicsMahabharat/", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/lipiepics_mahabharatam/", label: "Instagram" },
+  { icon: Youtube, href: "https://www.youtube.com/channel/UCqzx1N4b2bpYbklFVIcM2bg", label: "YouTube" },
 ];
 
 const lipiEpicsLinks = [
@@ -14,24 +14,42 @@ const lipiEpicsLinks = [
 
 const supportLinks = [
   { label: "FAQ", href: "/faq" },
-  { label: "support@lipi.game", href: "mailto:support@lipi.game", external: true },
-  { label: "+91 8977044710", href: "tel:+918977044710", external: true },
+  {
+    label: "support@lipi.game",
+    href: "mailto:support@lipi.game",
+    external: true,
+  },
   { label: "Contact Us", href: "/contact" },
   { label: "Blog", href: "/blogs" },
 ];
 
 const legalLinks = [
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
+  { label: "Privacy Policy", href: "/privacy-policy.html", external: true },
+  {
+    label: "Terms & Conditions",
+    href: "/terms-and-conditions.html",
+    external: true,
+  },
 ];
+
+const lipiKidsLegalLinks = [
+  { label: "Privacy Policy", href: "https://lipi.game/lipi-kids/privacy-policy.html", external: true },
+  {
+    label: "Terms & Conditions",
+    href: "https://lipi.game/lipi-kids/terms-of-use.html",
+    external: true,
+  },
+]
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="w-full bg-[#1a1a1a]" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" className="sr-only">Footer</h2>
-      
+      <h2 id="footer-heading" className="sr-only">
+        Footer
+      </h2>
+
       <div className="max-w-[1180px] mx-auto px-5 md:px-8 py-10 md:py-14">
         {/* Main footer content */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -39,12 +57,13 @@ export function Footer() {
           <div className="space-y-3">
             <h3 className="text-base font-semibold text-white">Lipi Games</h3>
             <p className="text-[13px] leading-relaxed text-gray-400">
-              Creating mobile games that combine ancient epics, word games with modern gameplay.
+              Creating mobile games that combine ancient epics, word games with
+              modern gameplay.
             </p>
             <p className="text-[13px] text-gray-400">
               3rd Floor, BBR Forum, Banjara Hills Road no 2, Hyderabad
             </p>
-            
+
             {/* Social Icons */}
             <div className="flex items-center gap-2 pt-2">
               {socialLinks.map((social) => (
@@ -63,7 +82,7 @@ export function Footer() {
           </div>
 
           {/* Lipi Epics Column */}
-          <div className="space-y-3">
+          {/* <div className="space-y-3">
             <h3 className="text-base font-semibold text-white">Lipi Epics</h3>
             <ul className="space-y-2">
               {lipiEpicsLinks.map((link) => (
@@ -77,7 +96,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Support Column */}
           <div className="space-y-3">
@@ -107,16 +126,41 @@ export function Footer() {
 
           {/* Legal Column */}
           <div className="space-y-3">
-            <h3 className="text-base font-semibold text-white">Privacy Policy</h3>
+            <h3 className="text-base font-semibold text-white">
+              PRIVACY & TERMS
+            </h3>
             <ul className="space-y-2">
               {legalLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-[13px] text-gray-400 transition-colors hover:text-white hover:underline"
                   >
                     {link.label}
-                  </Link>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal Column Kids */}
+          <div className="space-y-3">
+            <h3 className="text-base font-semibold text-white">
+              PRIVACY & TERMS - LIPI KIDS
+            </h3>
+            <ul className="space-y-2">
+              {lipiKidsLegalLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[13px] text-gray-400 transition-colors hover:text-white hover:underline"
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>

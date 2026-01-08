@@ -16,7 +16,7 @@ export function HeroSection() {
   });
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-full w-full overflow-hidden">
       {/* Video Background */}
       <video autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" poster="">
         <source src={VIDEO_SRC} type="video/mp4" />
