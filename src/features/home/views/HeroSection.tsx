@@ -9,25 +9,16 @@ const HERO_PHRASES = [
   "We make practice feel fun.",
 ];
 
-
 export function HeroSection() {
-  const { currentPhrase, currentIndex, prefersReducedMotion } =
-    useRotatingPhrases({
-      phrases: HERO_PHRASES,
-      intervalMs: 2800,
-    });
+  const { currentPhrase, currentIndex, prefersReducedMotion } = useRotatingPhrases({
+    phrases: HERO_PHRASES,
+    intervalMs: 2800,
+  });
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover"
-        poster=""
-      >
+      <video autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" poster="">
         <source src={VIDEO_SRC} type="video/mp4" />
       </video>
 
@@ -46,13 +37,13 @@ export function HeroSection() {
               <span className="text-[#118fdd]">A</span>
               <span>t</span>
             </span>
-            
+
             {/* "Lipi," with orange comma */}
             <span className="whitespace-nowrap">
               Lipi
               <span className="text-[#118fdd]">,</span>
             </span>
-            
+
             {/* Rotating phrase */}
             <span className="relative inline-block min-w-[14ch] sm:min-w-[16ch] whitespace-nowrap">
               <AnimatePresence mode="wait">
