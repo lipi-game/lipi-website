@@ -64,7 +64,7 @@ export function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 ${navBgClass}`}>
-      <div className="flex w-full items-center justify-between px-4 py-3 md:px-10 md:py-4 lg:py-2 lg:px-10">
+      <div className="flex w-full items-center justify-between px-4 py-3 md:px-10 md:py-4 lg:py-3 lg:px-10">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img
@@ -103,9 +103,9 @@ export function Navbar() {
           <SheetContent
             side="right"
             className="
-      w-screen max-w-none h-[100dvh] p-0 border-none
-      bg-[radial-gradient(ellipse_at_top,_rgba(8,16,40,1)_55%,_rgba(5,8,18,1)_100%)]
-    "
+              w-screen max-w-none h-[100dvh] p-0 border-none
+              bg-[radial-gradient(ellipse_at_top,_rgba(8,16,40,1)_55%,_rgba(5,8,18,1)_100%)]
+            "
           >
             <VisuallyHidden.Root>
               <SheetTitle>Navigation Menu</SheetTitle>
