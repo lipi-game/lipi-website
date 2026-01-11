@@ -1,9 +1,9 @@
 import { AppProviders, AppRouter } from "@/app";
 
-const App = () => (
+const Root = () => (
   <AppProviders>
     <AppRouter />
   </AppProviders>
 );
 
-export default App;
+export default Root;

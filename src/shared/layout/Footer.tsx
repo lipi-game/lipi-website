@@ -20,7 +20,7 @@ const supportLinks = [
     external: true,
   },
   { label: "Contact Us", href: "/contact" },
-  { label: "Blog", href: "/blogs" },
+  { label: "Blogs", href: "/blogs" },
 ];
 
 const legalLinks = [
@@ -127,7 +127,7 @@ export function Footer() {
           {/* Legal Column */}
           <div className="space-y-3">
             <h3 className="text-base font-semibold text-white">
-              PRIVACY & TERMS
+              Privacy & Terms
             </h3>
             <ul className="space-y-2">
               {legalLinks.map((link) => (
@@ -148,7 +148,7 @@ export function Footer() {
           {/* Legal Column Kids */}
           <div className="space-y-3">
             <h3 className="text-base font-semibold text-white">
-              PRIVACY & TERMS - LIPI KIDS
+              Privacy & Terms - Lipi Kids
             </h3>
             <ul className="space-y-2">
               {lipiKidsLegalLinks.map((link) => (
