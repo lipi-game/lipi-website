@@ -29,7 +29,7 @@ export const founderBio = [
 
 export const founderName = "Sagar Anisingaraju";
 export const founderRole = "Founder & CEO";
-export const founderImageUrl = "/Assets/Images/team/founder.png";
+export const founderImageUrl = "/Assets/Images/team/founder.webp";
 
 export const meetTeamIntro = "Meet the people behind Lipi.Game. Led by founder Sagar Anisingaraju, our team blends marketing, engineering, and content expertise with a passionate Lipi Army community. Together we craft epic-inspired learning and word games, build reliable technology, and create high-quality stories, visuals, and experiences for players worldwide.";
 
@@ -38,7 +38,7 @@ export const meetTeamMembers = [
     id: 1,
     name: "Prasad Chaganti",
     role: "Director",
-    imageUrl: "/Assets/Images/team/Prasad.png",
+    imageUrl: "/Assets/Images/team/Prasad.webp",
     bgColor: "#4ECDC4",
     linkedinUrl: "https://www.linkedin.com/",
     bio: [
@@ -46,39 +46,36 @@ export const meetTeamMembers = [
       "He focuses on aligning product goals, operational planning, and team collaboration to support long-term growth.",
     ],
     objectPosition: "60% 25%"
-
   },
   {
     id: 2,
     name: "Aparna Nalluri",
     role: "VP & Marketing",
-    imageUrl: "/Assets/Images/team/Aparna.png",
+    imageUrl: "/Assets/Images/team/Aparna.webp",
     bgColor: "#7C83FD",
     linkedinUrl: "https://www.linkedin.com/",
     bio: [
       "Aparna leads marketing and growth initiatives, shaping how Lipi communicates its mission to learners and families.",
       "She drives positioning, partnerships, and campaigns across social and digital channels with a focus on impact and clarity.",
     ],
-    objectPosition: "60% -5%",
   },
   {
     id: 3,
     name: "Narendra",
     role: "Manager",
-    imageUrl: "/Assets/Images/team/Narendra.png",
+    imageUrl: "/Assets/Images/team/Narendra.webp",
     bgColor: "#F06292",
     linkedinUrl: "https://www.linkedin.com/",
     bio: [
       "Narendra manages execution workflows and coordinates across teams to keep deliverables on track.",
       "He supports planning, quality checks, and smooth coordination between content, design, and engineering.",
     ],
-    objectPosition: "30% -30%"
   },
   {
     id: 4,
     name: "Bhavani",
     role: "Content & Testing Lead",
-    imageUrl: "/Assets/Images/team/Bhavani.png",
+    imageUrl: "/Assets/Images/team/Bhavani.webp",
     bgColor: "#FFAB91",
     linkedinUrl: "https://www.linkedin.com/",
     bio: [
@@ -90,53 +87,54 @@ export const meetTeamMembers = [
     id: 5,
     name: "Shiva Chittimalla",
     role: "Social media Lead",
-    imageUrl: "/Assets/Images/team/Shiva.png",
+    imageUrl: "/Assets/Images/team/Shiva.webp",
     bgColor: "#81C784",
     linkedinUrl: "https://www.linkedin.com/",
     bio: [
       "Shiva leads social media strategy and creative execution, focusing on storytelling that connects with audiences.",
       "He works on content planning, community engagement, and building a consistent visual voice for Lipi.",
     ],
+    objectPosition: "50% 5%"
   },
   {
     id: 6,
     name: "Prashant Alakuntla",
     role: "AI Video Lead",
-    imageUrl: "/Assets/Images/team/Prashant.png",
+    imageUrl: "/Assets/Images/team/Prashant.webp",
     bgColor: "#FFF176",
     linkedinUrl: "https://www.linkedin.com/",
     bio: [
       "Prashant leads AI-powered video creation workflows, translating epic stories into engaging visual narratives.",
       "He focuses on prompt pipelines, visual consistency, and producing high-quality video assets efficiently.",
     ],
-    objectPosition: "50% 35%"
+    objectPosition: "50% 5%"
   },
   {
     id: 7,
     name: "Kalyani Nalluri",
     role: "Content Lead",
-    imageUrl: "/Assets/Images/team/Kalyani.png",
+    imageUrl: "/Assets/Images/team/Kalyani.webp",
     bgColor: "#4ECDC4",
     linkedinUrl: "https://www.linkedin.com/",
     bio: [
       "Kalyani leads content development across learning tracks, ensuring storytelling quality and learning clarity.",
       "She works closely with review, testing, and product teams to maintain consistent tone and structure across modules.",
     ],
-    objectPosition: "60% 0%",
   },
 ];
 
 export const disciplinePortraits = [
-  { id: 1, name: "Jaideep", role: "Video Editor", imageUrl: "/Assets/Images/team/Jaideep.png", bgColor: "#E8F5E9" },
-  { id: 2, name: "Mahesh", role: "Video Editor", imageUrl: "/Assets/Images/team/Mahesh.png", bgColor: "#E3F2FD", objectPosition: "50% 20%"},
-  { id: 3, name: "Teja", role: "Video Editor", imageUrl: "/Assets/Images/team/Teja.png", bgColor: "#FFF3E0",  objectPosition: "50% 10%"},
-  { id: 4, name: "Rithwik", role: "UX Designer", imageUrl: "/Assets/Images/team/Rithwik.png", bgColor: "#FCE4EC", objectPosition: "50% 0%" },
-  { id: 5, name: "Akanksha", role: "Product", imageUrl: "/Assets/Images/team/Akanksha.png", bgColor: "#E8EAF6" },
-  { id: 6, name: "Kaustabh", role: "UX", imageUrl: "/Assets/Images/team/Kaustabh.png", bgColor: "#ECEFF1" },
-  { id: 7, name: "Sharath", role: "Artist", imageUrl: "/Assets/Images/team/Sharath.png", bgColor: "#FBE9E7" },
-  { id: 8, name: "Rajender", role: "QA", imageUrl: "/Assets/Images/team/Rajender.png", bgColor: "#E0F7FA" },
-  { id: 9, name: "Amul", role: "Marketing", imageUrl: "/Assets/Images/team/Jaideep.png", bgColor: "#F3E5F5" },
-  { id: 10, name: "Sriram", role: "Support", imageUrl: "/Assets/Images/team/Jaideep.png", bgColor: "#FFFDE7" },
+  { id: 1, name: "Jaideep", role: "Video Editor", imageUrl: "/Assets/Images/team/Jaideep.webp", bgColor: "#E8F5E9" },
+  { id: 2, name: "Mahesh", role: "Video Editor", imageUrl: "/Assets/Images/team/Mahesh.webp", bgColor: "#E3F2FD", objectPosition: "50% 20%"},
+  { id: 3, name: "Teja", role: "Video Editor", imageUrl: "/Assets/Images/team/Teja.webp", bgColor: "#D3D3D3",  objectPosition: "50% 10%"},
+  { id: 4, name: "Rithwik", role: "UX Designer", imageUrl: "/Assets/Images/team/Rithwik.webp", bgColor: "#FCE4EC", objectPosition: "50% 0%" },
+  { id: 5, name: "Akanksha", role: "Product", imageUrl: "/Assets/Images/team/Akanksha.webp", bgColor: "#E8EAF6" },
+  { id: 6, name: "Nagraj", role: "Video Editor", imageUrl: "/Assets/Images/team/Nagraj.webp", bgColor: "#FFFDE7" },
+  { id: 7, name: "Kaustabh", role: "UX", imageUrl: "/Assets/Images/team/Kaustabh.webp", bgColor: "#ECEFF1" },
+  { id: 8, name: "Sharath", role: "Artist", imageUrl: "/Assets/Images/team/Sharath.webp", bgColor: "#FBE9E7" },
+  { id: 9, name: "Rajender", role: "QA", imageUrl: "/Assets/Images/team/Rajender.webp", bgColor: "#E0F7FA" },
+  { id: 10, name: "Amul", role: "Marketing", imageUrl: "/Assets/Images/team/Jaideep.webp", bgColor: "#F3E5F5" },
+  { id: 11, name: "Sriram", role: "Support", imageUrl: "/Assets/Images/team/Jaideep.webp", bgColor: "#FFFDE7" },
 ];
 
 export const advisors = [
@@ -144,7 +142,7 @@ export const advisors = [
     id: "1",
     name: "Prof K V Subramanian",
     role: "Exec Director World Bank",
-    imageUrl: "/Assets/Images/advisors/Prof K V Subramanian.png",
+    imageUrl: "/Assets/Images/advisors/Prof K V Subramanian.webp",
     avatarBg: "#E8D5E7",
     linkedinUrl: "https://linkedin.com",
     bio: [
@@ -159,7 +157,7 @@ export const advisors = [
     id: "2",
     name: "Venkat Mattela",
     role: "Founder and Chief Executive Officer",
-    imageUrl: "/Assets/Images/advisors/Venkat Mattela.png",
+    imageUrl: "/Assets/Images/advisors/Venkat Mattela.webp",
     avatarBg: "#C5E1A5",
     linkedinUrl: "https://linkedin.com",
     bio: [
@@ -174,7 +172,7 @@ export const advisors = [
     id: "3",
     name: "Suresh Katta",
     role: "Chairman Emeritus",
-    imageUrl: "/Assets/Images/advisors/Suresh Katta.png",
+    imageUrl: "/Assets/Images/advisors/Suresh Katta.webp",
     avatarBg: "#F8BBD9",
     linkedinUrl: "https://linkedin.com",
     bio: [
@@ -189,7 +187,7 @@ export const advisors = [
     id: "4",
     name: "Maa Sharma",
     role: "Sr. Journalist Media",
-    imageUrl: "/Assets/Images/advisors/Maa Sharma.png",
+    imageUrl: "/Assets/Images/advisors/Maa Sharma.webp",
     avatarBg: "#B3E5FC",
     linkedinUrl: "https://linkedin.com",
     bio: [
@@ -202,7 +200,7 @@ export const advisors = [
     id: "5",
     name: "Tarakam Peddada",
     role: "Entrepreneur",
-    imageUrl: "/Assets/Images/advisors/Tarakam Peddada.png",
+    imageUrl: "/Assets/Images/advisors/Tarakam Peddada.webp",
     avatarBg: "#DCEDC8",
     linkedinUrl: "https://linkedin.com",
     bio: [
@@ -214,7 +212,7 @@ export const advisors = [
     id: "6",
     name: "Prakash Dubey",
     role: "Transformation Leader Technology",
-    imageUrl: "/Assets/Images/advisors/Prakash Dubey.png",
+    imageUrl: "/Assets/Images/advisors/Prakash Dubey.webp",
     avatarBg: "#E1BEE7",
     linkedinUrl: "https://linkedin.com",
     bio: [
@@ -226,7 +224,7 @@ export const advisors = [
     id: "7",
     name: "Dr. Venu Kondle",
     role: "Entrepreneur",
-    imageUrl: "/Assets/Images/advisors/Dr. Venu Kondle.png",
+    imageUrl: "/Assets/Images/advisors/Dr. Venu Kondle.webp",
     avatarBg: "#C8E6C9",
     linkedinUrl: "https://linkedin.com",
     bio: [
@@ -241,7 +239,7 @@ export const advisors = [
     id: "8",
     name: "Prakash Aditham",
     role: "Product Management",
-    imageUrl: "/Assets/Images/advisors/Prakash Aditham.png",
+    imageUrl: "/Assets/Images/advisors/Prakash Aditham.webp",
     avatarBg: "#FFE0B2",
     linkedinUrl: "https://linkedin.com",
     bio: [

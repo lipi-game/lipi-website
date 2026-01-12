@@ -20,10 +20,13 @@ export function InstallCtaSection() {
     setSelectedGame(game);
   };
 
+  const bgUrl = "/Assets/Images/cta/install-bg.webp";
+
+
   return (
     <section
       aria-labelledby="install-cta-heading"
-      className="py-4 md:pb-20 bg-white"
+      className="pt-4 pb-10 md:pb-20 bg-white"
       style={{ backgroundColor: "#ffffff" }}
     >
       <h2 id="install-cta-heading" className="sr-only">
@@ -50,10 +53,10 @@ export function InstallCtaSection() {
           <div className="absolute inset-0 z-[5] pointer-events-none">
             {/* Phone */}
             <img
-              src={"/Assets/Images/phone.png"}
+              src={"/Assets/Images/cta/mobile.webp"}
               alt=""
               aria-hidden="true"
-              className="absolute left-[6%] bottom-[140px]
+              className="absolute left-[8%] bottom-[140px]
                 md:left-[4%] md:bottom-[160px]
                 lg:left-[18%] lg:bottom-[180px]
                 w-[100px] sm:w-[140px] md:w-[210px] lg:w-[240px]
@@ -63,10 +66,10 @@ export function InstallCtaSection() {
 
             {/* Tablet */}
             <img
-              src={"/Assets/Images/tab.png"}
+              src={"/Assets/Images/cta/tablet.webp"}
               alt=""
               aria-hidden="true"
-              className="absolute left-[36%] bottom-[180px]
+              className="absolute left-[38%] bottom-[160px]
                 md:left-[34%] md:bottom-[220px]
                 lg:left-[42%] lg:bottom-[220px]
                 w-[200px] sm:w-[280px] md:w-[460px] lg:w-[560px]

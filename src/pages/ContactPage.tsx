@@ -77,7 +77,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-white">
       {/* Content */}
       <div className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[600px] mx-auto">
+        <div className="max-w-[600px] mx-auto pt-8">
           {/* Back Button */}
           <button
             onClick={() => navigate(-1)}
