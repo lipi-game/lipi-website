@@ -2,13 +2,15 @@ import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import welcomeBrush from "/Assets/welcome-brush.png";
-import team1 from "/Assets/team-1.jpeg";
+import welcomeBrush from "/Assets/Images/logo/welcome-brush.webp";
+import about1 from "/Assets/Images/about-section/about-image-1.webp";
+import about2 from "/Assets/Images/about-section/about-image-2.webp";
+import about3 from "/Assets/Images/about-section/about-image-3.webp";
 
 const aboutImages = [
-  { src: team1, alt: "Lipi learning session" },
-  { src: team1, alt: "Lipi presentation" },
-  { src: team1, alt: "Lipi workshop" },
+  { src: about1, alt: "Lipi learning session" },
+  { src: about2, alt: "Lipi presentation" },
+  { src: about3, alt: "Lipi workshop" },
 ];
 
 function ImageCard({ src, alt, className }: { src: string; alt: string; className?: string }) {
@@ -63,11 +65,11 @@ function WelcomeHeading() {
 function MobileAboutSection() {
   return (
     <div className="px-6 pb-16">
-      <div className="relative mb-8 h-[320px] w-full">
+      <div className="relative mb-36 h-[320px] w-full">
         <ImageCard
           src={aboutImages[0].src}
           alt={aboutImages[0].alt}
-          className="absolute bottom-0 left-0 w-[65%] h-[70%] z-10 bg-muted -rotate-3"
+          className="absolute top-44 bottom-0 left-0 w-[65%] h-[70%] z-10 bg-muted -rotate-3"
         />
         <ImageCard
           src={aboutImages[1].src}
@@ -82,12 +84,12 @@ function MobileAboutSection() {
       <p className="text-base text-muted-foreground leading-relaxed mb-8">
         <span className="font-bold">Lipi Epics and Word Games</span> is a learning and
         gamification platform rooted in{" "}
-        <span>Indian epics, languages, and cultural values</span>. It transforms the{" "}
-        <span>Mahabharat</span> and{" "}
-        <span>Ramayana</span> into interactive play
+        <span className="font-bold">Indian epics, languages, and cultural values</span>. It transforms the{" "}
+        <span className="font-bold">Mahabharat</span> and{" "}
+        <span className="font-bold">Ramayana</span> into interactive play
         experiences, while blending{" "}
-        <span>epic-based learning</span> with{" "}
-        <span>word games</span> in Indian languages and English.
+        <span className="font-bold">epic-based learning</span> with{" "}
+        <span className="font-bold">word games</span> in Indian languages and English.
       </p>
       <Button
         asChild
@@ -108,21 +110,21 @@ function DesktopAboutSection() {
           <h3 className="text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.25rem] font-bold text-foreground mb-4 lg:mb-6 tracking-tight">
             About Us
           </h3>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6">
+          <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed mb-6">
             <span className="font-bold">Lipi Epics and Word Games</span> is a learning and
             gamification platform rooted in{" "}
-            <span className="">Indian epics, languages, and cultural values</span>. It transforms the{" "}
-            <span className="">Mahabharat</span> and{" "}
-            <span className="">Ramayana</span> into interactive play
+            <span className="font-bold">Indian epics, languages, and cultural values</span>. It transforms the{" "}
+            <span className="font-bold">Mahabharat</span> and{" "}
+            <span className="font-bold">Ramayana</span> into interactive play
             experiences, while blending{" "}
-            <span className="">epic-based learning</span> with{" "}
-            <span className="">word games</span> in Indian languages and English.
+            <span className="font-bold">epic-based learning</span> with{" "}
+            <span className="font-bold">word games</span> in Indian languages and English.
             By addressing the gap where{" "}
-            <span className="">ancient wisdom</span> is often missing from modern education, Lipi helps
+            <span className="font-bold">ancient wisdom</span> is often missing from modern education, Lipi helps
             today's learners explore{" "}
-            <span className="">culture</span>,{" "}
-            <span className="">values</span>, and{" "}
-            <span className="">thinking skills</span> through play.
+            <span className="font-bold">culture</span>,{" "}
+            <span className="font-bold">values</span>, and{" "}
+            <span className="font-bold">thinking skills</span> through play.
           </p>
           <Button
             asChild

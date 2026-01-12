@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { X, Linkedin } from "lucide-react";
+import { X, Linkedin, ChevronDown } from "lucide-react";
 import {
   aboutIntroText,
   avatarCollageImages,
@@ -176,7 +176,7 @@ function TeamTile({
         src={member.imageUrl}
         alt={member.name}
         className="block w-full h-full object-cover transition-transform duration-300 ease-out [@media(hover:hover)]:group-hover:scale-105"
-        style={{ objectPosition: member.objectPosition ?? "50% 35%" }}
+        style={{ objectPosition: member.objectPosition ?? "50% 20%" }}
         onError={(e) => {
           e.currentTarget.style.display = "none";
         }}
@@ -490,7 +490,7 @@ function MeetTeamSection() {
                           className="w-full h-full rounded-full object-cover"
                           style={{
                             objectPosition:
-                              selectedMember.objectPosition ?? "50% 35%",
+                              selectedMember.objectPosition ?? "50% 20%",
                           }}
                         />
                       </div>
@@ -549,7 +549,7 @@ function MeetTeamSection() {
                         alt={portrait.name}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         style={{
-                          objectPosition: portrait.objectPosition ?? "50% 35%",
+                          objectPosition: portrait.objectPosition ?? "50% 20%",
                         }}
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
@@ -604,7 +604,7 @@ function MeetTeamSection() {
                         alt={portrait.name}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         style={{
-                          objectPosition: portrait.objectPosition ?? "50% 35%",
+                          objectPosition: portrait.objectPosition ?? "50% 20%",
                         }}
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
@@ -657,7 +657,7 @@ function MeetTeamSection() {
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                           style={{
                             objectPosition:
-                              portrait.objectPosition ?? "50% 35%",
+                              portrait.objectPosition ?? "50% 20%",
                           }}
                           onError={(e) => {
                             e.currentTarget.style.display = "none";
@@ -733,7 +733,7 @@ function AdvisorsSection() {
                     alt={advisor.name}
                     className="w-full h-full object-cover"
                     style={{
-                      objectPosition: advisor.objectPosition ?? "50% 35%",
+                      objectPosition: advisor.objectPosition ?? "50% %",
                     }}
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
@@ -770,7 +770,7 @@ function AdvisorsSection() {
                   alt={advisor.name}
                   className="w-full h-full object-cover"
                   style={{
-                    objectPosition: advisor.objectPosition ?? "50% 35%",
+                    objectPosition: advisor.objectPosition ?? "50% %",
                   }}
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
@@ -850,7 +850,7 @@ function AdvisorsSection() {
                       className="w-full h-full rounded-full object-cover"
                       style={{
                         objectPosition:
-                          selectedAdvisor.objectPosition ?? "50% 35%",
+                          selectedAdvisor.objectPosition ?? "50% %",
                       }}
                     />
                   </div>
@@ -888,6 +888,17 @@ export function ReferencesSection() {
     blue: { shadow: "#0E238B", bg: "#4758AC" },
   } as const;
 
+  // per-card toggle state (default: collapsed)
+  const [openMap, setOpenMap] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {};
+    referenceBlocks.forEach((b) => (initial[b.id] = false));
+    return initial;
+  });
+
+  const toggleCard = (id: string) => {
+    setOpenMap((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
   return (
     <section className="py-8 md:py-12 bg-white">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
@@ -903,42 +914,70 @@ export function ReferencesSection() {
             reviewed by an expert panel to ensure accuracy and credibility.
           </p>
 
-          {/* Section Cards (same colors, same card style) */}
+          {/* Section Cards */}
           <div className="grid grid-cols-1 gap-5 md:gap-6 mb-6">
             {referenceBlocks.map((b) => {
               const colors = cardVariants[b.variant];
+              const isOpen = openMap[b.id] ?? false;
+
               return (
                 <div key={b.id} className="relative">
                   <div
                     className="absolute inset-0 translate-x-2 translate-y-2"
                     style={{ backgroundColor: colors.shadow }}
                   />
+
                   <div
-                    className="relative p-5 md:p-6 h-full min-h-[120px]"
+                    className="relative p-5 md:p-6 h-full min-h-[88px]"
                     style={{ backgroundColor: colors.bg }}
                   >
-                    <h3 className="text-sm md:text-base font-bold text-white mb-3">
-                      {b.title}
-                    </h3>
+                    {/* Header row: title + toggle */}
+                    <button
+                      type="button"
+                      onClick={() => toggleCard(b.id)}
+                      className="w-full flex items-center justify-between gap-3 text-left"
+                      aria-expanded={isOpen}
+                      aria-controls={`ref-block-${b.id}`}
+                    >
+                      <h3 className="text-sm md:text-base font-bold text-white">
+                        {b.title}
+                      </h3>
 
-                    <ul className="space-y-1.5">
-                      {b.lines.map((line, index) => (
-                        <li
-                          key={index}
-                          className="text-white/90 text-[12px] md:text-[13px] flex items-start gap-2"
-                        >
-                          <span className="text-white mt-0.5">•</span>
-                          <span>{line}</span>
-                        </li>
-                      ))}
-                    </ul>
+                      <span
+                        className="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/60 bg-white/10 hover:bg-white/15 transition-colors"
+                        aria-hidden="true"
+                      >
+                        <ChevronDown
+                          className={`w-5 h-5 text-white transition-transform duration-200 ${
+                            isOpen ? "rotate-180" : "rotate-0"
+                          }`}
+                        />
+                      </span>
+                    </button>
+
+                    {/* Content (only when expanded) */}
+                    {isOpen && (
+                      <div id={`ref-block-${b.id}`} className="mt-4">
+                        <ul className="space-y-1.5">
+                          {b.lines.map((line, index) => (
+                            <li
+                              key={index}
+                              className="text-white/90 text-[12px] md:text-[13px] flex items-start gap-2"
+                            >
+                              <span className="text-white mt-0.5">•</span>
+                              <span>{line}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Bottom: Accuracy Disclaimer + Original Content Creation (separate) */}
+          {/* Bottom: Accuracy Disclaimer + Original Content Creation */}
           <div className="space-y-3">
             <div className="bg-white rounded-lg px-4 py-3">
               <p className="text-[12px] md:text-[13px]">
@@ -973,6 +1012,7 @@ export function ReferencesSection() {
     </section>
   );
 }
+
 
 export default function AboutPage() {
   return (

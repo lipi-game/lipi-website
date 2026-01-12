@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRotatingPhrases } from "@/shared/hooks/useRotatingPhrases";
-import VIDEO_SRC from "/Assets/hero.mp4";
+import VIDEO_SRC from "/Assets/Videos/hero-section/hero.mp4";
 
 const HERO_PHRASES = [
   "We make learning playable.",
@@ -10,15 +10,26 @@ const HERO_PHRASES = [
 ];
 
 export function HeroSection() {
-  const { currentPhrase, currentIndex, prefersReducedMotion } = useRotatingPhrases({
-    phrases: HERO_PHRASES,
-    intervalMs: 2800,
-  });
+  const { currentPhrase, currentIndex, prefersReducedMotion } =
+    useRotatingPhrases({
+      phrases: HERO_PHRASES,
+      intervalMs: 2800,
+    });
 
   return (
     <section className="relative h-full w-full overflow-hidden">
       {/* Video Background */}
-      <video autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" poster="">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="
+          absolute inset-0 h-full w-full object-cover object-center
+          [@media(orientation:landscape)]:object-[50%_25%]
+          [@media(max-height:500px)_and_(orientation:landscape)]:!object-[50%_18%]"
+        poster=""
+      >
         <source src={VIDEO_SRC} type="video/mp4" />
       </video>
 
