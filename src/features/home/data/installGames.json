@@ -2,14 +2,14 @@
   {
     "id": "lipi-epics",
     "name": "Lipi Epics",
-    "bannerImage": "/Assets/Images/cta/install-bg.webp",
+    "bannerImage": "images/cta/install-bg.webp",
     "appStoreUrl": "https://apps.apple.com/app/lipi-epics",
     "playStoreUrl": "https://play.google.com/store/apps/details?id=com.lipi.epics"
   },
   {
     "id": "word-cruise",
     "name": "Word Cruise",
-    "bannerImage": "/Assets/Images/cta/install-bg.webp",
+    "bannerImage": "images/cta/install-bg.webp",
     "appStoreUrl": "https://apps.apple.com/app/word-cruise",
     "playStoreUrl": "https://play.google.com/store/apps/details?id=com.lipi.wordcruise"
   }

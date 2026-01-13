@@ -5,6 +5,7 @@ import { getBlogBySlug } from "../services/BlogRepository";
 import { getMoreBlogs } from "../services/BlogManager";
 import { useSEO } from "@/shared/hooks/useSEO";
 import type { Blog } from "../types/blog";
+import { assetUrl } from "@/config/assets";
 
 // ============= HELPER FUNCTIONS =============
 
@@ -316,12 +317,12 @@ function CtaSection() {
           {/* Device mockup images */}
           <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-6 mb-8 px-2 py-12 bg-slate-200/50 rounded-md">
             <img
-              src="/Assets/Images/cta/mobile.webp"
+              src={assetUrl("images/cta/mobile.webp")}
               alt="Lipi app on phone"
               className="w-24 sm:w-32 md:w-40 lg:w-48 h-auto object-contain"
             />
             <img
-              src="/Assets/Images/cta/tablet.webp"
+              src={assetUrl("images/cta/tablet.webp")}
               alt="Lipi app on tablet"
               className="w-40 sm:w-52 md:w-72 lg:w-96 h-auto object-contain"
             />

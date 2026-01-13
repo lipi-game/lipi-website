@@ -1,3 +1,4 @@
+import { assetUrl } from "@/config/assets";
 import type { Game } from "../types/game";
 
 // TODO: Place game images in src/assets/games/
@@ -12,14 +13,14 @@ const games: Game[] = [
     title: "LIPI EPICS",
     description:
       "An interactive learning experience that brings Indian epics to life through story-based games and structured play.",
-    imageUrl: "/Assets/Images/games/lipi-epics.webp",
+    imageUrl: assetUrl("images/games/lipi-epics.webp"),
     imageAlt: "LIPI EPICS app preview",
     ctaType: "play",
     route: "/games/lipi-epics",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi&pcampaignid=web_share",
     appStoreUrl: "https://apps.apple.com/us/app/lipi-epics-wordgames/id6736470264",
     // TODO: Place modal image at /Assets/Images/games/lipi-epics-modal.webp (wider hero image for modal)
-    modalImageUrl: "/Assets/Images/games-popup/lipi-epics-popup.webp",
+    modalImageUrl: assetUrl("images/games-popup/lipi-epics-popup.webp")
     
   },
   {
@@ -27,21 +28,21 @@ const games: Game[] = [
     title: "LIPI - KIDS",
     description:
       "An interactive learning experience that brings Indian epics to life through story-based games and structured play.",
-    imageUrl: "/Assets/Images/games/lipi-kids.webp",
+    imageUrl: assetUrl("images/games/lipi-kids.webp"),
     imageAlt: "LIPI KIDS app preview",
     ctaType: "play",
     route: "/games/lipi-kids",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.lipi.kids&pcampaignid=web_share",
     appStoreUrl: "https://apps.apple.com/us/app/lipi-kids/id6749450279",
     // TODO: Place modal image at /Assets/Images/games/lipi-kids-modal.webp (wider hero image for modal)
-    modalImageUrl: "/Assets/Images/games-popup/lipi-kids-popup.webp",
+    modalImageUrl: assetUrl("images/games-popup/lipi-kids-popup.webp"),
   },
   {
     id: "lipi-brain-booster",
     title: "LIPI - BRAIN BOOSTER",
     description:
       "A sharp-paced word puzzle game designed to boost memory, focus, and problem-solving skills through daily challenges.",
-    imageUrl: "/Assets/Images/games/lipi-brain-booster.webp",
+    imageUrl: assetUrl("images/games/lipi-brain-booster.webp"),
     imageAlt: "LIPI BRAIN BOOSTER app preview",
     ctaType: "coming-soon",
   },
@@ -50,7 +51,7 @@ const games: Game[] = [
     title: "LIPI - WORD CRUISE",
     description:
       "A fun word-building game that helps improve vocabulary and pattern recognition through engaging levels.",
-    imageUrl: "/Assets/Images/games/lipi-wordcruise.webp",
+    imageUrl: assetUrl("images/games/lipi-wordcruise.webp"),
     imageAlt: "LIPI WORD CRUISE app preview",
     ctaType: "coming-soon",
   },

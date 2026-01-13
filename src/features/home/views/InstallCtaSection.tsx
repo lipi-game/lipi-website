@@ -1,9 +1,9 @@
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
 import { Apple } from "lucide-react";
 import { InstallGamesManager } from "../services/InstallGamesManager";
 import type { InstallGame } from "../types/installGame";
 import { getAllGames } from "@/features/games/services/GamesRepository";
+import { assetUrl } from "@/config/assets";
 
 export function InstallCtaSection() {
   const games = useMemo(() => InstallGamesManager.getGames(), []);
@@ -19,8 +19,6 @@ export function InstallCtaSection() {
   const handleSelectGame = (game: InstallGame) => {
     setSelectedGame(game);
   };
-
-  const bgUrl = "/Assets/Images/cta/install-bg.webp";
 
 
   return (
@@ -41,7 +39,7 @@ export function InstallCtaSection() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: selectedGame?.bannerImage
-                ? `url(${selectedGame.bannerImage})`
+                ? `url(${assetUrl(selectedGame.bannerImage)})`
                 : undefined,
               backgroundColor: selectedGame?.bannerImage
                 ? undefined
@@ -53,7 +51,7 @@ export function InstallCtaSection() {
           <div className="absolute inset-0 z-[5] pointer-events-none">
             {/* Phone */}
             <img
-              src={"/Assets/Images/cta/mobile.webp"}
+              src={assetUrl("images/cta/mobile.webp")}
               alt=""
               aria-hidden="true"
               className="absolute left-[8%] bottom-[140px]
@@ -66,7 +64,7 @@ export function InstallCtaSection() {
 
             {/* Tablet */}
             <img
-              src={"/Assets/Images/cta/tablet.webp"}
+              src={assetUrl("images/cta/tablet.webp")}
               alt=""
               aria-hidden="true"
               className="absolute left-[38%] bottom-[160px]

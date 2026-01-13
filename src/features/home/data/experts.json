@@ -3,56 +3,56 @@
     "id": "Sri Sri Sri Tridandi Chinna Jeeyar Swamiji",
     "name": "Sri Sri Sri Tridandi Chinna Jeeyar Swamiji",
     "role": "Spirtual Leader",
-    "poster": "/Assets/Images/expert-review-thumbnails/Sri-Sri-Sri-Tridandi-Chinna-Jeeyar-Swamiji.webp",
-    "video": "/Assets/Videos/expert-reviews/chinna-jeeyar-swamy-final-2.mp4"
+    "poster": "/images/expert-review-thumbnails/Sri-Sri-Sri-Tridandi-Chinna-Jeeyar-Swamiji.webp",
+    "video": "videos/expert-reviews/chinna-jeeyar-swamy-final-2.mp4"
   },
   {
     "id": "Yandamoori Veerendranath",
     "name": "Yandamoori Veerendranath",
     "role": "Novelist & Screenwritera",
-    "poster": "/Assets/Images/expert-review-thumbnails/Yandamuri-Veerendranath-1.webp",
-    "video": "/Assets/Videos/expert-reviews/Yandamuri-Veerendranath.mp4"
+    "poster": "images/expert-review-thumbnails/Yandamuri-Veerendranath-1.webp",
+    "video": "videos/expert-reviews/Yandamuri-Veerendranath.mp4"
   },
   {
     "id": "Dr. K Brahmanandam",
     "name": "Dr. K Brahmanandam",
     "role": "Indian Film Actor",
-    "poster": "/Assets/Images/expert-review-thumbnails/Dr-Brahmanandam.webp",
-    "video": "/Assets/Videos/expert-reviews/Dr-Brahmanandam-Final.mp4"
+    "poster": "images/expert-review-thumbnails/Dr-Brahmanandam.webp",
+    "video": "videos/expert-reviews/Dr-Brahmanandam-Final.mp4"
   },
   {
     "id": "K Chandrabose",
     "name": "K Chandrabose",
     "role": "Indian Film Lyricist",
-    "poster": "/Assets/Images/expert-review-thumbnails/K-Chandrabose.webp",
-    "video": "/Assets/Videos/expert-reviews/Lyricist-Chandrabose.mp4"
+    "poster": "images/expert-review-thumbnails/K-Chandrabose.webp",
+    "video": "videos/expert-reviews/Lyricist-Chandrabose.mp4"
   },
   {
     "id": "Dr. Anand Kuchibhotla",
     "name": "Dr. Anand Kuchibhotla",
     "role": "University of Silicon Andhra",
-    "poster": "/Assets/Images/expert-review-thumbnails/Dr-Anand-Kuchibhotla.webp",
-    "video": "/Assets/Videos/expert-reviews/Kuchibhotla-Anand.mp4"
+    "poster": "images/expert-review-thumbnails/Dr-Anand-Kuchibhotla.webp",
+    "video": "videos/expert-reviews/Kuchibhotla-Anand.mp4"
   },
   {
     "id": "Dr. Suresh Katta",
     "name": "Dr. Suresh Katta",
     "role": "Entrepreneur",
-    "poster": "/Assets/Images/expert-review-thumbnails/Dr-Suresh-Katta.webp",
-    "video": "/Assets/Videos/expert-reviews/Suresh-Katta-English.mp4"
+    "poster": "images/expert-review-thumbnails/Dr-Suresh-Katta.webp",
+    "video": "videos/expert-reviews/Suresh-Katta-English.mp4"
   },
   {
     "id": "Professor C. Mrunalini",
     "name": "Professor C. Mrunalini",
     "role": "",
-    "poster": "/Assets/Images/expert-review-thumbnails/prof-c-mrunalini.webp",
-    "video": "/Assets/Videos/expert-reviews/prof-c-mrunalini.mp4"
+    "poster": "images/expert-review-thumbnails/prof-c-mrunalini.webp",
+    "video": "videos/expert-reviews/prof-c-mrunalini.mp4"
   },
   {
     "id": "Sri Samavedam Shanmukha Sarma",
     "name": "Sri Samavedam Shanmukha Sarma",
     "role": "",
-    "poster": "/Assets/Images/expert-review-thumbnails/Sri-Samavedam-Shanmukha-Sarma.webp",
-    "video": "/Assets/Videos/expert-reviews/Sri-Samavedam-Shanmukha-Sarma-vid.mp4"
+    "poster": "images/expert-review-thumbnails/Sri-Samavedam-Shanmukha-Sarma.webp",
+    "video": "videos/expert-reviews/Sri-Samavedam-Shanmukha-Sarma-vid.mp4"
   }
 ]

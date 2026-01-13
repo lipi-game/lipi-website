@@ -13,7 +13,7 @@ const lipiEpicsLinks = [
 ];
 
 const supportLinks = [
-  { label: "FAQ", href: "https://lipi.game/faq" },
+  { label: "FAQ", href: "https://lipi.game/faq", external: true },
   {
     label: "support@lipi.game",
     href: "mailto:support@lipi.game",
@@ -107,6 +107,7 @@ export function Footer() {
                   {link.external ? (
                     <a
                       href={link.href}
+                      target="_blank"
                       className="text-[13px] text-gray-400 transition-colors hover:text-white hover:underline"
                     >
                       {link.label}
