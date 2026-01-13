@@ -2,10 +2,13 @@ import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import welcomeBrush from "/Assets/Images/logo/welcome-brush.webp";
-import about1 from "/Assets/Images/about-section/about-image-1.webp";
-import about2 from "/Assets/Images/about-section/about-image-2.webp";
-import about3 from "/Assets/Images/about-section/about-image-3.webp";
+import { assetUrl } from "@/config/assets";
+
+const welcomeBrush = assetUrl("images/logo/welcome-brush.webp");
+const about1 = assetUrl("images/about-section/about-image-1.webp");
+const about2 = assetUrl("images/about-section/about-image-2.webp");
+const about3 = assetUrl("images/about-section/about-image-3.webp");
+
 
 const aboutImages = [
   { src: about1, alt: "Lipi learning session" },

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { ExpertsRepository } from "../services/ExpertsRepository";
 import type { Expert } from "../types/expert";
+import { assetUrl } from "@/config/assets";
 
 export function WordsFromExpertsSection() {
   const experts = ExpertsRepository.getAll();
@@ -301,8 +302,8 @@ function ExpertCard({
       {!videoError ? (
         <video
           ref={videoRef}
-          src={expert.video}
-          poster={!posterError ? expert.poster : undefined}
+          src={assetUrl(expert.video)}
+          poster={!posterError ? assetUrl(expert.poster) : undefined}
           className="absolute inset-0 w-full h-full object-cover"
           playsInline
           onEnded={onVideoEnd}
@@ -315,7 +316,7 @@ function ExpertCard({
             <span className="text-muted-foreground text-sm">Expert Video</span>
           ) : (
             <img
-              src={expert.poster}
+              src={assetUrl(expert.poster)}
               alt={expert.name}
               className="absolute inset-0 w-full h-full object-cover"
               onError={() => setPosterError(true)}

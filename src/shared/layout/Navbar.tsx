@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import lipiLogo from "/Assets/Images/logo/lipi-logo.webp";
 import { ChevronDown } from "lucide-react";
 import {
   Sheet,
@@ -10,6 +9,9 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { assetUrl } from "@/config/assets";
+
+const lipiLogo = assetUrl("images/logo/lipi-logo.webp");
 
 const navLinks = [
   { to: "/#games", label: "Games" },

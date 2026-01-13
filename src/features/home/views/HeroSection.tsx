@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRotatingPhrases } from "@/shared/hooks/useRotatingPhrases";
-import VIDEO_SRC from "/Assets/Videos/hero-section/hero.mp4";
+import { assetUrl } from "@/config/assets";
 
 const HERO_PHRASES = [
   "We make learning playable.",
@@ -30,7 +30,7 @@ export function HeroSection() {
           [@media(max-height:500px)_and_(orientation:landscape)]:!object-[50%_18%]"
         poster=""
       >
-        <source src={VIDEO_SRC} type="video/mp4" />
+        <source src={assetUrl("videos/hero-section/hero.mp4")} type="video/mp4" />
       </video>
 
       {/* Fallback gradient background (shows if video fails) */}
