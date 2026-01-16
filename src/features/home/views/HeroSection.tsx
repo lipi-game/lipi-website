@@ -30,7 +30,10 @@ export function HeroSection() {
           [@media(max-height:500px)_and_(orientation:landscape)]:!object-[50%_18%]"
         poster=""
       >
-        <source src={assetUrl("videos/hero-section/hero.mp4")} type="video/mp4" />
+        <source
+          src={assetUrl("videos/hero-section/hero.mp4")}
+          type="video/mp4"
+        />
       </video>
 
       {/* Fallback gradient background (shows if video fails) */}
@@ -40,7 +43,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
 
       {/* Hero Text - Bottom Left */}
-      <div className="absolute bottom-20 left-6 md:left-16 lg:left-24">
+      <div className="absolute bottom-6 left-3 md:left-10 md:bottom-10">
         <h1 className="text-3xl md:text-[2.75rem] leading-tight md:leading-[1.1] font-medium tracking-tight text-white drop-shadow-lg">
           <span className="inline-flex items-baseline gap-1 sm:gap-2 flex-wrap sm:flex-nowrap lg:text-6xl">
             {/* "At" with orange A */}

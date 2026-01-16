@@ -286,7 +286,20 @@ function ReadMoreSection({ currentSlug }: { currentSlug: string }) {
             View all
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        {/* Mobile: swipe */}
+        <div className="sm:hidden -mx-4 px-4 overflow-x-auto">
+          <div className="flex gap-4 snap-x snap-mandatory">
+            {moreBlogs.map((blog) => (
+              <div key={blog.id} className="min-w-[85%] snap-start">
+                <ReadMoreCard blog={blog} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Tablet/Desktop: grid (unchanged) */}
+        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {moreBlogs.map((blog) => (
             <ReadMoreCard key={blog.id} blog={blog} />
           ))}
@@ -298,7 +311,7 @@ function ReadMoreSection({ currentSlug }: { currentSlug: string }) {
 
 function CtaSection() {
   return (
-    <section className="py-16 bg-white">
+    <section className="pt-2 pb-14 md:pb-16 bg-white">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#e8f4fc] rounded-3xl py-12 px-6 md:px-12 text-center">
           <h2
