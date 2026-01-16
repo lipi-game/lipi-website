@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import { X } from "lucide-react";
 import { Container } from "@/shared/components/Container";
 import { getGameCardsData, type GameCardData } from "../services/GamesManager";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 function GameCard({
   game,
@@ -18,9 +14,7 @@ function GameCard({
   onPlay: (game: GameCardData) => void;
 }) {
   return (
-    <article
-      className="flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-5 rounded-[20px] bg-card"
-    >
+    <article className="flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-5 rounded-[20px] bg-card">
       {/* Game Image */}
       <div className="w-full sm:w-[180px] md:w-[200px] lg:w-[220px] flex-shrink-0">
         <div className="aspect-square rounded-[16px] bg-muted overflow-hidden">
@@ -104,9 +98,13 @@ function GamePlayModal({
       >
         <DialogTitle className="sr-only">{game.title}</DialogTitle>
 
-        <div className={`relative flex flex-col w-full h-full ${mobileBgClass} md:bg-muted`}>
+        <div
+          className={`relative flex flex-col w-full h-full ${mobileBgClass}`}
+        >
           {/* IMAGE AREA */}
-          <div className={`relative flex-1 min-h-[220px] md:min-h-0 ${mobileBgClass} md:bg-muted`}>
+          <div
+            className={`relative flex-1 min-h-[220px] md:mb-24 md:min-h-0 ${mobileBgClass} `}
+          >
             {imageUrl ? (
               <img
                 src={imageUrl}
@@ -114,26 +112,27 @@ function GamePlayModal({
                 className="absolute inset-0 w-full h-full object-contain"
               />
             ) : (
-              <div className={`absolute inset-0 ${mobileBgClass} md:bg-muted`} />
+              <div
+                className={`absolute inset-0 ${mobileBgClass} md:bg-muted`}
+              />
             )}
 
             {/* Desktop-only gradient overlay */}
-            <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-black/45" />
+            <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/10" />
 
             {/* Mobile: title only (no description) */}
-<div className="sm:hidden absolute top-8 left-0 right-0 text-center px-4 z-10">
-  <div className="inline-flex px-4 py-2 rounded-full text-black backdrop-blur text-foreground font-bold text-3xl">
-    {game.title}
-  </div>
-</div>
-
+            <div className="sm:hidden absolute top-8 left-0 right-0 text-center px-4 z-10">
+              <div className="inline-flex px-4 py-2 rounded-full text-black backdrop-blur text-foreground font-bold text-3xl">
+                {game.title}
+              </div>
+            </div>
 
             {/* Title & subtitle (desktop only) */}
             <div className="hidden md:block absolute top-6 left-0 right-0 text-center px-6 z-10">
               <h3 className="text-white font-bold text-2xl md:text-4xl mb-2">
                 {game.title}
               </h3>
-              <p className="text-white/85 text-sm md:text-base max-w-xl mx-auto line-clamp-2">
+              <p className="text-white text-sm md:text-base max-w-xl mx-auto line-clamp-2">
                 {game.description || "Experience this amazing game!"}
               </p>
             </div>
@@ -149,26 +148,35 @@ function GamePlayModal({
               ${mobileBgClass} md:bg-transparent
               p-4
               pb-[calc(16px+env(safe-area-inset-bottom))]
-              md:p-0 md:absolute md:bottom-8 md:left-0 md:right-0 md:z-10
+              md:py-0 md:absolute md:bottom-5 md:left-0 md:right-0 md:z-10
             `}
           >
-            <div className="flex flex-col landscape:flex-row md:flex-row items-center justify-center gap-3 px-2 md:px-6">
-
+            <div className="flex flex-col landscape:flex-row md:flex-row items-center justify-center gap-8 px-2 md:px-6">
               <a
                 href={game.appStoreUrl || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center gap-2.5 h-11 md:h-12 px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors min-w-[180px] w-full landscape:w-[min(220px,45vw)] md:w-auto ${
-                  !hasAppStore ? "opacity-50 pointer-events-none" : "hover:bg-gray-900"
+                className={`inline-flex items-center justify-center gap-2.5 h-14 md:h-14 px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors min-w-[180px] w-full landscape:w-[min(220px,45vw)] md:w-auto ${
+                  !hasAppStore
+                    ? "opacity-50 pointer-events-none"
+                    : "hover:bg-gray-900"
                 }`}
                 aria-disabled={!hasAppStore}
               >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <svg
+                  className="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                 </svg>
                 <div className="text-left">
-                  <div className="text-[10px] leading-tight opacity-80">Download on the</div>
-                  <div className="text-sm font-semibold leading-tight">App Store</div>
+                  <div className="text-[10px] leading-tight opacity-80">
+                    Download on the
+                  </div>
+                  <div className="text-sm font-semibold leading-tight">
+                    App Store
+                  </div>
                 </div>
               </a>
 
@@ -176,17 +184,27 @@ function GamePlayModal({
                 href={game.playStoreUrl || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center gap-2.5 h-11 md:h-12 px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors min-w-[180px] w-full landscape:w-[min(220px,45vw)] md:w-auto ${
-                  !hasPlayStore ? "opacity-50 pointer-events-none" : "hover:bg-gray-900"
+                className={`inline-flex items-center justify-center gap-2.5 h-14 md:h-14 px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors min-w-[180px] w-full landscape:w-[min(220px,45vw)] md:w-auto ${
+                  !hasPlayStore
+                    ? "opacity-50 pointer-events-none"
+                    : "hover:bg-gray-900"
                 }`}
                 aria-disabled={!hasPlayStore}
               >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <svg
+                  className="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
                   <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z" />
                 </svg>
                 <div className="text-left">
-                  <div className="text-[10px] leading-tight opacity-80">GET IT ON</div>
-                  <div className="text-sm font-semibold leading-tight">Google Play</div>
+                  <div className="text-[10px] leading-tight opacity-80">
+                    GET IT ON
+                  </div>
+                  <div className="text-sm font-semibold leading-tight">
+                    Google Play
+                  </div>
                 </div>
               </a>
             </div>
@@ -196,7 +214,6 @@ function GamePlayModal({
     </Dialog>
   );
 }
-
 
 export function OurGamesSection() {
   const games = getGameCardsData();
@@ -260,7 +277,12 @@ export function OurGamesSection() {
             {/* Top Row */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
               {topRowGames.map((game, index) => (
-                <GameCard key={game.id} game={game} index={index} onPlay={handlePlay} />
+                <GameCard
+                  key={game.id}
+                  game={game}
+                  index={index}
+                  onPlay={handlePlay}
+                />
               ))}
             </div>
 
@@ -275,7 +297,12 @@ export function OurGamesSection() {
             {/* Bottom Row */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
               {bottomRowGames.map((game, index) => (
-                <GameCard key={game.id} game={game} index={index + 2} onPlay={handlePlay} />
+                <GameCard
+                  key={game.id}
+                  game={game}
+                  index={index + 2}
+                  onPlay={handlePlay}
+                />
               ))}
             </div>
           </div>
@@ -283,7 +310,11 @@ export function OurGamesSection() {
       </Container>
 
       {/* Game Play Modal */}
-      <GamePlayModal game={activeGame} open={isModalOpen} onClose={handleCloseModal} />
+      <GamePlayModal
+        game={activeGame}
+        open={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </section>
   );
 }

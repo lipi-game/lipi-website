@@ -17,21 +17,21 @@ export function HomePage() {
   console.log(assetUrl("images/logo/lipi-logo.webp"));
 
   return (
-    <main>
+    <main className="overflow-x-clip">
       {/* Sticky Hero Region - hero stays pinned while this region scrolls */}
       <section id="home" className="relative h-[200vh]">
         <div className="sticky top-0 h-[95dvh] z-0">
           <HeroSection />
         </div>
       </section>
-      
+
       {/* Content sections - overlap hero then scroll normally */}
       <div className="relative z-10 -mt-[100vh]">
         {/* About Section */}
         <section id="about">
           <IntroAboutSection />
         </section>
-        
+
         {/* Games Section */}
         <section id="games">
           <OurGamesSection />
