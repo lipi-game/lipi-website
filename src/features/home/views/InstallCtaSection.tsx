@@ -8,7 +8,7 @@ import { assetUrl } from "@/config/assets";
 export function InstallCtaSection() {
   const games = useMemo(() => InstallGamesManager.getGames(), []);
   const [selectedGame, setSelectedGame] = useState<InstallGame | undefined>(
-    InstallGamesManager.getDefaultGame()
+    InstallGamesManager.getDefaultGame(),
   );
   const game = getAllGames()[0];
 
@@ -19,7 +19,6 @@ export function InstallCtaSection() {
   const handleSelectGame = (game: InstallGame) => {
     setSelectedGame(game);
   };
-
 
   return (
     <section
@@ -50,30 +49,64 @@ export function InstallCtaSection() {
           {/* Device Mockups - Responsive */}
           <div className="absolute inset-0 z-[5] pointer-events-none">
             {/* Phone */}
-            <img
-              src={assetUrl("images/cta/mobile.webp")}
-              alt=""
-              aria-hidden="true"
-              className="absolute left-[8%] bottom-[140px]
-                md:left-[4%] md:bottom-[160px]
-                lg:left-[18%] lg:bottom-[180px]
-                w-[100px] sm:w-[140px] md:w-[210px] lg:w-[240px]
-                max-w-[25vw] md:max-w-none
-                h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
-            />
+            <picture>
+              {/* Desktop (lg+) => always highest */}
+              <source
+                media="(min-width: 1024px)"
+                srcSet={assetUrl("images/cta/mobile-720.webp")}
+              />
+
+              {/* Non-desktop => responsive selection */}
+              <img
+                src={assetUrl("images/cta/mobile-240.webp")}
+                srcSet={[
+                  `${assetUrl("images/cta/mobile-240.webp")} 240w`,
+                  `${assetUrl("images/cta/mobile-480.webp")} 480w`,
+                  `${assetUrl("images/cta/mobile-720.webp")} 720w`,
+                ].join(", ")}
+                sizes="(min-width: 768px) 210px, (min-width: 640px) 140px, 100px"
+                alt=""
+                aria-hidden="true"
+                className="absolute left-[8%] bottom-[140px]
+                  md:left-[4%] md:bottom-[160px]
+                  lg:left-[18%] lg:bottom-[180px]
+                  w-[100px] sm:w-[140px] md:w-[210px] lg:w-[240px]
+                  max-w-[25vw] md:max-w-none
+                  h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
 
             {/* Tablet */}
-            <img
-              src={assetUrl("images/cta/tablet.webp")}
-              alt=""
-              aria-hidden="true"
-              className="absolute left-[38%] bottom-[160px]
-                md:left-[34%] md:bottom-[220px]
-                lg:left-[42%] lg:bottom-[220px]
-                w-[200px] sm:w-[280px] md:w-[460px] lg:w-[560px]
-                max-w-[55vw] md:max-w-none
-                h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
-            />
+            <picture>
+              {/* Desktop (lg+) => always highest */}
+              <source
+                media="(min-width: 1024px)"
+                srcSet={assetUrl("images/cta/tablet-1200.webp")}
+              />
+
+              {/* Non-desktop => responsive selection */}
+              <img
+                src={assetUrl("images/cta/tablet-400.webp")}
+                srcSet={[
+                  `${assetUrl("images/cta/tablet-400.webp")} 400w`,
+                  `${assetUrl("images/cta/tablet-800.webp")} 800w`,
+                  `${assetUrl("images/cta/tablet-1200.webp")} 1200w`,
+                ].join(", ")}
+                sizes="(min-width: 768px) 460px, (min-width: 640px) 280px, 200px"
+                alt=""
+                aria-hidden="true"
+                className="absolute left-[38%] bottom-[160px]
+                  md:left-[34%] md:bottom-[220px]
+                  lg:left-[42%] lg:bottom-[220px]
+                  w-[200px] sm:w-[280px] md:w-[460px] lg:w-[560px]
+                  max-w-[55vw] md:max-w-none
+                  h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
 
           {/* Content Overlay */}
@@ -88,7 +121,9 @@ export function InstallCtaSection() {
               {/* Store Buttons */}
               <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 z-10">
                 <a
-                  href={"https://apps.apple.com/us/developer/lipi-inc/id1772086567"}
+                  href={
+                    "https://apps.apple.com/us/developer/lipi-inc/id1772086567"
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center gap-1.5 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-3 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-[140px] sm:w-[170px] md:w-[190px] shrink-0 ${
@@ -115,7 +150,9 @@ export function InstallCtaSection() {
                   </div>
                 </a>
                 <a
-                  href={"https://play.google.com/store/apps/dev?id=6433036785319466025&hl=en_IN"}
+                  href={
+                    "https://play.google.com/store/apps/dev?id=6433036785319466025&hl=en_IN"
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center justify-center gap-1.5 sm:gap-2.5 h-10 sm:h-11 md:h-12 px-3 sm:px-5 bg-black text-white rounded-full shadow-lg shadow-black/20 transition-colors w-[140px] sm:w-[170px] md:w-[190px] shrink-0 ${

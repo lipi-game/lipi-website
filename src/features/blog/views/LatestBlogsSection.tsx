@@ -34,6 +34,7 @@ function FeaturedCard({ blog }: { blog: Blog }) {
                 <img
                   src={blog.imageUrl}
                   alt={blog.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               ) : (
@@ -70,7 +71,7 @@ function FeaturedCard({ blog }: { blog: Blog }) {
 function SecondaryCard({ blog }: { blog: Blog }) {
   return (
     <Link to={`/blogs/${blog.slug}`} className="block group h-full">
-      <article className="bg-white rounded-[24px] shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full">
+      <article className="bg-white rounded-[24px] shadow-sm ring-1 ring-gray-300 overflow-hidden flex flex-col h-full">
         {/* Image */}
         <div className="p-4 pb-0">
           <div className="aspect-[4/3] rounded-[16px] overflow-hidden">
@@ -78,6 +79,7 @@ function SecondaryCard({ blog }: { blog: Blog }) {
               <img
                 src={blog.imageUrl}
                 alt={blog.title}
+                loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             ) : (
@@ -230,6 +232,7 @@ function MobileCard({ blog }: { blog: Blog }) {
               <img
                 src={blog.imageUrl}
                 alt={blog.title}
+                loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             ) : (

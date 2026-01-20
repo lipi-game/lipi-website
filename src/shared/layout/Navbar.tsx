@@ -11,14 +11,15 @@ import {
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { assetUrl } from "@/config/assets";
 
-const lipiLogo = assetUrl("images/logo/lipi-logo.webp");
-
 const navLinks = [
   { to: "/#games", label: "Games" },
   { to: "/blogs", label: "Blogs" },
   { to: "/about", label: "About Us" },
   { to: "/contact", label: "Contact Us" },
 ];
+
+const lipiLogo96 = assetUrl("images/logo/lipi-logo-96.webp");
+const lipiLogo192 = assetUrl("images/logo/lipi-logo-192.webp");
 
 export function Navbar() {
   const location = useLocation();
@@ -70,10 +71,16 @@ export function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img
-            src={lipiLogo}
+            src={lipiLogo96}
+            srcSet={`${lipiLogo96} 96w, ${lipiLogo192} 192w`}
+            sizes="(min-width: 1024px) 56px, (min-width: 768px) 48px, 40px"
             alt="Lipi Logo"
+            decoding="async"
             className="h-10 w-10 mt-1 md:h-12 md:w-12 lg:w-14 lg:h-14 motion-safe:hover:animate-pulse motion-reduce:animate-none"
           />
+          <span className={`text-xl md:text-2xl lg:text-3xl font-bold text-white`}>
+            Lipi
+          </span>
         </Link>
 
         {/* Desktop Navigation Links */}

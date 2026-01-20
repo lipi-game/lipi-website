@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+        <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fafafa;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-section {
+    background-color: #fff;
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    letter-spacing: -2px;
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-top: 10px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #e5e5e5;
+    padding: 40px 0;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 5px;
+}
+
+.nav-link {
+    display: block;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: #6c757d;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.nav-link:hover {
+    color: #2c3e50;
+    background-color: #e9ecef;
+    border-left-color: #007bff;
+}
+
+.nav-link.active {
+    color: #2c3e50;
+    font-weight: 600;
+    background-color: #e9ecef;
+    border-left-color: #007bff;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px 50px;
+    display: flex;
+    gap: 40px;
+}
+
+.last-updated {
+    flex-shrink: 0;
+    width: 150px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+.content-text {
+    flex: 1;
+    max-width: 700px;
+}
+
+.content-text h2 {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+.content-text h2:first-child {
+    margin-top: 0;
+}
+
+.content-text p {
+    margin-bottom: 20px;
+    color: #4a5568;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.content-text ul {
+    margin-bottom: 20px;
+    padding-left: 25px;
+    color: #4a5568;
+    line-height: 1.7;
+}
+
+.content-text li {
+    margin-bottom: 8px;
+}
+
+.welcome-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: #6c757d;
+}
+
+.welcome-message h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.welcome-message p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+    }
+    
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        order: 2;
+        padding: 20px 0;
+    }
+    
+    .sidebar ul {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .nav-link {
+        padding: 10px 20px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        text-align: center;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        border-left: none;
+        border-bottom-color: #007bff;
+    }
+    
+    .main-content {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 20px;
+        order: 1;
+    }
+    
+    .last-updated {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    
+    .welcome-message {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 40px 20px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .main-content {
+        padding: 20px 15px;
+    }
+    
+    .content-text h2 {
+        font-size: 1.2rem;
+    }
+    
+    .sidebar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-link {
+        width: 200px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1>Terms of Use</h1>
+        </div>
+        
+        <div class="content-wrapper">
+            <nav class="sidebar">
+                <ul>
+                    <li><a href="/lipi-kids/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+                    <li><a href="/lipi-kids/terms-of-use.html" class="nav-link active">Terms of Use</a></li>
+                    <li><a href="/lipi-kids/cancellation-refund.html" class="nav-link">Cancellation & Refund</a></li>
+                    <li><a href="/lipi-kids/shipping-delivery.html" class="nav-link">Shipping & Delivery</a></li>
+                    <li><a href="/lipi-kids/contact-us.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <main class="main-content">
+                <div class="last-updated">
+                    <strong>Last update:</strong><br>
+                    July 14, 2025<br><br>
+                    <strong>Effective Date:</strong><br>
+                    July 15, 2025<br><br>
+                    <strong>Version:</strong><br>
+                    1.0
+                </div>
+                
+                <div class="content-text">
+                    <h2>1. Introduction</h2>
+                    <p>Welcome to Lipi Kids, a gamified learning app designed to support children's educational development through interactive and fun experiences. These Terms of Use ("Terms") govern your use of the Lipi Kids mobile application ("App"), services, and any associated features provided by Lipi Epics and Wordgames Private Limited ("we", "us", or "our").</p>
+                    <p>By downloading, accessing, or using Lipi Kids, you ("you", "parent", or "guardian") agree to these Terms on behalf of yourself and any minor child under your care who uses the App.</p>
+                    
+                    <h2>2. Eligibility & Parental Supervision</h2>
+                    <p>Lipi Kids is intended for use by children under the supervision and consent of a parent or legal guardian.</p>
+                    <ul>
+                        <li>Users under the age of 13 (or the applicable age of digital consent in your country) must have verified parental consent.</li>
+                        <li>Parents/guardians are fully responsible for the child's use of the app and all content accessed.</li>
+                    </ul>
+                    
+                    <h2>3. User Accounts</h2>
+                    <p>Some features may require the creation of an account using:</p>
+                    <ul>
+                        <li>A nickname or username (not a real name)</li>
+                        <li>A parental email for verification or progress sync</li>
+                    </ul>
+                    <p><strong>You agree that:</strong></p>
+                    <ul>
+                        <li>You will provide accurate and non-identifiable information.</li>
+                        <li>You will not share account credentials with unauthorized users.</li>
+                        <li>You will supervise your child's access and activities on the app.</li>
+                    </ul>
+                    
+                    <h2>4. Permitted Use</h2>
+                    <p><strong>You may use the app only for:</strong></p>
+                    <ul>
+                        <li>Personal, non-commercial, educational use</li>
+                        <li>Legal and appropriate activities under applicable laws</li>
+                    </ul>
+                    <p><strong>You must not:</strong></p>
+                    <ul>
+                        <li>Use the app to harass, threaten, or harm others</li>
+                        <li>Attempt to reverse engineer or hack the app</li>
+                        <li>Upload any malicious code or misuse our services</li>
+                        <li>Use the app in violation of intellectual property rights</li>
+                    </ul>
+                    
+                    <h2>5. In-App Purchases</h2>
+                    <p>Lipi Kids offer paid features and content. All purchases:</p>
+                    <ul>
+                        <li>Are protected by parental gates or device authentication</li>
+                        <li>Require adult approval before completing</li>
+                        <li>Are final and non-refundable, unless required by law</li>
+                    </ul>
+                    
+                    <h2>6. Intellectual Property</h2>
+                    <p>All content in the app—including games, graphics, sounds, animations, text, and code—is the exclusive property of Lipi Epics and Wordgames Private Limited and protected by copyright and trademark laws.</p>
+                    <p><strong>You may not:</strong></p>
+                    <ul>
+                        <li>Copy, reproduce, modify, or distribute content</li>
+                        <li>Use Lipi Kids' brand, logo, or assets without written permission</li>
+                    </ul>
+                    
+                    <h2>7. Privacy and Data Collection</h2>
+                    <p>Our Privacy Policy explains how we collect, use, store, and protect data. In short:</p>
+                    <ul>
+                        <li>We collect minimal data, mostly non-personal, to improve the app</li>
+                        <li>We do not show ads, do not sell data, and do not track users</li>
+                        <li>Verified parental consent is required for any personal data collection</li>
+                    </ul>
+                    <p>By using the app, you consent to our Privacy Policy.</p>
+                    
+                    <h2>8. Progress Tracking and Learning Analytics</h2>
+                    <p>The app may track progress (e.g., games played, scores, streaks) to:</p>
+                    <ul>
+                        <li>Improve the user experience</li>
+                        <li>Provide insights to parents</li>
+                        <li>Enable rewards or achievements</li>
+                    </ul>
+                    <p>If the app is used in a school setting, data may be shared with teachers only after parental or school consent.</p>
+                    
+                    <h2>9. Termination</h2>
+                    <p>We reserve the right to suspend or terminate accounts or access to the app:</p>
+                    <ul>
+                        <li>For violation of these Terms</li>
+                        <li>If required by law or court order</li>
+                        <li>In case of fraudulent or harmful behavior</li>
+                    </ul>
+                    
+                    <h2>10. Disclaimer</h2>
+                    <p>Lipi Kids is provided "as is" without warranties of any kind. While we strive to deliver high-quality educational content, we do not guarantee:</p>
+                    <ul>
+                        <li>Specific learning outcomes</li>
+                        <li>Uninterrupted or error-free operation</li>
+                    </ul>
+                    <p><strong>We are not liable for:</strong></p>
+                    <ul>
+                        <li>Any damages from use or inability to use the app</li>
+                        <li>Data loss, device failure, or unauthorized access</li>
+                    </ul>
+                    
+                    <h2>11. Changes to the Terms</h2>
+                    <p>We may update these Terms of Use from time to time. Any material changes will be:</p>
+                    <ul>
+                        <li>Communicated via in-app notification or email (if available)</li>
+                        <li>Accompanied by renewed consent, if legally required</li>
+                    </ul>
+                    
+                    <h2>12. Governing Law</h2>
+                    <p>These Terms are governed by the laws of India, without regard to its conflict of law principles. Disputes may be subject to jurisdiction in courts located in Hyderabad, India.</p>
+                    
+                    <h2>13. Contact Us</h2>
+                    <p>For questions, support, or complaints regarding these Terms or the app, contact:</p>
+                    <p><strong>Lipi Game Private Limited</strong><br>
+                    📧 <strong>Email:</strong> support@lipi.game</p>
+                    <p>By using Lipi Kids, you confirm that you have read, understood, and agreed to these Terms of Use.</p>
+          <h2>14. Subscriptions</h2>
+          <p>
+            Lipi Kids offers auto-renewable subscription plans (monthly and yearly) that provide 
+            access to premium features such as unlimited lessons, premium games, exclusive content, 
+            and an ad-free experience.
+          </p>
+
+          <h2>15. Billing and Auto-Renewal</h2>
+          <ul>
+            <li><strong>Apple App Store (iOS/iPadOS):</strong> Subscriptions are billed through your Apple ID account at confirmation of purchase. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current subscription period. Renewal charges will be applied within 24 hours prior to the end of the current subscription.</li>
+            <li><strong>Google Play Store (Android):</strong> Subscriptions are billed through your Google Play account at confirmation of purchase. Subscriptions automatically renew unless cancelled before the renewal date. Renewal charges will be applied to your Google Play account at the start of the next billing period.</li>
+          </ul>
+
+          <h2>16. Managing Subscriptions</h2>
+          <ul>
+            <li>iOS users can manage and cancel subscriptions in their Apple ID account settings.</li>
+            <li>Android users can manage and cancel subscriptions in their Google Play account settings.</li>
+            <li>We cannot cancel subscriptions on behalf of users.</li>
+          </ul>
+
+          <h2>17. Account Deletion</h2>
+          <p>You may request deletion of your account at any time from within the Lipi Kids app.</p>
+          <ul>
+              <li>Accounts marked for deletion will remain in a deactivated state for <strong>90 days</strong>.</li>
+              <li>If you log in during this period, the deletion request will be cancelled, and your account will be restored.</li>
+              <li>After the 90-day grace period, your account and all associated data will be permanently deleted and cannot be recovered.</li>
+            </ul> 
+          </ul>
+        </div>
+        </main>
+        </div>
+    </div>
+</body>
+</html>

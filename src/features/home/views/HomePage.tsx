@@ -5,7 +5,6 @@ import { InstallCtaSection } from "./InstallCtaSection";
 import { OurGamesSection } from "@/features/games";
 import { LatestBlogsSection } from "@/features/blog";
 import { useSEO } from "@/shared/hooks/useSEO";
-import { assetUrl } from "@/config/assets";
 
 export function HomePage() {
   useSEO({
@@ -14,7 +13,6 @@ export function HomePage() {
       "Discover Lipi Games - bringing Mahabharata, languages, and culture to life through interactive word games and learning experiences.",
     canonical: window.location.origin,
   });
-  console.log(assetUrl("images/logo/lipi-logo.webp"));
 
   return (
     <main className="overflow-x-clip">

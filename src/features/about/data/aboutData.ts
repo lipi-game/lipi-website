@@ -135,7 +135,7 @@ export const disciplinePortraits = [
   { id: 7, name: "Kaustabh", role: "UX", imageUrl: assetUrl("images/team/Kaustabh.webp"), bgColor: "#ECEFF1" },
   { id: 8, name: "Sharath", role: "Artist", imageUrl: assetUrl("images/team/Sharath.webp"), bgColor: "#FBE9E7" },
   { id: 9, name: "Rajender", role: "QA", imageUrl: assetUrl("images/team/Rajender.webp"), bgColor: "#E0F7FA" },
-  { id: 10, name: "Amul", role: "Marketing", imageUrl: assetUrl("images/team/Jaideep.webp"), bgColor: "#F3E5F5" },
+  { id: 10, name: "Amul", role: "Marketing", imageUrl: assetUrl("images/team/Amul.webp"), bgColor: "#F3E5F5" },
   { id: 11, name: "Sriram", role: "Support", imageUrl: assetUrl("images/team/Jaideep.webp"), bgColor: "#FFFDE7" },
 ];
 

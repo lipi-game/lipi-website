@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -21,6 +20,11 @@ const countryCodes = [
   { code: "AU", dial: "+61", label: "AU" },
   { code: "CA", dial: "+1", label: "CA" },
 ];
+
+const dialByCode = Object.fromEntries(
+  countryCodes.map((c) => [c.code, c.dial])
+);
+
 
 export default function ContactPage() {
   const navigate = useNavigate();
@@ -45,8 +49,10 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.agreeToPolicy) {
-      toast.error("Please agree to the privacy policy");
+    const CONTACT_API_URL = import.meta.env.VITE_CONTACT_API_URL as string;
+
+    if (!CONTACT_API_URL) {
+      toast.error("Contact API URL missing");
       return;
     }
 
@@ -57,8 +63,34 @@ export default function ContactPage() {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const dial = dialByCode[formData.countryCode] ?? ""; // "+91"
+      const number = String(formData.phone || "").replace(/[^\d]/g, ""); // digits only
+      const fullPhone = `${dial} ${number}`.trim(); // "+91 7010101010"
+ 
+
+      const body = new URLSearchParams({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: fullPhone,
+        message: formData.message,
+      });
+
+      const res = await fetch(CONTACT_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body,
+      });
+
+      const json = await res.json().catch(() => ({}));
+
+      if (!res.ok || json?.success !== true) {
+        throw new Error(json?.error || `Request failed (${res.status})`);
+      }
+
       toast.success("Message sent successfully!");
       setFormData({
         firstName: "",
@@ -69,23 +101,30 @@ export default function ContactPage() {
         message: "",
         agreeToPolicy: false,
       });
+    } catch (err: any) {
+      toast.error(err?.message || "Something went wrong");
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
     <main className="min-h-screen bg-white">
+
       {/* Content */}
       <div className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[600px] mx-auto pt-8">
+          <div className="bg-white ring-1 ring-black rounded-2xl shadow-sm p-6 sm:p-8">
+
           {/* Back Button */}
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-foreground hover:text-foreground/80 transition-colors mb-8 md:mb-12"
+            className="flex items-center gap-2 text-foreground hover:text-foreground/80 transition-colors mb-8 md:mb-12 bg-black/5 hover:bg-black/8 backdrop-blur-md ring-1 ring-black/10 shadow-sm rounded-full px-4 py-2"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span className="text-sm font-medium">Back</span>
+            <span className="text-sm font-semibold">Back</span>
           </button>
+
 
           {/* Header */}
           <div className="text-center mb-8 md:mb-10">
@@ -214,34 +253,6 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Privacy Policy Checkbox */}
-            {/* <div className="flex items-center justify-center gap-2 py-2">
-              <Checkbox
-                id="agreeToPolicy"
-                checked={formData.agreeToPolicy}
-                onCheckedChange={(checked) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    agreeToPolicy: checked as boolean,
-                  }))
-                }
-                className="border-gray-300 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
-              />
-              <label
-                htmlFor="agreeToPolicy"
-                className="text-sm text-muted-foreground cursor-pointer"
-              >
-                You agree to our friendly{" "}
-                <Link
-                  to="/privacy-policy"
-                  className="text-foreground underline hover:text-orange-500 transition-colors"
-                >
-                  privacy policy
-                </Link>
-                .
-              </label>
-            </div> */}
-
             {/* Submit Button */}
             <Button
               type="submit"
@@ -251,8 +262,10 @@ export default function ContactPage() {
               {isSubmitting ? "Sending..." : "Send message"}
             </Button>
           </form>
+          </div>
         </div>
       </div>
+
     </main>
   );
 }
