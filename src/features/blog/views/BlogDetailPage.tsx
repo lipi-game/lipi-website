@@ -52,7 +52,7 @@ function addIdsToHeadings(html: string): string {
       const id = ensureUniqueId(base, used);
 
       return `<h${level}${attrs} id="${id}">${content}</h${level}>`;
-    }
+    },
   );
 }
 
@@ -167,21 +167,21 @@ function ShareBox({ title, url }: { title: string; url: string }) {
   const shareWhatsApp = () => {
     window.open(
       `https://wa.me/?text=${encodeURIComponent(title + " " + url)}`,
-      "_blank"
+      "_blank",
     );
   };
   const shareFacebook = () => {
     window.open(
       `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-      "_blank"
+      "_blank",
     );
   };
   const shareLinkedIn = () => {
     window.open(
       `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-        url
+        url,
       )}`,
-      "_blank"
+      "_blank",
     );
   };
 
@@ -310,6 +310,14 @@ function ReadMoreSection({ currentSlug }: { currentSlug: string }) {
 }
 
 function CtaSection() {
+  const phone240 = assetUrl("images/cta/mobile-240.webp");
+  const phone480 = assetUrl("images/cta/mobile-480.webp");
+  const phone720 = assetUrl("images/cta/mobile-720.webp");
+
+  const tab400 = assetUrl("images/cta/tablet-400.webp");
+  const tab800 = assetUrl("images/cta/tablet-800.webp");
+  const tab1200 = assetUrl("images/cta/tablet-1200.webp");
+
   return (
     <section className="pt-2 pb-14 md:pb-16 bg-white">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -328,15 +336,24 @@ function CtaSection() {
           </p>
 
           {/* Device mockup images */}
-          <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-6 mb-8 px-2 py-12 bg-slate-200/50 rounded-md">
+          <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-6 mb-8 px-2 py-12 rounded-md">
             <img
-              src={assetUrl("images/cta/mobile.webp")}
+              src={phone240}
+              srcSet={`${phone240} 240w, ${phone480} 480w, ${phone720} 720w`}
+              sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
               alt="Lipi app on phone"
+              loading="lazy"
+              decoding="async"
               className="w-24 sm:w-32 md:w-40 lg:w-48 h-auto object-contain"
             />
+
             <img
-              src={assetUrl("images/cta/tablet.webp")}
+              src={tab400}
+              srcSet={`${tab400} 400w, ${tab800} 800w, ${tab1200} 1200w`}
+              sizes="(max-width: 640px) 160px, (max-width: 768px) 208px, (max-width: 1024px) 288px, 384px"
               alt="Lipi app on tablet"
+              loading="lazy"
+              decoding="async"
               className="w-40 sm:w-52 md:w-72 lg:w-96 h-auto object-contain"
             />
           </div>
@@ -411,7 +428,7 @@ export function BlogDetailPage() {
 
     // If content already has HTML tags, DO NOT run nlToHtml()
     const looksLikeHtml = /<\/?(div|p|h1|h2|h3|ul|ol|li|strong|em|a)\b/i.test(
-      raw
+      raw,
     );
 
     const baseHtml = looksLikeHtml ? raw : nlToHtml(raw);
@@ -421,7 +438,7 @@ export function BlogDetailPage() {
 
   const tocItems = useMemo(
     () => (processedContent ? extractToc(processedContent) : []),
-    [processedContent]
+    [processedContent],
   );
 
   // Track scroll position for TOC highlighting
@@ -549,7 +566,6 @@ export function BlogDetailPage() {
                       prose-ul:my-4 prose-ul:pl-5 prose-li:text-gray-600 prose-li:mb-2
                       prose-ol:my-4 prose-ol:pl-5
 
-                      /* ✅ FORCE spacing rules inside blog-content (works even if prose-* fails) */
                       [&_.blog-content_h2]:!text-xl [&_.blog-content_h2]:!mt-10 [&_.blog-content_h2]:!mb-2
                       [&_.blog-content_h3]:!text-lg [&_.blog-content_h3]:!mt-8  [&_.blog-content_h3]:!mb-2
 
@@ -557,7 +573,6 @@ export function BlogDetailPage() {
                       [&_.blog-content_p]:!leading-relaxed
                       [&_.blog-content_p]:!mb-2
 
-                      /* ✅ Remove “newline after heading” by killing top margin on the paragraph after headings */
                       [&_.blog-content_h2+p]:!mt-0
                       [&_.blog-content_h3+p]:!mt-0
                     "

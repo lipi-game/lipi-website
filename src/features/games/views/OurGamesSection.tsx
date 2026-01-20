@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { X } from "lucide-react";
 import { Container } from "@/shared/components/Container";
 import { getGameCardsData, type GameCardData } from "../services/GamesManager";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -93,7 +91,6 @@ function GamePlayModal({
           h-[min(90dvh,620px)]
           md:w-[720px] md:h-[720px]
           md:max-w-[calc(100vw-32px)] md:max-h-[calc(100dvh-32px)]
-          max-w-none
         `}
       >
         <DialogTitle className="sr-only">{game.title}</DialogTitle>
@@ -105,16 +102,16 @@ function GamePlayModal({
           <div
             className={`relative flex-1 min-h-[220px] md:mb-24 md:min-h-0 ${mobileBgClass} `}
           >
-            {imageUrl ? (
+            {open && imageUrl ? (
               <img
                 src={imageUrl}
                 alt={game.title}
                 className="absolute inset-0 w-full h-full object-contain"
+                loading="eager"
+                decoding="async"
               />
             ) : (
-              <div
-                className={`absolute inset-0 ${mobileBgClass} md:bg-muted`}
-              />
+              <div className={`absolute inset-0 ${mobileBgClass} md:bg-muted`} />
             )}
 
             {/* Desktop-only gradient overlay */}

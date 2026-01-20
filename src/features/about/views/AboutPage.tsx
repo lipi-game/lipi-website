@@ -3,7 +3,6 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { X, Linkedin, ChevronDown } from "lucide-react";
 import {
   aboutIntroText,
-  avatarCollageImages,
   founderBio,
   founderName,
   founderRole,
@@ -19,144 +18,6 @@ import {
   originalContentCreationText,
 } from "../data/aboutData";
 
-// Avatar Collage for Desktop - matches screenshot bubble layout
-function AvatarCollage() {
-  const positions = [
-    { top: 0, left: 100, size: 48 },
-    { top: 15, left: 165, size: 64 },
-    { top: 0, left: 250, size: 56 },
-    { top: 25, left: 320, size: 48 },
-    { top: 60, left: 80, size: 44 },
-    { top: 70, left: 140, size: 56 },
-    { top: 80, left: 210, size: 48 },
-    { top: 65, left: 275, size: 52 },
-    { top: 75, left: 340, size: 44 },
-    { top: 115, left: 110, size: 52 },
-    { top: 130, left: 180, size: 48 },
-    { top: 125, left: 250, size: 56 },
-    { top: 120, left: 320, size: 48 },
-    { top: 175, left: 140, size: 48 },
-    { top: 180, left: 210, size: 52 },
-    { top: 175, left: 285, size: 48 },
-  ];
-
-  return (
-    <div className="relative w-[400px] h-[260px] hidden lg:block">
-      {avatarCollageImages.slice(0, positions.length).map((src, index) => (
-        <div
-          key={index}
-          className="absolute rounded-full border-2 border-white shadow-md overflow-hidden bg-muted"
-          style={{
-            top: `${positions[index].top}px`,
-            left: `${positions[index].left}px`,
-            width: `${positions[index].size}px`,
-            height: `${positions[index].size}px`,
-          }}
-        >
-          <img
-            src={src}
-            alt=""
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// Tablet Avatar Collage
-function TabletAvatarCollage() {
-  const positions = [
-    { top: 0, left: 60, size: 40 },
-    { top: 10, left: 115, size: 52 },
-    { top: 0, left: 185, size: 46 },
-    { top: 15, left: 250, size: 40 },
-    { top: 50, left: 45, size: 36 },
-    { top: 55, left: 100, size: 46 },
-    { top: 60, left: 165, size: 40 },
-    { top: 50, left: 220, size: 44 },
-    { top: 55, left: 275, size: 36 },
-    { top: 95, left: 70, size: 44 },
-    { top: 105, left: 135, size: 40 },
-    { top: 100, left: 195, size: 46 },
-    { top: 95, left: 260, size: 40 },
-  ];
-
-  return (
-    <div className="relative w-[320px] h-[180px] hidden md:block lg:hidden mx-auto">
-      {avatarCollageImages.slice(0, positions.length).map((src, index) => (
-        <div
-          key={index}
-          className="absolute rounded-full border-2 border-white shadow-md overflow-hidden bg-muted"
-          style={{
-            top: `${positions[index].top}px`,
-            left: `${positions[index].left}px`,
-            width: `${positions[index].size}px`,
-            height: `${positions[index].size}px`,
-          }}
-        >
-          <img
-            src={src}
-            alt=""
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// Mobile Avatar Collage
-function MobileAvatarCollage() {
-  const positions = [
-    { top: 0, left: 30, size: 36 },
-    { top: 8, left: 80, size: 44 },
-    { top: 0, left: 140, size: 40 },
-    { top: 10, left: 195, size: 36 },
-    { top: 45, left: 15, size: 32 },
-    { top: 50, left: 60, size: 40 },
-    { top: 52, left: 115, size: 36 },
-    { top: 48, left: 165, size: 38 },
-    { top: 50, left: 215, size: 32 },
-    { top: 90, left: 40, size: 38 },
-    { top: 95, left: 95, size: 36 },
-    { top: 92, left: 150, size: 40 },
-    { top: 90, left: 205, size: 36 },
-  ];
-
-  return (
-    <div className="relative w-[260px] h-[160px] md:hidden mx-auto">
-      {avatarCollageImages.slice(0, positions.length).map((src, index) => (
-        <div
-          key={index}
-          className="absolute rounded-full border-2 border-white shadow-md overflow-hidden bg-muted"
-          style={{
-            top: `${positions[index].top}px`,
-            left: `${positions[index].left}px`,
-            width: `${positions[index].size}px`,
-            height: `${positions[index].size}px`,
-          }}
-        >
-          <img
-            src={src}
-            alt=""
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function TeamTile({
   member,
   onSelect,
@@ -168,13 +29,15 @@ function TeamTile({
     <button
       type="button"
       onClick={() => onSelect(member)}
-      className="group relative overflow-hidden w-full h-[260px] md:h-[300px] lg:h-[340px] text-left"
+      className="group relative overflow-hidden w-full h-[260px] md:h-[300px] lg:h-[340px] text-left rounded-sm md:rounded-none"
       style={{ backgroundColor: member.bgColor }}
       aria-label={`View ${member.name}'s profile`}
     >
       <img
         src={member.imageUrl}
         alt={member.name}
+        loading="lazy"
+        decoding="async"
         className="block w-full h-full object-cover transition-transform duration-300 ease-out [@media(hover:hover)]:group-hover:scale-105"
         style={{ objectPosition: member.objectPosition ?? "50% 20%" }}
         onError={(e) => {
@@ -255,25 +118,25 @@ function FounderSection() {
               </div>
 
               {/* mobile: after text, show image + name side-by-side at bottom-right */}
-              <div className="md:hidden mt-2 flex items-end justify-end gap-4">
-                <div className="text-right">
-                  <h3 className="text-base md:text-lg font-semibold text-foreground italic">
+              <div className="md:hidden flex flex-col items-center text-center">
+                <div className="w-[min(240px,78vw)] sm:w-[min(280px,60vw)] aspect-square">
+                  <img
+                    src={founderImageUrl}
+                    alt={founderName}
+                    className="w-full h-full object-contain object-bottom"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                </div>
+
+                <div className="mt-3">
+                  <h3 className="text-base font-semibold text-foreground italic">
                     {founderName}
                   </h3>
                   <p className="text-muted-foreground text-sm italic">
                     {founderRole}
                   </p>
-                </div>
-
-                <div className="shrink-0 w-[160px] h-[160px]">
-                  <img
-                    src={founderImageUrl}
-                    alt={founderName}
-                    className="w-full h-full object-contain object-bottom grayscale"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
                 </div>
               </div>
             </div>
@@ -292,7 +155,7 @@ function FounderSection() {
                   absolute bottom-0 md:-right-6 lg:right-0
                   md:w-[200%] lg:h-full w-[130%] lg:w-[140%] xl:w-[150%]
                   max-w-none
-                  object-contain object-bottom grayscale
+                  object-contain object-bottom
                 "
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
@@ -406,7 +269,7 @@ function MeetTeamSection() {
               ))}
             </div>
 
-            {/* ✅ MOBILE — text then swipe images */}
+            {/* ✅ MOBILE — text then 2 per row grid */}
             <div className="md:hidden flex flex-col">
               {/* Text */}
               <div className="p-6 flex flex-col justify-center">
@@ -418,13 +281,15 @@ function MeetTeamSection() {
                 </p>
               </div>
 
-              {/* Swipe / horizontal scroll images */}
-              <div className="overflow-x-auto snap-x snap-mandatory">
-                <div className="flex gap-0">
+              {/* 2 per row */}
+              <div className="px-6 pb-6">
+                <div className="grid grid-cols-1 gap-1">
                   {meetTeamMembers.map((m) => (
-                    <div key={m.id} className="shrink-0 w-full snap-start">
-                      <TeamTile member={m} onSelect={setSelectedMember} />
-                    </div>
+                    <TeamTile
+                      key={m.id}
+                      member={m}
+                      onSelect={setSelectedMember}
+                    />
                   ))}
                 </div>
               </div>
@@ -487,6 +352,8 @@ function MeetTeamSection() {
                         <img
                           src={selectedMember.imageUrl}
                           alt={selectedMember.name}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full rounded-full object-cover"
                           style={{
                             objectPosition:
@@ -547,6 +414,8 @@ function MeetTeamSection() {
                       <img
                         src={portrait.imageUrl}
                         alt={portrait.name}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         style={{
                           objectPosition: portrait.objectPosition ?? "50% 20%",
@@ -602,6 +471,8 @@ function MeetTeamSection() {
                       <img
                         src={portrait.imageUrl}
                         alt={portrait.name}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         style={{
                           objectPosition: portrait.objectPosition ?? "50% 20%",
@@ -654,6 +525,8 @@ function MeetTeamSection() {
                         <img
                           src={portrait.imageUrl}
                           alt={portrait.name}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                           style={{
                             objectPosition:
@@ -731,6 +604,8 @@ function AdvisorsSection() {
                   <img
                     src={advisor.imageUrl}
                     alt={advisor.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                     style={{
                       objectPosition: advisor.objectPosition ?? "50% %",
@@ -768,6 +643,8 @@ function AdvisorsSection() {
                 <img
                   src={advisor.imageUrl}
                   alt={advisor.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                   style={{
                     objectPosition: advisor.objectPosition ?? "50% %",
@@ -799,14 +676,14 @@ function AdvisorsSection() {
       >
         <DialogContent
           className="
-    my-4 sm:my-6
-    w-[92vw]
-    max-w-[520px] sm:max-w-[720px] md:max-w-[900px] lg:max-w-[1100px]
-    max-h-[85vh]
-    overflow-y-auto overflow-x-hidden
-    rounded-[32px] p-0 border-0
-    [&>button]:hidden
-  "
+            my-4 sm:my-6
+            w-[92vw]
+            max-w-[520px] sm:max-w-[720px] md:max-w-[900px] lg:max-w-[1100px]
+            max-h-[85vh]
+            overflow-y-auto overflow-x-hidden
+            rounded-[32px] p-0 border-0
+            [&>button]:hidden
+          "
           aria-describedby="advisor-bio"
         >
           <DialogTitle className="sr-only">
@@ -847,6 +724,8 @@ function AdvisorsSection() {
                     <img
                       src={selectedAdvisor.imageUrl}
                       alt={selectedAdvisor.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full rounded-full object-cover"
                       style={{
                         objectPosition:
@@ -1012,7 +891,6 @@ export function ReferencesSection() {
     </section>
   );
 }
-
 
 export default function AboutPage() {
   return (

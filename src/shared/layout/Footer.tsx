@@ -33,10 +33,10 @@ const legalLinks = [
 ];
 
 const lipiKidsLegalLinks = [
-  { label: "Privacy Policy", href: "https://lipi.game/lipi-kids/privacy-policy.html", external: true },
+  { label: "Privacy Policy", href: "/lipi-kids/privacy-policy.html", external: true },
   {
     label: "Terms & Conditions",
-    href: "https://lipi.game/lipi-kids/terms-of-use.html",
+    href: "/lipi-kids/terms-of-use.html",
     external: true,
   },
 ]

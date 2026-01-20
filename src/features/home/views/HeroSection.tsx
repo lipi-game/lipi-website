@@ -23,15 +23,31 @@ export function HeroSection() {
         autoPlay
         muted
         loop
+        preload="metadata"
         playsInline
         className="
           absolute inset-0 h-full w-full object-cover object-center
           [@media(orientation:landscape)]:object-[50%_25%]
           [@media(max-height:500px)_and_(orientation:landscape)]:!object-[50%_18%]"
-        poster=""
+        poster={assetUrl("/images/hero-section/hero-landscape.webp")}
       >
+        {/* Portrait first (phones, portrait orientation) */}
         <source
           src={assetUrl("videos/hero-section/hero.mp4")}
+          type="video/mp4"
+          media="(orientation: portrait)"
+        />
+
+        {/* Fallback / landscape */}
+        <source
+          src={assetUrl("videos/hero-section/hero-landscape.mp4")}
+          type="video/mp4"
+          media="(orientation: landscape)"
+        />
+
+        {/* Ultimate fallback if media not supported */}
+        <source
+          src={assetUrl("videos/hero-section/hero-landscape.mp4")}
           type="video/mp4"
         />
       </video>
@@ -61,11 +77,13 @@ export function HeroSection() {
             {/* Rotating phrase */}
             <span className="relative inline-block min-w-[14ch] sm:min-w-[16ch] whitespace-nowrap">
               <AnimatePresence mode="wait">
-                {prefersReducedMotion ? (
+                {prefersReducedMotion || currentIndex === 0 ? (
+                  // First paint: no motion, no opacity 0 (fixes LCP render delay)
                   <span key={currentIndex} className="inline-block">
                     {currentPhrase}
                   </span>
                 ) : (
+                  // Subsequent phrases can animate
                   <motion.span
                     key={currentIndex}
                     initial={{ opacity: 0, y: 12 }}

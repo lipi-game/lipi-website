@@ -4,6 +4,15 @@ import { getAllBlogsSorted } from "../services/BlogManager";
 import { useSEO } from "@/shared/hooks/useSEO";
 import type { Blog } from "../types/blog";
 
+const BLOG_CARD_BG_CLASSES = ["bg-[#EDFFF4]", "bg-[#FFEDED]"];
+
+
+function getBlogCardBgClassById(id) {
+  const n = Number(id) || 0;
+  return BLOG_CARD_BG_CLASSES[n % BLOG_CARD_BG_CLASSES.length];
+}
+
+
 function CategoryChip({ category }: { category: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e8f4fc] text-[#4a90b8] text-xs font-medium">
@@ -30,14 +39,14 @@ function BlogCard({ blog }: { blog: Blog }) {
   });
 
   return (
-    <article className="bg-white rounded-[20px] shadow-sm overflow-hidden flex flex-col hover:shadow-md transition-shadow">
+   <article className={`group rounded-md overflow-hidden flex flex-col ring-0 ring-black/50 shadow-lg hover:shadow-xl transition-shadow duration-200 ${getBlogCardBgClassById(blog.id)}`}>
       {/* Image */}
       <div className="aspect-[16/10] overflow-hidden">
         {blog.imageUrl ? (
           <img
             src={blog.imageUrl}
             alt={blog.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.05]"
           />
         ) : (
           <div className="w-full h-full bg-muted flex items-center justify-center">
@@ -85,7 +94,7 @@ export function BlogsPage() {
   const blogs = getAllBlogsSorted();
 
   return (
-    <main className="min-h-screen bg-gray-50 pt-20">
+    <main className="min-h-screen bg-white pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Header */}
         <div className="mb-10">

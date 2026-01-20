@@ -49,7 +49,10 @@ export function WordsFromExpertsSection() {
   }, []);
 
   // maxStart: last valid start index where all visible cards are real
-  const maxStart = useMemo(() => Math.max(0, experts.length - visibleCards), [experts.length, visibleCards]);
+  const maxStart = useMemo(
+    () => Math.max(0, experts.length - visibleCards),
+    [experts.length, visibleCards],
+  );
   const totalDots = maxStart + 1;
 
   // Clamp currentIndex if visibleCards changes and index is out of bounds
@@ -62,7 +65,7 @@ export function WordsFromExpertsSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -94,21 +97,22 @@ export function WordsFromExpertsSection() {
 
   const handlePlayToggle = useCallback(
     (expert: Expert) => {
-      const video = videoRefs.current.get(expert.id);
-
-      if (playingId === expert.id) {
-        video?.pause();
-        setPlayingId(null);
-      } else {
-        if (playingId) {
-          const currentVideo = videoRefs.current.get(playingId);
-          currentVideo?.pause();
-        }
-        video?.play();
-        setPlayingId(expert.id);
+      // pause current if any
+      if (playingId) {
+        const currentVideo = videoRefs.current.get(playingId);
+        currentVideo?.pause();
       }
+
+      // toggle same card off
+      if (playingId === expert.id) {
+        setPlayingId(null);
+        return;
+      }
+
+      // ✅ set playing; the card will mount <video> and auto-play via effect
+      setPlayingId(expert.id);
     },
-    [playingId]
+    [playingId],
   );
 
   const handleVideoEnd = useCallback(
@@ -117,7 +121,7 @@ export function WordsFromExpertsSection() {
         setPlayingId(null);
       }
     },
-    [playingId]
+    [playingId],
   );
 
   const handleKeyDown = useCallback(
@@ -125,7 +129,7 @@ export function WordsFromExpertsSection() {
       if (e.key === "ArrowLeft") handlePrev();
       if (e.key === "ArrowRight") handleNext();
     },
-    [handlePrev, handleNext]
+    [handlePrev, handleNext],
   );
 
   // Card dimensions - mobile shows 1 full card
@@ -153,7 +157,14 @@ export function WordsFromExpertsSection() {
     const maxX = 0;
 
     return Math.max(minX, Math.min(maxX, rawX));
-  }, [experts.length, viewportWidth, visibleCards, currentIndex, cardWidth, gap]);
+  }, [
+    experts.length,
+    viewportWidth,
+    visibleCards,
+    currentIndex,
+    cardWidth,
+    gap,
+  ]);
 
   return (
     <section
@@ -211,7 +222,10 @@ export function WordsFromExpertsSection() {
         </button>
 
         {/* Cards Track Container */}
-        <div ref={viewportRef} className="h-full flex items-center overflow-hidden">
+        <div
+          ref={viewportRef}
+          className="h-full flex items-center overflow-hidden"
+        >
           <motion.div
             className="flex"
             style={{ gap }}
@@ -223,8 +237,16 @@ export function WordsFromExpertsSection() {
             }
           >
             {experts.map((expert, index) => {
-              // Active card is within current visible window
-              const isActive = index >= currentIndex && index < currentIndex + visibleCards;
+              const isActive =
+                index >= currentIndex && index < currentIndex + visibleCards;
+
+              // ✅ Load posters only for current window + 1 on each side
+              const start = Math.max(0, currentIndex - 1);
+              const end = Math.min(
+                experts.length - 1,
+                currentIndex + visibleCards,
+              ); // +1 card
+              const shouldLoadPoster = index >= start && index <= end;
 
               return (
                 <ExpertCard
@@ -235,10 +257,12 @@ export function WordsFromExpertsSection() {
                   onVideoEnd={() => handleVideoEnd(expert.id)}
                   videoRef={(el) => {
                     if (el) videoRefs.current.set(expert.id, el);
+                    else videoRefs.current.delete(expert.id);
                   }}
                   cardWidth={cardWidth}
                   cardHeight={cardHeight}
                   isActive={isActive}
+                  shouldLoadPoster={shouldLoadPoster}
                 />
               );
             })}
@@ -274,6 +298,7 @@ interface ExpertCardProps {
   cardWidth: number;
   cardHeight: number;
   isActive: boolean;
+  shouldLoadPoster: boolean;
 }
 
 function ExpertCard({
@@ -285,9 +310,30 @@ function ExpertCard({
   cardWidth,
   cardHeight,
   isActive,
+  shouldLoadPoster,
 }: ExpertCardProps) {
   const [posterError, setPosterError] = useState(false);
   const [videoError, setVideoError] = useState(false);
+
+  const localVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  // keep both refs in sync (your Map + local ref)
+  const setVideoEl = (el: HTMLVideoElement | null) => {
+    localVideoRef.current = el;
+    videoRef(el);
+  };
+
+  // ✅ auto-play ONLY after the video mounts (on click)
+  useEffect(() => {
+    if (!isPlaying) return;
+    const v = localVideoRef.current;
+    if (!v) return;
+
+    const p = v.play();
+    if (p && typeof (p as any).catch === "function") {
+      (p as Promise<void>).catch(() => {});
+    }
+  }, [isPlaying]);
 
   return (
     <div
@@ -299,28 +345,38 @@ function ExpertCard({
         opacity: isActive ? 1 : 0.7,
       }}
     >
-      {!videoError ? (
+      {/* ✅ Video mounts only when playing (no network before click) */}
+      {isPlaying && !videoError ? (
         <video
-          ref={videoRef}
+          ref={setVideoEl}
           src={assetUrl(expert.video)}
           poster={!posterError ? assetUrl(expert.poster) : undefined}
           className="absolute inset-0 w-full h-full object-cover"
           playsInline
+          preload="none"
           onEnded={onVideoEnd}
           onError={() => setVideoError(true)}
           controls={isPlaying}
         />
       ) : (
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-muted to-muted-foreground/20 flex items-center justify-center">
+        <div className="absolute inset-0 w-full h-full">
           {posterError ? (
-            <span className="text-muted-foreground text-sm">Expert Video</span>
-          ) : (
+            <div className="absolute inset-0 bg-gradient-to-b from-muted to-muted-foreground/20 flex items-center justify-center">
+              <span className="text-muted-foreground text-sm">
+                Expert Video
+              </span>
+            </div>
+          ) : shouldLoadPoster ? (
             <img
               src={assetUrl(expert.poster)}
               alt={expert.name}
               className="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
               onError={() => setPosterError(true)}
             />
+          ) : (
+            <div className="absolute inset-0 bg-muted" />
           )}
         </div>
       )}
