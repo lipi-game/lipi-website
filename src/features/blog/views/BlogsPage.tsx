@@ -41,12 +41,12 @@ function BlogCard({ blog }: { blog: Blog }) {
   return (
    <article className={`group rounded-md overflow-hidden flex flex-col ring-0 ring-black/50 shadow-lg hover:shadow-xl transition-shadow duration-200 ${getBlogCardBgClassById(blog.id)}`}>
       {/* Image */}
-      <div className="aspect-[16/10] overflow-hidden">
+      <div className="aspect-[16/10] overflow-hidden p-2">
         {blog.imageUrl ? (
           <img
             src={blog.imageUrl}
             alt={blog.title}
-            className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.05]"
+            className="w-full h-full object-cover rounded-md transition-transform duration-300 ease-out group-hover:scale-[1.05]"
           />
         ) : (
           <div className="w-full h-full bg-muted flex items-center justify-center">

@@ -5,24 +5,6 @@ export const aboutIntroText = [
   "We bridge this gap with AI-powered, high-quality visual and gamified content that makes learning fun, structured, and mobile-first. We also connect digital and physical experiences through apps, games, and a deeper knowledge network for families and communities. Founded by Sagar Anisingaraju, Lipi is built with a passionate team and supported by seed investors, and we collaborate with partners worldwide to create lasting social impact."
 ];
 
-export const avatarCollageImages = [
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1499996860823-5f1a78c8bd2e?w=150&h=150&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face"
-];
 
 export const founderBio = [
   "Sagar is the founder of Lipi Games, a platform that celebrates global languages, cultures, and values through innovative gaming apps. Until 2019, he served as Chief Strategy Officer at Taverna Technologies, leading transformational growth initiatives in FinEdge School Management and security, learning intelligence services. He has been recognized as ET Pharma Pitch's 100 Most Influential People in Healthcare (2021), the IHI G8 Elite Award 2019, and Infosys Centenary's Chief Strategy Officer of the Year 2018.",
@@ -255,8 +237,6 @@ export const advisors = [
   }
 ];
 
-// references.data.ts
-// ✅ Copy-paste exactly. Content below matches your text letter-for-letter.
 
 export type ReferenceBlock = {
   id: string;

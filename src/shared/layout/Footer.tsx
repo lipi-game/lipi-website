@@ -81,23 +81,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Lipi Epics Column */}
-          {/* <div className="space-y-3">
-            <h3 className="text-base font-semibold text-white">Lipi Epics</h3>
-            <ul className="space-y-2">
-              {lipiEpicsLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-[13px] text-gray-400 transition-colors hover:text-white hover:underline"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div> */}
-
           {/* Support Column */}
           <div className="space-y-3">
             <h3 className="text-base font-semibold text-white">FAQ</h3>

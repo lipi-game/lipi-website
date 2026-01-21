@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRotatingPhrases } from "@/shared/hooks/useRotatingPhrases";
 import { assetUrl } from "@/config/assets";
@@ -9,12 +10,43 @@ const HERO_PHRASES = [
   "We make practice feel fun.",
 ];
 
+function getHeroPoster() {
+  // default to landscape (safe for SSR + desktop)
+  if (typeof window === "undefined") {
+    return assetUrl("images/hero-section/hero-landscape.webp");
+  }
+
+  const isPortrait =
+    window.matchMedia("(orientation: portrait)").matches || window.innerWidth < 768;
+
+  return isPortrait
+    ? assetUrl("images/hero-section/hero-portrait.webp")
+    : assetUrl("images/hero-section/hero-landscape.webp");
+}
+
 export function HeroSection() {
   const { currentPhrase, currentIndex, prefersReducedMotion } =
     useRotatingPhrases({
       phrases: HERO_PHRASES,
       intervalMs: 2800,
     });
+
+  const [posterUrl, setPosterUrl] = useState(getHeroPoster);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const mq = window.matchMedia("(orientation: portrait)");
+    const update = () => setPosterUrl(getHeroPoster());
+
+    mq.addEventListener?.("change", update);
+    window.addEventListener("resize", update);
+
+    return () => {
+      mq.removeEventListener?.("change", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   return (
     <section className="relative h-full w-full overflow-hidden">
@@ -23,17 +55,17 @@ export function HeroSection() {
         autoPlay
         muted
         loop
-        preload="metadata"
+        preload="none"
         playsInline
         className="
           absolute inset-0 h-full w-full object-cover object-center
           [@media(orientation:landscape)]:object-[50%_25%]
           [@media(max-height:500px)_and_(orientation:landscape)]:!object-[50%_18%]"
-        poster={assetUrl("/images/hero-section/hero-landscape.webp")}
+        poster={posterUrl}
       >
         {/* Portrait first (phones, portrait orientation) */}
         <source
-          src={assetUrl("videos/hero-section/hero.mp4")}
+          src={assetUrl("videos/hero-section/hero-mobile.mp4")}
           type="video/mp4"
           media="(orientation: portrait)"
         />
@@ -78,12 +110,10 @@ export function HeroSection() {
             <span className="relative inline-block min-w-[14ch] sm:min-w-[16ch] whitespace-nowrap">
               <AnimatePresence mode="wait">
                 {prefersReducedMotion || currentIndex === 0 ? (
-                  // First paint: no motion, no opacity 0 (fixes LCP render delay)
                   <span key={currentIndex} className="inline-block">
                     {currentPhrase}
                   </span>
                 ) : (
-                  // Subsequent phrases can animate
                   <motion.span
                     key={currentIndex}
                     initial={{ opacity: 0, y: 12 }}
