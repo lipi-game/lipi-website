@@ -3,23 +3,12 @@ import { Suspense, lazy } from "react";
 import { Navbar } from "@/shared/layout/Navbar";
 import { Footer } from "@/shared/layout/Footer";
 import { HomePage } from "@/features/home";
-import NotFound from "@/pages/NotFound";
 import { useScrollToTop } from "@/shared/hooks/useScrollToTop";
+import { RouteLoading } from "@/shared/components/RouteLoading";
 
 function ScrollToTop() {
   useScrollToTop();
   return null;
-}
-
-function RouteLoading() {
-  return (
-    <div className="h-screen flex items-center justify-center px-4">
-      <div className="flex flex-col items-center gap-3">
-        <div className="h-10 w-10 rounded-full border-2 border-[#118fdd]/25 border-t-[#118fdd] animate-spin" />
-        <p className="text-sm text-muted-foreground">Loading…</p>
-      </div>
-    </div>
-  );
 }
 
 
@@ -36,6 +25,7 @@ const BlogDetailPage = lazy(() =>
 );
 
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 export function AppRouter() {
   return (

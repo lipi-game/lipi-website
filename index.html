@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- inside <head> -->
+    <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin/>
+      <!-- in index.html <head> -->
+    <link rel="preload" as="image" href="/Assets/images/hero-section/hero.webp" media="(orientation: portrait)" fetchpriority="high">
+    <link rel="preload" as="image" href="/Assets/images/hero-section/hero-landscape.webp" media="(orientation: landscape)" fetchpriority="high">
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <!-- TODO: Set the document title to the name of your application -->

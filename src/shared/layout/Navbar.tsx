@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import {
@@ -23,7 +23,22 @@ const lipiLogo192 = assetUrl("images/logo/lipi-logo-192.webp");
 
 export function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+
+  const scrollToIdWithRetry = (id: string, tries = 0) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    if (tries >= 30) return;
+    requestAnimationFrame(() => scrollToIdWithRetry(id, tries + 1));
+  };
+
+  const afterPaint = (fn: () => void) => {
+    requestAnimationFrame(() => requestAnimationFrame(fn));
+  };
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -33,30 +48,17 @@ export function Navbar() {
       e.preventDefault();
       const targetId = to.replace("/#", "");
 
-      // Close menu first
       setIsOpen(false);
 
-      // If not on home page, navigate to home first
-      if (location.pathname !== "/") {
-        window.location.href = to;
-        return;
-      }
+      
+      navigate(`/#${targetId}`);
 
-      const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // Close menu on regular navigation
-      setIsOpen(false);
-    }
-  };
+      afterPaint(() => scrollToIdWithRetry(targetId));
 
-  const isActiveLink = (to: string) => {
-    if (to.startsWith("/#")) {
-      return location.pathname === "/" && location.hash === to.replace("/", "");
+      return;
     }
-    return location.pathname === to;
+
+    setIsOpen(false);
   };
 
   const navBgClass = "bg-black/20 backdrop-blur-sm";
@@ -121,7 +123,6 @@ export function Navbar() {
             </VisuallyHidden.Root>
 
             <div className="flex h-[100dvh] flex-col">
-              {/* Top bar (ONLY close icon, ignore search) */}
               <div className="flex items-center justify-end px-6 pt-6">
                 <SheetClose asChild>
                   <button
@@ -134,7 +135,6 @@ export function Navbar() {
                 </SheetClose>
               </div>
 
-              {/* Links (left aligned, dividers) */}
               <nav className="mt-6">
                 <ul>
                   {navLinks.map((link) => (
@@ -156,7 +156,6 @@ export function Navbar() {
                 </ul>
               </nav>
 
-              {/* Keep bottom empty space like screenshot */}
               <div className="flex-1" />
             </div>
           </SheetContent>

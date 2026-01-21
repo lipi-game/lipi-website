@@ -9,7 +9,7 @@
     "author": "Sagar Anisingaraju",
     "category": "Journey",
     "readTime": "5 min read",
-    "imageUrl": "https://lipi-games-resources.s3.ap-south-1.amazonaws.com/team1.ae4c97032901d1ac2056.png",
+    "imageUrl": "/Assets/images/blogs/blog1.webp",
     "tags": [
       "Mahabharata",
       "Lipi Epics and Word Game",
@@ -44,7 +44,7 @@
     "author": "Prasad Chaganti",
     "category": "Word Games",
     "readTime": "7 min read",
-    "imageUrl": "https://kokkoroko-image-puzzle.s3.ap-south-1.amazonaws.com/images/user.png",
+    "imageUrl": "/Assets/images/blogs/blog2.webp",
     "tags": [
       "Lipi Epics and Wordgames",
       "Mental Agility",
@@ -75,7 +75,7 @@
     "category": "Interview",
     "readTime": "7 min read",
     "publishedBy": "This interview was originally published at",
-    "imageUrl": "https://taalk.com/wp-content/uploads/2025/07/lipigame-696x380.jpg",
+    "imageUrl": "/Assets/images/blogs/blog3.webp",
     "tags": [
       "Mahabharata Values-Based learning",
       "Visual Story Telling",
@@ -105,7 +105,7 @@
     "author": "Lipi Team",
     "category": "Values",
     "readTime": "6 min read",
-    "imageUrl": "https://taalk.com/wp-content/uploads/2025/07/lipigame-696x380.jpg",
+    "imageUrl": "/Assets/images/blogs/blog3.webp",
     "tags": [
       "Mahabharata",
       "Children",
@@ -129,7 +129,7 @@
     "author": "Lipi Team",
     "category": "PodCast",
     "readTime": "7 min read",
-    "imageUrl": "https://taalk.com/wp-content/uploads/2025/07/lipigame-696x380.jpg",
+    "imageUrl": "/Assets/images/blogs/blog3.webp",
     "tags": [
       "Mahabharata",
       "Duryodhana",
