@@ -118,10 +118,10 @@ export const disciplinePortraits = [
   { id: 5, name: "Akanksha", role: "Content Curator", imageUrl: assetUrl("images/team/Akanksha.webp"), bgColor: "#D3D3D3" },
   { id: 6, name: "Nagraj", role: "Video Editor", imageUrl: assetUrl("images/team/Nagraj.webp"), bgColor: "#FFFDE7" },
   { id: 7, name: "Kaustabh", role: "Content Curator", imageUrl: assetUrl("images/team/Kaustabh.webp"), bgColor: "#ECEFF1" },
-  { id: 8, name: "Sharath", role: "Artist", imageUrl: assetUrl("images/team/Sharath.webp"), bgColor: "#FBE9E7" },
+  { id: 8, name: "Sharath", role: "Social Media Content Director", imageUrl: assetUrl("images/team/Sharath.webp"), bgColor: "#FBE9E7" },
   { id: 9, name: "Rajender", role: "UI/UX Designer", imageUrl: assetUrl("images/team/Rajender.webp"), bgColor: "#E0F7FA" },
   { id: 10, name: "Amul", role: "Backend Developer", imageUrl: assetUrl("images/team/Amul.webp"), bgColor: "#F3E5F5" },
-  { id: 11, name: "Sriram", role: "Backend Developer", imageUrl: assetUrl("images/team/Sriram.webp"), bgColor: "#AC9590", objectPosition: "50% -20%" },
+  { id: 11, name: "Srirama Chandra", role: "Backend Developer", imageUrl: assetUrl("images/team/Sriram.webp"), bgColor: "#828282", objectPosition: "50% -20%" },
 ];
 
 export const advisors = [
