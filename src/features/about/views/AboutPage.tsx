@@ -17,6 +17,7 @@ import {
   originalContentCreationTitle,
   originalContentCreationText,
 } from "../data/aboutData";
+import { useSEO } from "@/shared/hooks/useSEO";
 
 function TeamTile({
   member,
@@ -465,7 +466,7 @@ function MeetTeamSection() {
                     <div
                       key={portrait.id}
                       tabIndex={0}
-                      className="relative aspect-square overflow-hidden group cursor-pointer"
+                      className="rounded-sm relative aspect-square overflow-hidden group cursor-pointer"
                       style={{ backgroundColor: portrait.bgColor }}
                     >
                       <img
@@ -519,7 +520,7 @@ function MeetTeamSection() {
                       <div
                         key={portrait.id}
                         tabIndex={0}
-                        className="relative aspect-square overflow-hidden group cursor-pointer"
+                        className="rounded-sm relative aspect-square overflow-hidden group cursor-pointer"
                         style={{ backgroundColor: portrait.bgColor }}
                       >
                         <img
@@ -764,7 +765,7 @@ function AdvisorsSection() {
 export function ReferencesSection() {
   const cardVariants = {
     brown: { shadow: "#715B38", bg: "#B9965D" },
-    blue: { shadow: "#0E238B", bg: "#4758AC" },
+    blue: { shadow: "#1D3AB3", bg: "#7383D9" },
   } as const;
 
   // per-card toggle state (default: collapsed)
@@ -893,6 +894,16 @@ export function ReferencesSection() {
 }
 
 export default function AboutPage() {
+  
+  useSEO({
+    title: "About | Lipi Games",
+    description:
+      "Lipi Epics and Word Games is a learning and gamification platform that brings Indian epics, languages, and cultural values to life through interactive play—AI-powered visuals, mobile-first experiences, and a team led by founder Sagar Anisingaraju, supported by advisors and expert-reviewed references.",
+    canonical: `${window.location.origin}/about`,
+  });
+
+
+
   return (
     <main className="min-h-screen bg-white">
       <HeaderSection />

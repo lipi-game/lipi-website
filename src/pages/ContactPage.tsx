@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
+import { useSEO } from "@/shared/hooks/useSEO";
 
 const countryCodes = [
   { code: "US", dial: "+1", label: "US" },
@@ -27,6 +28,15 @@ const dialByCode = Object.fromEntries(
 
 
 export default function ContactPage() {
+
+  useSEO({
+    title: "Contact | Lipi Games",
+    description:
+      "Contact Lipi Games for support, or feedback on our epic-inspired learning and word games. We welcome suggestions, collaboration ideas, and content corrections to help us improve.",
+    canonical: `${window.location.origin}/contact`,
+  });
+
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
