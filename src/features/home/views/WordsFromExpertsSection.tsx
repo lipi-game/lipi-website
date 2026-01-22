@@ -48,19 +48,18 @@ export function WordsFromExpertsSection() {
     return () => observer.disconnect();
   }, []);
 
-  // maxStart: last valid start index where all visible cards are real
+  // For infinite loop, we create clones
+  const extendedExperts = useMemo(() => {
+    if (experts.length === 0) return [];
+    // Clone cards: [...experts, ...experts, ...experts]
+    return [...experts, ...experts, ...experts];
+  }, [experts]);
+
   const maxStart = useMemo(
     () => Math.max(0, experts.length - visibleCards),
     [experts.length, visibleCards],
   );
   const totalDots = maxStart + 1;
-
-  // Clamp currentIndex if visibleCards changes and index is out of bounds
-  useEffect(() => {
-    if (currentIndex > maxStart) {
-      setCurrentIndex(maxStart);
-    }
-  }, [maxStart, currentIndex]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -75,41 +74,38 @@ export function WordsFromExpertsSection() {
   useEffect(() => {
     if (isInView && !playingId) {
       autoPlayRef.current = setInterval(() => {
-        setCurrentIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
+        setCurrentIndex((prev) => prev + 1);
       }, 2000);
     }
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
-  }, [isInView, playingId, maxStart]);
+  }, [isInView, playingId]);
 
   const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxStart : prev - 1));
-  }, [maxStart]);
+    setCurrentIndex((prev) => prev - 1);
+  }, []);
 
   const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
-  }, [maxStart]);
+    setCurrentIndex((prev) => prev + 1);
+  }, []);
 
   const handleDotClick = useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
+    setCurrentIndex(index + experts.length); // Start from middle clone set
+  }, [experts.length]);
 
   const handlePlayToggle = useCallback(
     (expert: Expert) => {
-      // pause current if any
       if (playingId) {
         const currentVideo = videoRefs.current.get(playingId);
         currentVideo?.pause();
       }
 
-      // toggle same card off
       if (playingId === expert.id) {
         setPlayingId(null);
         return;
       }
 
-      // ✅ set playing; the card will mount <video> and auto-play via effect
       setPlayingId(expert.id);
     },
     [playingId],
@@ -132,7 +128,6 @@ export function WordsFromExpertsSection() {
     [handlePrev, handleNext],
   );
 
-  // Card dimensions - mobile shows 1 full card
   const getCardDimensions = () => {
     if (visibleCards === 1) return { width: 280, height: 480 };
     if (visibleCards === 2) return { width: 300, height: 520 };
@@ -142,21 +137,15 @@ export function WordsFromExpertsSection() {
   const { width: cardWidth, height: cardHeight } = getCardDimensions();
   const gap = 24;
 
-  // Compute translateX with centering + clamping (no blank space)
+  // Infinite loop logic with seamless reset
   const translateX = useMemo(() => {
     if (experts.length === 0 || viewportWidth === 0) return 0;
 
     const step = cardWidth + gap;
-    const trackWidth = experts.length * cardWidth + (experts.length - 1) * gap;
     const groupWidth = visibleCards * cardWidth + (visibleCards - 1) * gap;
     const centerOffset = Math.max(0, (viewportWidth - groupWidth) / 2);
-    const rawX = centerOffset - currentIndex * step;
-
-    // Clamp bounds
-    const minX = Math.min(0, viewportWidth - trackWidth);
-    const maxX = 0;
-
-    return Math.max(minX, Math.min(maxX, rawX));
+    
+    return centerOffset - currentIndex * step;
   }, [
     experts.length,
     viewportWidth,
@@ -165,6 +154,40 @@ export function WordsFromExpertsSection() {
     cardWidth,
     gap,
   ]);
+
+  // Reset position when reaching clone boundaries (seamless loop)
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  useEffect(() => {
+    if (experts.length === 0) return;
+
+    // If we've scrolled past the end of the first clone set
+    if (currentIndex >= experts.length * 2) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(experts.length); // Jump to middle set
+        setTimeout(() => setIsTransitioning(true), 50);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+
+    // If we've scrolled before the beginning
+    if (currentIndex < experts.length) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(experts.length + currentIndex); // Jump to middle set
+        setTimeout(() => setIsTransitioning(true), 50);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex, experts.length]);
+
+  // Calculate which dot should be active
+  const activeDotIndex = useMemo(() => {
+    if (experts.length === 0) return 0;
+    const normalizedIndex = ((currentIndex % experts.length) + experts.length) % experts.length;
+    return Math.min(normalizedIndex, maxStart);
+  }, [currentIndex, experts.length, maxStart]);
 
   return (
     <section
@@ -231,26 +254,25 @@ export function WordsFromExpertsSection() {
             style={{ gap }}
             animate={{ x: translateX }}
             transition={
-              prefersReducedMotion
+              !isTransitioning || prefersReducedMotion
                 ? { duration: 0 }
                 : { type: "tween", duration: 0.5, ease: "easeInOut" }
             }
           >
-            {experts.map((expert, index) => {
+            {extendedExperts.map((expert, index) => {
               const isActive =
                 index >= currentIndex && index < currentIndex + visibleCards;
 
-              // ✅ Load posters only for current window + 1 on each side
               const start = Math.max(0, currentIndex - 1);
               const end = Math.min(
-                experts.length - 1,
+                extendedExperts.length - 1,
                 currentIndex + visibleCards,
-              ); // +1 card
+              );
               const shouldLoadPoster = index >= start && index <= end;
 
               return (
                 <ExpertCard
-                  key={expert.id}
+                  key={`${expert.id}-${index}`}
                   expert={expert}
                   isPlaying={playingId === expert.id}
                   onPlayToggle={() => handlePlayToggle(expert)}
@@ -277,7 +299,7 @@ export function WordsFromExpertsSection() {
             key={index}
             onClick={() => handleDotClick(index)}
             className={`w-2.5 h-2.5 rounded-full transition-colors ${
-              index === currentIndex
+              index === activeDotIndex
                 ? "bg-foreground"
                 : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
             }`}
@@ -317,13 +339,11 @@ function ExpertCard({
 
   const localVideoRef = useRef<HTMLVideoElement | null>(null);
 
-  // keep both refs in sync (your Map + local ref)
   const setVideoEl = (el: HTMLVideoElement | null) => {
     localVideoRef.current = el;
     videoRef(el);
   };
 
-  // ✅ auto-play ONLY after the video mounts (on click)
   useEffect(() => {
     if (!isPlaying) return;
     const v = localVideoRef.current;
@@ -345,7 +365,6 @@ function ExpertCard({
         opacity: isActive ? 1 : 0.7,
       }}
     >
-      {/* ✅ Video mounts only when playing (no network before click) */}
       {isPlaying && !videoError ? (
         <video
           ref={setVideoEl}

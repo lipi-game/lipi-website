@@ -87,7 +87,7 @@ export function BlogsPage() {
   useSEO({
     title: "Blogs | Lipi Games",
     description:
-      "Read the latest articles about word games, language learning, and the Mahabharata from Lipi Games.",
+      "Read the latest blogs about word games, language learning, and the Mahabharata from Lipi Games.",
     canonical: `${window.location.origin}/blogs`,
   });
 
