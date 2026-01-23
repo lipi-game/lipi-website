@@ -81,7 +81,7 @@ export function Navbar() {
             className="h-10 w-10 mt-1 md:h-12 md:w-12 lg:w-14 lg:h-14 motion-safe:hover:animate-pulse motion-reduce:animate-none"
           />
           <span className={`text-xl md:text-2xl lg:text-3xl font-bold text-white`}>
-            Lipi
+            Lipi Inc
           </span>
         </Link>
 

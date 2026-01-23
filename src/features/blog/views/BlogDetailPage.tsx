@@ -414,11 +414,12 @@ export function BlogDetailPage() {
   const blog = slug ? getBlogBySlug(slug) : undefined;
 
   useSEO({
-    title: blog ? `${blog.title} | Lipi Games Blog` : "Blog | Lipi Games",
-    description: blog?.excerpt || "Read the latest from Lipi Games.",
-    canonical: blog
-      ? `${window.location.origin}/blogs/${blog.slug}`
-      : undefined,
+    title: blog ? `${blog.title} | Lipi Inc Blog` : "Blog | Lipi Inc",
+    description: blog?.excerpt || "Read the latest updates and stories from Lipi Inc.",
+
+    canonical: blog 
+      ? `https://lipiinc.com/blogs/${blog.slug}` 
+      : "https://lipiinc.com/blogs",
   });
 
   const processedContent = useMemo(() => {

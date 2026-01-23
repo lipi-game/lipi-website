@@ -243,7 +243,7 @@ export const faqData = {
                 <li><strong>Sort:</strong> Sort the provided images in alphabetical order or in the original time sequence.</li>
                 <li><strong>Search:</strong> Go to your desired character directly by typing initial letters.</li>
               </ul>
-              <p>You will also see a couple of drop-down boxes. From that list, you can go to any of the other characters curated by Lipi.Game App.</p>
+              <p>You will also see a couple of drop-down boxes. From that list, you can go to any of the other characters curated by Lipi Inc App.</p>
               <p>In the ‘People’ drop-down box, select the character name that you want to visually explore. You can select either a ‘Names’ or ‘Episodes & Groups’ from the ‘Type’ drop-down menu. ‘Episodes & Groups’ will explain related events and groups of people such as ‘Pancha Pandavas’ etc.</p>
               <p>Clicking ‘Explore’ will give you an interactive picture connecting selected names with other related names. See the Legend below to understand the navigation.</p>
             </>

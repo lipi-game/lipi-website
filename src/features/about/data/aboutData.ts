@@ -1,7 +1,7 @@
 import { assetUrl } from "@/config/assets";
 
 export const founderBio = [
-  `Sagar is the founder of Lipi.Game, a platform dedicated to celebrating global languages, cultures, and epics through innovative gaming applications.
+  `Sagar is the founder of Lipi Inc, a platform dedicated to celebrating global languages, cultures, and epics through innovative gaming applications.
    Until 2022, he served as the Chief Strategy Officer at Saama Technologies, where he spearheaded the company’s transformational growth, which was later featured in a case study by the Kellogg School of Management. His groundbreaking work at Saama earned him several patents.`,
   `Sagar played a pivotal role in partnering with Pfizer to implement Saama’s AI system, Smart Data Quality (SDQ), which was instrumental in accelerating the development of the world’s first COVID-19 vaccine. His contributions to the healthcare industry have been widely recognized, including being named one of the "100 Most Influential People in the Healthcare Industry" by PharmaVoice in 2020, receiving the PM360 ELITE Award in the Strategist category in 2019, and being honored as Chief Strategy Officer of the Year by Innovation Enterprise in 2013.`,
   `In 1999, Sagar founded InfoSTEP Inc., leading the company as its CEO. His early career at CMC Ltd. involved pioneering work in mathematical font generation and transliteration systems for Indian languages.
@@ -222,7 +222,7 @@ export const advisors = [
     avatarBg: "#FFE0B2",
     linkedinUrl: "https://www.linkedin.com/in/paditham",
     bio: [
-      "Prakash Aditham is a full-time Product Manager at Meta, USA, and a fractional Chief Product Officer (CPO) for Lipi.Game.",
+      "Prakash Aditham is a full-time Product Manager at Meta, USA, and a fractional Chief Product Officer (CPO) for Lipi Inc.",
       "His recent industry recognitions include a 2016 award for an AI/ML-powered HR Tech product.",
       "In 2022, he managed a team of five Product Managers and led an AI product portfolio generating over $120M in annual recurring revenue (ARR).",
       "In 2023, he was honored as a Top 20 Product Manager from over 1,000 global nominations.",
