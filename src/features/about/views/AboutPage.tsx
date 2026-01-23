@@ -2,22 +2,26 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { X, Linkedin, ChevronDown } from "lucide-react";
 import {
-  aboutIntroText,
   founderBio,
   founderName,
   founderRole,
   founderImageUrl,
-  meetTeamIntro,
   meetTeamMembers,
   disciplinePortraits,
   advisors,
-  referenceBlocks,
-  accuracyDisclaimerTitle,
-  accuracyDisclaimerText,
-  originalContentCreationTitle,
-  originalContentCreationText,
 } from "../data/aboutData";
+import {
+  accuracyDisclaimerText,
+  accuracyDisclaimerTitle,
+  originalContentCreationText,
+  originalContentCreationTitle,
+  referenceBlocks,
+} from "../data/ReferenceBlockData";
 import { useSEO } from "@/shared/hooks/useSEO";
+import { aboutIntroText } from "../data/aboutIntro";
+import { meetTeamIntro } from "../data/meetTeamIntro";
+
+type Advisor = (typeof advisors)[number];
 
 function TeamTile({
   member,
@@ -577,8 +581,6 @@ function MeetTeamSection() {
   );
 }
 
-type Advisor = (typeof advisors)[number];
-
 function AdvisorsSection() {
   const [selectedAdvisor, setSelectedAdvisor] = useState<Advisor | null>(null);
 
@@ -768,7 +770,6 @@ export function ReferencesSection() {
     blue: { shadow: "#1D3AB3", bg: "#7383D9" },
   } as const;
 
-  // per-card toggle state (default: collapsed)
   const [openMap, setOpenMap] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
     referenceBlocks.forEach((b) => (initial[b.id] = false));
@@ -794,7 +795,7 @@ export function ReferencesSection() {
             reviewed by an expert panel to ensure accuracy and credibility.
           </p>
 
-          {/* Section Cards */}
+          {/* Expandable Cards */}
           <div className="grid grid-cols-1 gap-5 md:gap-6 mb-6">
             {referenceBlocks.map((b) => {
               const colors = cardVariants[b.variant];
@@ -802,16 +803,17 @@ export function ReferencesSection() {
 
               return (
                 <div key={b.id} className="relative">
+                  {/* Shadow Block */}
                   <div
                     className="absolute inset-0 translate-x-2 translate-y-2"
                     style={{ backgroundColor: colors.shadow }}
                   />
 
+                  {/* Main Card */}
                   <div
-                    className="relative p-5 md:p-6 h-full min-h-[88px]"
+                    className="relative p-5 md:p-6 h-full min-h-[60px]"
                     style={{ backgroundColor: colors.bg }}
                   >
-                    {/* Header row: title + toggle */}
                     <button
                       type="button"
                       onClick={() => toggleCard(b.id)}
@@ -835,20 +837,37 @@ export function ReferencesSection() {
                       </span>
                     </button>
 
-                    {/* Content (only when expanded) */}
+                    {/* Content Area */}
                     {isOpen && (
-                      <div id={`ref-block-${b.id}`} className="mt-4">
-                        <ul className="space-y-1.5">
-                          {b.lines.map((line, index) => (
-                            <li
-                              key={index}
-                              className="text-white/90 text-[12px] md:text-[13px] flex items-start gap-2"
-                            >
-                              <span className="text-white mt-0.5">•</span>
-                              <span>{line}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      <div id={`ref-block-${b.id}`} className="mt-4 space-y-4">
+                        {b.content.map((item, index) => {
+                          if (item.type === "text") {
+                            return (
+                              <p
+                                key={index}
+                                className="text-white/90 text-[12px] md:text-[13px] leading-relaxed"
+                              >
+                                {item.value}
+                              </p>
+                            );
+                          }
+                          if (item.type === "list") {
+                            return (
+                              <ul key={index} className="space-y-1.5">
+                                {item.items.map((line, idx) => (
+                                  <li
+                                    key={idx}
+                                    className="text-white/90 text-[12px] md:text-[13px] flex items-start gap-2"
+                                  >
+                                    <span className="text-white mt-0.5">•</span>
+                                    <span>{line}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            );
+                          }
+                          return null;
+                        })}
                       </div>
                     )}
                   </div>
@@ -857,35 +876,16 @@ export function ReferencesSection() {
             })}
           </div>
 
-          {/* Bottom: Accuracy Disclaimer + Original Content Creation */}
+          {/* Bottom Disclaimers */}
           <div className="space-y-3">
-            <div className="bg-white rounded-lg px-4 py-3">
-              <p className="text-[12px] md:text-[13px]">
-                <span
-                  className="font-medium underline"
-                  style={{ color: "#ff7c2b" }}
-                >
-                  {accuracyDisclaimerTitle}:
-                </span>
-                <span className="text-muted-foreground ml-1">
-                  {accuracyDisclaimerText}
-                </span>
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg px-4 py-3">
-              <p className="text-[12px] md:text-[13px]">
-                <span
-                  className="font-medium underline"
-                  style={{ color: "#ff7c2b" }}
-                >
-                  {originalContentCreationTitle}:
-                </span>
-                <span className="text-muted-foreground ml-1">
-                  {originalContentCreationText}
-                </span>
-              </p>
-            </div>
+            <DisclaimerBlock
+              title={accuracyDisclaimerTitle}
+              text={accuracyDisclaimerText}
+            />
+            <DisclaimerBlock
+              title={originalContentCreationTitle}
+              text={originalContentCreationText}
+            />
           </div>
         </div>
       </div>
@@ -893,16 +893,26 @@ export function ReferencesSection() {
   );
 }
 
+function DisclaimerBlock({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="bg-white rounded-lg px-4 py-3">
+      <p className="text-[12px] md:text-[13px]">
+        <span className="font-medium underline" style={{ color: "#ff7c2b" }}>
+          {title}:
+        </span>
+        <span className="text-muted-foreground ml-1">{text}</span>
+      </p>
+    </div>
+  );
+}
+
 export default function AboutPage() {
-  
   useSEO({
     title: "About | Lipi Games",
     description:
       "Lipi Epics and Word Games is a learning and gamification platform that brings Indian epics, languages, and cultural values to life through interactive play—AI-powered visuals, mobile-first experiences, and a team led by founder Sagar Anisingaraju, supported by advisors and expert-reviewed references.",
     canonical: `${window.location.origin}/about`,
   });
-
-
 
   return (
     <main className="min-h-screen bg-white">

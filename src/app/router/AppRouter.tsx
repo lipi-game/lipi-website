@@ -24,6 +24,10 @@ const BlogDetailPage = lazy(() =>
   import("@/features/blog").then((m) => ({ default: m.BlogDetailPage })),
 );
 
+const FAQPage = lazy(() =>
+  import("@/features/faq").then((m) => ({ default: m.FAQ })),
+);
+
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
@@ -41,6 +45,7 @@ export function AppRouter() {
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/blogs/:slug" element={<BlogDetailPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/faq" element={<FAQPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
