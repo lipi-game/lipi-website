@@ -8,10 +8,10 @@ import { useSEO } from "@/shared/hooks/useSEO";
 
 export function HomePage() {
   useSEO({
-    title: "Lipi Games | Learn Through Play",
+    title: "Lipi Inc | Learn Mahabharata, Ramayana In Native Languages",
     description:
-      "Discover Lipi Games - bringing Mahabharata, languages, and culture to life through interactive word games and learning experiences.",
-    canonical: window.location.origin,
+      "Play and learn with Lipi Inc. Discover Lipi Epics, Lipi Kids, Brain Booster and WordCruise to master the Mahabharata, Ramayana, and vocabulary through AI-powered fun.",
+    canonical: "https://lipiinc.com/", 
   });
 
   return (

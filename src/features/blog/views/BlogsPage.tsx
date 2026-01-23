@@ -84,11 +84,12 @@ function BlogCard({ blog }: { blog: Blog }) {
 }
 
 export function BlogsPage() {
+
   useSEO({
-    title: "Blogs | Lipi Games",
+    title: "Blogs | Lipi Inc",
     description:
-      "Read the latest blogs about word games, language learning, and the Mahabharata from Lipi Games.",
-    canonical: `${window.location.origin}/blogs`,
+      "Explore the Lipi Inc blog for the latest articles on Word Games, language learning, and timeless stories from the Mahabharata and Ramayana.",
+    canonical: `https://lipiinc.com/blogs`,
   });
 
   const blogs = getAllBlogsSorted();

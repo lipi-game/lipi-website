@@ -100,7 +100,7 @@ function WelcomeHeading() {
           style={{ minWidth: "110%", transform: "translateY(-2px)" }}
         />
       </motion.div>
-      <span className="relative px-2 py-1">Welcome to LIPI.</span>
+      <span className="relative px-2 py-1">Welcome to Lipi</span>
     </h2>
   );
 }

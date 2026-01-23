@@ -60,9 +60,9 @@ const CategoryDropdown = ({ title, isOpen, onClick, children }: CategoryDropdown
 export default function FAQPage() {
 
   useSEO({
-    title: "FAQ | Lipi Games",
-    description: "Find answers to frequently asked questions about Lipi Games. Learn how to play Lipi Epics (Mahabharat & Ramayan), Lipi Kids, and Brain Booster, and understand game rules, levels, and rewards.",
-    canonical: `${window.location.origin}/faq`,
+    title: "FAQ | Lipi Inc",
+    description: "Find answers to frequently asked questions about Lipi Inc. Learn how to play Lipi Epics (Mahabharat & Ramayan), Lipi Kids, and Brain Booster, and understand game rules, levels, and rewards.",
+    canonical: `https://lipiinc.com/faq`,
   });
 
   const [activeTab, setActiveTab] = useState('General');

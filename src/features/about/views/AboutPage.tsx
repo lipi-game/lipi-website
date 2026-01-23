@@ -791,7 +791,7 @@ export function ReferencesSection() {
             References
           </h2>
           <p className="text-muted-foreground text-center text-[13px] md:text-sm max-w-2xl mx-auto mb-8">
-            Lipi Games content is curated from authentic publications and
+            Lipi Inc content is curated from authentic publications and
             reviewed by an expert panel to ensure accuracy and credibility.
           </p>
 
@@ -908,10 +908,10 @@ function DisclaimerBlock({ title, text }: { title: string; text: string }) {
 
 export default function AboutPage() {
   useSEO({
-    title: "About | Lipi Games",
+    title: "About | Lipi Inc",
     description:
       "Lipi Epics and Word Games is a learning and gamification platform that brings Indian epics, languages, and cultural values to life through interactive play—AI-powered visuals, mobile-first experiences, and a team led by founder Sagar Anisingaraju, supported by advisors and expert-reviewed references.",
-    canonical: `${window.location.origin}/about`,
+    canonical: `https://lipiinc.com/about`,
   });
 
   return (

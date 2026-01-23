@@ -50,7 +50,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
           <div className="space-y-3">
-            <h3 className="text-base font-semibold text-white">Lipi Games</h3>
+            <h3 className="text-base font-semibold text-white">Lipi Inc</h3>
             <p className="text-[13px] leading-relaxed text-gray-400">
               Creating mobile games that combine ancient epics, word games with
               modern gameplay.
@@ -152,7 +152,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-[13px] text-gray-400">
-            © {currentYear} Lipi Games. All rights reserved.
+            © {currentYear} Lipi Inc. All rights reserved.
           </p>
         </div>
       </div>
