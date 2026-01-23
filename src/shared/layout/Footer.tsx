@@ -7,13 +7,8 @@ const socialLinks = [
   { icon: Youtube, href: "https://www.youtube.com/channel/UCqzx1N4b2bpYbklFVIcM2bg", label: "YouTube" },
 ];
 
-const lipiEpicsLinks = [
-  { label: "Lipi Epics", href: "/games" },
-  { label: "Lipi Kids", href: "/games" },
-];
-
 const supportLinks = [
-  { label: "FAQ", href: "https://lipi.game/faq", external: true },
+  { label: "FAQ", href: "/faq" },
   {
     label: "support@lipi.game",
     href: "mailto:support@lipi.game",

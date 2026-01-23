@@ -1,11 +1,5 @@
 import { assetUrl } from "@/config/assets";
 
-export const aboutIntroText = [
-  "Lipi Epics and Word Games is a learning and gamification platform that brings Indian epics, languages, and cultural values to life through interactive play. Our current focus is the Mahabharat, along with engaging word games in Indian languages and English.Modern education rarely covers ancient epics and knowledge systems like the Ramayana, Gita, Vedas, Ayurveda, and Chanakya Neeti. At the same time, native-language word games are still far fewer than English ones.",
-  "We bridge this gap with AI-powered, high-quality visual and gamified content that makes learning fun, structured, and mobile-first. We also connect digital and physical experiences through apps, games, and a deeper knowledge network for families and communities. Founded by Sagar Anisingaraju, Lipi is built with a passionate team and supported by seed investors, and we collaborate with partners worldwide to create lasting social impact."
-];
-
-
 export const founderBio = [
   `Sagar is the founder of Lipi.Game, a platform dedicated to celebrating global languages, cultures, and epics through innovative gaming applications.
    Until 2022, he served as the Chief Strategy Officer at Saama Technologies, where he spearheaded the company’s transformational growth, which was later featured in a case study by the Kellogg School of Management. His groundbreaking work at Saama earned him several patents.`,
@@ -17,8 +11,6 @@ export const founderBio = [
 export const founderName = "Sagar Anisingaraju";
 export const founderRole = "Founder & CEO";
 export const founderImageUrl = assetUrl("images/team/founder.webp");
-
-export const meetTeamIntro = "Meet the people behind Lipi.Game. Led by founder Sagar Anisingaraju, our team blends marketing, engineering, and content expertise with a passionate Lipi Army community. Together we craft epic-inspired learning and word games, build reliable technology, and create high-quality stories, visuals, and experiences for players worldwide.";
 
 export const meetTeamMembers = [
   {
@@ -239,74 +231,3 @@ export const advisors = [
     objectPosition: "60% 20%"
   }
 ];
-
-
-export type ReferenceBlock = {
-  id: string;
-  variant: "brown" | "blue";
-  title: string;
-  lines: string[];
-};
-
-export const referenceBlocks: ReferenceBlock[] = [
-  {
-    id: "References & Content Authenticity",
-    variant: "brown",
-    title: "References & Content Authenticity",
-    lines: [
-      "The Mahabharata, Ramayana, Bhagavad Gita, Bhagavatam, and other Puranas are ancient texts that belong to India’s timeless heritage. For modern storytelling in an app-based format—using visuals, stories, videos, quizzes, and interactive learning—the content has been carefully curated from multiple authoritative sources and reviewed by subject-matter experts to ensure authenticity and accuracy.",
-      "The key individuals and reference materials consulted during content development are listed below.",
-    ],
-  },
-  {
-    id: "Content Finalization",
-    variant: "blue",
-    title: "Content Finalization",
-    lines: ["Overall Content Lead for the App", "Mr. Chaganti Prasad, Writer"],
-  },
-  {
-    id: "Expert Review & Consultation",
-    variant: "brown",
-    title: "Expert Review & Consultation",
-    lines: [
-      "The Lipi Team consulted the following scholars and speakers for guidance on content authenticity and interpretation.",
-      "While their insights were invaluable, Lipi Inc. assumes full responsibility for all content published in the Lipi Epics App.",
-      "Consultation with these individuals does not imply direct or indirect endorsement of the app or its content.",
-      "Sri Mallapragada Srimannarayana garu",
-      "Sri Garikapati Narasimha Rao garu",
-      "Sri Krishna Chaitanya (KC Talks) garu",
-      "Sri Chaganti Koteswara Rao garu",
-      "Sri Sama Vedaṁ Shanmukha Sharma garu",
-    ],
-  },
-  {
-    id: "Mahabharata Reference Publications",
-    variant: "blue",
-    title: "Mahabharata Reference Publications",
-    lines: [
-      "Kavitraya Virachita Srimandhra Mahabharatam — T.T.D. Publications, Tirupati",
-      "Sri Mahabharatam — Gita Press, Gorakhpur",
-      "Mahabharata Vijnana Sarvasvam — Dr. Gunji Venkata Ratnam",
-    ],
-  },
-  {
-    id: "Ramayana References",
-    variant: "brown",
-    title: "Ramayana References",
-    lines: [
-      "To honor and continue the legacy of accessible storytelling, the simple and engaging narrative style of Chandamama publications has been consciously adopted where appropriate.",
-      "Chandamama Publications",
-      "BORI (Bhandarkar Oriental Research Institute) Online Editions",
-      "Gita Press Ramayana Editions",
-      "Books by Pullela Ramachandra Rao",
-    ],
-  },
-];
-
-export const accuracyDisclaimerTitle = "Accuracy Disclaimer";
-export const accuracyDisclaimerText =
-  "Every effort has been made to incorporate the most authentic and reliable versions of the Mahabharata and Ramayana into the Lipi Epics games. However, occasional errors or interpretational differences may occur. We encourage users to bring any discrepancies to our attention so they can be reviewed, verified, and corrected where necessary.";
-
-export const originalContentCreationTitle = "Original Content Creation";
-export const originalContentCreationText =
-  "All images, videos, quizzes, tests, and visual guides depicting characters, places, and events are originally created by the Lipi Team.";

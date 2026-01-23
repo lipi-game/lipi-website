@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import {
@@ -22,7 +22,7 @@ const lipiLogo96 = assetUrl("images/logo/lipi-logo-96.webp");
 const lipiLogo192 = assetUrl("images/logo/lipi-logo-192.webp");
 
 export function Navbar() {
-  const location = useLocation();
+
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
