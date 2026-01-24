@@ -5,6 +5,7 @@ import { InstallCtaSection } from "./InstallCtaSection";
 import { OurGamesSection } from "@/features/games";
 import { LatestBlogsSection } from "@/features/blog";
 import { useSEO } from "@/shared/hooks/useSEO";
+import { AdvisorsSection } from "./AdvisorSection";
 
 export function HomePage() {
   useSEO({
@@ -38,6 +39,11 @@ export function HomePage() {
         {/* Words from Experts Section */}
         <section id="experts">
           <WordsFromExpertsSection />
+        </section>
+
+        {/* Advisors Section */}
+        <section id="advisors">
+          <AdvisorsSection />
         </section>
 
         {/* Latest Blogs Section */}

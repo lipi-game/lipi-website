@@ -263,13 +263,6 @@ export function WordsFromExpertsSection() {
               const isActive =
                 index >= currentIndex && index < currentIndex + visibleCards;
 
-              const start = Math.max(0, currentIndex - 1);
-              const end = Math.min(
-                extendedExperts.length - 1,
-                currentIndex + visibleCards,
-              );
-              const shouldLoadPoster = index >= start && index <= end;
-
               return (
                 <ExpertCard
                   key={`${expert.id}-${index}`}
@@ -284,7 +277,7 @@ export function WordsFromExpertsSection() {
                   cardWidth={cardWidth}
                   cardHeight={cardHeight}
                   isActive={isActive}
-                  shouldLoadPoster={shouldLoadPoster}
+                  shouldLoadPoster={true} // Fixed: Always keep poster mounted to prevent refetching
                 />
               );
             })}
