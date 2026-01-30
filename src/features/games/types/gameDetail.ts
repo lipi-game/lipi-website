@@ -32,4 +32,6 @@ export interface GameDetail {
   ctaTitle: string;
   ctaSubtitle?: string;
   accentColor?: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }
