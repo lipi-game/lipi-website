@@ -30,10 +30,16 @@ const dialByCode = Object.fromEntries(
 export default function ContactPage() {
 
   useSEO({
-    title: "Contact | Lipi Inc",
+    title: "Contact Us | Lipi Games - Get in Touch",
     description:
-      "Contact Lipi Inc for support, or feedback on our epic-inspired learning and word games. We welcome suggestions, collaboration ideas, and content corrections to help us improve.",
-    canonical: `https://lipiinc.com/contact`,
+      "Contact Lipi Games for support or feedback on our epic-inspired learning and word games. We welcome suggestions, collaboration ideas, and content corrections to help us improve.",
+    canonical: "https://lipiinc.com/contact",
+    keywords:
+      "contact lipi games, lipi support, lipi feedback, lipi inc contact, game support, app feedback",
+    ogTitle: "Contact Lipi Games | Get in Touch",
+    ogDescription:
+      "Have questions or feedback? Reach out to the Lipi Games team. We'd love to hear from you.",
+    ogImage: "https://img.lipi.games/lipi-notifications/email/Lipi-cube-logo.png",
   });
 
 

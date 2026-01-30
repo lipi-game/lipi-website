@@ -12,9 +12,25 @@ export function GameDetailPage() {
   const { gameId } = useParams<{ gameId: string }>();
   const game = gameId ? getGameDetail(gameId) : undefined;
 
+  const getSEOKeywords = (gameId: string | undefined) => {
+    if (gameId === "lipi-epics") {
+      return "lipi epics, lipi epics app, mahabharata learning app, ramayana learning app, stories with audio video, story quiz app, visual guide, lipi coins, lipi epics download, indian epics learning app";
+    }
+    if (gameId === "lipi-kids") {
+      return "lipi kids, kids learning app, kids poems app, kids stories app, vowels learning for kids, animals learning app, educational app for kids, preschool learning app";
+    }
+    return "lipi games, word games, vocabulary learning game";
+  };
+
   useSEO({
-    title: game ? `${game.title} | LIPI Games` : "Game Not Found | LIPI Games",
-    description: game?.tagline || "Explore our collection of word games",
+    title: game ? `${game.title} | Lipi Games - Download Now` : "Game Not Found | Lipi Games",
+    description: game?.overviewDescription || game?.tagline || "Explore our collection of educational word games.",
+    canonical: game ? `https://lipiinc.com/games/${game.id}` : undefined,
+    keywords: getSEOKeywords(gameId),
+    ogTitle: game?.title,
+    ogDescription: game?.tagline,
+    ogImage: game?.gameIcon || "https://img.lipi.games/lipi-notifications/email/Lipi-cube-logo.png",
+    twitterCard: "summary_large_image",
   });
 
   if (!game) {

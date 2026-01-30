@@ -86,10 +86,16 @@ function BlogCard({ blog }: { blog: Blog }) {
 export function BlogsPage() {
 
   useSEO({
-    title: "Blogs | Lipi Inc",
+    title: "Lipi Games Blog | Mahabharata, Ramayana & Word Games Insights",
     description:
-      "Explore the Lipi Inc blog for the latest articles on Word Games, language learning, and timeless stories from the Mahabharata and Ramayana.",
-    canonical: `https://lipiinc.com/blogs`,
+      "Explore the Lipi Games blog for the latest articles on Word Games, language learning, Hindi Wordle, Telugu Wordle, and timeless stories from the Mahabharata and Ramayana.",
+    canonical: "https://lipiinc.com/blogs",
+    keywords:
+      "lipi games blog, mahabharata quiz questions, ramayana learning, hindi wordle, unjumble words, vocabulary learning game, telugu wordle, indian mythology",
+    ogTitle: "Lipi Games Blog | Insights on Indian Epics & Word Games",
+    ogDescription:
+      "Read the latest updates, tips, and stories about learning Mahabharata, Ramayana, and mastering vocabulary through word games.",
+    ogImage: "https://img.lipi.games/lipi-notifications/email/Lipi-cube-logo.png",
   });
 
   const blogs = getAllBlogsSorted();

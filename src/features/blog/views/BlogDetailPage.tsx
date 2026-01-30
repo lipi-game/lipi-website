@@ -414,12 +414,18 @@ export function BlogDetailPage() {
   const blog = slug ? getBlogBySlug(slug) : undefined;
 
   useSEO({
-    title: blog ? `${blog.title} | Lipi Inc Blog` : "Blog | Lipi Inc",
-    description: blog?.excerpt || "Read the latest updates and stories from Lipi Inc.",
-
-    canonical: blog 
-      ? `https://lipiinc.com/blogs/${blog.slug}` 
+    title: blog ? `${blog.title} | Lipi Games Blog` : "Blog | Lipi Games",
+    description: blog?.excerpt || "Read the latest updates and stories from Lipi Games.",
+    canonical: blog
+      ? `https://lipiinc.com/blogs/${blog.slug}`
       : "https://lipiinc.com/blogs",
+    keywords: blog
+      ? `${blog.category}, lipi games, mahabharata, ramayana, word games, indian epics`
+      : "lipi games blog, mahabharata, ramayana",
+    ogTitle: blog?.title,
+    ogDescription: blog?.excerpt,
+    ogImage: blog?.imageUrl || "https://img.lipi.games/lipi-notifications/email/Lipi-cube-logo.png",
+    twitterCard: "summary_large_image",
   });
 
   const processedContent = useMemo(() => {

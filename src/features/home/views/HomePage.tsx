@@ -9,10 +9,17 @@ import { AdvisorsSection } from "./AdvisorSection";
 
 export function HomePage() {
   useSEO({
-    title: "Lipi Inc | Learn Mahabharata, Ramayana In Native Languages",
+    title: "Lipi Games | Learn Mahabharata, Ramayana & Word Games App",
     description:
-      "Play and learn with Lipi Inc. Discover Lipi Epics, Lipi Kids, Brain Booster and WordCruise to master the Mahabharata, Ramayana, and vocabulary through AI-powered fun.",
-    canonical: "https://lipiinc.com/", 
+      "Play and learn with Lipi Games. Discover Lipi Epics, Lipi Kids, Brain Booster and WordCruise to master the Mahabharata, Ramayana, and vocabulary through AI-powered fun. Download now on iOS & Android.",
+    canonical: "https://lipiinc.com/",
+    keywords:
+      "lipi games, lipi game, lipi epics, lipi epics & word games, word games app, mahabharata learning app, ramayana learning app, lipi game download, lipi kids, brain booster app, word cruise",
+    ogTitle: "Lipi Games | Learn Mahabharata, Ramayana In Native Languages",
+    ogDescription:
+      "Explore the next generation of learning. Play Lipi Epics, WordCruise, Brain Booster and Lipi Kids to connect with Indian wisdom, master vocabulary, and learn through play.",
+    ogImage: "https://img.lipi.games/lipi-notifications/email/Lipi-cube-logo.png",
+    twitterCard: "summary",
   });
 
   return (

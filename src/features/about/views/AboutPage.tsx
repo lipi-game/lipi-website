@@ -723,10 +723,16 @@ function DisclaimerBlock({ title, text }: { title: string; text: string }) {
 
 export default function AboutPage() {
   useSEO({
-    title: "About | Lipi Inc",
+    title: "About Us | Lipi Inc - AI-Powered Indian Epics Learning",
     description:
-      "Lipi Epics and Word Games is a learning and gamification platform that brings Indian epics, languages, and cultural values to life through interactive play—AI-powered visuals, mobile-first experiences, and a team led by founder Sagar Anisingaraju, supported by advisors and expert-reviewed references.",
-    canonical: `https://lipiinc.com/about`,
+      "Meet the team behind Lipi Inc. Learn about our mission to blend AI-driven learning with Indian cultural heritage through interactive word games and epic storytelling.",
+    canonical: "https://lipiinc.com/about",
+    keywords:
+      "lipi inc, lipi games, about lipi, indian epics learning app, mahabharata app, ramayana app, AI education, cultural learning",
+    ogTitle: "About Lipi Inc | AI-Powered Indian Epics Learning",
+    ogDescription:
+      "Discover how Lipi Inc is building the next generation of learning experiences rooted in Indian epics and native languages.",
+    ogImage: "https://img.lipi.games/lipi-notifications/email/Lipi-cube-logo.png",
   });
 
   return (
