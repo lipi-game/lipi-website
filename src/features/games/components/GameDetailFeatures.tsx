@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import type { GameFeature } from "../types/gameDetail";
 
 interface GameDetailFeaturesProps {
@@ -8,37 +7,30 @@ interface GameDetailFeaturesProps {
 
 export function GameDetailFeatures({ title, features }: GameDetailFeaturesProps) {
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
+    <section className="py-12 sm:py-16 md:py-20 bg-muted/40">
+      <div className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         {/* Section Header */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground text-center mb-12 md:mb-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground text-center mb-10 sm:mb-12">
           {title}
         </h2>
 
         {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {features.map((feature, index) => (
             <div
               key={index}
-              className={cn(
-                "group relative p-8 rounded-3xl bg-card border border-border",
-                "transition-all duration-300 hover:shadow-2xl hover:-translate-y-2",
-                "hover:border-primary/30"
-              )}
+              className="p-6 sm:p-8 rounded-2xl bg-card border border-border transition-all duration-200 hover:shadow-lg hover:border-primary/20"
             >
               {/* Icon */}
-              <div className="text-5xl mb-6">{feature.icon}</div>
+              <div className="text-4xl sm:text-5xl mb-4">{feature.icon}</div>
 
               {/* Content */}
-              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+              <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
                 {feature.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                 {feature.description}
               </p>
-
-              {/* Hover Gradient Effect */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             </div>
           ))}
         </div>

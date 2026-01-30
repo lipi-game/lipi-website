@@ -7,8 +7,8 @@ interface GameDetailShowcaseProps {
 
 export function GameDetailShowcase({ showcases }: GameDetailShowcaseProps) {
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section className="py-12 sm:py-16 md:py-20">
+      <div className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-12 sm:space-y-16 md:space-y-20">
         {showcases.map((showcase, index) => {
           const isReversed = index % 2 === 1;
 
@@ -16,29 +16,27 @@ export function GameDetailShowcase({ showcases }: GameDetailShowcaseProps) {
             <div
               key={index}
               className={cn(
-                "flex flex-col gap-8 md:gap-12 items-center mb-16 md:mb-24 last:mb-0",
+                "flex flex-col gap-6 sm:gap-8 items-center",
                 isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
               )}
             >
               {/* Image */}
-              <div className="flex-1 w-full max-w-xl lg:max-w-none">
-                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group">
+              <div className="flex-1 w-full">
+                <div className="aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-muted shadow-lg">
                   <img
                     src={showcase.image}
                     alt={showcase.imageAlt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
 
               {/* Content */}
               <div className="flex-1 text-center lg:text-left">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 md:mb-6">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-3 sm:mb-4">
                   {showcase.title}
                 </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0">
                   {showcase.description}
                 </p>
               </div>
