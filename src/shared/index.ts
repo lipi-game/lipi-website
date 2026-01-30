@@ -1,6 +1,7 @@
 // Components
 export { Container } from "./components/Container";
 export { PageHeader } from "./components/PageHeader";
+export { AppStoreBadges } from "./components/AppStoreBadges";
 
 // Layout
 export { Navbar } from "./layout/Navbar";

@@ -83,14 +83,24 @@ export function GameScreenshots({ screenshots }: GameScreenshotsProps) {
             <button 
               onClick={() => scrollBy(-300)}
               disabled={!showLeftArrow}
-              className={`p-2 rounded-full border border-border transition-opacity ${!showLeftArrow ? 'opacity-30 cursor-not-allowed' : 'hover:bg-[#118fdd]'}`}
+              aria-label="Scroll left"
+              className={`p-2 rounded-full border border-border transition-all cursor-pointer ${
+                !showLeftArrow 
+                  ? 'opacity-30 cursor-not-allowed' 
+                  : 'hover:bg-primary hover:text-primary-foreground hover:border-primary'
+              }`}
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button 
               onClick={() => scrollBy(300)}
               disabled={!showRightArrow}
-              className={`p-2 rounded-full border border-border transition-opacity ${!showRightArrow ? 'opacity-30 cursor-not-allowed' : 'hover:bg-[#118fdd]'}`}
+              aria-label="Scroll right"
+              className={`p-2 rounded-full border border-border transition-all cursor-pointer ${
+                !showRightArrow 
+                  ? 'opacity-30 cursor-not-allowed' 
+                  : 'hover:bg-primary hover:text-primary-foreground hover:border-primary'
+              }`}
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -163,20 +173,23 @@ export function GameScreenshots({ screenshots }: GameScreenshotsProps) {
           >
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 sm:top-8 sm:right-8 p-3 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-50"
+              aria-label="Close gallery"
+              className="absolute top-4 right-4 sm:top-8 sm:right-8 p-3 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-50 cursor-pointer"
             >
               <X className="w-6 h-6" />
             </button>
 
             <button
               onClick={(e) => navigateLightbox("prev", e)}
-              className="absolute left-4 sm:left-8 p-3 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-50 hidden md:block"
+              aria-label="Previous image"
+              className="absolute left-4 sm:left-8 p-3 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-50 hidden md:block cursor-pointer"
             >
               <ChevronLeft className="w-8 h-8" />
             </button>
             <button
               onClick={(e) => navigateLightbox("next", e)}
-              className="absolute right-4 sm:right-8 p-3 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-50 hidden md:block"
+              aria-label="Next image"
+              className="absolute right-4 sm:right-8 p-3 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-50 hidden md:block cursor-pointer"
             >
               <ChevronRight className="w-8 h-8" />
             </button>

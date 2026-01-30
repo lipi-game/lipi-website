@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { AppStoreBadges } from "@/shared/components/AppStoreBadges";
 
 interface AppStoreBandProps {
   gameIcon: string;
@@ -8,6 +9,10 @@ interface AppStoreBandProps {
   playStoreUrl: string;
 }
 
+/**
+ * App Store Band - Clean download section with game icon, title, and store badges
+ * Appears immediately below the hero section
+ */
 export function AppStoreBand({
   gameIcon,
   title,
@@ -16,9 +21,12 @@ export function AppStoreBand({
   playStoreUrl,
 }: AppStoreBandProps) {
   return (
-    <section className="relative bg-card py-8 sm:py-10 lg:py-12 border-y border-border">
+    <section 
+      className="relative bg-card py-8 sm:py-10 lg:py-12 border-y border-border"
+      aria-label="Download game"
+    >
       {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 pointer-events-none" aria-hidden="true" />
       
       <div className="relative px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
@@ -31,10 +39,13 @@ export function AppStoreBand({
             className="flex-shrink-0"
           >
             <div className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-br from-game-orange via-game-red to-game-purple rounded-3xl opacity-60 blur-lg group-hover:opacity-80 transition-opacity" />
+              <div 
+                className="absolute -inset-2 bg-gradient-to-br from-game-orange via-game-red to-game-purple rounded-3xl opacity-60 blur-lg group-hover:opacity-80 transition-opacity" 
+                aria-hidden="true"
+              />
               <img
                 src={gameIcon}
-                alt="Game Icon"
+                alt=""
                 className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl shadow-xl object-cover border-4 border-card"
               />
             </div>
@@ -56,40 +67,19 @@ export function AppStoreBand({
             </p>
           </motion.div>
 
-          {/* Download Buttons */}
+          {/* Download Buttons - Using shared component */}
           <motion.div
             initial={{ x: 20, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex flex-row items-center gap-3 sm:gap-4"
           >
-            <a
-              href={appStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex items-center"
-            >
-              <div className="absolute -inset-1 bg-foreground/10 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
-              <img
-                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-                alt="Download on the App Store"
-                className="relative h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 group-active:scale-95"
-              />
-            </a>
-            <a
-              href={playStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex items-center"
-            >
-              <div className="absolute -inset-1 bg-foreground/10 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
-              <img
-                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                alt="Get it on Google Play"
-                className="relative h-[58px] sm:h-[70px] w-auto object-contain transition-transform group-hover:scale-105 group-active:scale-95"
-              />
-            </a>
+            <AppStoreBadges
+              appStoreUrl={appStoreUrl}
+              playStoreUrl={playStoreUrl}
+              size="md"
+              variant="light"
+            />
           </motion.div>
         </div>
       </div>

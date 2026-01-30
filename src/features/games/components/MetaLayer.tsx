@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-import { Trophy, Zap, Star, Crown, LucideIcon } from "lucide-react";
-
-
+import { Trophy, Zap, Star, Crown, type LucideIcon } from "lucide-react";
 interface StatItem {
   Icon: LucideIcon;
   label: string;
@@ -26,27 +24,32 @@ const floatingItems = [
 export function MetaLayer({ title, description, stats }: MetaLayerProps) {
 
   return (
-    <section className="relative py-20 sm:py-24 lg:py-32 bg-gradient-to-b from-muted/50 to-background overflow-hidden">
-      {/* Floating Background Elements */}
-      {floatingItems.map(({ Icon, color, delay, position }, index) => (
-        <motion.div
-          key={index}
-          className={`absolute ${color} opacity-20`}
-          style={position}
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 10, -10, 0],
-          }}
-          transition={{
-            duration: 4 + index,
-            repeat: Infinity,
-            delay,
-            ease: "easeInOut",
-          }}
-        >
-          <Icon className="w-12 h-12 sm:w-16 sm:h-16" />
-        </motion.div>
-      ))}
+    <section 
+      className="relative py-20 sm:py-24 lg:py-32 bg-gradient-to-b from-muted/50 to-background overflow-hidden"
+      aria-labelledby="meta-layer-heading"
+    >
+      {/* Floating Background Elements - Decorative */}
+      <div aria-hidden="true">
+        {floatingItems.map(({ Icon, color, delay, position }, index) => (
+          <motion.div
+            key={index}
+            className={`absolute ${color} opacity-20 pointer-events-none`}
+            style={position}
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 10, -10, 0],
+            }}
+            transition={{
+              duration: 4 + index,
+              repeat: Infinity,
+              delay,
+              ease: "easeInOut",
+            }}
+          >
+            <Icon className="w-12 h-12 sm:w-16 sm:h-16" />
+          </motion.div>
+        ))}
+      </div>
 
       <div className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         {/* Section Header */}
@@ -57,7 +60,7 @@ export function MetaLayer({ title, description, stats }: MetaLayerProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4">
+          <h2 id="meta-layer-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4">
             {title}
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -98,8 +101,8 @@ export function MetaLayer({ title, description, stats }: MetaLayerProps) {
               }}
               className="relative group"
             >
-              {/* Card glow */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-game-orange via-game-red to-game-purple rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
+              {/* Card glow - Decorative */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-game-orange via-game-red to-game-purple rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500 pointer-events-none" aria-hidden="true" />
               
               <div className="relative bg-card border border-border rounded-3xl p-8 text-center shadow-lg">
                 <motion.div
