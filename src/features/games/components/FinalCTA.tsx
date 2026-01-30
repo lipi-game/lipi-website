@@ -97,20 +97,20 @@ export function FinalCTA({
             )}
 
             {/* Download Buttons */}
-            <div className="flex flex-row justify-center lg:justify-start gap-4">
+            <div className="flex flex-row items-center justify-center lg:justify-start gap-4">
               <motion.a
                 href={appStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative"
+                className="group relative flex items-center"
               >
                 <div className="absolute -inset-1 bg-background/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
                 <img
                   src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                   alt="Download on the App Store"
-                  className="relative h-14 sm:h-16"
+                  className="relative h-10 sm:h-12 w-auto object-contain"
                 />
               </motion.a>
               <motion.a
@@ -119,13 +119,13 @@ export function FinalCTA({
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative"
+                className="group relative flex items-center"
               >
                 <div className="absolute -inset-1 bg-background/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
                 <img
                   src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                   alt="Get it on Google Play"
-                  className="relative h-[60px] sm:h-[68px]"
+                  className="relative h-[58px] sm:h-[70px] w-auto object-contain"
                 />
               </motion.a>
             </div>

@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export interface GameFeature {
   icon: string;
   title: string;
@@ -25,13 +27,18 @@ export interface GameDetail {
   screenshots: Array<{
     src: string;
     alt: string;
+    orientation?: "portrait" | "landscape";
   }>;
   featuresTitle: string;
   features: GameFeature[];
-  showcases: GameShowcase[];
   ctaTitle: string;
   ctaSubtitle?: string;
   accentColor?: string;
   metaTitle?: string;
   metaDescription?: string;
+  stats: Array<{
+    Icon: LucideIcon; // or React.ElementType
+    label: string;
+    value: string;
+  }>;
 }

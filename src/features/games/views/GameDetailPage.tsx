@@ -4,9 +4,9 @@ import { getGameDetail } from "../data/gameDetails";
 import { JuicyHero } from "../components/JuicyHero";
 import { AppStoreBand } from "../components/AppStoreBand";
 import { FeatureTrio } from "../components/FeatureTrio";
-import { ImmersiveGameplay } from "../components/ImmersiveGameplay";
 import { MetaLayer } from "../components/MetaLayer";
 import { FinalCTA } from "../components/FinalCTA";
+import { GameScreenshots } from "../components/GameScreenshots";
 
 export function GameDetailPage() {
   const { gameId } = useParams<{ gameId: string }>();
@@ -45,19 +45,13 @@ export function GameDetailPage() {
         screenshots={game.screenshots}
       />
 
-      {/* Immersive Gameplay Sections - Alternating */}
-      {game.showcases.map((showcase, index) => (
-        <ImmersiveGameplay
-          key={index}
-          showcase={showcase}
-          reversed={index % 2 === 1}
-        />
-      ))}
+      <GameScreenshots screenshots={game.screenshots} />
 
       {/* Meta Layer - Progression & Social */}
       <MetaLayer
         title={game.metaTitle || "Rise Through the Ranks"}
         description={game.metaDescription || "Compete globally and earn exclusive rewards"}
+        stats={game.stats}
       />
 
       {/* Final CTA - Dark footer with device mockup */}
