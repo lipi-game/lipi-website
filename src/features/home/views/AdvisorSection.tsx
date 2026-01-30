@@ -10,7 +10,7 @@ export function AdvisorsSection() {
 
   return (
     <section className="py-8 md:py-12 bg-white">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-0">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-0">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8 md:mb-10">
           Advisors
         </h2>

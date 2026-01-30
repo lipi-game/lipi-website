@@ -61,7 +61,7 @@ function TeamTile({
 function HeaderSection() {
   return (
     <section className="bg-white pt-20 pb-12 md:pt-24 md:pb-16">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-8">
         <h1 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-center text-foreground mb-10 md:mb-12">
           About Us
         </h1>
@@ -86,7 +86,7 @@ function HeaderSection() {
 function FounderSection() {
   return (
     <section className="py-6 md:py-8 bg-white">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8 md:pr-8">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-8 md:pr-8">
         <div
           className="relative rounded-[24px] md:rounded-[28px] overflow-hidden shadow-sm"
           style={{ backgroundColor: "#f5f0e8" }}
@@ -177,7 +177,7 @@ function MeetTeamSection() {
 
   return (
     <section className="py-6 md:py-8 bg-white">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-8">
         <div
           className="rounded-[24px] md:rounded-[28px] overflow-hidden shadow-sm"
           style={{ backgroundColor: "#F2FAFF" }}
@@ -597,7 +597,7 @@ export function ReferencesSection() {
 
   return (
     <section className="py-8 md:py-12 bg-white">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-8">
         <div
           className="rounded-[24px] md:rounded-[28px] py-8 md:py-10 px-5 md:px-8"
           style={{ backgroundColor: "#f5f0e8" }}
