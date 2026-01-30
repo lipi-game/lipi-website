@@ -29,7 +29,6 @@ export function GameDetailPage() {
         heroImageAlt={game.heroImageAlt}
         appStoreUrl={game.appStoreUrl}
         playStoreUrl={game.playStoreUrl}
-        accentColor={game.accentColor}
       />
 
       <GameDetailOverview

@@ -1,6 +1,5 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface GameDetailOverviewProps {
@@ -24,79 +23,91 @@ export function GameDetailOverview({
   const checkScroll = () => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollLeft(scrollLeft > 10);
     setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 10);
   };
 
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener("resize", checkScroll);
+    return () => window.removeEventListener("resize", checkScroll);
+  }, []);
+
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
-    const scrollAmount = scrollRef.current.clientWidth * 0.8;
+    const scrollAmount = 300;
     scrollRef.current.scrollBy({
       left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
     });
-    setTimeout(checkScroll, 300);
+    setTimeout(checkScroll, 350);
   };
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section className="py-12 sm:py-16 md:py-20">
+      <div className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             {title}
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
             {description}
           </p>
         </div>
 
         {/* Screenshot Carousel */}
-        <div className="relative group">
+        <div className="relative">
           {/* Navigation Buttons */}
-          <Button
-            variant="secondary"
-            size="icon"
-            className={cn(
-              "absolute left-2 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full shadow-lg",
-              "opacity-0 group-hover:opacity-100 transition-opacity",
-              !canScrollLeft && "hidden"
-            )}
+          <button
             onClick={() => scroll("left")}
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </Button>
-
-          <Button
-            variant="secondary"
-            size="icon"
             className={cn(
-              "absolute right-2 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full shadow-lg",
-              "opacity-0 group-hover:opacity-100 transition-opacity",
-              !canScrollRight && "hidden"
+              "absolute left-0 top-1/2 -translate-y-1/2 z-10",
+              "w-10 h-10 sm:w-12 sm:h-12 rounded-full",
+              "bg-background/90 backdrop-blur border border-border shadow-lg",
+              "flex items-center justify-center",
+              "transition-all hover:bg-accent",
+              "-translate-x-1/2",
+              !canScrollLeft && "opacity-0 pointer-events-none"
             )}
-            onClick={() => scroll("right")}
+            aria-label="Scroll left"
           >
-            <ChevronRight className="h-6 w-6" />
-          </Button>
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <button
+            onClick={() => scroll("right")}
+            className={cn(
+              "absolute right-0 top-1/2 -translate-y-1/2 z-10",
+              "w-10 h-10 sm:w-12 sm:h-12 rounded-full",
+              "bg-background/90 backdrop-blur border border-border shadow-lg",
+              "flex items-center justify-center",
+              "transition-all hover:bg-accent",
+              "translate-x-1/2",
+              !canScrollRight && "opacity-0 pointer-events-none"
+            )}
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
 
           {/* Scrollable Container */}
           <div
             ref={scrollRef}
             onScroll={checkScroll}
-            className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory"
+            className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {screenshots.map((screenshot, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] snap-center"
+                className="flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] snap-center first:ml-0"
               >
-                <div className="aspect-[9/16] rounded-2xl overflow-hidden shadow-xl bg-muted">
+                <div className="aspect-[9/16] rounded-xl sm:rounded-2xl overflow-hidden bg-muted shadow-lg">
                   <img
                     src={screenshot.src}
                     alt={screenshot.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
