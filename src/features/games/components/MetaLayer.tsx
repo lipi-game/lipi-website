@@ -1,9 +1,18 @@
 import { motion } from "framer-motion";
-import { Trophy, Users, Zap, Star, Target, Crown } from "lucide-react";
+import { Trophy, Zap, Star, Crown, LucideIcon } from "lucide-react";
+
+
+interface StatItem {
+  Icon: LucideIcon;
+  label: string;
+  value: string;
+}
+
 
 interface MetaLayerProps {
   title: string;
   description: string;
+  stats: StatItem[]; 
 }
 
 const floatingItems = [
@@ -13,12 +22,8 @@ const floatingItems = [
   { Icon: Zap, color: "text-game-cyan", delay: 1.5, position: { bottom: "15%", right: "5%" } },
 ];
 
-export function MetaLayer({ title, description }: MetaLayerProps) {
-  const stats = [
-    { Icon: Trophy, label: "Leaderboards", value: "Compete Globally" },
-    { Icon: Users, label: "Multiplayer", value: "Play with Friends" },
-    { Icon: Target, label: "Challenges", value: "Daily Rewards" },
-  ];
+
+export function MetaLayer({ title, description, stats }: MetaLayerProps) {
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 bg-gradient-to-b from-muted/50 to-background overflow-hidden">
@@ -74,6 +79,7 @@ export function MetaLayer({ title, description }: MetaLayerProps) {
           }}
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8"
         >
+          {/* Now using the passed 'stats' prop */}
           {stats.map(({ Icon, label, value }, index) => (
             <motion.div
               key={index}

@@ -62,32 +62,32 @@ export function AppStoreBand({
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex flex-row gap-3 sm:gap-4"
+            className="flex flex-row items-center gap-3 sm:gap-4"
           >
             <a
               href={appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative"
+              className="group relative flex items-center"
             >
               <div className="absolute -inset-1 bg-foreground/10 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
               <img
                 src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                 alt="Download on the App Store"
-                className="relative h-12 sm:h-14 transition-transform group-hover:scale-105 group-active:scale-95"
+                className="relative h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 group-active:scale-95"
               />
             </a>
             <a
               href={playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative"
+              className="group relative flex items-center"
             >
               <div className="absolute -inset-1 bg-foreground/10 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
               <img
                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                 alt="Get it on Google Play"
-                className="relative h-[52px] sm:h-[60px] transition-transform group-hover:scale-105 group-active:scale-95"
+                className="relative h-[58px] sm:h-[70px] w-auto object-contain transition-transform group-hover:scale-105 group-active:scale-95"
               />
             </a>
           </motion.div>
