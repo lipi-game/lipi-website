@@ -53,16 +53,30 @@
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
 
+    /* Game Landing Page Colors */
+    --game-orange: 24 95% 53%;
+    --game-red: 0 84% 60%;
+    --game-yellow: 45 93% 58%;
+    --game-green: 142 71% 45%;
+    --game-purple: 262 83% 58%;
+    --game-pink: 330 81% 60%;
+    --game-cyan: 186 94% 42%;
+
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(262 83% 58%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(220 20% 98%) 0%, hsl(220 14% 96%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 20% 98%) 100%);
+    --gradient-game-warm: linear-gradient(135deg, hsl(24 95% 53%) 0%, hsl(0 84% 60%) 100%);
+    --gradient-game-cool: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(186 94% 42%) 100%);
+    --gradient-game-vibrant: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(330 81% 60%) 100%);
 
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(222 47% 11% / 0.05);
     --shadow-md: 0 4px 6px -1px hsl(222 47% 11% / 0.1), 0 2px 4px -2px hsl(222 47% 11% / 0.1);
     --shadow-lg: 0 10px 15px -3px hsl(222 47% 11% / 0.1), 0 4px 6px -4px hsl(222 47% 11% / 0.1);
     --shadow-glow: 0 0 20px hsl(221 83% 53% / 0.3);
+    --shadow-game: 0 10px 40px -10px hsl(0 0% 0% / 0.3);
+    --shadow-game-glow: 0 0 60px hsl(24 95% 53% / 0.4);
 
     /* Sidebar */
     --sidebar-background: 0 0% 100%;
