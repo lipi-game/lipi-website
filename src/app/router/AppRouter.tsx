@@ -11,7 +11,6 @@ function ScrollToTop() {
   return null;
 }
 
-
 const AboutPage = lazy(() =>
   import("@/features/about").then((m) => ({ default: m.AboutPage })),
 );
@@ -26,6 +25,10 @@ const BlogDetailPage = lazy(() =>
 
 const FAQPage = lazy(() =>
   import("@/features/faq").then((m) => ({ default: m.FAQ })),
+);
+
+const GameDetailPage = lazy(() =>
+  import("@/features/games").then((m) => ({ default: m.GameDetailPage })),
 );
 
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
@@ -44,6 +47,7 @@ export function AppRouter() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/blogs/:slug" element={<BlogDetailPage />} />
+              <Route path="/games/:gameId" element={<GameDetailPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="*" element={<NotFound />} />
