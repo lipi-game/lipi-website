@@ -32,10 +32,11 @@ export function FeatureTrio({ title, features, screenshots }: FeatureTrioProps) 
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-muted/30">
+    <section className="py-16 sm:py-20 lg:py-24 bg-muted/30" aria-labelledby="features-heading">
       <div className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         {/* Section Title */}
         <motion.h2
+          id="features-heading"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -70,13 +71,14 @@ export function FeatureTrio({ title, features, screenshots }: FeatureTrioProps) 
                     alt={screenshots[index]?.alt || feature.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" aria-hidden="true" />
                   
                   {/* Floating Icon */}
                   <motion.div
                     className="absolute bottom-4 right-4 text-5xl"
                     animate={{ y: [0, -5, 0] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: index * 0.3 }}
+                    aria-hidden="true"
                   >
                     {feature.icon}
                   </motion.div>

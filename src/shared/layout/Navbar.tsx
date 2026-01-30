@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { ChevronDown } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -142,14 +141,9 @@ export function Navbar() {
                       <Link
                         to={link.to}
                         onClick={(e) => handleNavClick(e, link.to)}
-                        className="flex items-center justify-between px-6 py-7 text-[28px] leading-none font-medium text-white"
+                        className="flex items-center justify-between px-6 py-7 text-[28px] leading-none font-medium text-white cursor-pointer"
                       >
                         <span>{link.label}</span>
-                        {false ? (
-                          <ChevronDown className="h-6 w-6 text-white/90" />
-                        ) : (
-                          <span className="h-6 w-6" />
-                        )}
                       </Link>
                     </li>
                   ))}

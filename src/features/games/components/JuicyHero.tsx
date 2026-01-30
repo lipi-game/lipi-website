@@ -27,7 +27,7 @@ export function JuicyHero({ heroImage, heroImageAlt, logoImage }: JuicyHeroProps
       </motion.div>
 
       {/* Floating particles effect */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
@@ -71,6 +71,7 @@ export function JuicyHero({ heroImage, heroImageAlt, logoImage }: JuicyHeroProps
         className="absolute bottom-4 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
       >
         <div className="w-6 h-10 rounded-full border-2 border-background/50 flex justify-center pt-2">
           <motion.div

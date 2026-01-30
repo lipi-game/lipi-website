@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { AppStoreBadges } from "@/shared/components/AppStoreBadges";
 
 interface FinalCTAProps {
   title: string;
@@ -9,6 +10,10 @@ interface FinalCTAProps {
   mockupImage?: string;
 }
 
+/**
+ * Final CTA Section - Dark footer with device mockup and download buttons
+ * Conversion-focused design for maximum downloads
+ */
 export function FinalCTA({
   title,
   subtitle,
@@ -18,18 +23,24 @@ export function FinalCTA({
   mockupImage,
 }: FinalCTAProps) {
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 bg-foreground overflow-hidden">
+    <section 
+      className="relative py-16 sm:py-20 lg:py-24 bg-foreground overflow-hidden"
+      aria-label="Download the game"
+    >
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-          backgroundSize: '32px 32px',
-        }} />
+      <div className="absolute inset-0 opacity-5 pointer-events-none" aria-hidden="true">
+        <div 
+          className="absolute inset-0" 
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
+            backgroundSize: '32px 32px',
+          }} 
+        />
       </div>
 
       {/* Gradient orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-game-orange/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-game-purple/20 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-game-orange/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-game-purple/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
 
       <div className="relative px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
@@ -45,19 +56,20 @@ export function FinalCTA({
               {/* Phone frame */}
               <div className="relative w-56 sm:w-64 lg:w-72">
                 {/* Device shadow */}
-                <div className="absolute inset-4 bg-background/20 rounded-[3rem] blur-2xl" />
+                <div className="absolute inset-4 bg-background/20 rounded-[3rem] blur-2xl" aria-hidden="true" />
                 
                 {/* Device frame */}
                 <div className="relative bg-foreground/80 rounded-[2.5rem] p-2 shadow-2xl border-4 border-muted/20">
                   <div className="relative aspect-[9/19] rounded-[2rem] overflow-hidden bg-muted">
                     <img
                       src={mockupImage || gameIcon}
-                      alt="Game on device"
+                      alt="Game preview on device"
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                   {/* Notch */}
-                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-foreground/80 rounded-full" />
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-foreground/80 rounded-full" aria-hidden="true" />
                 </div>
               </div>
 
@@ -68,10 +80,10 @@ export function FinalCTA({
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
                 <div className="relative">
-                  <div className="absolute -inset-2 bg-gradient-to-br from-game-orange to-game-red rounded-2xl blur-lg opacity-60" />
+                  <div className="absolute -inset-2 bg-gradient-to-br from-game-orange to-game-red rounded-2xl blur-lg opacity-60" aria-hidden="true" />
                   <img
                     src={gameIcon}
-                    alt="Game icon"
+                    alt=""
                     className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shadow-xl object-cover border-4 border-card"
                   />
                 </div>
@@ -96,39 +108,15 @@ export function FinalCTA({
               </p>
             )}
 
-            {/* Download Buttons */}
-            <div className="flex flex-row items-center justify-center lg:justify-start gap-4">
-              <motion.a
-                href={appStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center"
-              >
-                <div className="absolute -inset-1 bg-background/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
-                <img
-                  src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-                  alt="Download on the App Store"
-                  className="relative h-10 sm:h-12 w-auto object-contain"
-                />
-              </motion.a>
-              <motion.a
-                href={playStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center"
-              >
-                <div className="absolute -inset-1 bg-background/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity" />
-                <img
-                  src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                  alt="Get it on Google Play"
-                  className="relative h-[58px] sm:h-[70px] w-auto object-contain"
-                />
-              </motion.a>
-            </div>
+            {/* Download Buttons - Using shared component */}
+            <AppStoreBadges
+              appStoreUrl={appStoreUrl}
+              playStoreUrl={playStoreUrl}
+              size="md"
+              variant="dark"
+              animated
+              className="justify-center lg:justify-start"
+            />
           </motion.div>
         </div>
       </div>
