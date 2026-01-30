@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const socialLinks = [
   { icon: Facebook, href: "https://www.facebook.com/LipiEpicsMahabharat/", label: "Facebook" },
   { icon: Instagram, href: "https://www.instagram.com/lipiepics_mahabharatam/", label: "Instagram" },
   { icon: Youtube, href: "https://www.youtube.com/channel/UCqzx1N4b2bpYbklFVIcM2bg", label: "YouTube" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/lipi-game/", label: "LinkedIn" },
 ];
 
 const supportLinks = [

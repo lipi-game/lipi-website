@@ -5,7 +5,6 @@ import { getAllGames } from "@/features/games/services/GamesRepository";
 import { assetUrl } from "@/config/assets";
 
 export function InstallCtaSection() {
-
   const [selectedGame, setSelectedGame] = useState<InstallGame | undefined>(
     InstallGamesManager.getDefaultGame(),
   );
@@ -21,7 +20,7 @@ export function InstallCtaSection() {
         Install Lipi Games
       </h2>
 
-      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Main CTA Card */}
         <div className="relative w-full h-auto min-h-[400px] sm:min-h-[500px] md:h-[744px] rounded-[24px] sm:rounded-[32px] md:rounded-[52px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.12)]">
           {/* Background Image */}
@@ -58,10 +57,10 @@ export function InstallCtaSection() {
                 sizes="(min-width: 768px) 210px, (min-width: 640px) 140px, 100px"
                 alt=""
                 aria-hidden="true"
-                className="absolute left-[8%] bottom-[140px]
-                  md:left-[4%] md:bottom-[160px]
+                className="absolute left-[15%] bottom-[26%] sm:bottom-[30%]
+                  md:left-[20%] md:bottom-[160px]
                   lg:left-[18%] lg:bottom-[180px]
-                  w-[100px] sm:w-[140px] md:w-[210px] lg:w-[240px]
+                  w-[28%] sm:w-[24%] md:w-[22%] lg:w-[240px]
                   max-w-[25vw] md:max-w-none
                   h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
                 loading="lazy"
@@ -88,10 +87,10 @@ export function InstallCtaSection() {
                 sizes="(min-width: 768px) 460px, (min-width: 640px) 280px, 200px"
                 alt=""
                 aria-hidden="true"
-                className="absolute left-[38%] bottom-[160px]
-                  md:left-[34%] md:bottom-[220px]
+                className="absolute left-[38%] bottom-[32%] sm:bottom-[35%]
+                  md:left-[45%] md:bottom-[200px]
                   lg:left-[42%] lg:bottom-[220px]
-                  w-[200px] sm:w-[280px] md:w-[460px] lg:w-[560px]
+                  w-[55%] sm:w-[50%] md:w-[48%] lg:w-[560px]
                   max-w-[55vw] md:max-w-none
                   h-auto object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.25)]"
                 loading="lazy"
@@ -105,7 +104,7 @@ export function InstallCtaSection() {
             {/* Bottom Content Area */}
             <div className="pt-20 pb-8 md:pb-18 px-4 sm:px-6 md:px-12">
               {/* Caption */}
-              <div className="text-center text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-12 sm:mb-16">
+              <div className="text-center text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-8 sm:mb-16">
                 Pick a game. Install in seconds.
               </div>
 
